@@ -3,13 +3,13 @@ package dz.aak.sentrep.ston;
 import java.util.HashSet;
 import java.util.Set;
 
-public class RAdjective {
+public class ReqAdjective {
 	
 	private int adjSynSet = 0;
 	private Set<Integer> advSynSets = new HashSet<Integer>();
 	
 	
-	public RAdjective(int adjSynSet) {
+	public ReqAdjective(int adjSynSet) {
 		this.adjSynSet = adjSynSet;
 	}
 	

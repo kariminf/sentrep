@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import dz.aak.sentrep.ston.Parser;
-import dz.aak.sentrep.ston.RequestCreator;
+import dz.aak.sentrep.ston.ReqCreator;
 
 public class StoneParseTest {
 
@@ -20,10 +20,11 @@ public class StoneParseTest {
 		
 		//specif = "{ jjjjj }";
 		//System.out.println(specif + "\n----------\n");
-		Parser parser = new Parser(specif);
+		ReqParser parser = new ReqParser(specif);
 		System.out.println(parser.parsed());
+		System.out.println(parser.getPlayers().size());
 		
-		RequestCreator rq = new RequestCreator(parser.getPlayers(), parser.getActions());
+		ReqCreator rq = new ReqCreator(parser.getPlayers(), parser.getActions());
 		
 		
 		String specif2 = rq.getStructuredRequest();

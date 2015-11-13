@@ -5,23 +5,23 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class RequestCreator {
+public class ReqCreator {
 
-	private HashMap<String, RRolePlayer> players = new HashMap<String, RRolePlayer>();
-	private HashMap<String, RAction> actions = new HashMap<String, RAction>();
+	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
+	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	public RequestCreator() {
+	public ReqCreator() {
 	}
 	
-	public RequestCreator(HashMap<String, RRolePlayer> players, HashMap<String, RAction> actions){
-		this.players = new HashMap<String, RRolePlayer>(players);
-		this.actions = new HashMap<String, RAction>(actions);
+	public ReqCreator(HashMap<String, ReqRolePlayer> players, HashMap<String, ReqAction> actions){
+		this.players = new HashMap<String, ReqRolePlayer>(players);
+		this.actions = new HashMap<String, ReqAction>(actions);
 	}
 	
 	
 	public boolean addRolePlayer(String id, int nounSynSet){
 		id = id.trim();
-		RRolePlayer player = RRolePlayer.create(id, nounSynSet);
+		ReqRolePlayer player = ReqRolePlayer.create(id, nounSynSet);
 		if (player == null){
 			//System.out.println("id already exists");
 			return false;
@@ -32,7 +32,7 @@ public class RequestCreator {
 	
 	public boolean addAction(String id, int verbSynSet){
 		id = id.trim();
-		RAction action = RAction.create(id, verbSynSet);
+		ReqAction action = ReqAction.create(id, verbSynSet);
 		if (action == null){
 			//System.out.println("id already exists");
 			return false;
@@ -74,7 +74,7 @@ public class RequestCreator {
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
 		
-		RRolePlayer player = players.get(playerId);
+		ReqRolePlayer player = players.get(playerId);
 		player.addAdjective(adjSynSet, advSynSets);
 		return true;
 	}
@@ -96,7 +96,7 @@ public class RequestCreator {
 			result += " null;\n";
 		} else {
 			result += " [\n";
-			Iterator<RRolePlayer> it = players.values().iterator();
+			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
@@ -108,7 +108,7 @@ public class RequestCreator {
 		if(! actions.isEmpty()){
 			result += "\n@actions: [\n";
 			
-			Iterator<RAction> it = actions.values().iterator();
+			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
@@ -128,7 +128,7 @@ public class RequestCreator {
 			result += "null;";
 		} else {
 			result += "[";
-			Iterator<RRolePlayer> it = players.values().iterator();
+			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
@@ -140,7 +140,7 @@ public class RequestCreator {
 		if(! actions.isEmpty()){
 			result += "@actions:[";
 			
-			Iterator<RAction> it = actions.values().iterator();
+			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
@@ -156,7 +156,7 @@ public class RequestCreator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		RequestCreator rq = new RequestCreator();
+		ReqCreator rq = new ReqCreator();
 		
 		rq.addRolePlayer("child1", 1256);
 		rq.addAdjective("child1", 15, null);

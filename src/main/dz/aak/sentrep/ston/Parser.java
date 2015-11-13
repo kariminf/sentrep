@@ -1,32 +1,26 @@
 package dz.aak.sentrep.ston;
 
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
+public abstract class Parser {
 
 	private static String BL = "[\\t \\n\\r]+";
-	 
-	private static final Pattern BLOC = Pattern.compile("\\{(.+)\\}");
 	private static final Pattern SET = Pattern.compile("\\[(.+)\\]");
 	private static final Pattern CONT = Pattern.compile("@roles\\:" + SET + "@actions\\:" + SET);
-	//private static final Pattern ROLE = Pattern.compile("r\\:\\{(.+)r\\:\\}");
-	//private static final Pattern ROLES = 
-			//Pattern.compile("^" + ROLE + "$|" + ROLE + ",|," + ROLE + "$");
-	
-	private HashMap<String, RRolePlayer> players = new HashMap<String, RRolePlayer>();
-	private HashMap<String, RAction> actions = new HashMap<String, RAction>();
-	
-	private boolean success = false;
 	
 	/**
 	 * 
 	 * @param description
 	 */
-	public Parser(String description) {
-
+	public Parser() {
+		
+	}
+	
+	public void parse(String description){
+		
 		description = description.replaceAll(BL, "");
 		
 		//System.out.println(description);
@@ -34,46 +28,37 @@ public class Parser {
 		if (m.find()) {
 			String roles =  m.group(1);
 			String actions =  m.group(2);
-			success = Roles(roles);
-			success &= Actions(actions);
+			if (! parseRoles(roles)) return;
+			if (! parseActions(actions)) return;
         }
 		
+		parseSuccess();
 	}
 	
-	public boolean parsed(){
-		return success;
-	}
 	
-	public HashMap<String, RRolePlayer> getPlayers(){
-		return new HashMap<String, RRolePlayer>(players);
-	}
-	
-	public HashMap<String, RAction> getActions(){
-		return new HashMap<String, RAction>(actions);
-	}
-	
-	private boolean Roles(String description){
+	private boolean parseRoles(String description){
 		
 		int idx;
 		while ((idx = description.indexOf("r:}")) >= 0) {
 			String role =  description.substring(3, idx);
 			description = description.substring(idx+3);
 			//System.out.println(role);
-			if (! Role(role))
+			if (! parseRole(role))
 				return false;
         }
 		
 		return true;
+
 	}
 	
-	private boolean Actions (String description){
+	private boolean parseActions (String description){
 		
 		int idx;
 		while ((idx = description.indexOf("act:}")) >= 0) {
 			String action =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			//System.out.println(role);
-			if (! Action(action))
+			if (! parseAction(action))
 				return false;
 			
         }
@@ -83,9 +68,7 @@ public class Parser {
 	
 	
 	//TODO complete the action
-	private boolean Action(String description){
-		
-		RAction action;
+	private boolean parseAction(String description){
 		
 		String[] descs = description.split(";");
 		
@@ -124,10 +107,13 @@ public class Parser {
 			}
 		}
 		
-		if(id.length() < 1) return false;
+		if(id.length() < 1){
+			actionFail();
+			return false;
+		}
 		
 		int synSet = Integer.parseInt(synSetStr);
-		action = RAction.create(id, synSet);
+		beginAction(id, synSet);
 		//TODO add other components of the action
 		int tense = 0;
 		if(tenseStr.length()>0)
@@ -135,7 +121,7 @@ public class Parser {
 		int aspect = 0;
 		if(aspectStr.length()>0)
 			tense = Integer.parseInt(tenseStr);
-		action.addVerbSpecif(tense, aspect);
+		addVerbSpecif(tense, aspect);
 		
 		if(subjects.length() > 2){
 			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
@@ -145,7 +131,7 @@ public class Parser {
 				
 			subjects = subjects.substring(1, subjects.length()-1);
 			for (String subject: subjects.split(",")){
-				action.addSubject(subject.trim());
+				addSubject(subject.trim());
 			}
 		}
 		
@@ -154,49 +140,53 @@ public class Parser {
 				return false;
 			objects = objects.substring(1, objects.length()-1);
 			for (String object: objects.split(",")){
-				action.addObject(object.trim());
+				addObject(object.trim());
 			}
 		}
 		
-		actions.put(id, action);
+		endAction();
 		
 		return true;
 	}
 
-	private boolean Role(String description){
-		
-		RRolePlayer role;
+	private boolean parseRole(String description){
 		
 		Matcher m = Pattern.compile("id\\:([^;]+)(;|$)").matcher(description);
 		
-		if (! m.find()) return false;
+		if (! m.find()){
+			roleFail();
+			return false;
+		}
 		
 		String id = m.group(1);
 		
 		m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
 		
-		if (! m.find()) return false;
+		if (! m.find()){
+			roleFail();
+			return false;
+		}
 		
 		String synSetStr = m.group(1);
 		
 		int synSet = Integer.parseInt(synSetStr);
 		
-		role = RRolePlayer.create(id, synSet);
+		beginRole(id, synSet);
 		
 		m = Pattern.compile("adjectives\\:\\[(.+adj\\:\\})\\]").matcher(description);
 		
 		if (m.find()){
 			String adjectives = m.group(1);
-			if (! Adjectives(role, adjectives)) return false;
+			if (! parseAdjectives(adjectives)) return false;
 		}
-
-		players.put(id, role);
+		
+		endRole();
 		
 		return true;
 		
 	}
 
-	private boolean Adjectives(RRolePlayer role, String description){
+	private boolean parseAdjectives(String description){
 		
 		int idx;
 		while ((idx = description.indexOf("adj:}")) >= 0) {
@@ -230,14 +220,34 @@ public class Parser {
 			}
 			
 			if (synSet < 1){
-				//System.out.println("No synSet for the adjective");
+				adjectiveFail();
 				return false;
 			}
 			
-			role.addAdjective(synSet, advSynSets);
+			addAdjective(synSet, advSynSets);
 			
         }
+		
 		return true;
 	}
+	
+	//Action
+	protected abstract void beginAction(String id, int synSet);
+	protected abstract void addVerbSpecif(int tense, int aspect);
+	protected abstract void addSubject(String subjectID);
+	protected abstract void addObject(String objectID);
+	protected abstract void endAction();
+	protected abstract void actionFail();
+	
+	//Role
+	protected abstract void beginRole(String id, int synSet);
+	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
+	protected abstract void endRole();
+	protected abstract void adjectiveFail();
+	protected abstract void roleFail();
+
+	
+	//Parse
+	protected abstract void parseSuccess();
 
 }

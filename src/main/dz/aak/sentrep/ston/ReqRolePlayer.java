@@ -7,11 +7,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class RRolePlayer {
+public class ReqRolePlayer {
 	private static Set<String> ids = new HashSet<String>();
 	private int nounSynSet;
 	private String id;
-	private List<RAdjective> adjectives = new ArrayList<RAdjective>();
+	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
 	private String quantity = null;
 	private List<String> possessives = new ArrayList<String>();
 	
@@ -26,7 +26,7 @@ public class RRolePlayer {
 	/**
 	 * @return the adjectives
 	 */
-	public List<RAdjective> getAdjectives() {
+	public List<ReqAdjective> getAdjectives() {
 		return adjectives;
 	}
 
@@ -46,22 +46,22 @@ public class RRolePlayer {
 		return possessives;
 	}
 	
-	private RRolePlayer(String id, int nounSynSet) {
+	private ReqRolePlayer(String id, int nounSynSet) {
 		this.nounSynSet = nounSynSet;
 		this.id = id;
 	}
 	
 	
-	public static RRolePlayer create(String id, int nounSynSet){
+	public static ReqRolePlayer create(String id, int nounSynSet){
 		//protection for same ids
 		if(ids.contains(id)) return null;
 		ids.add(id);
-		return new RRolePlayer(id, nounSynSet);
+		return new ReqRolePlayer(id, nounSynSet);
 	}
 	
 	public void addAdjective(int adjSynSet, Set<Integer> advSynSets){
 		
-		RAdjective adjective = new RAdjective(adjSynSet);
+		ReqAdjective adjective = new ReqAdjective(adjSynSet);
 		if ((advSynSets != null) && ! advSynSets.isEmpty()){
 			adjective.setAdvSynSets(advSynSets);
 		}
@@ -90,7 +90,7 @@ public class RRolePlayer {
 		if(! adjectives.isEmpty()) {
 			result += ";adjectives:[";
 
-			Iterator<RAdjective> it = adjectives.iterator();
+			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
 				result += it.next();
 				if(it.hasNext())
@@ -119,7 +119,7 @@ public class RRolePlayer {
 		if(! adjectives.isEmpty()) {
 			result += ";\n\t\tadjectives: [\n";
 			
-			Iterator<RAdjective> it = adjectives.iterator();
+			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
 				result += it.next().structuredString();
 				if(it.hasNext())

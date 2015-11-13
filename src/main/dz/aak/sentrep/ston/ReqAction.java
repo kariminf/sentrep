@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RAction {
+public class ReqAction {
 
 	/**
 	 * @return the verbSynSet
@@ -59,16 +59,16 @@ public class RAction {
 	private int tense = 0;
 	private int aspect = 0;
 	
-	private RAction(String id, int verbSynSet) {
+	private ReqAction(String id, int verbSynSet) {
 		this.verbSynSet = verbSynSet;
 		this.id = id;
 	}
 	
-	public static RAction create(String id, int verbSynSet){
+	public static ReqAction create(String id, int verbSynSet){
 		//protection for same ids
 		if(ids.contains(id)) return null;
 		ids.add(id);
-		return new RAction(id, verbSynSet);
+		return new ReqAction(id, verbSynSet);
 	}
 	
 	public void addVerbSpecif(int tense, int aspect){
