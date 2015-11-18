@@ -11,12 +11,13 @@ public abstract class Parser {
 	private static final Pattern SET = Pattern.compile("\\[(.+)\\]");
 	private static final Pattern CONT = Pattern.compile("@roles\\:" + SET + "@actions\\:" + SET);
 	
+	private boolean success = false;
 	/**
 	 * 
 	 * @param description
 	 */
 	public Parser() {
-		
+		success = false;
 	}
 	
 	public void parse(String description){
@@ -32,13 +33,18 @@ public abstract class Parser {
 			if (! parseActions(actions)) return;
         }
 		
+		success = true;
 		parseSuccess();
 	}
 	
+	public boolean parsed(){
+		return success;
+	}
 	
 	private boolean parseRoles(String description){
 		
 		int idx;
+		beginRoles();
 		while ((idx = description.indexOf("r:}")) >= 0) {
 			String role =  description.substring(3, idx);
 			description = description.substring(idx+3);
@@ -47,6 +53,7 @@ public abstract class Parser {
 				return false;
         }
 		
+		endRoles();
 		return true;
 
 	}
@@ -54,6 +61,7 @@ public abstract class Parser {
 	private boolean parseActions (String description){
 		
 		int idx;
+		beginActions();
 		while ((idx = description.indexOf("act:}")) >= 0) {
 			String action =  description.substring(5, idx);
 			description = description.substring(idx+5);
@@ -63,6 +71,7 @@ public abstract class Parser {
 			
         }
 		
+		endActions();
 		return true;
 	}
 	
@@ -109,6 +118,7 @@ public abstract class Parser {
 		
 		if(id.length() < 1){
 			actionFail();
+			success = false;
 			return false;
 		}
 		
@@ -155,6 +165,7 @@ public abstract class Parser {
 		
 		if (! m.find()){
 			roleFail();
+			success = false;
 			return false;
 		}
 		
@@ -164,6 +175,7 @@ public abstract class Parser {
 		
 		if (! m.find()){
 			roleFail();
+			success = false;
 			return false;
 		}
 		
@@ -221,6 +233,7 @@ public abstract class Parser {
 			
 			if (synSet < 1){
 				adjectiveFail();
+				success = false;
 				return false;
 			}
 			
@@ -232,19 +245,23 @@ public abstract class Parser {
 	}
 	
 	//Action
+	protected abstract void beginActions();
 	protected abstract void beginAction(String id, int synSet);
 	protected abstract void addVerbSpecif(int tense, int aspect);
 	protected abstract void addSubject(String subjectID);
 	protected abstract void addObject(String objectID);
 	protected abstract void endAction();
 	protected abstract void actionFail();
+	protected abstract void endActions();
 	
 	//Role
+	protected abstract void beginRoles();
 	protected abstract void beginRole(String id, int synSet);
 	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
 	protected abstract void endRole();
 	protected abstract void adjectiveFail();
 	protected abstract void roleFail();
+	protected abstract void endRoles();
 
 	
 	//Parse

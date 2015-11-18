@@ -17,18 +17,12 @@ public class ReqParser extends Parser {
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 
-	private boolean success = false;
-
 	/**
 	 * 
 	 * @param description
 	 */
 	public ReqParser(String description) {
 		parse(description);
-	}
-
-	public boolean parsed(){
-		return success;
 	}
 
 	public HashMap<String, ReqRolePlayer> getPlayers(){
@@ -70,7 +64,6 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void actionFail() {
-		success = false;
 	}
 
 	@Override
@@ -86,23 +79,44 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void adjectiveFail() {
-		success = false;
 	}
 
 	@Override
 	protected void roleFail() {
-		success = false;
 	}
 
 	@Override
 	protected void parseSuccess() {
-		success = true;
 	}
 
 	@Override
 	protected void endRole() {
 		players.put(currentRoleID, currentPlayer);
 
+	}
+
+	@Override
+	protected void beginActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void beginRoles() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endRoles() {
+		// TODO Auto-generated method stub
+		
 	}
 
 
