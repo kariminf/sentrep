@@ -83,8 +83,8 @@ public abstract class Parser {
 		
 		String id = "";
 		String synSetStr = "";
-		String tenseStr = "";
-		String aspectStr = "";
+		String tense = "";
+		String aspect = "";
 		String subjects = "";
 		String objects = "";
 		
@@ -101,7 +101,7 @@ public abstract class Parser {
 			}
 			
 			if(desc.startsWith("tense:")){
-				tenseStr = desc.split(":")[1];
+				tense = desc.split(":")[1];
 				continue;
 			}
 			
@@ -124,13 +124,16 @@ public abstract class Parser {
 		
 		int synSet = Integer.parseInt(synSetStr);
 		beginAction(id, synSet);
+		
 		//TODO add other components of the action
-		int tense = 0;
-		if(tenseStr.length()>0)
-			tense = Integer.parseInt(tenseStr);
-		int aspect = 0;
-		if(aspectStr.length()>0)
-			tense = Integer.parseInt(tenseStr);
+		if(! tense.matches("PAST|PRESENT|FUTURE")){
+			tense = "PRESENT";
+		}
+		
+		if(! aspect.matches("SIMPLE|PROGRESSIVE|PERFECT")){
+			aspect = "SIMPLE";
+		}
+		
 		addVerbSpecif(tense, aspect);
 		
 		if(subjects.length() > 2){
@@ -247,7 +250,7 @@ public abstract class Parser {
 	//Action
 	protected abstract void beginActions();
 	protected abstract void beginAction(String id, int synSet);
-	protected abstract void addVerbSpecif(int tense, int aspect);
+	protected abstract void addVerbSpecif(String tense, String aspect);
 	protected abstract void addSubject(String subjectID);
 	protected abstract void addObject(String objectID);
 	protected abstract void endAction();

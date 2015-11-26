@@ -43,7 +43,7 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addVerbSpecif(int tense, int aspect) {
+	protected void addVerbSpecif(String tense, String aspect) {
 		currentAction.addVerbSpecif(tense, aspect);
 	}
 

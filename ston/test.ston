@@ -40,18 +40,19 @@
 	act:{
 		id: is;
 		synSet: 2604760;
-		tense: 1;
 		subjects: [eat, was];
 		objects: [truth]
 	act:}
 	act:{
 		id: eat;
+		tense: PAST;
 		synSet: 1168468;
 		subjects: [mother, 2children];
 		objects: [food]
 	act:}
 	act:{
 		id: was;
+		tense: PAST;
 		synSet: 2604760;
 		subjects: [food];
 		objects: [+goodfood]

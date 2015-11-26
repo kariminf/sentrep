@@ -7,6 +7,15 @@ import java.util.Set;
 
 public class ReqAction {
 
+	private int verbSynSet;
+	private String id;
+	private Set<String> subjects = new HashSet<String>();
+	private Set<String> objects = new HashSet<String>();
+	private static Set<String> ids = new HashSet<String>();
+	
+	private String tense = "PRESENT";
+	private String aspect = "SIMPLE";
+	
 	/**
 	 * @return the verbSynSet
 	 */
@@ -38,26 +47,16 @@ public class ReqAction {
 	/**
 	 * @return the tense
 	 */
-	public int getTense() {
+	public String getTense() {
 		return tense;
 	}
 
 	/**
 	 * @return the aspect
 	 */
-	public int getAspect() {
+	public String getAspect() {
 		return aspect;
 	}
-
-
-	private int verbSynSet;
-	private String id;
-	private Set<String> subjects = new HashSet<String>();
-	private Set<String> objects = new HashSet<String>();
-	private static Set<String> ids = new HashSet<String>();
-	
-	private int tense = 0;
-	private int aspect = 0;
 	
 	private ReqAction(String id, int verbSynSet) {
 		this.verbSynSet = verbSynSet;
@@ -71,9 +70,9 @@ public class ReqAction {
 		return new ReqAction(id, verbSynSet);
 	}
 	
-	public void addVerbSpecif(int tense, int aspect){
-		if (tense > 0 && tense < 3) this.tense = tense;
-		if (aspect > 0 && aspect < 3) this.aspect = aspect;
+	public void addVerbSpecif(String tense, String aspect){
+		if (tense.matches("PAST|PRESENT|FUTURE")) this.tense = tense;
+		if (aspect.matches("SIMPLE|PROGRESSIVE|PERFECT")) this.aspect = aspect;
 	}
 	
 	public void addSubject(String roleId){
@@ -94,10 +93,8 @@ public class ReqAction {
 		
 		result += "id:" + id ;
 		result += ";synSet:" + verbSynSet ;
-		if (tense != 0 )
-			result += ";tense:" + tense;
-		if (aspect != 0 )
-			result += ";aspect:" + aspect;
+		result += ";tense:" + tense;
+		result += ";aspect:" + aspect;
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
 		}
@@ -120,10 +117,8 @@ public class ReqAction {
 		
 		result += "\t\tid: " + id ;
 		result += ";\n\t\tsynSet: " + verbSynSet ;
-		if (tense != 0 )
-			result += ";\n\t\ttense: " + tense;
-		if (aspect != 0 )
-			result += ";\n\t\taspect: " + aspect;
+		result += ";\n\t\ttense: " + tense;
+		result += ";\n\t\taspect: " + aspect;
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
 			result += subjects;
