@@ -20,8 +20,8 @@
 		synSet: <synSet_number>;
 		tense: <PAST|PRESENT|FUTURE>;
 		aspect: <SIMPLE|PROGRESSIVE|PERFECT>;
-		subjects: [<id>,...];
-		objects: [<id>,...]
+		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
+		objects: [<id>,...|...]
 	act:}
 	act:{
 		...

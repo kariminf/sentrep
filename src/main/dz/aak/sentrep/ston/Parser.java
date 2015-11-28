@@ -105,6 +105,11 @@ public abstract class Parser {
 				continue;
 			}
 			
+			if(desc.startsWith("aspect:")){
+				aspect = desc.split(":")[1];
+				continue;
+			}
+			
 			if(desc.startsWith("subjects:")){
 				subjects = desc.split(":")[1];
 				continue;
@@ -126,11 +131,11 @@ public abstract class Parser {
 		beginAction(id, synSet);
 		
 		//TODO add other components of the action
-		if(! tense.matches("PAST|PRESENT|FUTURE")){
+		if(! tense.matches("(PAST|PRESENT|FUTURE)")){
 			tense = "PRESENT";
 		}
 		
-		if(! aspect.matches("SIMPLE|PROGRESSIVE|PERFECT")){
+		if(! aspect.matches("(SIMPLE|PROGRESSIVE|PERFECT)")){
 			aspect = "SIMPLE";
 		}
 		
