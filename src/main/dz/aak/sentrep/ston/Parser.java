@@ -148,22 +148,45 @@ public abstract class Parser {
 			}
 				
 			subjects = subjects.substring(1, subjects.length()-1);
-			for (String subject: subjects.split(",")){
-				addSubject(subject.trim());
-			}
+			
+			beginSubject();
+			parseComponents(subjects);
+			endSubject();
 		}
 		
 		if(objects.length() > 2){
 			if (!(objects.startsWith("[") && objects.endsWith("]")))
 				return false;
 			objects = objects.substring(1, objects.length()-1);
-			for (String object: objects.split(",")){
-				addObject(object.trim());
-			}
+			beginObject();
+			parseComponents(objects);
+			endObject();
 		}
 		
 		endAction();
 		
+		return true;
+	}
+	
+	/**
+	 * Subjects and objects are disjunctions of conjunctions, they are 
+	 * represented like [id11, ...|id21, ... | ...] <br/>
+	 * For example: [mother, son|father] means: mother and son or father
+	 * @param description
+	 * @return
+	 */
+	private boolean parseComponents(String description){
+		String[] disjunctions = description.split("\\|");
+		
+		for (String disjunction: disjunctions){
+			String[] conjunctions = disjunction.split(",");
+			beginDisjunction();
+			for (String conjunction: conjunctions){
+				addConjunction(conjunction);
+			}
+			endDisjunction();
+			
+		}
 		return true;
 	}
 
@@ -256,11 +279,23 @@ public abstract class Parser {
 	protected abstract void beginActions();
 	protected abstract void beginAction(String id, int synSet);
 	protected abstract void addVerbSpecif(String tense, String aspect);
-	protected abstract void addSubject(String subjectID);
-	protected abstract void addObject(String objectID);
 	protected abstract void endAction();
 	protected abstract void actionFail();
 	protected abstract void endActions();
+	
+	//Subjects and Objects in the Action
+	protected abstract void beginSubject();
+	protected abstract void beginObject();
+	
+	protected abstract void beginDisjunction();
+	
+	protected abstract void addConjunction(String roleID);
+	
+	protected abstract void endDisjunction();
+	
+	protected abstract void endSubject();
+	protected abstract void endObject();
+	
 	
 	//Role
 	protected abstract void beginRoles();
