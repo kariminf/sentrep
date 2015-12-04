@@ -1,5 +1,6 @@
 package dz.aak.sentrep.ston;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -9,6 +10,12 @@ public class ReqCreator {
 
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
+	
+	private HashSet<ReqDisjunction> subjects = new HashSet<ReqDisjunction>();
+	private HashSet<ReqDisjunction> objects = new HashSet<ReqDisjunction>();
+	
+	private ReqDisjunction subjectDisjunction = new ReqDisjunction();
+	private ReqDisjunction objectDisjunction = new ReqDisjunction();
 	
 	public ReqCreator() {
 	}
@@ -38,6 +45,10 @@ public class ReqCreator {
 			return false;
 		}
 		actions.put(id, action);
+		subjects = new HashSet<ReqDisjunction>();
+		objects = new HashSet<ReqDisjunction>();
+		action.addSubjects(subjects);
+		action.addObjects(objects);
 		return true;
 	}
 	
@@ -51,15 +62,25 @@ public class ReqCreator {
 		return false;
 	}
 	
+	public void newSubjectDisjunction(){
+		subjectDisjunction = new ReqDisjunction();
+	}
+	
+	public void newObjectDisjunction(){
+		objectDisjunction = new ReqDisjunction();
+	}
+	
 	public boolean addSubject(String actionId, String subjectId){
 		if(! verifyExistance(actionId, subjectId)) return false;
-		actions.get(actionId).addSubject(subjectId);
+		subjectDisjunction.addConjunction(subjectId);
+		actions.get(actionId).getSubjects().add(subjectDisjunction);
 		return true;
 	}
 	
 	public boolean addObject(String actionId, String objectId){
 		if(! verifyExistance(actionId, objectId)) return false;
-		actions.get(actionId).addObject(objectId);
+		objectDisjunction.addConjunction(objectId);
+		actions.get(actionId).getObjects().add(objectDisjunction);
 		return true;
 	}
 	

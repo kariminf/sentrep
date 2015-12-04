@@ -9,8 +9,8 @@ public class ReqAction {
 
 	private int verbSynSet;
 	private String id;
-	private Set<String> subjects = new HashSet<String>();
-	private Set<String> objects = new HashSet<String>();
+	private Set<ReqDisjunction> subjects = new HashSet<ReqDisjunction>();
+	private Set<ReqDisjunction> objects = new HashSet<ReqDisjunction>();
 	private static Set<String> ids = new HashSet<String>();
 	
 	private String tense = "PRESENT";
@@ -33,14 +33,14 @@ public class ReqAction {
 	/**
 	 * @return the subjects
 	 */
-	public Set<String> getSubjects() {
+	public Set<ReqDisjunction> getSubjects() {
 		return subjects;
 	}
 
 	/**
 	 * @return the objects
 	 */
-	public Set<String> getObjects() {
+	public Set<ReqDisjunction> getObjects() {
 		return objects;
 	}
 
@@ -75,12 +75,12 @@ public class ReqAction {
 		if (aspect.matches("SIMPLE|PROGRESSIVE|PERFECT")) this.aspect = aspect;
 	}
 	
-	public void addSubject(String roleId){
-		subjects.add(roleId);
+	public void addSubjects(Set<ReqDisjunction> disjunctions){
+		subjects = disjunctions;
 	}
 	
-	public void addObject(String roleId){
-		objects.add(roleId);
+	public void addObjects(Set<ReqDisjunction> disjunctions){
+		objects = disjunctions;
 	}
 
 	/* (non-Javadoc)

@@ -1,7 +1,9 @@
 package dz.aak.sentrep.ston;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -16,6 +18,10 @@ public class ReqParser extends Parser {
 	private String currentRoleID = "";
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
+	
+	private Set<ReqDisjunction> disjunctions;
+	
+	private ReqDisjunction currentDisjunction;
 
 	/**
 	 * 
@@ -45,16 +51,6 @@ public class ReqParser extends Parser {
 	@Override
 	protected void addVerbSpecif(String tense, String aspect) {
 		currentAction.addVerbSpecif(tense, aspect);
-	}
-
-	@Override
-	protected void addSubject(String subjectID) {
-		currentAction.addSubject(subjectID);
-	}
-
-	@Override
-	protected void addObject(String objectID) {
-		currentAction.addObject(objectID);
 	}
 
 	@Override
@@ -116,6 +112,43 @@ public class ReqParser extends Parser {
 	@Override
 	protected void endRoles() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void beginSubject() {
+		disjunctions = new HashSet<ReqDisjunction>();
+	}
+
+	@Override
+	protected void beginObject() {
+		disjunctions = new HashSet<ReqDisjunction>();
+	}
+
+	@Override
+	protected void beginDisjunction() {
+		currentDisjunction = new ReqDisjunction();
+	}
+
+	@Override
+	protected void addConjunction(String roleID) {
+		currentDisjunction.addConjunction(roleID);
+	}
+
+	@Override
+	protected void endDisjunction() {
+		
+	}
+
+	@Override
+	protected void endSubject() {
+		currentAction.addSubjects(disjunctions);
+		
+	}
+
+	@Override
+	protected void endObject() {
+		currentAction.addSubjects(disjunctions);
 		
 	}
 
