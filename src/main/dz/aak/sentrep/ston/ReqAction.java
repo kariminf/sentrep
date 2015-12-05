@@ -82,6 +82,15 @@ public class ReqAction {
 	public void addObjects(Set<ReqDisjunction> disjunctions){
 		objects = disjunctions;
 	}
+	
+	private String fuseDisjunctions(Set<ReqDisjunction> disjunctions){
+		
+		String result = disjunctions.toString();
+		
+		result = result.replace(",", "|");
+		result = result.replace(";", ",");
+		return result;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
@@ -97,11 +106,12 @@ public class ReqAction {
 		result += ";aspect:" + aspect;
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
+			result += fuseDisjunctions(subjects);
 		}
 		
 		if(! objects.isEmpty()){
 			result += ";objects:";
-			result += objects;
+			result += fuseDisjunctions(objects);
 		}
 		
 		result += "act:}";
@@ -121,12 +131,12 @@ public class ReqAction {
 		result += ";\n\t\taspect: " + aspect;
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
-			result += subjects;
+			result += fuseDisjunctions(subjects);
 		}
 		
 		if(! objects.isEmpty()){
 			result += ";\n\t\tobjects: ";
-			result += objects;
+			result += fuseDisjunctions(objects);
 		}
 		
 		result += "\n\tact:}";

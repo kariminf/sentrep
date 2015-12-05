@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 public class ReqDisjunction {
 
+
 	private HashSet<String> conjunctions = new HashSet<String>();
 	
 	public ReqDisjunction() {
@@ -15,7 +16,19 @@ public class ReqDisjunction {
 	}
 	
 	public String getConjunctions(){
-		return conjunctions.toString();
+		if (conjunctions.size() < 1 ) return "";
+		String result = conjunctions.toString();
+		result = result.substring(1, result.length()-1);
+		result = result.replace(",", ";");
+		return result;
+	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return getConjunctions();
 	}
 
 }
