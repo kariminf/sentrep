@@ -14,7 +14,9 @@ public class ReqAction {
 	private static Set<String> ids = new HashSet<String>();
 	
 	private String tense = "PRESENT";
-	private String aspect = "SIMPLE";
+	private String modality = "NONE";
+	private boolean progressive = false;
+	private boolean negated = false;
 	
 	/**
 	 * @return the verbSynSet
@@ -54,8 +56,8 @@ public class ReqAction {
 	/**
 	 * @return the aspect
 	 */
-	public String getAspect() {
-		return aspect;
+	public String getModality() {
+		return modality;
 	}
 	
 	private ReqAction(String id, int verbSynSet) {
@@ -70,9 +72,11 @@ public class ReqAction {
 		return new ReqAction(id, verbSynSet);
 	}
 	
-	public void addVerbSpecif(String tense, String aspect){
+	public void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated){
 		if (tense.matches("PAST|PRESENT|FUTURE")) this.tense = tense;
-		if (aspect.matches("SIMPLE|PROGRESSIVE|PERFECT")) this.aspect = aspect;
+		if (modality.matches("CAN|MAY|NONE")) this.modality = modality;
+		this.progressive = progressive;
+		this.negated = negated;
 	}
 	
 	public void addSubjects(Set<ReqDisjunction> disjunctions){
@@ -103,7 +107,12 @@ public class ReqAction {
 		result += "id:" + id ;
 		result += ";synSet:" + verbSynSet ;
 		result += ";tense:" + tense;
-		result += ";aspect:" + aspect;
+		if (progressive)
+			result += ";progressive:YES";
+		if (negated)
+			result += ";negated:YES";
+		if(modality != "NONE")
+			result += ";modality:" + modality;
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
 			result += fuseDisjunctions(subjects);
@@ -128,7 +137,12 @@ public class ReqAction {
 		result += "\t\tid: " + id ;
 		result += ";\n\t\tsynSet: " + verbSynSet ;
 		result += ";\n\t\ttense: " + tense;
-		result += ";\n\t\taspect: " + aspect;
+		if (progressive)
+			result += ";\n\t\tprogressive:YES";
+		if (negated)
+			result += ";\n\t\tnegated:YES";
+		if(modality != "NONE")
+			result += ";\n\t\tmodality:" + modality;
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
 			result += fuseDisjunctions(subjects);

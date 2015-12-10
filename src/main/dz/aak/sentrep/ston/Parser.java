@@ -164,7 +164,7 @@ public abstract class Parser {
 		}
 		
 		
-		//addVerbSpecif(tense, aspect);
+		addVerbSpecif(tense, modality, progressive, negated);
 		
 		if(subjects.length() > 2){
 			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
@@ -303,7 +303,7 @@ public abstract class Parser {
 	//Action
 	protected abstract void beginActions();
 	protected abstract void beginAction(String id, int synSet);
-	protected abstract void addVerbSpecif(String tense, String aspect);
+	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated);
 	protected abstract void endAction();
 	protected abstract void actionFail();
 	protected abstract void endActions();
