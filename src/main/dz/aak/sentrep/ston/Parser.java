@@ -86,6 +86,7 @@ public abstract class Parser {
 		String tense = "";
 		boolean progressive = false;
 		boolean negated = false;
+		String modality = "NONE";
 		String subjects = "";
 		String objects = "";
 		
@@ -126,6 +127,11 @@ public abstract class Parser {
 				continue;
 			}
 			
+			if(desc.startsWith("modality:")){
+				modality = desc.split(":")[1];
+				continue;
+			}
+			
 			if(desc.startsWith("subjects:")){
 				subjects = desc.split(":")[1];
 				continue;
@@ -147,10 +153,15 @@ public abstract class Parser {
 		beginAction(id, synSet);
 		
 		//TODO add other components of the action
-		if(! tense.matches("(PAST|PRESENT|FUTURE)")){
+		if(! tense.matches("PAST|PRESENT|FUTURE")){
 			tense = "PRESENT";
 		}
 		
+		modality = modality.trim().toUpperCase();
+		
+		if(! modality.matches("CAN|MAY")){
+			modality = "NONE";
+		}
 		
 		
 		//addVerbSpecif(tense, aspect);
