@@ -22,7 +22,7 @@ public class ReqCreatorTest {
 		
 		//Actions creation
 		rc.addAction("ate", 1168468);
-		rc.addVerbSpecif("ate", "PAST", "SIMPLE");
+		rc.addVerbSpecif("ate", "PAST", "MAY", true, true);
 		
 		//Disjunctions of conjunctions
 		rc.newSubjectDisjunction();

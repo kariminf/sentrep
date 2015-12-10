@@ -138,11 +138,11 @@ public class ReqAction {
 		result += ";\n\t\tsynSet: " + verbSynSet ;
 		result += ";\n\t\ttense: " + tense;
 		if (progressive)
-			result += ";\n\t\tprogressive:YES";
+			result += ";\n\t\tprogressive: YES";
 		if (negated)
-			result += ";\n\t\tnegated:YES";
+			result += ";\n\t\tnegated: YES";
 		if(modality != "NONE")
-			result += ";\n\t\tmodality:" + modality;
+			result += ";\n\t\tmodality: " + modality;
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
 			result += fuseDisjunctions(subjects);
