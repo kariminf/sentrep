@@ -19,7 +19,9 @@
 		id: <action_name>;
 		synSet: <synSet_number>;
 		tense: <PAST|PRESENT|FUTURE>;
-		aspect: <SIMPLE|PROGRESSIVE|PERFECT>;
+		progressive: <yes|no>;
+		negated: <yes|no>;
+		modality: <CAN|MAY|NONE>
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
 		objects: [<id>,...|...]
 	act:}

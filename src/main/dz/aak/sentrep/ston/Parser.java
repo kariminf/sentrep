@@ -84,7 +84,7 @@ public abstract class Parser {
 		String id = "";
 		String synSetStr = "";
 		String tense = "";
-		String aspect = "";
+		boolean progressive = false;
 		String subjects = "";
 		String objects = "";
 		
@@ -105,8 +105,13 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("aspect:")){
-				aspect = desc.split(":")[1];
+			if(desc.startsWith("progressive:")){
+				String aspect = desc.split(":")[1];
+				aspect = aspect.trim().toUpperCase();
+				
+				if(aspect == "YES"){
+					progressive = true;
+				}
 				continue;
 			}
 			
@@ -135,11 +140,9 @@ public abstract class Parser {
 			tense = "PRESENT";
 		}
 		
-		if(! aspect.matches("(SIMPLE|PROGRESSIVE|PERFECT)")){
-			aspect = "SIMPLE";
-		}
 		
-		addVerbSpecif(tense, aspect);
+		
+		//addVerbSpecif(tense, aspect);
 		
 		if(subjects.length() > 2){
 			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
