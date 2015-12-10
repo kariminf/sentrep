@@ -85,6 +85,7 @@ public abstract class Parser {
 		String synSetStr = "";
 		String tense = "";
 		boolean progressive = false;
+		boolean negated = false;
 		String subjects = "";
 		String objects = "";
 		
@@ -111,6 +112,16 @@ public abstract class Parser {
 				
 				if(aspect == "YES"){
 					progressive = true;
+				}
+				continue;
+			}
+			
+			if(desc.startsWith("negated:")){
+				String negate = desc.split(":")[1];
+				negate = negate.trim().toUpperCase();
+				
+				if(negate == "YES"){
+					negated = true;
 				}
 				continue;
 			}
