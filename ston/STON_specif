@@ -21,7 +21,7 @@
 		tense: <PAST|PRESENT|FUTURE>;
 		progressive: <yes|no>;
 		negated: <yes|no>;
-		modality: <CAN|MAY|NONE>
+		modality: <CAN|MAY|MUST|NONE>
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
 		objects: [<id>,...|...]
 	act:}
