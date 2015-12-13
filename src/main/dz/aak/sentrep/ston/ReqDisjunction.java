@@ -1,15 +1,27 @@
 package dz.aak.sentrep.ston;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class ReqDisjunction {
 
 
 	private HashSet<String> conjunctions = new HashSet<String>();
 	
+	
 	public ReqDisjunction() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	//TODO this class will be extends HashSet<HashSet<String>>
+	/*private String fuseDisjunctions(Set<ReqDisjunction> disjunctions){
+		
+		String result = disjunctions.toString();
+		
+		result = result.replace(",", "|");
+		result = result.replace(";", ",");
+		return result;
+	}*/
 	
 	public void addConjunction(String conjunction){
 		conjunctions.add(conjunction);

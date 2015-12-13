@@ -22,6 +22,8 @@ public class ReqParser extends Parser {
 	private Set<ReqDisjunction> disjunctions;
 	
 	private ReqDisjunction currentDisjunction;
+	
+	private ReqClause currentClause;
 
 	/**
 	 * 
@@ -150,6 +152,23 @@ public class ReqParser extends Parser {
 	protected void endObject() {
 		currentAction.addSubjects(disjunctions);
 		
+	}
+
+	@Override
+	protected void timesFail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void addTime(int synSet) {
+		currentClause = new ReqClause(synSet);
+		currentAction.addTime(currentClause);
+	}
+
+	@Override
+	protected void addTimeConjunctions(Set<String> predicatesIDs) {
+		currentClause.addConjunctedPredicates(predicatesIDs);
 	}
 
 

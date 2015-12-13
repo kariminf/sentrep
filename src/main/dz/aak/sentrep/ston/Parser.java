@@ -106,7 +106,7 @@ public abstract class Parser {
 			}
 		}
 		
-		if (description2.contains("@places")){
+		/*if (description2.contains("@places")){
 			Pattern placesPattern = 
 				Pattern.compile("(.*)" + PLACESblock + "(.*)");
 			Matcher m = placesPattern.matcher(description2);
@@ -118,7 +118,7 @@ public abstract class Parser {
 				placesFail();
 				return false;
 			}
-		}
+		}*/
 
 		String[] descs = description2.split(";");
 		
@@ -226,7 +226,7 @@ public abstract class Parser {
 		
 		return true;
 	}
-	
+
 	/**
 	 * Subjects and objects are disjunctions of conjunctions, they are 
 	 * represented like [id11, ...|id21, ... | ...] <br/>
@@ -248,46 +248,9 @@ public abstract class Parser {
 		}
 		return true;
 	}
+	
 
-	private boolean parseRole(String description){
-		
-		Matcher m = Pattern.compile("id\\:([^;]+)(;|$)").matcher(description);
-		
-		if (! m.find()){
-			roleFail();
-			success = false;
-			return false;
-		}
-		
-		String id = m.group(1);
-		
-		m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
-		
-		if (! m.find()){
-			roleFail();
-			success = false;
-			return false;
-		}
-		
-		String synSetStr = m.group(1);
-		
-		int synSet = Integer.parseInt(synSetStr);
-		
-		beginRole(id, synSet);
-		
-		m = Pattern.compile("adjectives\\:\\[(.+adj\\:\\})\\]").matcher(description);
-		
-		if (m.find()){
-			String adjectives = m.group(1);
-			if (! parseAdjectives(adjectives)) return false;
-		}
-		
-		endRole();
-		
-		return true;
-		
-	}
-
+	
 	private boolean parseAdjectives(String description){
 		
 		int idx;
@@ -334,6 +297,100 @@ public abstract class Parser {
 		return true;
 	}
 	
+
+
+	private boolean parseRole(String description){
+		
+		Matcher m = Pattern.compile("id\\:([^;]+)(;|$)").matcher(description);
+		
+		if (! m.find()){
+			roleFail();
+			success = false;
+			return false;
+		}
+		
+		String id = m.group(1);
+		
+		m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
+		
+		if (! m.find()){
+			roleFail();
+			success = false;
+			return false;
+		}
+		
+		String synSetStr = m.group(1);
+		
+		int synSet = Integer.parseInt(synSetStr);
+		
+		beginRole(id, synSet);
+		
+		m = Pattern.compile("adjectives\\:\\[(.+adj\\:\\})\\]").matcher(description);
+		
+		if (m.find()){
+			String adjectives = m.group(1);
+			if (! parseAdjectives(adjectives)) return false;
+		}
+		
+		endRole();
+		
+		return true;
+		
+	}
+
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	private boolean parseTimes(String description){
+		
+		int idx;
+		while ((idx = description.indexOf("t:}")) >= 0) {
+			String times =  description.substring(3, idx);
+			description = description.substring(idx+3);
+			
+			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
+			if (! m.find()){
+				success = false;
+				return false;
+			}
+			
+			String synSetStr = m.group(1);
+			
+			int synSet = Integer.parseInt(synSetStr);
+			
+			addTime(synSet);
+			
+			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(description);
+			if ( m.find()){
+				String predicates = m.group(1);
+				parseTimesPredicates(predicates);
+			}
+			
+        }
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	private boolean parseTimesPredicates(String description){
+		String[] disjunctions = description.split("\\|");
+		
+		for (String disjunction: disjunctions){
+			Set<String> conjunctions = new HashSet<String>();
+			for (String conjunction: disjunction.split(",")){
+				conjunctions.add(conjunction);
+			}
+			addTimeConjunctions(conjunctions);
+		}
+		return true;
+	}
+	
 	//Action
 	protected abstract void beginActions();
 	protected abstract void beginAction(String id, int synSet);
@@ -363,7 +420,12 @@ public abstract class Parser {
 	protected abstract void endRole();
 	protected abstract void adjectiveFail();
 	protected abstract void roleFail();
+	protected abstract void timesFail();
 	protected abstract void endRoles();
+	
+	protected abstract void addTime(int synSet);
+	
+	protected abstract void addTimeConjunctions(Set<String> predicatesIDs);
 
 	
 	//Parse

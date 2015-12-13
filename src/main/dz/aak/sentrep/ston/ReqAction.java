@@ -18,6 +18,14 @@ public class ReqAction {
 	private boolean progressive = false;
 	private boolean negated = false;
 	
+	private List<ReqClause> times = new ArrayList<ReqClause>();
+	private List<ReqClause> places = new ArrayList<ReqClause>();
+	
+	
+	public void addTime(ReqClause time){
+		times.add(time);
+	}
+	
 	/**
 	 * @return the verbSynSet
 	 */
