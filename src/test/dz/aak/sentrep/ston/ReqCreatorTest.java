@@ -25,15 +25,21 @@ public class ReqCreatorTest {
 		rc.addVerbSpecif("ate", "PAST", "MAY", true, true);
 		
 		//Disjunctions of conjunctions
-		rc.newSubjectDisjunction();
-		rc.addSubject("ate", "mother");
-		rc.addSubject("ate", "child");
-		rc.newSubjectDisjunction();
-		rc.addSubject("ate", "child");
-		rc.addSubject("ate", "+goodfood");
+		Set<String> mother_child = new HashSet<String>();
+		mother_child.add("mother");
+		mother_child.add("child");
+		rc.addSubjectConjunctions("ate", mother_child);
 		
-		rc.newObjectDisjunction();
-		rc.addObject("ate", "+goodfood");
+		Set<String> child_food = new HashSet<String>();
+		child_food.add("child");
+		child_food.add("+goodfood");
+		rc.addSubjectConjunctions("ate", child_food);
+		
+		
+		Set<String> foods = new HashSet<String>();
+		foods.add("+goodfood");
+		rc.addObjectConjunctions("ate", foods);
+		
 		
 		System.out.println(rc.getStructuredRequest());
 

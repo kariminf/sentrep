@@ -238,12 +238,12 @@ public abstract class Parser {
 		String[] disjunctions = description.split("\\|");
 		
 		for (String disjunction: disjunctions){
-			String[] conjunctions = disjunction.split(",");
-			beginDisjunction();
-			for (String conjunction: conjunctions){
-				addConjunction(conjunction);
+			Set<String> conjunctions = new HashSet<String>();
+			for (String conjunction: disjunction.split(",")){
+				conjunctions.add(conjunction);
+				
 			}
-			endDisjunction();
+			addConjunctions(conjunctions);
 			
 		}
 		return true;
@@ -403,11 +403,7 @@ public abstract class Parser {
 	protected abstract void beginSubject();
 	protected abstract void beginObject();
 	
-	protected abstract void beginDisjunction();
-	
-	protected abstract void addConjunction(String roleID);
-	
-	protected abstract void endDisjunction();
+	protected abstract void addConjunctions(Set<String> roleIDs);
 	
 	protected abstract void endSubject();
 	protected abstract void endObject();

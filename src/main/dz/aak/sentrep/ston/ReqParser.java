@@ -19,9 +19,8 @@ public class ReqParser extends Parser {
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	private Set<ReqDisjunction> disjunctions;
+	private ReqDisjunction disjunctions;
 	
-	private ReqDisjunction currentDisjunction;
 	
 	private ReqClause currentClause;
 
@@ -119,27 +118,12 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void beginSubject() {
-		disjunctions = new HashSet<ReqDisjunction>();
+		disjunctions = new ReqDisjunction();
 	}
 
 	@Override
 	protected void beginObject() {
-		disjunctions = new HashSet<ReqDisjunction>();
-	}
-
-	@Override
-	protected void beginDisjunction() {
-		currentDisjunction = new ReqDisjunction();
-	}
-
-	@Override
-	protected void addConjunction(String roleID) {
-		currentDisjunction.addConjunction(roleID);
-	}
-
-	@Override
-	protected void endDisjunction() {
-		
+		disjunctions = new ReqDisjunction();
 	}
 
 	@Override
@@ -169,6 +153,12 @@ public class ReqParser extends Parser {
 	@Override
 	protected void addTimeConjunctions(Set<String> predicatesIDs) {
 		currentClause.addConjunctedPredicates(predicatesIDs);
+	}
+
+	@Override
+	protected void addConjunctions(Set<String> roleIDs) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -9,8 +9,8 @@ public class ReqAction {
 
 	private int verbSynSet;
 	private String id;
-	private Set<ReqDisjunction> subjects = new HashSet<ReqDisjunction>();
-	private Set<ReqDisjunction> objects = new HashSet<ReqDisjunction>();
+	private ReqDisjunction subjects = new ReqDisjunction();
+	private ReqDisjunction objects = new ReqDisjunction();
 	private static Set<String> ids = new HashSet<String>();
 	
 	private String tense = "PRESENT";
@@ -43,14 +43,14 @@ public class ReqAction {
 	/**
 	 * @return the subjects
 	 */
-	public Set<ReqDisjunction> getSubjects() {
+	public ReqDisjunction getSubjects() {
 		return subjects;
 	}
 
 	/**
 	 * @return the objects
 	 */
-	public Set<ReqDisjunction> getObjects() {
+	public ReqDisjunction getObjects() {
 		return objects;
 	}
 
@@ -87,21 +87,12 @@ public class ReqAction {
 		this.negated = negated;
 	}
 	
-	public void addSubjects(Set<ReqDisjunction> disjunctions){
-		subjects = disjunctions;
+	public void addSubjects(Set<String> conjunctions){
+		subjects.addConjunctions(conjunctions);
 	}
 	
-	public void addObjects(Set<ReqDisjunction> disjunctions){
-		objects = disjunctions;
-	}
-	
-	private String fuseDisjunctions(Set<ReqDisjunction> disjunctions){
-		
-		String result = disjunctions.toString();
-		
-		result = result.replace(",", "|");
-		result = result.replace(";", ",");
-		return result;
+	public void addObjects(Set<String> conjunctions){
+		objects.addConjunctions(conjunctions);
 	}
 
 	/* (non-Javadoc)
@@ -123,12 +114,12 @@ public class ReqAction {
 			result += ";modality:" + modality;
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
-			result += fuseDisjunctions(subjects);
+			result += subjects;
 		}
 		
 		if(! objects.isEmpty()){
 			result += ";objects:";
-			result += fuseDisjunctions(objects);
+			result += objects;
 		}
 		
 		result += "act:}";
@@ -153,12 +144,12 @@ public class ReqAction {
 			result += ";\n\t\tmodality: " + modality;
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
-			result += fuseDisjunctions(subjects);
+			result += subjects;
 		}
 		
 		if(! objects.isEmpty()){
 			result += ";\n\t\tobjects: ";
-			result += fuseDisjunctions(objects);
+			result += objects;
 		}
 		
 		result += "\n\tact:}";

@@ -11,11 +11,9 @@ public class ReqCreator {
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	private HashSet<ReqDisjunction> subjects = new HashSet<ReqDisjunction>();
-	private HashSet<ReqDisjunction> objects = new HashSet<ReqDisjunction>();
+	private ReqDisjunction subjects = new ReqDisjunction();
+	private ReqDisjunction objects = new ReqDisjunction();
 	
-	private ReqDisjunction subjectDisjunction = new ReqDisjunction();
-	private ReqDisjunction objectDisjunction = new ReqDisjunction();
 	
 	public ReqCreator() {
 	}
@@ -45,44 +43,36 @@ public class ReqCreator {
 			return false;
 		}
 		actions.put(id, action);
-		subjects = new HashSet<ReqDisjunction>();
-		objects = new HashSet<ReqDisjunction>();
-		action.addSubjects(subjects);
-		action.addObjects(objects);
 		return true;
 	}
 	
-	private boolean verifyExistance (String actionId, String roleId){
+	/*private boolean verifyExistance (String actionId, String roleId){
 		actionId = actionId.trim();
 		roleId = roleId.trim();
 		if (! actions.containsKey(actionId)) return false;
 		if (players.containsKey(roleId)) return true;
-		if (actions.containsKey(roleId)) return true;
+
 		
 		return false;
-	}
+	}*/
 	
-	public void newSubjectDisjunction(){
-		subjectDisjunction = new ReqDisjunction();
-	}
 	
-	public void newObjectDisjunction(){
-		objectDisjunction = new ReqDisjunction();
-	}
-	
-	public boolean addSubject(String actionId, String subjectId){
-		if(! verifyExistance(actionId, subjectId)) return false;
-		subjectDisjunction.addConjunction(subjectId);
-		actions.get(actionId).getSubjects().add(subjectDisjunction);
+	public boolean addSubjectConjunctions(String actionId, Set<String> subjectsIDs){
+		if (! actions.containsKey(actionId)) return false;
+		
+		//For now, we don't verify the existance of each subject in players list
+		actions.get(actionId).addSubjects(subjectsIDs);
 		return true;
 	}
 	
-	public boolean addObject(String actionId, String objectId){
-		if(! verifyExistance(actionId, objectId)) return false;
-		objectDisjunction.addConjunction(objectId);
-		actions.get(actionId).getObjects().add(objectDisjunction);
+	public boolean addObjectConjunctions(String actionId, Set<String> objectsIDs){
+		if (! actions.containsKey(actionId)) return false;
+		
+		//For now, we don't verify the existance of each object in players list
+		actions.get(actionId).addObjects(objectsIDs);
 		return true;
 	}
+	
 	
 	public boolean addVerbSpecif(String actionId, String tense, String modality, boolean progressive, boolean negated){
 		actionId = actionId.trim();
