@@ -46,7 +46,6 @@ public abstract class Parser {
 	private boolean parseRoles(String description){
 		
 		int idx;
-		beginRoles();
 		while ((idx = description.indexOf("r:}")) >= 0) {
 			String role =  description.substring(3, idx);
 			description = description.substring(idx+3);
@@ -54,8 +53,7 @@ public abstract class Parser {
 			if (! parseRole(role))
 				return false;
         }
-		
-		endRoles();
+
 		return true;
 
 	}
@@ -63,7 +61,7 @@ public abstract class Parser {
 	private boolean parseActions (String description){
 		
 		int idx;
-		beginActions();
+
 		while ((idx = description.indexOf("act:}")) >= 0) {
 			String action =  description.substring(5, idx);
 			description = description.substring(idx+5);
@@ -73,7 +71,6 @@ public abstract class Parser {
 			
         }
 		
-		endActions();
 		return true;
 	}
 	
@@ -184,7 +181,6 @@ public abstract class Parser {
 		}
 		
 		int synSet = Integer.parseInt(synSetStr);
-		beginAction(id, synSet);
 		
 		//TODO add other components of the action
 		if(! tense.matches("PAST|PRESENT|FUTURE")){
@@ -208,21 +204,19 @@ public abstract class Parser {
 				
 			subjects = subjects.substring(1, subjects.length()-1);
 			
-			beginSubject();
 			parseComponents(subjects);
-			endSubject();
+
 		}
 		
 		if(objects.length() > 2){
 			if (!(objects.startsWith("[") && objects.endsWith("]")))
 				return false;
 			objects = objects.substring(1, objects.length()-1);
-			beginObject();
+
 			parseComponents(objects);
-			endObject();
+
 		}
 		
-		endAction();
 		
 		return true;
 	}
@@ -323,7 +317,7 @@ public abstract class Parser {
 		
 		int synSet = Integer.parseInt(synSetStr);
 		
-		beginRole(id, synSet);
+		addRole(id, synSet);
 		
 		m = Pattern.compile("adjectives\\:\\[(.+adj\\:\\})\\]").matcher(description);
 		
@@ -331,8 +325,6 @@ public abstract class Parser {
 			String adjectives = m.group(1);
 			if (! parseAdjectives(adjectives)) return false;
 		}
-		
-		endRole();
 		
 		return true;
 		
@@ -409,6 +401,7 @@ public abstract class Parser {
 	protected abstract void adjectiveFail();
 	protected abstract void roleFail();
 	protected abstract void timesFail();
+	
 	
 	protected abstract void addTime(int synSet);
 	protected abstract void addTimeConjunctions(Set<String> predicatesIDs);

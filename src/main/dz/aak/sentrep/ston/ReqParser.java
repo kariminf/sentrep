@@ -14,14 +14,11 @@ public class ReqParser extends Parser {
 
 	private ReqRolePlayer currentPlayer;
 	private ReqAction currentAction;
-	private String currentActionID = "";
-	private String currentRoleID = "";
+	
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	private ReqDisjunction disjunctions;
-	
-	
+	private boolean subject = true;
 	private ReqClause currentClause;
 
 	/**
@@ -43,11 +40,6 @@ public class ReqParser extends Parser {
 
 	// Implementing the methods
 
-	@Override
-	protected void beginAction(String id, int synSet) {
-		currentAction = ReqAction.create(id, synSet);
-		currentActionID = id;
-	}
 
 	@Override
 	protected void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated) {
@@ -55,18 +47,7 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void endAction() {
-		actions.put(currentActionID, currentAction);
-	}
-
-	@Override
 	protected void actionFail() {
-	}
-
-	@Override
-	protected void beginRole(String id, int synSet) {
-		currentPlayer = ReqRolePlayer.create(id, synSet);
-		currentRoleID = id;
 	}
 
 	@Override
@@ -86,55 +67,6 @@ public class ReqParser extends Parser {
 	protected void parseSuccess() {
 	}
 
-	@Override
-	protected void endRole() {
-		players.put(currentRoleID, currentPlayer);
-
-	}
-
-	@Override
-	protected void beginActions() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void endActions() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void beginRoles() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void endRoles() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void beginSubject() {
-		disjunctions = new ReqDisjunction();
-	}
-
-	@Override
-	protected void beginObject() {
-		disjunctions = new ReqDisjunction();
-	}
-
-	@Override
-	protected void endSubject() {
-		
-	}
-
-	@Override
-	protected void endObject() {
-		
-	}
 
 	@Override
 	protected void timesFail() {
@@ -155,8 +87,36 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addConjunctions(Set<String> roleIDs) {
-		// TODO Auto-generated method stub
+		if (subject){
+			currentAction.addSubjects(roleIDs);
+		} else {
+			currentAction.addObjects(roleIDs);
+		}
 		
+	}
+
+	@Override
+	protected void addAction(String id, int synSet) {
+		currentAction = ReqAction.create(id, synSet);
+		actions.put(id, currentAction);
+		System.out.println("action added: " + id);
+	}
+
+	@Override
+	protected void addSubject() {
+		subject = true;
+	}
+
+	@Override
+	protected void addObject() {
+		subject = false;
+	}
+
+	@Override
+	protected void addRole(String id, int synSet) {
+		currentPlayer = ReqRolePlayer.create(id, synSet);
+		players.put(id, currentPlayer);
+		System.out.println("player added: " + id);
 	}
 
 

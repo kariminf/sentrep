@@ -10,7 +10,7 @@ import dz.aak.sentrep.ston.ReqCreator;
 
 public class StoneParseTest {
 
-	static String testFile = "ston/test.ston";
+	static String testFile = "ston/test2.ston";
 	/**
 	 * @param args
 	 */
