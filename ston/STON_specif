@@ -1,4 +1,4 @@
-@roles: [
+@roles: r:[
 	r:{
 		id: <role_name>;
 		synSet: <synSet_number>;
@@ -12,20 +12,38 @@
 	r:{
 		...
 	r:}
-]
+r:]
 
-@actions: [
+@actions: act:[
 	act:{
 		id: <action_name>;
 		synSet: <synSet_number>;
 		tense: <PAST|PRESENT|FUTURE>;
 		progressive: <yes|no>;
 		negated: <yes|no>;
-		modality: <CAN|MAY|MUST|NONE>
+		modality: <CAN|MAY|MUST|NONE>;
+		@times: t:[
+			t:{ //Adverbial sentence 
+				synSet: <synSet_number>; //the time adverb like: in, when
+				predicates: [<id>,...|...]; //id of a role or an action
+			t:}
+			t:{
+                                synSet: <synSet_number>; //the time adverb like: in, when
+                        t:}
+		t:];
+		@places: p:[
+			p:{ //Adverbial sentence 
+                                synSet: <synSet_number>; //the time adverb like: in, when
+                                predicates: [<id>,...|...]; //id of a role or an action
+                        p:}
+                        p:{
+                                synSet: <synSet_number>; //the time adverb like: in, when
+                        p:}
+		p:];
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
-		objects: [<id>,...|...]
+		objects: [<id>,...|...];
 	act:}
 	act:{
 		...
 	act:}
-]
+act:]

@@ -8,8 +8,10 @@ import java.util.regex.Pattern;
 public abstract class Parser {
 
 	private static String BL = "[\\t \\n\\r]+";
-	private static final Pattern SET = Pattern.compile("\\[(.+)\\]");
-	private static final Pattern CONT = Pattern.compile("@roles\\:" + SET + "@actions\\:" + SET);
+	private static final String TIMESblock = "@times:t\\:[(.*)t\\:]+";
+	private static final String PLACESblock = "@places:p\\:[(.*)p\\:]+";
+	private static final Pattern CONT = 
+			Pattern.compile("@roles\\:r\\:\\[(.+)r\\:\\]@actions\\:act\\:\\[(.+)act\\:\\]");
 	
 	private boolean success = false;
 	/**
@@ -79,7 +81,7 @@ public abstract class Parser {
 	//TODO complete the action
 	private boolean parseAction(String description){
 		
-		String[] descs = description.split(";");
+		String description2 = description;
 		
 		String id = "";
 		String synSetStr = "";
@@ -90,7 +92,39 @@ public abstract class Parser {
 		String subjects = "";
 		String objects = "";
 		
+		if (description2.contains("@times")){
+			Pattern timesPattern = 
+				Pattern.compile("(.*)" + TIMESblock + "(.*)");
+			Matcher m = timesPattern.matcher(description2);
+			if (m.find()){
+				String times = m.group(2);
+				description2 = m.group(1) + m.group(3);		
+				if (! parseTimes(times)) return false;
+			} else {
+				timesFail();
+				return false;
+			}
+		}
+		
+		if (description2.contains("@places")){
+			Pattern placesPattern = 
+				Pattern.compile("(.*)" + PLACESblock + "(.*)");
+			Matcher m = placesPattern.matcher(description2);
+			if (m.find()){
+				String places = m.group(2);
+				description2 = m.group(1) + m.group(3);		
+				if (! parsePlaces(places)) return false;
+			} else {
+				placesFail();
+				return false;
+			}
+		}
+
+		String[] descs = description2.split(";");
+		
 		for (String desc : descs){
+			
+			desc = desc.trim();
 			
 			if(desc.startsWith("id:")){
 				id = desc.split(":")[1];
@@ -111,7 +145,7 @@ public abstract class Parser {
 				String aspect = desc.split(":")[1];
 				aspect = aspect.trim().toUpperCase();
 				
-				if(aspect == "YES"){
+				if(aspect.matches("YES")){
 					progressive = true;
 				}
 				continue;
@@ -120,8 +154,8 @@ public abstract class Parser {
 			if(desc.startsWith("negated:")){
 				String negate = desc.split(":")[1];
 				negate = negate.trim().toUpperCase();
-				
-				if(negate == "YES"){
+
+				if(negate.matches("YES")){
 					negated = true;
 				}
 				continue;
@@ -159,7 +193,7 @@ public abstract class Parser {
 		
 		modality = modality.trim().toUpperCase();
 		
-		if(! modality.matches("CAN|MAY")){
+		if(! modality.matches("CAN|MAY|MUST")){
 			modality = "NONE";
 		}
 		
