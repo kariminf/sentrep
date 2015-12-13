@@ -392,35 +392,25 @@ public abstract class Parser {
 	}
 	
 	//Action
-	protected abstract void beginActions();
-	protected abstract void beginAction(String id, int synSet);
+	protected abstract void addAction(String id, int synSet);
 	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated);
-	protected abstract void endAction();
 	protected abstract void actionFail();
-	protected abstract void endActions();
 	
 	//Subjects and Objects in the Action
-	protected abstract void beginSubject();
-	protected abstract void beginObject();
+	protected abstract void addSubject();
+	protected abstract void addObject();
 	
 	protected abstract void addConjunctions(Set<String> roleIDs);
 	
-	protected abstract void endSubject();
-	protected abstract void endObject();
-	
 	
 	//Role
-	protected abstract void beginRoles();
-	protected abstract void beginRole(String id, int synSet);
+	protected abstract void addRole(String id, int synSet);
 	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
-	protected abstract void endRole();
 	protected abstract void adjectiveFail();
 	protected abstract void roleFail();
 	protected abstract void timesFail();
-	protected abstract void endRoles();
 	
 	protected abstract void addTime(int synSet);
-	
 	protected abstract void addTimeConjunctions(Set<String> predicatesIDs);
 
 	

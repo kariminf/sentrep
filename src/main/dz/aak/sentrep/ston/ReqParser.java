@@ -128,13 +128,11 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void endSubject() {
-		currentAction.addSubjects(disjunctions);
 		
 	}
 
 	@Override
 	protected void endObject() {
-		currentAction.addSubjects(disjunctions);
 		
 	}
 

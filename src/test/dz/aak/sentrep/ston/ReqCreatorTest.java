@@ -29,12 +29,11 @@ public class ReqCreatorTest {
 		mother_child.add("mother");
 		mother_child.add("child");
 		rc.addSubjectConjunctions("ate", mother_child);
-		
+
 		Set<String> child_food = new HashSet<String>();
 		child_food.add("child");
 		child_food.add("+goodfood");
 		rc.addSubjectConjunctions("ate", child_food);
-		
 		
 		Set<String> foods = new HashSet<String>();
 		foods.add("+goodfood");
