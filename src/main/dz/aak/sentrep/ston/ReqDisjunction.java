@@ -19,7 +19,7 @@ public class ReqDisjunction {
 			this.conjunctions.addAll(conjunctions);
 		}
 		
-		public Set<String> getSubstances(){
+		public Set<String> getAll(){
 			Set<String> result = new HashSet<String>();
 			result.addAll(conjunctions);
 			return result;
@@ -67,6 +67,16 @@ public class ReqDisjunction {
 	public boolean isEmpty(){
 		return (disjunctions.isEmpty());
 		
+	}
+	
+	public Set<Set<String>> getAll(){
+		Set<Set<String>> result = new HashSet<Set<String>>();
+		
+		for (Conjunctions conjunctions: disjunctions){
+			result.add(conjunctions.getAll());
+		}
+		
+		return result;
 	}
 	
 
