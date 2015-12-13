@@ -1,11 +1,9 @@
 package dz.aak.sentrep.ston;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import dz.aak.sentrep.ston.Parser;
 import dz.aak.sentrep.ston.ReqCreator;
 
 public class StoneParseTest {

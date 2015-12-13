@@ -1,4 +1,4 @@
-@roles: [
+@roles: r:[
 	r:{
 		id: happy_mother;
 		synSet: 10332385;
@@ -34,9 +34,9 @@
 			adj:}
 		]
 	r:}
-]
+r:]
 
-@actions: [
+@actions: act:[
 	act:{
 		id: eat;
 		synSet: 1168468;
@@ -49,4 +49,4 @@
 		subjects: [food];
 		objects: [+goodfood]
 	act:}
-]
+act:]

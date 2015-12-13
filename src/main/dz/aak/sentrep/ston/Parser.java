@@ -89,17 +89,15 @@ public abstract class Parser {
 		String subjects = "";
 		String objects = "";
 		
+		String times = "";
+		
 		if (description2.contains("@times")){
 			Pattern timesPattern = 
 				Pattern.compile("(.*)" + TIMESblock + "(.*)");
 			Matcher m = timesPattern.matcher(description2);
 			if (m.find()){
-				String times = m.group(2);
+				times = m.group(2);
 				description2 = m.group(1) + m.group(3);		
-				if (! parseTimes(times)) return false;
-			} else {
-				timesFail();
-				return false;
 			}
 		}
 		
@@ -182,6 +180,8 @@ public abstract class Parser {
 		
 		int synSet = Integer.parseInt(synSetStr);
 		
+		addAction(id, synSet);
+		
 		//TODO add other components of the action
 		if(! tense.matches("PAST|PRESENT|FUTURE")){
 			tense = "PRESENT";
@@ -203,7 +203,7 @@ public abstract class Parser {
 			}
 				
 			subjects = subjects.substring(1, subjects.length()-1);
-			
+			addSubjects();
 			parseComponents(subjects);
 
 		}
@@ -212,9 +212,13 @@ public abstract class Parser {
 			if (!(objects.startsWith("[") && objects.endsWith("]")))
 				return false;
 			objects = objects.substring(1, objects.length()-1);
-
+			addObjects();
 			parseComponents(objects);
 
+		}
+		
+		if (times.length()>0){
+			if (! parseTimes(times)) return false;
 		}
 		
 		
@@ -389,8 +393,8 @@ public abstract class Parser {
 	protected abstract void actionFail();
 	
 	//Subjects and Objects in the Action
-	protected abstract void addSubject();
-	protected abstract void addObject();
+	protected abstract void addSubjects();
+	protected abstract void addObjects();
 	
 	protected abstract void addConjunctions(Set<String> roleIDs);
 	

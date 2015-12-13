@@ -75,7 +75,10 @@ public class ReqAction {
 	
 	public static ReqAction create(String id, int verbSynSet){
 		//protection for same ids
-		if(ids.contains(id)) return null;
+		if(ids.contains(id)){
+			System.out.println("id fount:" + id);
+			return null;
+		}
 		ids.add(id);
 		return new ReqAction(id, verbSynSet);
 	}

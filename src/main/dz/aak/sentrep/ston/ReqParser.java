@@ -99,16 +99,16 @@ public class ReqParser extends Parser {
 	protected void addAction(String id, int synSet) {
 		currentAction = ReqAction.create(id, synSet);
 		actions.put(id, currentAction);
-		System.out.println("action added: " + id);
+		//System.out.println("action added: " + id);
 	}
 
 	@Override
-	protected void addSubject() {
+	protected void addSubjects() {
 		subject = true;
 	}
 
 	@Override
-	protected void addObject() {
+	protected void addObjects() {
 		subject = false;
 	}
 
@@ -116,7 +116,7 @@ public class ReqParser extends Parser {
 	protected void addRole(String id, int synSet) {
 		currentPlayer = ReqRolePlayer.create(id, synSet);
 		players.put(id, currentPlayer);
-		System.out.println("player added: " + id);
+		//System.out.println("player added: " + id);
 	}
 
 
