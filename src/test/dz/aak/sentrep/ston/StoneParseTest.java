@@ -8,7 +8,7 @@ import dz.aak.sentrep.ston.ReqCreator;
 
 public class StoneParseTest {
 
-	static String testFile = "ston/test2.ston";
+	static String testFile = "ston/timeplace.ston";
 	/**
 	 * @param args
 	 */

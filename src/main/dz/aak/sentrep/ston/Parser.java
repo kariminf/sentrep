@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 public abstract class Parser {
 
 	private static String BL = "[\\t \\n\\r]+";
-	private static final String TIMESblock = "@times:t\\:[(.*)t\\:]+";
-	private static final String PLACESblock = "@places:p\\:[(.*)p\\:]+";
+	private static final String TIMESblock = "@times\\:t\\:\\[(.*)t\\:\\];?";
+	private static final String PLACESblock = "@places\\:p\\:\\[(.*)p\\:\\];?";
 	private static final Pattern CONT = 
 			Pattern.compile("@roles\\:r\\:\\[(.+)r\\:\\]@actions\\:act\\:\\[(.+)act\\:\\]");
 	
@@ -92,11 +92,13 @@ public abstract class Parser {
 		String times = "";
 		
 		if (description2.contains("@times")){
+			
 			Pattern timesPattern = 
 				Pattern.compile("(.*)" + TIMESblock + "(.*)");
 			Matcher m = timesPattern.matcher(description2);
 			if (m.find()){
 				times = m.group(2);
+				System.out.println("time found");
 				description2 = m.group(1) + m.group(3);		
 			}
 		}
@@ -346,7 +348,7 @@ public abstract class Parser {
 			String times =  description.substring(3, idx);
 			description = description.substring(idx+3);
 			
-			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
+			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(times);
 			if (! m.find()){
 				success = false;
 				return false;
@@ -358,7 +360,7 @@ public abstract class Parser {
 			
 			addTime(synSet);
 			
-			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(description);
+			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
 			if ( m.find()){
 				String predicates = m.group(1);
 				parseTimesPredicates(predicates);

@@ -115,14 +115,24 @@ public class ReqAction {
 			result += ";negated:YES";
 		if(modality != "NONE")
 			result += ";modality:" + modality;
+		
+		if (! times.isEmpty()){
+			result += ";@times:t:[";
+			for (ReqClause time: times){
+				time.setSpecifs("t", 0);
+				result += "\n" + time;
+			}
+			result += "t:];";
+		}
+		
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
-			result += subjects;
+			result += subjects.toString().replace(" ", "");
 		}
 		
 		if(! objects.isEmpty()){
 			result += ";objects:";
-			result += objects;
+			result += objects.toString().replace(" ", "");
 		}
 		
 		result += "act:}";
@@ -145,6 +155,16 @@ public class ReqAction {
 			result += ";\n\t\tnegated: YES";
 		if(modality != "NONE")
 			result += ";\n\t\tmodality: " + modality;
+		
+		if (! times.isEmpty()){
+			result += ";\n\t\t@times: t:[";
+			for (ReqClause time: times){
+				time.setSpecifs("t", 3);
+				result += "\n" + time.structuredString();
+			}
+			result += "\n\t\tt:]";
+		}
+		
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
 			result += subjects;

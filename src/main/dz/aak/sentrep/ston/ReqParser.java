@@ -20,6 +20,7 @@ public class ReqParser extends Parser {
 	
 	private boolean subject = true;
 	private ReqClause currentClause;
+	
 
 	/**
 	 * 
@@ -83,6 +84,7 @@ public class ReqParser extends Parser {
 	@Override
 	protected void addTimeConjunctions(Set<String> predicatesIDs) {
 		currentClause.addConjunctedPredicates(predicatesIDs);
+		System.out.println("adding: " + predicatesIDs);
 	}
 
 	@Override
