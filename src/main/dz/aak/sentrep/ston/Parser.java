@@ -90,6 +90,7 @@ public abstract class Parser {
 		String objects = "";
 		
 		String times = "";
+		String places = "";
 		
 		if (description2.contains("@times")){
 			
@@ -98,24 +99,22 @@ public abstract class Parser {
 			Matcher m = timesPattern.matcher(description2);
 			if (m.find()){
 				times = m.group(2);
-				System.out.println("time found");
+				//System.out.println("time found");
 				description2 = m.group(1) + m.group(3);		
 			}
 		}
 		
-		/*if (description2.contains("@places")){
-			Pattern placesPattern = 
+		if (description2.contains("@places")){
+			
+			Pattern timesPattern = 
 				Pattern.compile("(.*)" + PLACESblock + "(.*)");
-			Matcher m = placesPattern.matcher(description2);
+			Matcher m = timesPattern.matcher(description2);
 			if (m.find()){
-				String places = m.group(2);
+				places = m.group(2);
+				//System.out.println("time found");
 				description2 = m.group(1) + m.group(3);		
-				if (! parsePlaces(places)) return false;
-			} else {
-				placesFail();
-				return false;
 			}
-		}*/
+		}
 
 		String[] descs = description2.split(";");
 		
@@ -198,6 +197,15 @@ public abstract class Parser {
 		
 		addVerbSpecif(tense, modality, progressive, negated);
 		
+		if (times.length()>0){
+			if (! parseTimes(times)) return false;
+		}
+		
+		if (places.length()>0){
+			if (! parsePlaces(places)) return false;
+		}
+		
+		
 		if(subjects.length() > 2){
 			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
 				System.out.println("subjects=" + subjects);
@@ -217,10 +225,6 @@ public abstract class Parser {
 			addObjects();
 			parseComponents(objects);
 
-		}
-		
-		if (times.length()>0){
-			if (! parseTimes(times)) return false;
 		}
 		
 		
@@ -376,6 +380,41 @@ public abstract class Parser {
 	 * @param description
 	 * @return
 	 */
+	private boolean parsePlaces(String description){
+		
+		int idx;
+		while ((idx = description.indexOf("p:}")) >= 0) {
+			String times =  description.substring(3, idx);
+			description = description.substring(idx+3);
+			
+			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(times);
+			if (! m.find()){
+				success = false;
+				return false;
+			}
+			
+			String synSetStr = m.group(1);
+			
+			int synSet = Integer.parseInt(synSetStr);
+			
+			addPlace(synSet);
+			
+			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
+			if ( m.find()){
+				String predicates = m.group(1);
+				parsePlacesPredicates(predicates);
+			}
+			
+        }
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
 	private boolean parseTimesPredicates(String description){
 		String[] disjunctions = description.split("\\|");
 		
@@ -385,6 +424,19 @@ public abstract class Parser {
 				conjunctions.add(conjunction);
 			}
 			addTimeConjunctions(conjunctions);
+		}
+		return true;
+	}
+	
+	private boolean parsePlacesPredicates(String description){
+		String[] disjunctions = description.split("\\|");
+		
+		for (String disjunction: disjunctions){
+			Set<String> conjunctions = new HashSet<String>();
+			for (String conjunction: disjunction.split(",")){
+				conjunctions.add(conjunction);
+			}
+			addPlaceConjunctions(conjunctions);
 		}
 		return true;
 	}
@@ -411,6 +463,8 @@ public abstract class Parser {
 	
 	protected abstract void addTime(int synSet);
 	protected abstract void addTimeConjunctions(Set<String> predicatesIDs);
+	protected abstract void addPlace(int synSet);
+	protected abstract void addPlaceConjunctions(Set<String> predicatesIDs);
 
 	
 	//Parse

@@ -45,6 +45,11 @@ r:]
                         synSet: 00510249;
                     t:}
 		t:];
+		@places: p:[
+                    p:{
+                        synSet: 00111662;
+                    p:}
+                p:];
 		subjects: [happy_mother, child];
 		objects: [food]
 	act:}

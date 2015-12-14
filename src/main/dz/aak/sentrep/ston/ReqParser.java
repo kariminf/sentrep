@@ -84,7 +84,7 @@ public class ReqParser extends Parser {
 	@Override
 	protected void addTimeConjunctions(Set<String> predicatesIDs) {
 		currentClause.addConjunctedPredicates(predicatesIDs);
-		System.out.println("adding: " + predicatesIDs);
+		//System.out.println("adding: " + predicatesIDs);
 	}
 
 	@Override
@@ -119,6 +119,17 @@ public class ReqParser extends Parser {
 		currentPlayer = ReqRolePlayer.create(id, synSet);
 		players.put(id, currentPlayer);
 		//System.out.println("player added: " + id);
+	}
+
+	@Override
+	protected void addPlace(int synSet) {
+		currentClause = new ReqClause(synSet);
+		currentAction.addPlace(currentClause);
+	}
+
+	@Override
+	protected void addPlaceConjunctions(Set<String> predicatesIDs) {
+		currentClause.addConjunctedPredicates(predicatesIDs);
 	}
 
 

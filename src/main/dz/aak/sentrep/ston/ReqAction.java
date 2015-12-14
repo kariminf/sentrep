@@ -26,6 +26,10 @@ public class ReqAction {
 		times.add(time);
 	}
 	
+	public void addPlace(ReqClause place){
+		places.add(place);
+	}
+	
 	/**
 	 * @return the verbSynSet
 	 */
@@ -120,9 +124,18 @@ public class ReqAction {
 			result += ";@times:t:[";
 			for (ReqClause time: times){
 				time.setSpecifs("t", 0);
-				result += "\n" + time;
+				result += time;
 			}
-			result += "t:];";
+			result += "t:]";
+		}
+		
+		if (! places.isEmpty()){
+			result += ";@places:p:[";
+			for (ReqClause place: places){
+				place.setSpecifs("p", 0);
+				result += place;
+			}
+			result += "p:]";
 		}
 		
 		if(! subjects.isEmpty()) {
@@ -163,6 +176,15 @@ public class ReqAction {
 				result += "\n" + time.structuredString();
 			}
 			result += "\n\t\tt:]";
+		}
+		
+		if (! places.isEmpty()){
+			result += ";\n\t\t@places: p:[";
+			for (ReqClause place: places){
+				place.setSpecifs("p", 3);
+				result += "\n" + place.structuredString();
+			}
+			result += "\n\t\tp:]";
 		}
 		
 		if(! subjects.isEmpty()) {
