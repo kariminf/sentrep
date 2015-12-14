@@ -11,9 +11,10 @@ public class ReqCreator {
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	private ReqDisjunction subjects = new ReqDisjunction();
-	private ReqDisjunction objects = new ReqDisjunction();
-	
+	//private ReqDisjunction subjects = new ReqDisjunction();
+	//private ReqDisjunction objects = new ReqDisjunction();
+	ReqClause currentTime;
+	ReqClause currentPlace;
 	
 	public ReqCreator() {
 	}
@@ -56,6 +57,32 @@ public class ReqCreator {
 		return false;
 	}*/
 	
+	
+	public boolean addTime(String actionId, int synSet){
+		if (! actions.containsKey(actionId)) return false;
+		
+		currentTime = new ReqClause(synSet);
+		actions.get(actionId).addTime(currentTime);
+		return true;
+	}
+	
+	public boolean addTimeConjunctions(Set<String> timeConjunctions){
+		currentTime.addConjunctedPredicates(timeConjunctions);
+		return true;
+	}
+	
+	public boolean addPlace(String actionId, int synSet){
+		if (! actions.containsKey(actionId)) return false;
+		
+		currentPlace = new ReqClause(synSet);
+		actions.get(actionId).addPlace(currentPlace);
+		return true;
+	}
+	
+	public boolean addPlaceConjunctions(Set<String> placeConjunctions){
+		currentPlace.addConjunctedPredicates(placeConjunctions);
+		return true;
+	}
 	
 	public boolean addSubjectConjunctions(String actionId, Set<String> subjectsIDs){
 		if (! actions.containsKey(actionId)) return false;

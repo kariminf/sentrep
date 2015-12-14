@@ -40,6 +40,14 @@ public class ReqCreatorTest {
 		rc.addObjectConjunctions("ate", foods);
 		
 		
+		//Times
+		rc.addTime("ate", 510249);
+		//Here, you can add timeConjjunctions for this time
+		
+		//Places
+		rc.addPlace("ate", 111662);
+		//Here, you can add timeConjjunctions for this time
+		
 		System.out.println(rc.getStructuredRequest());
 
 	}
