@@ -367,7 +367,7 @@ public abstract class Parser {
 			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
 			if ( m.find()){
 				String predicates = m.group(1);
-				parseTimesPredicates(predicates);
+				parseComponents(predicates);
 			}
 			
         }
@@ -402,7 +402,7 @@ public abstract class Parser {
 			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
 			if ( m.find()){
 				String predicates = m.group(1);
-				parsePlacesPredicates(predicates);
+				parseComponents(predicates);
 			}
 			
         }
@@ -410,36 +410,8 @@ public abstract class Parser {
 		return true;
 	}
 	
-	/**
-	 * 
-	 * @param description
-	 * @return
-	 */
-	private boolean parseTimesPredicates(String description){
-		String[] disjunctions = description.split("\\|");
-		
-		for (String disjunction: disjunctions){
-			Set<String> conjunctions = new HashSet<String>();
-			for (String conjunction: disjunction.split(",")){
-				conjunctions.add(conjunction);
-			}
-			addTimeConjunctions(conjunctions);
-		}
-		return true;
-	}
-	
-	private boolean parsePlacesPredicates(String description){
-		String[] disjunctions = description.split("\\|");
-		
-		for (String disjunction: disjunctions){
-			Set<String> conjunctions = new HashSet<String>();
-			for (String conjunction: disjunction.split(",")){
-				conjunctions.add(conjunction);
-			}
-			addPlaceConjunctions(conjunctions);
-		}
-		return true;
-	}
+
+
 	
 	//Action
 	protected abstract void addAction(String id, int synSet);
@@ -450,9 +422,6 @@ public abstract class Parser {
 	protected abstract void addSubjects();
 	protected abstract void addObjects();
 	
-	protected abstract void addConjunctions(Set<String> roleIDs);
-	
-	
 	//Role
 	protected abstract void addRole(String id, int synSet);
 	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
@@ -462,10 +431,10 @@ public abstract class Parser {
 	
 	
 	protected abstract void addTime(int synSet);
-	protected abstract void addTimeConjunctions(Set<String> predicatesIDs);
 	protected abstract void addPlace(int synSet);
-	protected abstract void addPlaceConjunctions(Set<String> predicatesIDs);
 
+	//can be used for subjects, objects, places or times
+	protected abstract void addConjunctions(Set<String> IDs);
 	
 	//Parse
 	protected abstract void parseSuccess();

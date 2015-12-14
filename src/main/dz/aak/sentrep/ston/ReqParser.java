@@ -1,12 +1,8 @@
 package dz.aak.sentrep.ston;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 //import dz.aak.sentrep.ston.RAction;
 
@@ -18,8 +14,8 @@ public class ReqParser extends Parser {
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	
-	private boolean subject = true;
-	private ReqClause currentClause;
+	
+	private ReqDisjunction currentDisjunction;
 	
 
 	/**
@@ -77,42 +73,23 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addTime(int synSet) {
-		currentClause = new ReqClause(synSet);
-		currentAction.addTime(currentClause);
+		ReqClause time = new ReqClause(synSet);
+		currentAction.addTime(time);
+		currentDisjunction = time.getDisjinction();
 	}
 
-	@Override
-	protected void addTimeConjunctions(Set<String> predicatesIDs) {
-		currentClause.addConjunctedPredicates(predicatesIDs);
-		//System.out.println("adding: " + predicatesIDs);
-	}
 
 	@Override
 	protected void addConjunctions(Set<String> roleIDs) {
-		if (subject){
-			currentAction.addSubjects(roleIDs);
-		} else {
-			currentAction.addObjects(roleIDs);
-		}
-		
+		currentDisjunction.addConjunctions(roleIDs);
 	}
 
 	@Override
 	protected void addAction(String id, int synSet) {
 		currentAction = ReqAction.create(id, synSet);
 		actions.put(id, currentAction);
-		//System.out.println("action added: " + id);
 	}
 
-	@Override
-	protected void addSubjects() {
-		subject = true;
-	}
-
-	@Override
-	protected void addObjects() {
-		subject = false;
-	}
 
 	@Override
 	protected void addRole(String id, int synSet) {
@@ -123,13 +100,19 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addPlace(int synSet) {
-		currentClause = new ReqClause(synSet);
-		currentAction.addPlace(currentClause);
+		ReqClause place = new ReqClause(synSet);
+		currentAction.addPlace(place);
+		currentDisjunction = place.getDisjinction();
 	}
 
 	@Override
-	protected void addPlaceConjunctions(Set<String> predicatesIDs) {
-		currentClause.addConjunctedPredicates(predicatesIDs);
+	protected void addSubjects() {
+		currentDisjunction = currentAction.getSubjects();
+	}
+
+	@Override
+	protected void addObjects() {
+		currentDisjunction = currentAction.getObjects();
 	}
 
 

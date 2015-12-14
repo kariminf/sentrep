@@ -67,5 +67,10 @@ public class ReqClause {
 	}
 	
 	
+	protected ReqDisjunction getDisjinction(){
+		return predicates;
+	}
+	
+	
 
 }
