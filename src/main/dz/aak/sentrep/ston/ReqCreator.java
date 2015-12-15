@@ -133,25 +133,25 @@ public class ReqCreator {
 		if(players.isEmpty()){
 			result += " null;\n";
 		} else {
-			result += " [\n";
+			result += " r:[\n";
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
 				
-			result += "]\n";
+			result += "r:]\n";
 		}
 		
 		//////////////////////////
 		if(! actions.isEmpty()){
-			result += "\n@actions: [\n";
+			result += "\n@actions: act:[\n";
 			
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
 				
-			result += "]\n";
+			result += "act:]\n";
 		}		
 		//////////////////////////
 		
@@ -165,48 +165,29 @@ public class ReqCreator {
 		if(players.isEmpty()){
 			result += "null;";
 		} else {
-			result += "[";
+			result += "r:[";
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
 				
-			result += "]";
+			result += "r:]";
 		}
 		
 		//////////////////////////
 		if(! actions.isEmpty()){
-			result += "@actions:[";
+			result += "@actions:act:[";
 			
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
 				
-			result += "]";
+			result += "act:]";
 		}		
 		//////////////////////////
 		
 		return result;
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ReqCreator rq = new ReqCreator();
-		
-		rq.addRolePlayer("child1", 1256);
-		rq.addAdjective("child1", 15, null);
-		
-		rq.addRolePlayer("child2", 1256);
-		
-		Set<Integer> adv = new HashSet<Integer>();
-		adv.add(5); adv.add(89);
-		rq.addAdjective("child2", 18, adv);
-		
-		System.out.println(rq.getRequest());
-
 	}
 	
 	
