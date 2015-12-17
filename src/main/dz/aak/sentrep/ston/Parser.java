@@ -5,23 +5,41 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * 
+ * @author Abdelkrime Aries
+ *
+ */
 public abstract class Parser {
 
+	// These are the characters to be ignored 
 	private static String BL = "[\\t \\n\\r]+";
+	
+	// This is the times block regular expression
 	private static final String TIMESblock = "@times\\:t\\:\\[(.*)t\\:\\];?";
+	
+	// This is the places block regular expression
 	private static final String PLACESblock = "@places\\:p\\:\\[(.*)p\\:\\];?";
+	
+	// This is the regular expression used to separate main blocks
 	private static final Pattern CONT = 
 			Pattern.compile("@roles\\:r\\:\\[(.+)r\\:\\]@actions\\:act\\:\\[(.+)act\\:\\]");
 	
+	//This is true when the parsing is a success
 	private boolean success = false;
+	
+	
 	/**
-	 * 
-	 * @param description
+	 * The constructor of the parser
 	 */
 	public Parser() {
 		success = false;
 	}
 	
+	/**
+	 * The method to parse a STON description
+	 * @param description STON description
+	 */
 	public void parse(String description){
 		
 		description = description.replaceAll(BL, "");
@@ -36,13 +54,24 @@ public abstract class Parser {
         }
 		
 		success = true;
+		
 		parseSuccess();
 	}
 	
+	/**
+	 * This function tells us if the parsing goes well or not
+	 * @return True: if the parsing succeed, False: else.
+	 */
 	public boolean parsed(){
 		return success;
 	}
 	
+	
+	/**
+	 * Parses the roles' block
+	 * @param description STON description of roles
+	 * @return True if there is no error
+	 */
 	private boolean parseRoles(String description){
 		
 		int idx;
@@ -58,6 +87,11 @@ public abstract class Parser {
 
 	}
 	
+	/**
+	 * Parses the actions' block
+	 * @param description STON description of actions
+	 * @return True if there is no error
+	 */
 	private boolean parseActions (String description){
 		
 		int idx;
@@ -75,7 +109,11 @@ public abstract class Parser {
 	}
 	
 	
-	//TODO complete the action
+	/**
+	 * Parses one action block
+	 * @param description STON description of one action
+	 * @return True if there is no error
+	 */
 	private boolean parseAction(String description){
 		
 		String description2 = description;
@@ -235,8 +273,8 @@ public abstract class Parser {
 	 * Subjects and objects are disjunctions of conjunctions, they are 
 	 * represented like [id11, ...|id21, ... | ...] <br/>
 	 * For example: [mother, son|father] means: mother and son or father
-	 * @param description
-	 * @return
+	 * @param description STON description of IDs
+	 * @return True if there is no error
 	 */
 	private boolean parseComponents(String description){
 		String[] disjunctions = description.split("\\|");
@@ -254,7 +292,11 @@ public abstract class Parser {
 	}
 	
 
-	
+	/**
+	 * Parse the 
+	 * @param description
+	 * @return
+	 */
 	private boolean parseAdjectives(String description){
 		
 		int idx;
@@ -376,8 +418,8 @@ public abstract class Parser {
 	}
 	
 	/**
-	 * 
-	 * @param description
+	 * Parse the places in an action
+	 * @param description STON description for places
 	 * @return
 	 */
 	private boolean parsePlaces(String description){
@@ -414,23 +456,79 @@ public abstract class Parser {
 
 	
 	//Action
+	/**
+	 * It is called when the parser finds an action
+	 * @param id each action has a unique ID
+	 * @param synSet this is the synset
+	 */
 	protected abstract void addAction(String id, int synSet);
+	
+	/**
+	 * It is called to define the specifications of a verb
+	 * @param tense It is the tense of the verb: past, present or future
+	 * @param modality It is the modal verb: can, must, may, none
+	 * @param progressive the action is progressive or not
+	 * @param negated the action is negated or not
+	 */
 	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated);
+	
+	/**
+	 * It is called when the action is failed; It means when the parser find something
+	 * wrong in the action block
+	 */
 	protected abstract void actionFail();
 	
 	//Subjects and Objects in the Action
+	/**
+	 * It is called when the parser finds subjects
+	 */
 	protected abstract void addSubjects();
+	
+	/**
+	 * It is called when the parser finds objects
+	 */
 	protected abstract void addObjects();
 	
 	//Role
+	/**
+	 * It is called when the parser finds a role player
+	 * @param id each role has a unique ID
+	 * @param synSet wordnet synset of the Noun 
+	 */
 	protected abstract void addRole(String id, int synSet);
+	
+	/**
+	 * It is called when the role player has an adjective
+	 * @param synSet wordnet synset of the adjective which modify the noun in the role
+	 * @param advSynSets wordnet synsets (Set) of adverbs which modify the adjective
+	 */
 	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
+	
+	/**
+	 * It is called when the parsing of an adjective failed
+	 */
 	protected abstract void adjectiveFail();
+	
+	/**
+	 * it is called when the parsing of a role failed
+	 */
 	protected abstract void roleFail();
+	
+	/**
+	 * It is called when the parsing of times failed
+	 */
 	protected abstract void timesFail();
 	
-	
+	/**
+	 * It is called to add a time
+	 * @param synSet the synset of a time like: yesterday
+	 */
 	protected abstract void addTime(int synSet);
+	
+	/**
+	 * It is called to add a location
+	 * @param synSetthe synset of a location like: outside
+	 */
 	protected abstract void addPlace(int synSet);
 
 	//can be used for subjects, objects, places or times
