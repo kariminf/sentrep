@@ -1,7 +1,11 @@
-@roles: [
+@r: [
 	r:{
 		id: mother;
 		synSet: 10332385
+	r:}
+	r:{
+		id: father;
+		synSet: 10081456;
 	r:}
 	r:{
 		id: truth;
@@ -14,29 +18,29 @@
 	r:{
 		id: +goodfood;
 		synSet: 21265;
-		adjectives: [
+		@adj: [
 			adj:{
 				synSet: 1123148;
 				adverbs: [89408]
 			adj:}
-		]
+		adj:]
 	r:}
 	r:{
 		id: 2children;
 		synSet: 9917593;
 		quantity: 2;
-		adjectives: [
+		@adj: [
 			adj:{
 				synSet: 1919931
-			adj:},
+			adj:}
 			adj:{
 				synSet: 1391351
 			adj:}
-		]
+		adj:]
 	r:}
-]
+r:]
 
-@actions: [
+@act: [
 	act:{
 		id: is;
 		synSet: 2604760;
@@ -47,7 +51,7 @@
 		id: eat;
 		tense: PAST;
 		synSet: 1168468;
-		subjects: [mother, 2children];
+		subjects: [father, mother | 2children];
 		objects: [food]
 	act:}
 	act:{
@@ -57,4 +61,8 @@
 		subjects: [food];
 		objects: [+goodfood]
 	act:}
-]
+act:]
+
+@sent: [
+	something
+sent:]

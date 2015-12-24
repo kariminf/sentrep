@@ -50,12 +50,15 @@ public abstract class Parser {
 		
 		//System.out.println(description);
 		Matcher m = CONT.matcher(description);
-		if (m.find()) {
-			String roles =  m.group(1);
-			String actions =  m.group(2);
-			if (! parseRoles(roles)) return;
-			if (! parseActions(actions)) return;
+		if (! m.find()) {
+			parseFail();
+			return;
         }
+		
+		String roles =  m.group(1);
+		String actions =  m.group(2);
+		if (! parseRoles(roles)) return;
+		if (! parseActions(actions)) return;
 		
 		success = true;
 		
@@ -517,6 +520,11 @@ public abstract class Parser {
 	 * it is called when the parsing of a role failed
 	 */
 	protected abstract void roleFail();
+	
+	/**
+	 * it is called when the parsing failed (general structure)
+	 */
+	protected abstract void parseFail();
 	
 	/**
 	 * It is called when the parsing of adpositionals failed
