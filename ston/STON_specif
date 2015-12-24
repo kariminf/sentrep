@@ -1,45 +1,38 @@
-@roles: r:[
+@r:[
 	r:{
 		id: <role_name>;
-		synSet: <synSet_number>;
-		adjectives: [
+		synset: <synSet_number>;
+		@adj:[
 			adj:{
-				synSet: <synSet_number>;
+				synset: <synSet_number>;
 				adverbs: [<synSet_number>, ...]
 			adj:}
-		]
+		adj:];
+		@rel:[
+			rel:{
+				type: <SUBJECT/OBJECT/POSSESSIVE/PLACE/TIME/REASON
+					DESTINATION/ACCOMPANY/INNER>
+				ref: [act_ID, ...];
+			rel:}
+		rel:]
 	r:}
 	r:{
 		...
 	r:}
 r:]
 
-@actions: act:[
+@act:[
 	act:{
 		id: <action_name>;
 		synSet: <synSet_number>;
 		tense: <PAST|PRESENT|FUTURE>;
-		progressive: <yes|no>;
-		negated: <yes|no>;
+		progressive: <YES/NO>;
+		negated: <YES|NO>;
 		modality: <CAN|MAY|MUST|NONE>;
-		@times: t:[
-			t:{ //Adverbial sentence 
-				synSet: <synSet_number>; //the time adverb like: in, when
-				predicates: [<id>,...|...]; //id of a role or an action
-			t:}
-			t:{
-                                synSet: <synSet_number>; //the time adverb like: in, when
-                        t:}
-		t:];
-		@places: p:[
-			p:{ //Adverbial sentence 
-                                synSet: <synSet_number>; //the time adverb like: in, when
-                                predicates: [<id>,...|...]; //id of a role or an action
-                        p:}
-                        p:{
-                                synSet: <synSet_number>; //the time adverb like: in, when
-                        p:}
-		p:];
+		@adp:[ //adpositional phrases (Prepositional), spatial and temporal relations
+			type: <>;
+			ref:[role_ID, ...];
+		adp:];
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
 		objects: [<id>,...|...];
 	act:}
