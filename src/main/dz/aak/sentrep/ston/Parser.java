@@ -15,15 +15,18 @@ public abstract class Parser {
 	// These are the characters to be ignored 
 	private static String BL = "[\\t \\n\\r]+";
 	
-	// This is the times block regular expression
-	private static final String TIMESblock = "@times\\:t\\:\\[(.*)t\\:\\];?";
+	// Adpositional clause: time or location
+	private static final String ADPblock = "@adp\\:\\[(.*)adp\\:\\];?";
 	
-	// This is the places block regular expression
-	private static final String PLACESblock = "@places\\:p\\:\\[(.*)p\\:\\];?";
+	// Adjective
+	private static final String ADJblock = "@adj\\:\\[(.*)adj\\:\\];?";
+	
+	// Relative clauses
+	private static final String RELblock = "@rel\\:\\[(.*)rel\\:\\];?";
 	
 	// This is the regular expression used to separate main blocks
 	private static final Pattern CONT = 
-			Pattern.compile("@roles\\:r\\:\\[(.+)r\\:\\]@actions\\:act\\:\\[(.+)act\\:\\]");
+			Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@sent\\:\\[(.+)sent\\:\\]");
 	
 	//This is true when the parsing is a success
 	private boolean success = false;
@@ -43,6 +46,7 @@ public abstract class Parser {
 	public void parse(String description){
 		
 		description = description.replaceAll(BL, "");
+		description = description.toLowerCase();
 		
 		//System.out.println(description);
 		Matcher m = CONT.matcher(description);
@@ -116,47 +120,30 @@ public abstract class Parser {
 	 */
 	private boolean parseAction(String description){
 		
-		String description2 = description;
-		
 		String id = "";
 		String synSetStr = "";
 		String tense = "";
 		boolean progressive = false;
 		boolean negated = false;
-		String modality = "NONE";
+		String modality = "none";
 		String subjects = "";
 		String objects = "";
 		
-		String times = "";
-		String places = "";
+		String adpositional = "";
 		
-		if (description2.contains("@times")){
+		if (description.contains("@adp")){
 			
 			Pattern timesPattern = 
-				Pattern.compile("(.*)" + TIMESblock + "(.*)");
-			Matcher m = timesPattern.matcher(description2);
+				Pattern.compile("(.*)" + ADPblock + "(.*)");
+			Matcher m = timesPattern.matcher(description);
 			if (m.find()){
-				times = m.group(2);
+				adpositional = m.group(2);
 				//System.out.println("time found");
-				description2 = m.group(1) + m.group(3);		
+				description = m.group(1) + m.group(3);		
 			}
 		}
 		
-		if (description2.contains("@places")){
-			
-			Pattern timesPattern = 
-				Pattern.compile("(.*)" + PLACESblock + "(.*)");
-			Matcher m = timesPattern.matcher(description2);
-			if (m.find()){
-				places = m.group(2);
-				//System.out.println("time found");
-				description2 = m.group(1) + m.group(3);		
-			}
-		}
-
-		String[] descs = description2.split(";");
-		
-		for (String desc : descs){
+		for (String desc : description.split(";")){
 			
 			desc = desc.trim();
 			
@@ -165,7 +152,7 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("synSet:")){
+			if(desc.startsWith("synset:")){
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
@@ -179,7 +166,7 @@ public abstract class Parser {
 				String aspect = desc.split(":")[1];
 				aspect = aspect.trim().toUpperCase();
 				
-				if(aspect.matches("YES")){
+				if(aspect.matches("yes")){
 					progressive = true;
 				}
 				continue;
@@ -189,7 +176,7 @@ public abstract class Parser {
 				String negate = desc.split(":")[1];
 				negate = negate.trim().toUpperCase();
 
-				if(negate.matches("YES")){
+				if(negate.matches("yes")){
 					negated = true;
 				}
 				continue;
@@ -211,8 +198,16 @@ public abstract class Parser {
 			}
 		}
 		
+		//The action must have an ID
 		if(id.length() < 1){
 			actionFail();
+			success = false;
+			return false;
+		}
+		
+		// An action must have a synset which is a number
+		if (! synSetStr.matches("\\d+")){
+			roleFail();
 			success = false;
 			return false;
 		}
@@ -221,41 +216,33 @@ public abstract class Parser {
 		
 		addAction(id, synSet);
 		
-		//TODO add other components of the action
-		if(! tense.matches("PAST|PRESENT|FUTURE")){
-			tense = "PRESENT";
+		// There are three tenses
+		if(! tense.matches("past|present|future")){
+			tense = "present";
 		}
 		
-		modality = modality.trim().toUpperCase();
-		
-		if(! modality.matches("CAN|MAY|MUST")){
-			modality = "NONE";
+		// There are three modalities: permissibility, possibility and obligation
+		if(! modality.matches("can|may|must")){
+			modality = "none";
 		}
 		
-		
+		//Defines verb specifications
 		addVerbSpecif(tense, modality, progressive, negated);
-		
-		if (times.length()>0){
-			if (! parseTimes(times)) return false;
-		}
-		
-		if (places.length()>0){
-			if (! parsePlaces(places)) return false;
-		}
-		
-		
+
+		// Process subjects
 		if(subjects.length() > 2){
 			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
-				System.out.println("subjects=" + subjects);
+				//System.out.println("subjects=" + subjects);
 				return false;
 			}
-				
+			
 			subjects = subjects.substring(1, subjects.length()-1);
 			addSubjects();
 			parseComponents(subjects);
 
 		}
 		
+		//Process objects
 		if(objects.length() > 2){
 			if (!(objects.startsWith("[") && objects.endsWith("]")))
 				return false;
@@ -265,6 +252,10 @@ public abstract class Parser {
 
 		}
 		
+		// Process time and place
+		if (adpositional.length()>0){
+			if (! parseAdpositionals(adpositional)) return false;
+		}
 		
 		return true;
 	}
@@ -311,7 +302,7 @@ public abstract class Parser {
 			int synSet = 0;
 			HashSet<Integer> advSynSets = new HashSet<Integer>();
 			for (String desc: descs){
-				if(desc.startsWith("synSet:")){
+				if(desc.startsWith("synset:")){
 					String synSetStr = desc.split(":")[1];
 					synSet = Integer.parseInt(synSetStr);
 					continue;
@@ -344,38 +335,85 @@ public abstract class Parser {
 	}
 	
 
+	//TODO complete role relatives
+	private boolean parseRRelatives(String description){
+		
+		return true;
+	}
 
 	private boolean parseRole(String description){
 		
-		Matcher m = Pattern.compile("id\\:([^;]+)(;|$)").matcher(description);
+		String id = "";
+		String synSetStr = "";
+		String adjectives = "";
+		String relatives = "";
 		
-		if (! m.find()){
+		if (description.contains("@adj")){
+			
+			Pattern adpPattern = 
+				Pattern.compile("(.*)" + ADJblock + "(.*)");
+			Matcher m = adpPattern.matcher(description);
+			if (m.find()){
+				adjectives = m.group(2);
+				//System.out.println("time found");
+				description = m.group(1) + m.group(3);		
+			}
+		}
+		
+		if (description.contains("@rel")){
+			
+			Pattern adpPattern = 
+				Pattern.compile("(.*)" + RELblock + "(.*)");
+			Matcher m = adpPattern.matcher(description);
+			if (m.find()){
+				relatives = m.group(2);
+				//System.out.println("time found");
+				description = m.group(1) + m.group(3);		
+			}
+		}
+
+		for (String desc: description.split(";")){
+			
+			desc = desc.trim();
+			
+			if(desc.startsWith("id:")){
+				id = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("synset:")){
+				synSetStr = desc.split(":")[1];
+				continue;
+			}
+		}
+		
+		//A role must have an ID
+		if (id.length() < 1){
 			roleFail();
 			success = false;
 			return false;
 		}
 		
-		String id = m.group(1);
-		
-		m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(description);
-		
-		if (! m.find()){
+		// A role must have a synset which is a number
+		if (! synSetStr.matches("\\d+")){
 			roleFail();
 			success = false;
 			return false;
 		}
-		
-		String synSetStr = m.group(1);
 		
 		int synSet = Integer.parseInt(synSetStr);
 		
+		// Add the role 
 		addRole(id, synSet);
 		
-		m = Pattern.compile("adjectives\\:\\[(.+adj\\:\\})\\]").matcher(description);
-		
-		if (m.find()){
-			String adjectives = m.group(1);
+		//Process adjectives
+		if (adjectives.length() > 0){
 			if (! parseAdjectives(adjectives)) return false;
+		}
+		
+		//Process relatives
+		if (relatives.length() > 0){
+			if (! parseRRelatives(relatives)) return false;
 		}
 		
 		return true;
@@ -387,14 +425,15 @@ public abstract class Parser {
 	 * @param description
 	 * @return
 	 */
-	private boolean parseTimes(String description){
-		
+	private boolean parseAdpositionals(String description){
+		//TODO fix the adpositionals content
 		int idx;
-		while ((idx = description.indexOf("t:}")) >= 0) {
-			String times =  description.substring(3, idx);
-			description = description.substring(idx+3);
+		while ((idx = description.indexOf("adp:}")) >= 0) {
+			String times =  description.substring(5, idx);
+			description = description.substring(idx+5);
 			
-			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(times);
+			/*
+			Matcher m = Pattern.compile("synset\\:([^;]+)(;|$)").matcher(times);
 			if (! m.find()){
 				success = false;
 				return false;
@@ -404,55 +443,20 @@ public abstract class Parser {
 			
 			int synSet = Integer.parseInt(synSetStr);
 			
-			addTime(synSet);
+			addAddpositional(synSet);
 			
 			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
 			if ( m.find()){
 				String predicates = m.group(1);
 				parseComponents(predicates);
 			}
+			*/
 			
         }
 		
 		return true;
 	}
 	
-	/**
-	 * Parse the places in an action
-	 * @param description STON description for places
-	 * @return
-	 */
-	private boolean parsePlaces(String description){
-		
-		int idx;
-		while ((idx = description.indexOf("p:}")) >= 0) {
-			String times =  description.substring(3, idx);
-			description = description.substring(idx+3);
-			
-			Matcher m = Pattern.compile("synSet\\:([^;]+)(;|$)").matcher(times);
-			if (! m.find()){
-				success = false;
-				return false;
-			}
-			
-			String synSetStr = m.group(1);
-			
-			int synSet = Integer.parseInt(synSetStr);
-			
-			addPlace(synSet);
-			
-			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
-			if ( m.find()){
-				String predicates = m.group(1);
-				parseComponents(predicates);
-			}
-			
-        }
-		
-		return true;
-	}
-	
-
 
 	
 	//Action
@@ -515,22 +519,17 @@ public abstract class Parser {
 	protected abstract void roleFail();
 	
 	/**
-	 * It is called when the parsing of times failed
+	 * It is called when the parsing of adpositionals failed
 	 */
-	protected abstract void timesFail();
+	protected abstract void adpositionalFail();
 	
 	/**
-	 * It is called to add a time
-	 * @param synSet the synset of a time like: yesterday
+	 * It is called to add an adpositional: time or location
+	 * @param type the type of the addpositional
 	 */
-	protected abstract void addTime(int synSet);
+	protected abstract void addAdpositional(String type);
 	
-	/**
-	 * It is called to add a location
-	 * @param synSetthe synset of a location like: outside
-	 */
-	protected abstract void addPlace(int synSet);
-
+	
 	//can be used for subjects, objects, places or times
 	protected abstract void addConjunctions(Set<String> IDs);
 	
