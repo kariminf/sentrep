@@ -80,6 +80,13 @@ public class ReqCreator {
 		return true;
 	}
 	
+	public boolean addRelativeConjunctions(String... relativeConjunctions){
+		HashSet<String> relConjunctions = new HashSet<String>();
+		for (String rel: relativeConjunctions)
+			relConjunctions.add(rel);
+		return addRelativeConjunctions(relConjunctions);
+	}
+	
 	public boolean addSubjectConjunctions(String actionId, Set<String> subjectsIDs){
 		if (! actions.containsKey(actionId)) return false;
 		

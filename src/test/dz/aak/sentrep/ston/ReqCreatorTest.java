@@ -39,14 +39,12 @@ public class ReqCreatorTest {
 		foods.add("+goodfood");
 		rc.addObjectConjunctions("ate", foods);
 		
+		//TODO complete this
+		// Adpositional phrases
+		rc.addRolePlayer("noon", 15165490);
+		rc.addRelative("t_time", "ate");
+		rc.addRelativeConjunctions(new String[]{"noon"});
 		
-		//Times
-		rc.addTime("ate", 510249);
-		//Here, you can add timeConjjunctions for this time
-		
-		//Places
-		rc.addPlace("ate", 111662);
-		//Here, you can add timeConjjunctions for this time
 		
 		System.out.println(rc.getStructuredRequest());
 
