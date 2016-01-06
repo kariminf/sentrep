@@ -1,0 +1,46 @@
+@r: [
+	r:{
+		id: mother;
+		synSet: 10332385
+	r:}
+	r:{
+		id: food;
+		synSet: 21265;
+		@rel:[
+			rel:{
+				type: OBJECT;
+				ref: [eat];
+			rel:}
+		rel:]
+	r:}
+	r:{
+		id: +goodfood;
+		synSet: 21265;
+		@adj: [
+			adj:{
+				synSet: 1123148;
+				adverbs: [89408]
+			adj:}
+		adj:]
+	r:}
+r:]
+
+@act: [
+	act:{
+		id: eat;
+		tense: PAST;
+		synSet: 1168468;
+		subjects: [mother];
+	act:}
+	act:{
+		id: was;
+		tense: PAST;
+		synSet: 2604760;
+		subjects: [food];
+		objects: [+goodfood]
+	act:}
+act:]
+
+@sent: [
+	something
+sent:]

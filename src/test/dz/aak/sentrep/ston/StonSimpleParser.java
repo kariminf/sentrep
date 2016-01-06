@@ -3,11 +3,12 @@ package dz.aak.sentrep.ston;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 public class StonSimpleParser extends Parser {
 
-	static String testFile = "ston/test.ston";
+	static String testFile = "ston/that.ston";
 	
 	private boolean firstDisjunction = true;
 	
@@ -18,7 +19,6 @@ public class StonSimpleParser extends Parser {
 	@Override
 	protected void addAction(String id, int synSet) {
 		System.out.println("Adding action: " + id + ", verb: " + synSet);
-
 	}
 
 	@Override
@@ -69,17 +69,6 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void adpositionalFail() {
-		System.out.println("ADPOSITION FAILED");
-
-	}
-
-	@Override
-	protected void addAdpositional(String type) {
-		System.out.println("Add adpositional clause type: " + type);
-	}
-
-	@Override
 	protected void addConjunctions(Set<String> IDs) {
 		String res = (firstDisjunction)? "\t\t": "\t\tor ";
 		System.out.println(res + IDs);
@@ -94,6 +83,18 @@ public class StonSimpleParser extends Parser {
 	@Override
 	protected void parseFail() {
 		System.out.println("General structure not respected");
+	}
+	
+	@Override
+	protected void relativeFail() {
+		System.out.println("RELATIVE FAILED");
+		
+	}
+
+	@Override
+	protected void addRelative(String type) {
+		System.out.println("Add relative clause type: " + type);
+		
 	}
 	
 	/**
