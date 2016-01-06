@@ -15,9 +15,6 @@ public abstract class Parser {
 	// These are the characters to be ignored 
 	private static String BL = "[\\t \\n\\r]+";
 	
-	// Adpositional clause: time or location
-	private static final String ADPblock = "@adp\\:\\[(.*)adp\\:\\];?";
-	
 	// Adjective
 	private static final String ADJblock = "@adj\\:\\[(.*)adj\\:\\];?";
 	
@@ -132,15 +129,15 @@ public abstract class Parser {
 		String subjects = "";
 		String objects = "";
 		
-		String adpositional = "";
+		String relative = "";
 		
-		if (description.contains("@adp")){
+		if (description.contains("@rel")){
 			
 			Pattern timesPattern = 
-				Pattern.compile("(.*)" + ADPblock + "(.*)");
+				Pattern.compile("(.*)" + RELblock + "(.*)");
 			Matcher m = timesPattern.matcher(description);
 			if (m.find()){
-				adpositional = m.group(2);
+				relative = m.group(2);
 				//System.out.println("time found");
 				description = m.group(1) + m.group(3);		
 			}
@@ -148,7 +145,7 @@ public abstract class Parser {
 		
 		for (String desc : description.split(";")){
 			
-			desc = desc.trim();
+			//desc = desc.trim();
 			
 			if(desc.startsWith("id:")){
 				id = desc.split(":")[1];
@@ -255,9 +252,9 @@ public abstract class Parser {
 
 		}
 		
-		// Process time and place
-		if (adpositional.length()>0){
-			if (! parseAdpositionals(adpositional)) return false;
+		// Process the relative clause
+		if (relative.length()>0){
+			if (! parseRelatives(relative)) return false;
 		}
 		
 		return true;
@@ -338,12 +335,6 @@ public abstract class Parser {
 	}
 	
 
-	//TODO complete role relatives
-	private boolean parseRRelatives(String description){
-		
-		return true;
-	}
-
 	private boolean parseRole(String description){
 		
 		String id = "";
@@ -416,7 +407,7 @@ public abstract class Parser {
 		
 		//Process relatives
 		if (relatives.length() > 0){
-			if (! parseRRelatives(relatives)) return false;
+			if (! parseRelatives(relatives)) return false;
 		}
 		
 		return true;
@@ -428,39 +419,56 @@ public abstract class Parser {
 	 * @param description
 	 * @return
 	 */
-	private boolean parseAdpositionals(String description){
-		//TODO fix the adpositionals content
+	private boolean parseRelatives(String description){
 		int idx;
-		while ((idx = description.indexOf("adp:}")) >= 0) {
-			String times =  description.substring(5, idx);
+		while ((idx = description.indexOf("rel:}")) >= 0) {
+			String rel =  description.substring(5, idx);
 			description = description.substring(idx+5);
-			
-			/*
-			Matcher m = Pattern.compile("synset\\:([^;]+)(;|$)").matcher(times);
-			if (! m.find()){
-				success = false;
+			if (! parseRelative(rel))
 				return false;
-			}
-			
-			String synSetStr = m.group(1);
-			
-			int synSet = Integer.parseInt(synSetStr);
-			
-			addAddpositional(synSet);
-			
-			m = Pattern.compile("predicates\\:\\[(.+)\\]").matcher(times);
-			if ( m.find()){
-				String predicates = m.group(1);
-				parseComponents(predicates);
-			}
-			*/
-			
         }
 		
 		return true;
 	}
 	
 
+	private boolean parseRelative(String description){
+		String type= "";
+		String refs = "";
+		for (String desc : description.split(";")){
+			
+			if(desc.startsWith("type:")){
+				type = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("ref:")){
+				refs = desc.split(":")[1];
+				continue;
+			}
+			
+		}
+		
+		//If there is no type
+		if (type.length() < 1){
+			relativeFail();
+			success = false;
+			return false;
+		}
+		
+		addRelative(type);
+		
+		//Process objects
+		if(refs.length() > 2){
+			if (!(refs.startsWith("[") && refs.endsWith("]")))
+				return false;
+			refs = refs.substring(1, refs.length()-1);
+			parseComponents(refs);
+
+		}
+		
+		return true;
+	}
 	
 	//Action
 	/**
@@ -527,15 +535,15 @@ public abstract class Parser {
 	protected abstract void parseFail();
 	
 	/**
-	 * It is called when the parsing of adpositionals failed
+	 * It is called when the parsing of relatives failed
 	 */
-	protected abstract void adpositionalFail();
+	protected abstract void relativeFail();
 	
 	/**
-	 * It is called to add an adpositional: time or location
-	 * @param type the type of the addpositional
+	 * It is called to add an relative: time or location
+	 * @param type the type of the relatives
 	 */
-	protected abstract void addAdpositional(String type);
+	protected abstract void addRelative(String type);
 	
 	
 	//can be used for subjects, objects, places or times

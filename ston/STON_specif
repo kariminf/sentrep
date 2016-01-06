@@ -12,7 +12,7 @@
 			rel:{
 				type: <SUBJECT/OBJECT/POSSESSIVE/PLACE/TIME/REASON
 					DESTINATION/ACCOMPANY/INNER>
-				ref: [act_ID, ...];
+				ref: [<id>,...|...];
 			rel:}
 		rel:]
 	r:}
@@ -29,10 +29,12 @@ r:]
 		progressive: <YES/NO>;
 		negated: <YES|NO>;
 		modality: <CAN|MAY|MUST|NONE>;
-		@adp:[ //adpositional phrases (Prepositional), spatial and temporal relations
-			type: <>;
-			ref:[role_ID, ...];
-		adp:];
+		@rel:[//adpositional phrases (Prepositional), spatial and temporal relations
+			rel:{
+				type: <>
+				ref: [<id>,...|...];
+			rel:}
+		rel:]
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
 		objects: [<id>,...|...];
 	act:}

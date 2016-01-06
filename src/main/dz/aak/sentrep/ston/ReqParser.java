@@ -64,19 +64,13 @@ public class ReqParser extends Parser {
 	protected void parseSuccess() {
 	}
 
-
-	@Override
-	protected void timesFail() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	/*
 	@Override
 	protected void addTime(int synSet) {
 		ReqClause time = new ReqClause(synSet);
 		currentAction.addTime(time);
 		currentDisjunction = time.getDisjinction();
-	}
+	}*/
 
 
 	@Override
@@ -98,12 +92,13 @@ public class ReqParser extends Parser {
 		//System.out.println("player added: " + id);
 	}
 
+	/*
 	@Override
 	protected void addPlace(int synSet) {
 		ReqClause place = new ReqClause(synSet);
 		currentAction.addPlace(place);
 		currentDisjunction = place.getDisjinction();
-	}
+	}*/
 
 	@Override
 	protected void addSubjects() {
@@ -113,6 +108,24 @@ public class ReqParser extends Parser {
 	@Override
 	protected void addObjects() {
 		currentDisjunction = currentAction.getObjects();
+	}
+
+	@Override
+	protected void parseFail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void relativeFail() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void addRelative(String type) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
