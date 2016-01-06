@@ -15,6 +15,12 @@ public class ReqRolePlayer {
 	private String quantity = null;
 	private List<String> possessives = new ArrayList<String>();
 	
+	List<ReqClause> relatives = new ArrayList<ReqClause>();
+	
+	public void addRelative(ReqClause relative){
+		relatives.add(relative);
+	}
+	
 	/**
 	 * @return the nounSynSet
 	 */
@@ -100,6 +106,14 @@ public class ReqRolePlayer {
 			result += "]";
 		}
 		
+		if (! relatives.isEmpty()){
+			result += ";@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 0);
+				result += relative;
+			}
+			result += "rel:]";
+		}
 		
 		result += "r:}";
 		
@@ -130,6 +144,14 @@ public class ReqRolePlayer {
 			result += "\t\t]";
 		}
 		
+		if (! relatives.isEmpty()){
+			result += ";\n\t\t@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 3);
+				result += "\n" + relative.structuredString();
+			}
+			result += "\n\t\trel:]";
+		}
 		
 		result += "\n\tr:}";
 		

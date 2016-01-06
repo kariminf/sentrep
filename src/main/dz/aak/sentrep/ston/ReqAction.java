@@ -123,15 +123,6 @@ public class ReqAction {
 		if(modality != "NONE")
 			result += ";modality:" + modality;
 		
-		if (! relatives.isEmpty()){
-			result += ";@rel:[";
-			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 0);
-				result += relative;
-			}
-			result += "rel:]";
-		}
-		
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
 			result += subjects.toString().replace(" ", "");
@@ -140,6 +131,15 @@ public class ReqAction {
 		if(! objects.isEmpty()){
 			result += ";objects:";
 			result += objects.toString().replace(" ", "");
+		}
+		
+		if (! relatives.isEmpty()){
+			result += ";@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 0);
+				result += relative;
+			}
+			result += "rel:]";
 		}
 		
 		result += "act:}";
@@ -163,15 +163,6 @@ public class ReqAction {
 		if(modality != "NONE")
 			result += ";\n\t\tmodality: " + modality;
 		
-		if (! relatives.isEmpty()){
-			result += ";\n\t\t@rel:[";
-			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 3);
-				result += "\n" + relative.structuredString();
-			}
-			result += "\n\t\trel:]";
-		}
-		
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
 			result += subjects;
@@ -180,6 +171,15 @@ public class ReqAction {
 		if(! objects.isEmpty()){
 			result += ";\n\t\tobjects: ";
 			result += objects;
+		}
+		
+		if (! relatives.isEmpty()){
+			result += ";\n\t\t@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 3);
+				result += "\n" + relative.structuredString();
+			}
+			result += "\n\t\trel:]";
 		}
 		
 		result += "\n\tact:}";

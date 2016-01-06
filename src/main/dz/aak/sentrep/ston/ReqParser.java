@@ -89,6 +89,7 @@ public class ReqParser extends Parser {
 	protected void addRole(String id, int synSet) {
 		currentPlayer = ReqRolePlayer.create(id, synSet);
 		players.put(id, currentPlayer);
+		currentAction = null;
 		//System.out.println("player added: " + id);
 	}
 
@@ -124,9 +125,16 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addRelative(String type) {
-		ReqClause place = new ReqClause(synSet);
-		currentAction.addPlace(place);
-		currentDisjunction = place.getDisjinction();
+		ReqClause relative = new ReqClause(type);
+		
+		if (currentAction != null ){
+			currentAction.addRelative(relative);
+		} else {
+			if (currentPlayer != null)
+				currentPlayer.addRelative(relative);
+		}
+		
+		currentDisjunction = relative.getDisjinction();
 		
 	}
 
