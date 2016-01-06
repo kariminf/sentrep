@@ -13,8 +13,7 @@ public class ReqCreator {
 	
 	//private ReqDisjunction subjects = new ReqDisjunction();
 	//private ReqDisjunction objects = new ReqDisjunction();
-	ReqClause currentTime;
-	ReqClause currentPlace;
+	ReqClause currentRelative;
 	
 	public ReqCreator() {
 	}
@@ -58,29 +57,26 @@ public class ReqCreator {
 	}*/
 	
 	
-	public boolean addTime(String actionId, int synSet){
-		if (! actions.containsKey(actionId)) return false;
+	
+	public boolean addRelative(String type, String id){
+
+		currentRelative = new ReqClause(type);
 		
-		currentTime = new ReqClause(synSet);
-		actions.get(actionId).addTime(currentTime);
+		if (actions.containsKey(id)){
+			actions.get(id).addRelative(currentRelative);
+		} else {
+			if (players.containsKey(id)){
+				players.get(id).addRelative(currentRelative);
+			} else{
+				return false;
+			}
+		}
+
 		return true;
 	}
 	
-	public boolean addTimeConjunctions(Set<String> timeConjunctions){
-		currentTime.addConjunctedPredicates(timeConjunctions);
-		return true;
-	}
-	
-	public boolean addPlace(String actionId, int synSet){
-		if (! actions.containsKey(actionId)) return false;
-		
-		currentPlace = new ReqClause(synSet);
-		actions.get(actionId).addPlace(currentPlace);
-		return true;
-	}
-	
-	public boolean addPlaceConjunctions(Set<String> placeConjunctions){
-		currentPlace.addConjunctedPredicates(placeConjunctions);
+	public boolean addRelativeConjunctions(Set<String> relativeConjunctions){
+		currentRelative.addConjunctedPredicates(relativeConjunctions);
 		return true;
 	}
 	
