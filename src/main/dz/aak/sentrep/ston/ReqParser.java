@@ -124,7 +124,9 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addRelative(String type) {
-		// TODO Auto-generated method stub
+		ReqClause place = new ReqClause(synSet);
+		currentAction.addPlace(place);
+		currentDisjunction = place.getDisjinction();
 		
 	}
 

@@ -1,6 +1,7 @@
 package dz.aak.sentrep.ston;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,16 +19,18 @@ public class ReqAction {
 	private boolean progressive = false;
 	private boolean negated = false;
 	
-	private List<ReqClause> times = new ArrayList<ReqClause>();
-	private List<ReqClause> places = new ArrayList<ReqClause>();
+	/*private HashMap<String, List<ReqClause>> relatives = 
+			new HashMap<String, List<ReqClause>>();*/
 	
+	List<ReqClause> relatives = new ArrayList<ReqClause>();
 	
-	public void addTime(ReqClause time){
-		times.add(time);
-	}
-	
-	public void addPlace(ReqClause place){
-		places.add(place);
+	public void addRelative(ReqClause relative){
+		/*String type = relative.getType();
+		List<ReqClause> rels = (relatives.containsKey(type))?
+				relatives.get(type): new ArrayList<ReqClause>();
+		relatives.put(type, rels);
+		rels.add(relative);*/
+		relatives.add(relative);
 	}
 	
 	/**
@@ -120,22 +123,13 @@ public class ReqAction {
 		if(modality != "NONE")
 			result += ";modality:" + modality;
 		
-		if (! times.isEmpty()){
-			result += ";@times:t:[";
-			for (ReqClause time: times){
-				time.setSpecifs("t", 0);
-				result += time;
+		if (! relatives.isEmpty()){
+			result += ";@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 0);
+				result += relative;
 			}
-			result += "t:]";
-		}
-		
-		if (! places.isEmpty()){
-			result += ";@places:p:[";
-			for (ReqClause place: places){
-				place.setSpecifs("p", 0);
-				result += place;
-			}
-			result += "p:]";
+			result += "rel:]";
 		}
 		
 		if(! subjects.isEmpty()) {
@@ -169,22 +163,13 @@ public class ReqAction {
 		if(modality != "NONE")
 			result += ";\n\t\tmodality: " + modality;
 		
-		if (! times.isEmpty()){
-			result += ";\n\t\t@times: t:[";
-			for (ReqClause time: times){
-				time.setSpecifs("t", 3);
-				result += "\n" + time.structuredString();
+		if (! relatives.isEmpty()){
+			result += ";\n\t\t@rel:[";
+			for (ReqClause relative: relatives){
+				relative.setSpecifs("rel", 3);
+				result += "\n" + relative.structuredString();
 			}
-			result += "\n\t\tt:]";
-		}
-		
-		if (! places.isEmpty()){
-			result += ";\n\t\t@places: p:[";
-			for (ReqClause place: places){
-				place.setSpecifs("p", 3);
-				result += "\n" + place.structuredString();
-			}
-			result += "\n\t\tp:]";
+			result += "\n\t\trel:]";
 		}
 		
 		if(! subjects.isEmpty()) {

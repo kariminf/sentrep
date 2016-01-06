@@ -9,12 +9,12 @@ public class ReqClause {
 
 	private String label = "";
 	private String indent = "";
-	private int synSet = 0;
+	private String type = "";
 	
 	private ReqDisjunction predicates = new ReqDisjunction();
 	
-	public ReqClause (int synSet){
-		this.synSet = synSet;
+	public ReqClause (String type){
+		this.type = type;
 	}
 	
 	public void setSpecifs(String label, int indentLevel){
@@ -32,12 +32,16 @@ public class ReqClause {
 		return predicates.getAll();
 	}
 	
+	public String getType(){
+		return type;
+	}
+	
 	
 	public String structuredString() {
 		
 		String result = indent + label + ":{\n";
 
-		result += indent + "\tsynSet: " + synSet ;
+		result += indent + "\ttype: " + type ;
 		
 		if(! predicates.isEmpty()){
 			result += ";\n" + indent + "\tpredicates: " + predicates;
@@ -55,7 +59,7 @@ public class ReqClause {
 	public String toString() {
 		String result = label + ":{";
 
-		result += "synSet:" + synSet ;
+		result += "type:" + type ;
 		
 		if(! predicates.isEmpty()){
 			result += ";" + "predicates:" + predicates.toString().replace(" ", "");
