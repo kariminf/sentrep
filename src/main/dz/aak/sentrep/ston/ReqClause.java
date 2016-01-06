@@ -44,7 +44,7 @@ public class ReqClause {
 		result += indent + "\ttype: " + type ;
 		
 		if(! predicates.isEmpty()){
-			result += ";\n" + indent + "\tpredicates: " + predicates;
+			result += ";\n" + indent + "\tref: " + predicates;
 		}
 		
 		result += "\n" + indent + label + ":}\n";
@@ -62,7 +62,7 @@ public class ReqClause {
 		result += "type:" + type ;
 		
 		if(! predicates.isEmpty()){
-			result += ";" + "predicates:" + predicates.toString().replace(" ", "");
+			result += ";ref:" + predicates.toString().replace(" ", "");
 		}
 		
 		result += label + ":}";
