@@ -23,7 +23,7 @@ public abstract class Parser {
 	
 	// This is the regular expression used to separate main blocks
 	private static final Pattern CONT = 
-			Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@sent\\:\\[(.+)sent\\:\\]");
+			Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@st\\:\\[(.+)st\\:\\]");
 	
 	//This is true when the parsing is a success
 	private boolean success = false;
@@ -54,8 +54,10 @@ public abstract class Parser {
 		
 		String roles =  m.group(1);
 		String actions =  m.group(2);
+		String sentences = m.group(3);
 		if (! parseRoles(roles)) return;
 		if (! parseActions(actions)) return;
+		if (! parseSentences(sentences)) return;
 		
 		success = true;
 		
@@ -108,6 +110,84 @@ public abstract class Parser {
 				return false;
 			
         }
+		
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	private boolean parseSentences(String description){
+		int idx;
+
+		while ((idx = description.indexOf("st:}")) >= 0) {
+			String sentence =  description.substring(4, idx);
+			description = description.substring(idx+4);
+			if (! parseSentence(sentence))
+				return false;
+        }
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	private boolean parseSentence(String description){
+		
+		String type = "";
+		String actions = "";
+		String actions2 = "";
+		
+		for (String desc : description.split(";")){
+			
+			//desc = desc.trim();
+			
+			if(desc.startsWith("type:")){
+				type = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("act:")){
+				actions = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("act2:")){
+				actions2 = desc.split(":")[1];
+			}
+		}
+		
+		beginSentence(type);
+		
+		
+		if(actions.length() > 2){
+			if (!(actions.startsWith("[") && actions.endsWith("]"))){
+				return false;
+			}
+			
+			actions = actions.substring(1, actions.length()-1);
+			beginActions(true);
+			parseComponents(actions);
+			endActions();
+		}
+		
+		if(type.matches("condition")){
+			if(actions2.length() > 2){
+				if (!(actions2.startsWith("[") && actions2.endsWith("]"))){
+					return false;
+				}
+				actions2 = actions2.substring(1, actions2.length()-1);
+				beginActions(false);
+				parseComponents(actions2);
+				endActions();
+			}
+		}
+		
+		endSentence();
 		
 		return true;
 	}
@@ -239,7 +319,7 @@ public abstract class Parser {
 			subjects = subjects.substring(1, subjects.length()-1);
 			addSubjects();
 			parseComponents(subjects);
-
+			endSubjects();
 		}
 		
 		//Process objects
@@ -249,13 +329,15 @@ public abstract class Parser {
 			objects = objects.substring(1, objects.length()-1);
 			addObjects();
 			parseComponents(objects);
-
+			endObjects();
 		}
 		
 		// Process the relative clause
 		if (relative.length()>0){
 			if (! parseRelatives(relative)) return false;
 		}
+		
+		endAction();
 		
 		return true;
 	}
@@ -499,10 +581,16 @@ public abstract class Parser {
 	 */
 	protected abstract void addSubjects();
 	
+	protected abstract void endSubjects();
+	
 	/**
 	 * It is called when the parser finds objects
 	 */
 	protected abstract void addObjects();
+	
+	protected abstract void endObjects();
+	
+	protected abstract void endAction();
 	
 	//Role
 	/**
@@ -549,7 +637,15 @@ public abstract class Parser {
 	//can be used for subjects, objects, places or times
 	protected abstract void addConjunctions(Set<String> IDs);
 	
+	
 	//Parse
 	protected abstract void parseSuccess();
+	
+	
+	protected abstract void beginSentence(String type);
+	protected abstract void endSentence();
+	
+	protected abstract void beginActions(boolean mainClause);
+	protected abstract void endActions();
 
 }

@@ -1,0 +1,28 @@
+@r: [
+	r:{
+		id: mother;
+		synSet: 10332385;
+	r:}
+	r:{
+		id: home;
+		synSet: 3259505;
+	r:}
+r:]
+
+@act: [
+	act:{
+		id: stay;
+		synSet: 117985;
+		subjects: [mother];
+		@rel:[
+			rel:{
+				type: P_AT;
+				ref: [home];
+			rel:}
+		rel:]
+	act:}
+act:]
+
+@sent: [
+	something
+sent:]

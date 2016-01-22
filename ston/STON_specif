@@ -42,3 +42,11 @@ r:]
 		...
 	act:}
 act:]
+
+@st:[
+	st:{
+		type: <affirmation/exclamation/question/condition>;
+		act: [<act_id>,...|...];
+		act2: [<act_id>,...|...];
+	st:}
+st:]

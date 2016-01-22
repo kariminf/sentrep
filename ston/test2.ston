@@ -1,4 +1,4 @@
-@roles: r:[
+@r:[
 	r:{
 		id: happy_mother;
 		synSet: 10332385;
@@ -36,7 +36,7 @@
 	r:}
 r:]
 
-@actions: act:[
+@act:[
 	act:{
 		id: eat;
 		synSet: 1168468;

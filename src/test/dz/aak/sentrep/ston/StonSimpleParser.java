@@ -126,5 +126,47 @@ public class StonSimpleParser extends Parser {
 		} 
 	}
 
+	@Override
+	protected void endAction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endSubjects() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endObjects() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void beginSentence(String type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endSentence() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void beginActions(boolean mainClause) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
