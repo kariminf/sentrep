@@ -16,6 +16,7 @@ public abstract class Parser {
 	private static String BL = "[\\t \\n\\r]+";
 	
 	// Adjective
+	//TODO modify to [aA][dD][jJ]
 	private static final String ADJblock = "@adj\\:\\[(.*)adj\\:\\];?";
 	
 	// Relative clauses
@@ -416,7 +417,7 @@ public abstract class Parser {
 		return true;
 	}
 	
-
+	//TODO add named entity
 	private boolean parseRole(String description){
 		
 		String id = "";

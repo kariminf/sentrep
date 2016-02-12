@@ -1,0 +1,34 @@
+@r: [
+	r:{
+		id: child;
+		synSet: 9917593;
+		@adj: [
+			adj:{
+				synSet: 1919931
+			adj:}
+			adj:{
+				synSet: 1391351
+			adj:}
+		adj:]
+	r:}
+	r:{
+		id: food;
+		synSet: 21265
+	r:}
+r:]
+
+@act: [
+	act:{
+		id: eat;
+		synSet: 1168468;
+		subjects: [child];
+		objects: [food]
+	act:}
+act:]
+
+@st: [
+	st:{
+		type: affirmation;
+		act:[eat];
+	st:}
+st:]

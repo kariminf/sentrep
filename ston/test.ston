@@ -8,10 +8,6 @@
 		synSet: 10081456;
 	r:}
 	r:{
-		id: truth;
-		synSet: 5819453
-	r:}
-	r:{
 		id: food;
 		synSet: 21265
 	r:}
@@ -42,12 +38,6 @@ r:]
 
 @act: [
 	act:{
-		id: is;
-		synSet: 2604760;
-		subjects: [eat, was];
-		objects: [truth]
-	act:}
-	act:{
 		id: eat;
 		tense: PAST;
 		synSet: 1168468;
@@ -64,5 +54,12 @@ r:]
 act:]
 
 @st: [
-	something
+	st:{
+		type: affirmation;
+		act:[eat];
+	st:}
+	st:{
+		type: affirmation;
+		act:[was];
+	st:}
 st:]

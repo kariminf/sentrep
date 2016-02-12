@@ -156,5 +156,29 @@ public class ReqParser extends Parser {
 		
 	}
 
+	@Override
+	protected void beginSentence(String type) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endSentence() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void beginActions(boolean mainClause) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endActions() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

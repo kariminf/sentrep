@@ -42,5 +42,8 @@ r:]
 act:]
 
 @st: [
-	something
+	st:{
+	type: affirmation;
+	act:[was]
+	st:}
 st:]

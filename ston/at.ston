@@ -23,6 +23,9 @@ r:]
 	act:}
 act:]
 
-@sent: [
-	something
-sent:]
+@st: [
+	st:{
+		type: affirmation;
+		act: [stay];
+	st:}
+st:]

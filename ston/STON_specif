@@ -2,6 +2,9 @@
 	r:{
 		id: <role_name>;
 		synset: <synSet_number>;
+		name: <named entity>;
+		quantity: <number>;
+		def: <YES/NO/NONE>
 		@adj:[
 			adj:{
 				synset: <synSet_number>;
@@ -10,8 +13,7 @@
 		adj:];
 		@rel:[
 			rel:{
-				type: <SUBJECT/OBJECT/POSSESSIVE/PLACE/TIME/REASON
-					DESTINATION/ACCOMPANY/INNER>
+				type: <SUBJECT/OBJECT/POSSESSIVE/REASON/...>
 				ref: [<id>,...|...];
 			rel:}
 		rel:]
@@ -45,7 +47,7 @@ act:]
 
 @st:[
 	st:{
-		type: <affirmation/exclamation/question/condition>;
+		type: <aff/excl/ques/cond>;
 		act: [<act_id>,...|...];
 		act2: [<act_id>,...|...];
 	st:}
