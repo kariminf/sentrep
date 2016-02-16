@@ -505,7 +505,7 @@ public abstract class Parser {
 		int synSet = Integer.parseInt(synSetStr);
 		
 		// Add the role 
-		addRole(id, synSet, name, def);
+		addRole(id, synSet, name, def, quantity);
 		
 		//Process adjectives
 		if (adjectives.length() > 0){
@@ -624,8 +624,9 @@ public abstract class Parser {
 	 * @param synSet wordnet synset of the Noun 
 	 * @param name proper names if existed, if not the string is empty
 	 * @param def defined or not  
+	 * @param quantity the quantity of the role. Eg. 4 apples
 	 */
-	protected abstract void addRole(String id, int synSet, String name, boolean def);
+	protected abstract void addRole(String id, int synSet, String name, boolean def, int quantity);
 	
 	/**
 	 * It is called when the role player has an adjective
