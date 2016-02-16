@@ -422,6 +422,9 @@ public abstract class Parser {
 		
 		String id = "";
 		String synSetStr = "";
+		String name = "";
+		int quantity = 1;
+		boolean def = false;
 		String adjectives = "";
 		String relatives = "";
 		
@@ -462,6 +465,27 @@ public abstract class Parser {
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
+			
+			if(desc.startsWith("name:")){
+				name = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("quantity:")){
+				String quantityStr = desc.split(":")[1];
+				if (quantityStr.matches("\\d+")){
+					quantity = Integer.parseInt(quantityStr);
+				}
+				continue;
+			}
+			
+			if(desc.startsWith("def:")){
+				String defStr = desc.split(":")[1];
+				if (defStr.matches("y")){
+					def = true;
+				}
+				continue;
+			}
 		}
 		
 		//A role must have an ID
@@ -481,7 +505,7 @@ public abstract class Parser {
 		int synSet = Integer.parseInt(synSetStr);
 		
 		// Add the role 
-		addRole(id, synSet);
+		addRole(id, synSet, name, def);
 		
 		//Process adjectives
 		if (adjectives.length() > 0){
@@ -598,8 +622,10 @@ public abstract class Parser {
 	 * It is called when the parser finds a role player
 	 * @param id each role has a unique ID
 	 * @param synSet wordnet synset of the Noun 
+	 * @param name proper names if existed, if not the string is empty
+	 * @param def defined or not  
 	 */
-	protected abstract void addRole(String id, int synSet);
+	protected abstract void addRole(String id, int synSet, String name, boolean def);
 	
 	/**
 	 * It is called when the role player has an adjective

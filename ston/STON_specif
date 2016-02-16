@@ -4,7 +4,7 @@
 		synset: <synSet_number>;
 		name: <named entity>;
 		quantity: <number>;
-		def: <YES/NO/NONE>
+		def: <Y/N>;
 		@adj:[
 			adj:{
 				synset: <synSet_number>;
@@ -13,10 +13,10 @@
 		adj:];
 		@rel:[
 			rel:{
-				type: <SUBJECT/OBJECT/POSSESSIVE/REASON/...>
+				type: <SUBJECT/OBJECT/POSSESSIVE/REASON/...>;
 				ref: [<id>,...|...];
 			rel:}
-		rel:]
+		rel:];
 	r:}
 	r:{
 		...
@@ -36,9 +36,17 @@ r:]
 				type: <>
 				ref: [<id>,...|...];
 			rel:}
-		rel:]
+		rel:];
+		@cmp:[
+			cmp:{
+				type: <less, more, least, most, equal>;
+				adj: [<synSet_number>, ...];
+				ref: [<id>,...|...];
+			cmp:}
+		cmp:];
 		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
 		objects: [<id>,...|...];
+		adverbs: [<synSet_number>, ...];
 	act:}
 	act:{
 		...
