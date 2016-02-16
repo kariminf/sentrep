@@ -505,8 +505,9 @@ public abstract class Parser {
 		int synSet = Integer.parseInt(synSetStr);
 		
 		// Add the role 
-		addRole(id, synSet, name, def, quantity);
-		
+		addRole(id, synSet);
+		addRoleSpecif(name, def, quantity);
+
 		//Process adjectives
 		if (adjectives.length() > 0){
 			if (! parseAdjectives(adjectives)) return false;
@@ -516,6 +517,8 @@ public abstract class Parser {
 		if (relatives.length() > 0){
 			if (! parseRelatives(relatives)) return false;
 		}
+		
+		//Process 
 		
 		return true;
 		
