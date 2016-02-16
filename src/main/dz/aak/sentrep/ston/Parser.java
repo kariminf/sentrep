@@ -622,12 +622,16 @@ public abstract class Parser {
 	 * It is called when the parser finds a role player
 	 * @param id each role has a unique ID
 	 * @param synSet wordnet synset of the Noun 
+	 */
+	protected abstract void addRole(String id, int synSet);
+	
+	/**
+	 * It is called after {@link addRole}
 	 * @param name proper names if existed, if not the string is empty
 	 * @param def defined or not  
 	 * @param quantity the quantity of the role. Eg. 4 apples
 	 */
-	protected abstract void addRole(String id, int synSet, String name, boolean def, int quantity);
-	
+	protected abstract void addRoleSpecif(String name, boolean def, int quantity);
 	/**
 	 * It is called when the role player has an adjective
 	 * @param synSet wordnet synset of the adjective which modify the noun in the role
