@@ -40,7 +40,7 @@ r:]
 		@cmp:[
 			cmp:{
 				type: <less, more, least, most, equal>;
-				adj: [<synSet_number>, ...];
+				adjs: [<synSet_number>, ...];
 				ref: [<id>,...|...];
 			cmp:}
 		cmp:];

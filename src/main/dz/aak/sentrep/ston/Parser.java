@@ -22,6 +22,9 @@ public abstract class Parser {
 	// Relative clauses
 	private static final String RELblock = "@rel\\:\\[(.*)rel\\:\\];?";
 	
+	// Comparison block
+	private static final String CMPblock = "@cmp\\:\\[(.*)cmp\\:\\];?";
+	
 	// This is the regular expression used to separate main blocks
 	private static final Pattern CONT = 
 			Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@st\\:\\[(.+)st\\:\\]");
@@ -211,15 +214,28 @@ public abstract class Parser {
 		String objects = "";
 		String adverbs = "";
 		
-		String relative = "";
+		String relatives = "";
+		String comparison = "";
 		
 		if (description.contains("@rel")){
 			
-			Pattern timesPattern = 
+			Pattern relPattern = 
 				Pattern.compile("(.*)" + RELblock + "(.*)");
-			Matcher m = timesPattern.matcher(description);
+			Matcher m = relPattern.matcher(description);
 			if (m.find()){
-				relative = m.group(2);
+				relatives = m.group(2);
+				//System.out.println("time found");
+				description = m.group(1) + m.group(3);		
+			}
+		}
+		
+		if (description.contains("@cmp")){
+			
+			Pattern cmpPattern = 
+				Pattern.compile("(.*)" + CMPblock + "(.*)");
+			Matcher m = cmpPattern.matcher(description);
+			if (m.find()){
+				comparison = m.group(2);
 				//System.out.println("time found");
 				description = m.group(1) + m.group(3);		
 			}
@@ -355,8 +371,13 @@ public abstract class Parser {
 		}
 		
 		// Process the relative clause
-		if (relative.length()>0){
-			if (! parseRelatives(relative)) return false;
+		if (comparison.length()>0){
+			if (! parseComparisons(comparison)) return false;
+		}
+		
+		// Process the relative clause
+		if (relatives.length()>0){
+			if (! parseRelatives(relatives)) return false;
 		}
 		
 		endAction();
@@ -438,7 +459,7 @@ public abstract class Parser {
 		return true;
 	}
 	
-	//TODO add named entity
+	
 	private boolean parseRole(String description){
 		
 		String id = "";
@@ -562,6 +583,18 @@ public abstract class Parser {
 		return true;
 	}
 	
+	private boolean parseComparisons(String description){
+		int idx;
+		while ((idx = description.indexOf("cmp:}")) >= 0) {
+			String cmp =  description.substring(5, idx);
+			description = description.substring(idx+5);
+			if (! parseComparison(cmp))
+				return false;
+        }
+		
+		return true;
+	}
+	
 
 	private boolean parseRelative(String description){
 		String type= "";
@@ -588,6 +621,64 @@ public abstract class Parser {
 		}
 		
 		addRelative(type);
+		
+		//Process objects
+		if(refs.length() > 2){
+			if (!(refs.startsWith("[") && refs.endsWith("]")))
+				return false;
+			refs = refs.substring(1, refs.length()-1);
+			parseComponents(refs);
+
+		}
+		
+		return true;
+	}
+	
+	private boolean parseComparison(String description){
+		
+		String type= "";
+		String refs = "";
+		String adjs = "";
+		
+		for (String desc : description.split(";")){
+			
+			if(desc.startsWith("type:")){
+				type = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("ref:")){
+				refs = desc.split(":")[1];
+				continue;
+			}
+			
+			if(desc.startsWith("adjs:")){
+				adjs = desc.split(":")[1];
+				continue;
+			}
+			
+		}
+		
+		//If there is no type
+		if (type.length() < 1){
+			relativeFail();
+			success = false;
+			return false;
+		}
+		
+		HashSet<Integer> adjSynSets = new HashSet<Integer>();
+		if(adjs.length() > 2){
+			if (!(adjs.startsWith("[") && adjs.endsWith("]")))
+				return false;
+			adjs = adjs.substring(1, adjs.length()-1);
+			for (String AdvsynSetStr: adjs.split(",")){
+				
+				int AdjsynSet = Integer.parseInt(AdvsynSetStr);
+				adjSynSets.add(AdjsynSet);
+			}
+		}
+		
+		addComparison(type, adjSynSets);
 		
 		//Process objects
 		if(refs.length() > 2){
@@ -691,6 +782,7 @@ public abstract class Parser {
 	 */
 	protected abstract void addRelative(String type);
 	
+	protected abstract void addComparison(String type, Set<Integer> adjSynSets);
 	
 	//can be used for subjects, objects, places or times
 	protected abstract void addConjunctions(Set<String> IDs);
