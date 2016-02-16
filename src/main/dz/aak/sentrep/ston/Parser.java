@@ -209,6 +209,7 @@ public abstract class Parser {
 		String modality = "none";
 		String subjects = "";
 		String objects = "";
+		String adverbs = "";
 		
 		String relative = "";
 		
@@ -277,6 +278,11 @@ public abstract class Parser {
 				objects = desc.split(":")[1];
 				continue;
 			}
+			
+			if(desc.startsWith("adverbs:")){
+				adverbs = desc.split(":")[1];
+				continue;
+			}
 		}
 		
 		//The action must have an ID
@@ -331,6 +337,21 @@ public abstract class Parser {
 			addObjects();
 			parseComponents(objects);
 			endObjects();
+		}
+		
+		//Process adverbs
+		if(adverbs.length() > 2){
+			if (!(adverbs.startsWith("[") && adverbs.endsWith("]")))
+				return false;
+			adverbs = adverbs.substring(1, adverbs.length()-1);
+			HashSet<Integer> advSynSets = new HashSet<Integer>();
+			for (String AdvsynSetStr: adverbs.split(",")){
+				
+				int AdvsynSet = Integer.parseInt(AdvsynSetStr);
+				advSynSets.add(AdvsynSet);
+			}
+			
+			addActionAdverbs(advSynSets);
 		}
 		
 		// Process the relative clause
@@ -610,6 +631,8 @@ public abstract class Parser {
 	protected abstract void addSubjects();
 	
 	protected abstract void endSubjects();
+	
+	protected abstract void addActionAdverbs(Set<Integer> advSynSets);
 	
 	/**
 	 * It is called when the parser finds objects
