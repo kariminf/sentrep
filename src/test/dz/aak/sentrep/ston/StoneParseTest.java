@@ -22,7 +22,8 @@ public class StoneParseTest {
 		System.out.println(parser.parsed());
 		System.out.println(parser.getPlayers().size());
 		
-		ReqCreator rq = new ReqCreator(parser.getPlayers(), parser.getActions(), parser.getSentences);
+		ReqCreator rq = 
+				new ReqCreator(parser.getPlayers(), parser.getActions(), parser.getSentences());
 		
 		
 		String specif2 = rq.getStructuredRequest();

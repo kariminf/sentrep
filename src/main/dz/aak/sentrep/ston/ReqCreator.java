@@ -140,31 +140,37 @@ public class ReqCreator {
 	
 	public String getStructuredRequest(){
 		
-		String result = "@roles:";
+		//////////////////////////
 		
-		if(players.isEmpty()){
-			result += " null;\n";
-		} else {
-			result += " r:[\n";
+		String result = "@r:[\n";
+		{
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
-				
-			result += "r:]\n";
 		}
+		result += "r:]\n";
 		
 		//////////////////////////
-		if(! actions.isEmpty()){
-			result += "\n@actions: act:[\n";
-			
+		
+		result += "@act:[\n";
+		{
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
-				
-			result += "act:]\n";
-		}		
+		}
+		result += "act:]\n";
+		
+		//////////////////////////
+		
+		result += "@st:[\n";
+		{	
+			for (ReqSentence sentence: sentences){
+				result += sentence.structuredString() + "\n";
+			}
+		}
+		result += "st:]";
 		//////////////////////////
 		
 		return result;
@@ -172,34 +178,37 @@ public class ReqCreator {
 	
 	public String getRequest(){
 		
-		String result = "@roles:";
+		//////////////////////////
 		
-		if(players.isEmpty()){
-			result += "null;";
-		} else {
-			result += "r:[";
+		String result = "@r:[";
+		{
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
-				
-			result += "r:]";
-		}
+		}	
+		result += "r:]";
 		
 		//////////////////////////
-		if(! actions.isEmpty()){
-			result += "@actions:act:[";
-			
+		
+		result += "@act:[";
+		{	
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
-				
-			result += "act:]";
-		}		
+		}
+		result += "act:]";
+		
 		//////////////////////////
-		
-		
+		result += "@st:[";
+		{	
+			for (ReqSentence sentence: sentences){
+				result += sentence;
+			}
+		}
+		result += "st:]";
+		//////////////////////////
 		
 		return result;
 	}

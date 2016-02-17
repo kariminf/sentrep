@@ -1,5 +1,6 @@
 package dz.aak.sentrep.ston;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -13,7 +14,7 @@ public class ReqParser extends Parser {
 	
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
-	
+	private ArrayList<ReqSentence> sentences = new ArrayList<ReqSentence>();
 	
 	private ReqDisjunction currentDisjunction;
 	
@@ -34,6 +35,9 @@ public class ReqParser extends Parser {
 		return new HashMap<String, ReqAction>(actions);
 	}
 
+	public ArrayList<ReqSentence> getSentences(){
+		return new ArrayList<ReqSentence>(sentences);
+	}
 
 	// Implementing the methods
 
