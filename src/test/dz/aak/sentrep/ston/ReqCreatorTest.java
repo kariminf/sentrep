@@ -45,6 +45,9 @@ public class ReqCreatorTest {
 		rc.addRelative("t_time", "ate");
 		rc.addRelativeConjunctions(new String[]{"noon"});
 		
+		rc.addSentence("AFF");
+		rc.addSentMainActConjunctions(true, new String[]{"ate"});
+		
 		
 		System.out.println(rc.getStructuredRequest());
 

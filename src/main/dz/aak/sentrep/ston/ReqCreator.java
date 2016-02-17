@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import dz.aak.sentrep.ston.ReqSentence.SentType;
+
 public class ReqCreator {
 
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
@@ -14,7 +16,8 @@ public class ReqCreator {
 	
 	//private ReqDisjunction subjects = new ReqDisjunction();
 	//private ReqDisjunction objects = new ReqDisjunction();
-	ReqClause currentRelative;
+	private ReqClause currentRelative;
+	private ReqSentence currentSentence;
 	
 	public ReqCreator() {
 	}
@@ -50,10 +53,47 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addSentence(ReqSentence sentence){
+	//Add new Sentence
+	public boolean addSentence(String type){
+		
+		SentType stype;
+		try{
+			stype = SentType.valueOf(type.toUpperCase());
+		} catch (IllegalArgumentException e){
+			return false;
+		}
+		
+		
+		ReqSentence sentence = new ReqSentence(stype);
 		sentences.add(sentence);
+		currentSentence = sentence;
 		return true;
 	}
+	
+	public boolean addSentActionConjunctions(boolean mainAct, Set<String> actConjunctions){
+		
+		if (currentSentence == null)
+			return false;
+			
+		if (mainAct){
+			currentSentence.addMainActions(actConjunctions);
+			return true;
+		}
+		currentSentence.addSecActions(actConjunctions);
+		
+		return true;
+	}
+	
+	public boolean addSentMainActConjunctions(boolean mainAct, String... actConjunctions){
+		if (currentSentence == null)
+			return false;
+		HashSet<String> actionConjunctions = new HashSet<String>();
+		for (String rel: actConjunctions)
+			actionConjunctions.add(rel);
+		return addSentActionConjunctions(mainAct, actionConjunctions);
+	}
+	
+	
 	
 	/*private boolean verifyExistance (String actionId, String roleId){
 		actionId = actionId.trim();
@@ -129,7 +169,7 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean setQuantity(String playerId, String quantity){
+	public boolean setQuantity(String playerId, int quantity){
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
 		
