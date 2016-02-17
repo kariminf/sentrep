@@ -43,7 +43,7 @@ act:]
 
 @st: [
 	st:{
-	type: affirmation;
+	type: aff;
 	act:[was]
 	st:}
 st:]

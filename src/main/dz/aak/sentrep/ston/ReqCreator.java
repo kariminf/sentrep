@@ -10,6 +10,7 @@ public class ReqCreator {
 
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
+	private ArrayList<ReqSentence> sentences = new ArrayList<ReqSentence>();
 	
 	//private ReqDisjunction subjects = new ReqDisjunction();
 	//private ReqDisjunction objects = new ReqDisjunction();
@@ -18,9 +19,12 @@ public class ReqCreator {
 	public ReqCreator() {
 	}
 	
-	public ReqCreator(HashMap<String, ReqRolePlayer> players, HashMap<String, ReqAction> actions){
+	public ReqCreator(HashMap<String, ReqRolePlayer> players, 
+			HashMap<String, ReqAction> actions, ArrayList<ReqSentence> sentences){
+		
 		this.players = new HashMap<String, ReqRolePlayer>(players);
 		this.actions = new HashMap<String, ReqAction>(actions);
+		this.sentences = new ArrayList<ReqSentence>(sentences);
 	}
 	
 	
@@ -43,6 +47,11 @@ public class ReqCreator {
 			return false;
 		}
 		actions.put(id, action);
+		return true;
+	}
+	
+	public boolean addSentence(ReqSentence sentence){
+		sentences.add(sentence);
 		return true;
 	}
 	
@@ -189,6 +198,8 @@ public class ReqCreator {
 			result += "act:]";
 		}		
 		//////////////////////////
+		
+		
 		
 		return result;
 	}
