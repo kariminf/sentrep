@@ -31,6 +31,9 @@ r:]
 		progressive: <YES/NO>;
 		negated: <YES|NO>;
 		modality: <CAN|MAY|MUST|NONE>;
+		adverbs: [<synSet_number>, ...];
+		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
+		objects: [<id>,...|...];
 		@rel:[//adpositional phrases (Prepositional), spatial and temporal relations
 			rel:{
 				type: <>
@@ -44,9 +47,6 @@ r:]
 				ref: [<id>,...|...];
 			cmp:}
 		cmp:];
-		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
-		objects: [<id>,...|...];
-		adverbs: [<synSet_number>, ...];
 	act:}
 	act:{
 		...

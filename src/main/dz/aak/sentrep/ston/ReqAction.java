@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 public class ReqAction {
-
+	
+	private static Set<String> ids = new HashSet<String>();
+	
 	private int verbSynSet;
 	private String id;
 	private ReqDisjunction subjects = new ReqDisjunction();
 	private ReqDisjunction objects = new ReqDisjunction();
-	private static Set<String> ids = new HashSet<String>();
+	private Set<Integer> advSynSets = new HashSet<Integer>();
 	
 	private String tense = "PRESENT";
 	private String modality = "NONE";
@@ -66,6 +68,13 @@ public class ReqAction {
 	 */
 	public String getTense() {
 		return tense;
+	}
+	
+	/**
+	 * @param advSynSets the advSynSets to set
+	 */
+	public void setAdvSynSets(Set<Integer> advSynSets) {
+		this.advSynSets.addAll(advSynSets);
 	}
 
 	/**
@@ -123,6 +132,9 @@ public class ReqAction {
 		if(modality != "NONE")
 			result += ";modality:" + modality;
 		
+		if ( ! advSynSets.isEmpty())
+			result += ";adverbs: " + advSynSets.toString().replace(" ", "");
+
 		if(! subjects.isEmpty()) {
 			result += ";subjects:";
 			result += subjects.toString().replace(" ", "");
@@ -162,6 +174,9 @@ public class ReqAction {
 			result += ";\n\t\tnegated: YES";
 		if(modality != "NONE")
 			result += ";\n\t\tmodality: " + modality;
+		
+		if ( ! advSynSets.isEmpty())
+			result += ";\n\t\tadverbs: " + advSynSets;
 		
 		if(! subjects.isEmpty()) {
 			result += ";\n\t\tsubjects: ";
