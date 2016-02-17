@@ -43,7 +43,7 @@ act:]
 
 @st: [
 	st:{
-	type: aff;
-	act:[was]
+		type: aff;
+		act:[was]
 	st:}
 st:]

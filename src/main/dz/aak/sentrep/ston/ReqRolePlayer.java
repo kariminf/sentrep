@@ -9,12 +9,12 @@ import java.util.Set;
 
 public class ReqRolePlayer {
 	private static Set<String> ids = new HashSet<String>();
-	private int nounSynSet;
 	private String id;
+	private int nounSynSet;
+	private String properName = "";
+	private int quantity = 1;
+	private boolean defined = false;
 	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
-	private String quantity = null;
-	private List<String> possessives = new ArrayList<String>();
-	
 	List<ReqClause> relatives = new ArrayList<ReqClause>();
 	
 	public void addRelative(ReqClause relative){
@@ -40,17 +40,10 @@ public class ReqRolePlayer {
 	/**
 	 * @return the quantity
 	 */
-	public String getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-
-	/**
-	 * @return the possessives
-	 */
-	public List<String> getPossessives() {
-		return possessives;
-	}
 	
 	private ReqRolePlayer(String id, int nounSynSet) {
 		this.nounSynSet = nounSynSet;
@@ -76,7 +69,7 @@ public class ReqRolePlayer {
 	}
 	
 	
-	public void setQuantity(String quantity){
+	public void setQuantity(int quantity){
 		this.quantity = quantity;
 	}
 
@@ -90,8 +83,14 @@ public class ReqRolePlayer {
 		result += "id:" + id;
 		result += ";synSet:" + nounSynSet;
 		
-		if (quantity != null)
+		if (properName.length() > 0)
+			result += ";name:" + properName;
+		
+		if (quantity != 1)
 			result += ";quantity:" + quantity;
+		
+		if (defined)
+			result += ";def:Y";
 		
 		if(! adjectives.isEmpty()) {
 			result += ";adjectives:[";
@@ -127,8 +126,14 @@ public class ReqRolePlayer {
 		result += "\n\t\tid: " + id;
 		result += ";\n\t\tsynSet: " + nounSynSet;
 		
-		if (quantity != null)
+		if (properName.length() > 0)
+			result += ";\n\t\tname:" + properName;
+		
+		if (quantity != 1)
 			result += ";\n\t\tquantity: " + quantity;
+		
+		if (defined)
+			result += ";\n\t\tdef:Y";
 		
 		if(! adjectives.isEmpty()) {
 			result += ";\n\t\tadjectives: [\n";
@@ -158,13 +163,5 @@ public class ReqRolePlayer {
 		return result;
 	}
 
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

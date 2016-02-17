@@ -13,7 +13,7 @@
 		adj:];
 		@rel:[
 			rel:{
-				type: <SUBJECT/OBJECT/POSSESSIVE/REASON/...>;
+				type: <SUBJ/OBJ/POSS/REAS/...>;
 				ref: [<id>,...|...];
 			rel:}
 		rel:];
