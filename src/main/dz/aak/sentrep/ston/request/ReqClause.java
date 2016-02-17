@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston;
+package dz.aak.sentrep.ston.request;
 
 import java.util.Set;
 

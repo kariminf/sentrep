@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import dz.aak.sentrep.ston.ReqCreator;
+import dz.aak.sentrep.ston.request.ReqCreator;
+import dz.aak.sentrep.ston.request.ReqParser;
 
 public class StoneParseTest {
 

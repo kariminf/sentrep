@@ -1,16 +1,10 @@
-package dz.aak.sentrep.ston;
+package dz.aak.sentrep.ston.request;
 
 import java.util.Set;
 
+import dz.aak.sentrep.ston.SentType;
+
 public class ReqSentence {
-	
-	
-	public static enum SentType {
-		AFF, //Affirmative
-		EXCL,
-		QUES,
-		COND
-	}
 	
 	private SentType type = SentType.AFF;
 	private ReqDisjunction mainActions = new ReqDisjunction();
