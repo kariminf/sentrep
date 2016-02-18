@@ -516,7 +516,7 @@ public abstract class Parser {
 		String id = "";
 		String synSetStr = "";
 		String name = "";
-		int quantity = 1;
+		String quantity = "";
 		boolean def = false;
 		String adjectives = "";
 		String relatives = "";
@@ -565,10 +565,7 @@ public abstract class Parser {
 			}
 			
 			if(desc.startsWith("quantity:")){
-				String quantityStr = desc.split(":")[1];
-				if (quantityStr.matches("\\d+")){
-					quantity = Integer.parseInt(quantityStr);
-				}
+				quantity = desc.split(":")[1];
 				continue;
 			}
 			
@@ -798,9 +795,10 @@ public abstract class Parser {
 	 * It is called after {@link addRole}
 	 * @param name proper names if existed, if not the string is empty
 	 * @param def defined or not  
-	 * @param quantity the quantity of the role. Eg. 4 apples
+	 * @param quantity the quantity of the role. Eg. 4 apples, it can take the term pl
+	 * for plural
 	 */
-	protected abstract void addRoleSpecif(String name, boolean def, int quantity);
+	protected abstract void addRoleSpecif(String name, boolean def, String quantity);
 	/**
 	 * It is called when the role player has an adjective
 	 * @param synSet wordnet synset of the adjective which modify the noun in the role

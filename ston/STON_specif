@@ -3,7 +3,7 @@
 		id: <role_name>;
 		synset: <synSet_number>;
 		name: <named entity>;
-		quantity: <number>;
+		quantity: <number/pl>;
 		def: <Y/N>;
 		@adj:[
 			adj:{

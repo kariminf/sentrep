@@ -187,19 +187,25 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addActionAdverbs(Set<Integer> advSynSets) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addRoleSpecif(String name, boolean def, int quantity) {
+	protected void addRoleSpecif(String name, boolean def, String quantity) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void addComparison(String type, Set<Integer> adjSynSets) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void addActionAdverb(int advSynSet, Set<Integer> advSynSets) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void adverbFail() {
 		// TODO Auto-generated method stub
 		
 	}
