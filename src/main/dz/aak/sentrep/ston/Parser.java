@@ -19,6 +19,8 @@ public abstract class Parser {
 	//TODO modify to [aA][dD][jJ]
 	private static final String ADJblock = "@adj\\:\\[(.*)adj\\:\\];?";
 	
+	private static final String ADVblock = "@adv\\:\\[(.*)adv\\:\\];?";
+	
 	// Relative clauses
 	private static final String RELblock = "@rel\\:\\[(.*)rel\\:\\];?";
 	
@@ -217,6 +219,18 @@ public abstract class Parser {
 		String relatives = "";
 		String comparison = "";
 		
+		if (description.contains("@adv")){
+			
+			Pattern adpPattern = 
+				Pattern.compile("(.*)" + ADVblock + "(.*)");
+			Matcher m = adpPattern.matcher(description);
+			if (m.find()){
+				adverbs = m.group(2);
+				//System.out.println("time found");
+				description = m.group(1) + m.group(3);		
+			}
+		}
+
 		if (description.contains("@rel")){
 			
 			Pattern relPattern = 
@@ -294,11 +308,6 @@ public abstract class Parser {
 				objects = desc.split(":")[1];
 				continue;
 			}
-			
-			if(desc.startsWith("adverbs:")){
-				adverbs = desc.split(":")[1];
-				continue;
-			}
 		}
 		
 		//The action must have an ID
@@ -357,17 +366,7 @@ public abstract class Parser {
 		
 		//Process adverbs
 		if(adverbs.length() > 2){
-			if (!(adverbs.startsWith("[") && adverbs.endsWith("]")))
-				return false;
-			adverbs = adverbs.substring(1, adverbs.length()-1);
-			HashSet<Integer> advSynSets = new HashSet<Integer>();
-			for (String AdvsynSetStr: adverbs.split(",")){
-				
-				int AdvsynSet = Integer.parseInt(AdvsynSetStr);
-				advSynSets.add(AdvsynSet);
-			}
-			
-			addActionAdverbs(advSynSets);
+			if (! parseAdverbs(adverbs)) return false;
 		}
 		
 		// Process the relative clause
@@ -453,6 +452,58 @@ public abstract class Parser {
 			}
 			
 			addAdjective(synSet, advSynSets);
+			
+        }
+		
+		return true;
+	}
+	
+	
+	/**
+	 * Parse the adverbs that modify the action (verb)
+	 * @param description
+	 * @return
+	 */
+	private boolean parseAdverbs(String description){
+		
+		int idx;
+		while ((idx = description.indexOf("adv:}")) >= 0) {
+			String adverb =  description.substring(5, idx);
+			description = description.substring(idx+5);
+			if (description.startsWith(","))
+				description = description.substring(1);
+			
+			String[] descs = adverb.split(";");
+			
+			int synSet = 0;
+			HashSet<Integer> advSynSets = new HashSet<Integer>();
+			for (String desc: descs){
+				if(desc.startsWith("synset:")){
+					String synSetStr = desc.split(":")[1];
+					synSet = Integer.parseInt(synSetStr);
+					continue;
+				}
+				
+				if(desc.startsWith("adverbs:")){
+					String synSetStrs = desc.split(":")[1];
+					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
+					
+					for (String AdvsynSetStr: synSetStrs.split(",")){
+						
+						int AdvsynSet = Integer.parseInt(AdvsynSetStr);
+						advSynSets.add(AdvsynSet);
+					}
+				}
+				
+			}
+			
+			if (synSet < 1){
+				adverbFail();
+				success = false;
+				return false;
+			}
+			
+			addActionAdverb(synSet, advSynSets);
 			
         }
 		
@@ -723,8 +774,9 @@ public abstract class Parser {
 	
 	protected abstract void endSubjects();
 	
-	protected abstract void addActionAdverbs(Set<Integer> advSynSets);
+	protected abstract void addActionAdverb(int advSynSet, Set<Integer> advSynSets);
 	
+	protected abstract void adverbFail();
 	/**
 	 * It is called when the parser finds objects
 	 */
