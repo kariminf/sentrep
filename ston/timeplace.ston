@@ -1,45 +1,45 @@
-@roles: r:[
+@r:[
 	r:{
 		id: happy_mother;
-		synSet: 10332385;
-		adjectives: [
+		syn: 10332385;
+		@adj:[
 			adj:{
-				synSet: 1148283;
+				syn: 1148283;
 			adj:}
-		]
+		adj:]
 	r:}
 	r:{
 		id: food;
-		synSet: 21265
+		syn: 21265
 	r:}
 	r:{
 		id: +goodfood;
-		synSet: 21265;
-		adjectives: [
+		syn: 21265;
+		@adj:[
 			adj:{
-				synSet: 1123148;
-				adverbs: [89408]
+				syn: 1123148;
+				adv: [89408]
 			adj:}
-		]
+		adj:]
 	r:}
 	r:{
 		id: child;
-		synSet: 9917593;
-		adjectives: [
+		syn: 9917593;
+		@adj:[
 			adj:{
-				synSet: 1919931
-			adj:},
+				syn: 1919931
+			adj:}
 			adj:{
-				synSet: 1391351
+				syn: 1391351
 			adj:}
 		]
 	r:}
 r:]
 
-@actions: act:[
+@act:[
 	act:{
 		id: eat;
-		synSet: 1168468;
+		syn: 1168468;
 		@times: t:[
                     t:{
                         synSet: 00510249;
@@ -50,13 +50,13 @@ r:]
                         synSet: 00111662;
                     p:}
                 p:];
-		subjects: [happy_mother, child];
-		objects: [food]
+		subj: [happy_mother, child];
+		obj: [food]
 	act:}
 	act:{
 		id: was;
-		synSet: 2604760;
-		subjects: [food];
-		objects: [+goodfood]
+		syn: 2604760;
+		subj: [food];
+		obj: [+goodfood]
 	act:}
 act:]

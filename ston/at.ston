@@ -13,6 +13,7 @@ r:]
 	act:{
 		id: stay;
 		syn: 117985;
+		tense: PA;
 		subj: [mother];
 		@rel:[
 			rel:{

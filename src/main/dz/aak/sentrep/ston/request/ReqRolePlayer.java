@@ -93,7 +93,7 @@ public class ReqRolePlayer {
 			result += ";def:Y";
 		
 		if(! adjectives.isEmpty()) {
-			result += ";adj:[";
+			result += ";@adj:[";
 
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
@@ -102,7 +102,7 @@ public class ReqRolePlayer {
 					result += ",";
 			}
 			
-			result += "]";
+			result += "adj:]";
 		}
 		
 		if (! relatives.isEmpty()){
@@ -136,7 +136,7 @@ public class ReqRolePlayer {
 			result += ";\n\t\tdef:Y";
 		
 		if(! adjectives.isEmpty()) {
-			result += ";\n\t\tadj: [\n";
+			result += ";\n\t\t@adj:[\n";
 			
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
@@ -146,7 +146,7 @@ public class ReqRolePlayer {
 				result += "\n";
 			}
 			
-			result += "\t\t]";
+			result += "\t\tadj:]";
 		}
 		
 		if (! relatives.isEmpty()){

@@ -329,13 +329,15 @@ public abstract class Parser {
 		addAction(id, synSet);
 		
 		// There are three tenses
-		if(! tense.matches("pa|pr|fu")){
-			tense = "pr";
+		tense = tense.toUpperCase();
+		if(! StonLex.isTense(tense)){
+			tense = StonLex.getDefaultTense();
 		}
 		
 		// There are three modalities: permissibility, possibility and obligation
-		if(! modality.matches("can|may|must")){
-			modality = "none";
+		modality = modality.toUpperCase();
+		if(! StonLex.isModal(modality)){
+			modality = StonLex.getDefaultModal();
 		}
 		
 		//Defines verb specifications

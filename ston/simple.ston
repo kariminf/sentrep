@@ -28,7 +28,7 @@ act:]
 
 @st: [
 	st:{
-		type: affirmation;
+		type: aff;
 		act:[eat];
 	st:}
 st:]
