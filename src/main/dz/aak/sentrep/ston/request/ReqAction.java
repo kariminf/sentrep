@@ -16,7 +16,7 @@ public class ReqAction {
 	private ReqDisjunction objects = new ReqDisjunction();
 	private Set<Integer> advSynSets = new HashSet<Integer>();
 	
-	private String tense = "PRESENT";
+	private String tense = "PR";
 	private String modality = "NONE";
 	private boolean progressive = false;
 	private boolean negated = false;
@@ -100,7 +100,7 @@ public class ReqAction {
 	}
 	
 	public void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated){
-		if (tense.matches("PAST|PRESENT|FUTURE")) this.tense = tense;
+		if (tense.matches("PA|PR|FU")) this.tense = tense;
 		if (modality.matches("CAN|MAY|NONE")) this.modality = modality;
 		this.progressive = progressive;
 		this.negated = negated;
@@ -123,25 +123,25 @@ public class ReqAction {
 		
 		
 		result += "id:" + id ;
-		result += ";synSet:" + verbSynSet ;
+		result += ";syn:" + verbSynSet ;
 		result += ";tense:" + tense;
 		if (progressive)
-			result += ";progressive:YES";
+			result += ";prog:Y";
 		if (negated)
-			result += ";negated:YES";
+			result += ";neg:Y";
 		if(modality != "NONE")
-			result += ";modality:" + modality;
+			result += ";mod:" + modality;
 		
 		if ( ! advSynSets.isEmpty())
-			result += ";adverbs: " + advSynSets.toString().replace(" ", "");
+			result += ";adv: " + advSynSets.toString().replace(" ", "");
 
 		if(! subjects.isEmpty()) {
-			result += ";subjects:";
+			result += ";subj:";
 			result += subjects.toString().replace(" ", "");
 		}
 		
 		if(! objects.isEmpty()){
-			result += ";objects:";
+			result += ";obj:";
 			result += objects.toString().replace(" ", "");
 		}
 		
@@ -166,25 +166,25 @@ public class ReqAction {
 		
 		
 		result += "\t\tid: " + id ;
-		result += ";\n\t\tsynSet: " + verbSynSet ;
+		result += ";\n\t\tsyn: " + verbSynSet ;
 		result += ";\n\t\ttense: " + tense;
 		if (progressive)
-			result += ";\n\t\tprogressive: YES";
+			result += ";\n\t\tprog: Y";
 		if (negated)
-			result += ";\n\t\tnegated: YES";
+			result += ";\n\t\tneg: Y";
 		if(modality != "NONE")
-			result += ";\n\t\tmodality: " + modality;
+			result += ";\n\t\tmod: " + modality;
 		
 		if ( ! advSynSets.isEmpty())
-			result += ";\n\t\tadverbs: " + advSynSets;
+			result += ";\n\t\tadv: " + advSynSets;
 		
 		if(! subjects.isEmpty()) {
-			result += ";\n\t\tsubjects: ";
+			result += ";\n\t\tsubj: ";
 			result += subjects;
 		}
 		
 		if(! objects.isEmpty()){
-			result += ";\n\t\tobjects: ";
+			result += ";\n\t\tobj: ";
 			result += objects;
 		}
 		

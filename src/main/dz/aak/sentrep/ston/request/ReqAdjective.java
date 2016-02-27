@@ -41,10 +41,10 @@ public class ReqAdjective {
 	@Override
 	public String toString() {
 		String result = "adj:{";
-		result += "synSet:" + adjSynSet;
+		result += "syn:" + adjSynSet;
 		
 		if ( ! advSynSets.isEmpty()){
-			result += ";adverbs: " + advSynSets;
+			result += ";adv: " + advSynSets;
 		}
 		result += "adj:}";
 		return result;
@@ -54,10 +54,10 @@ public class ReqAdjective {
 	public String structuredString(){
 		
 		String result = "\t\t\tadj:{\n";
-		result += "\t\t\t\tsynSet:" + adjSynSet;
+		result += "\t\t\t\tsyn:" + adjSynSet;
 		
 		if ( ! advSynSets.isEmpty()){
-			result += ";\n\t\t\t\tadverbs: " + advSynSets;
+			result += ";\n\t\t\t\tadv: " + advSynSets;
 		}
 		result += "\n\t\t\tadj:}";
 		return result;

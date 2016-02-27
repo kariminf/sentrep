@@ -81,19 +81,19 @@ public class ReqRolePlayer {
 		String result = "r:{";
 		
 		result += "id:" + id;
-		result += ";synSet:" + nounSynSet;
+		result += ";syn:" + nounSynSet;
 		
 		if (properName.length() > 0)
 			result += ";name:" + properName;
 		
 		if (quantity != 1)
-			result += ";quantity:" + quantity;
+			result += ";quant:" + quantity;
 		
 		if (defined)
 			result += ";def:Y";
 		
 		if(! adjectives.isEmpty()) {
-			result += ";adjectives:[";
+			result += ";adj:[";
 
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
@@ -124,19 +124,19 @@ public class ReqRolePlayer {
 		String result = "\tr:{";
 		
 		result += "\n\t\tid: " + id;
-		result += ";\n\t\tsynSet: " + nounSynSet;
+		result += ";\n\t\tsyn: " + nounSynSet;
 		
 		if (properName.length() > 0)
 			result += ";\n\t\tname:" + properName;
 		
 		if (quantity != 1)
-			result += ";\n\t\tquantity: " + quantity;
+			result += ";\n\t\tquant: " + quantity;
 		
 		if (defined)
 			result += ";\n\t\tdef:Y";
 		
 		if(! adjectives.isEmpty()) {
-			result += ";\n\t\tadjectives: [\n";
+			result += ";\n\t\tadj: [\n";
 			
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
