@@ -1,14 +1,14 @@
 @r:[
 	r:{
 		id: <role_name>;
-		synset: <synSet_number>;
+		syn: <synSet_number>;
 		name: <named entity>;
-		quantity: <number/pl>;
+		quant: <number/pl>;
 		def: <Y/N>;
 		@adj:[
 			adj:{
-				synset: <synSet_number>;
-				adverbs: [<synSet_number>, ...]
+				syn: <synSet_number>;
+				adv: [<synSet_number>, ...]
 			adj:}
 		adj:];
 		@rel:[
@@ -26,29 +26,29 @@ r:]
 @act:[
 	act:{
 		id: <action_name>;
-		synSet: <synSet_number>;
-		tense: <PAST|PRESENT|FUTURE>;
-		progressive: <YES/NO>;
-		negated: <YES|NO>;
-		modality: <CAN|MAY|MUST|NONE>;
-		subjects: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
-		objects: [<id>,...|...];
+		syn: <synSet_number>;
+		tense: <PA/PR/FU/NE>;
+		prog: <Y/N>;
+		neg: <Y/N>;
+		mod: <CAN/MAY/MUST>;
+		subj: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
+		obj: [<id>,...|...];
 		@adv:[
 			adv:{
-				synset: <synSet_number>;
-				adverbs: [<synSet_number>, ...]
+				syn: <synSet_number>;
+				adv: [<synSet_number>, ...]
 			adv:}
 		adv:];
 		@rel:[//adpositional phrases (Prepositional), spatial and temporal relations
 			rel:{
-				type: <>
+				type: <adpositional types>
 				ref: [<id>,...|...];
 			rel:}
 		rel:];
 		@cmp:[
 			cmp:{
 				type: <less, more, least, most, equal>;
-				adjs: [<synSet_number>, ...];
+				adj: [<synset>, ...];
 				ref: [<id>,...|...];
 			cmp:}
 		cmp:];
@@ -60,7 +60,7 @@ act:]
 
 @st:[
 	st:{
-		type: <aff/excl/ques/cond>;
+		type: <aff/excl/ques/cond/cause>;
 		act: [<act_id>,...|...];
 		act2: [<act_id>,...|...];
 	st:}

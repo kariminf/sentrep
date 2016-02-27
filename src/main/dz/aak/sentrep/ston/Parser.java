@@ -181,7 +181,7 @@ public abstract class Parser {
 			endActions();
 		}
 		
-		if(type.matches("condition")){
+		if(type.matches("cond|cause")){
 			if(actions2.length() > 2){
 				if (!(actions2.startsWith("[") && actions2.endsWith("]"))){
 					return false;
@@ -264,7 +264,7 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("synset:")){
+			if(desc.startsWith("syn:")){
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
@@ -274,37 +274,37 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("progressive:")){
+			if(desc.startsWith("prog:")){
 				String aspect = desc.split(":")[1];
 				aspect = aspect.trim().toUpperCase();
 				
-				if(aspect.matches("yes")){
+				if(aspect.matches("y")){
 					progressive = true;
 				}
 				continue;
 			}
 			
-			if(desc.startsWith("negated:")){
+			if(desc.startsWith("neg:")){
 				String negate = desc.split(":")[1];
 				negate = negate.trim().toUpperCase();
 
-				if(negate.matches("yes")){
+				if(negate.matches("y")){
 					negated = true;
 				}
 				continue;
 			}
 			
-			if(desc.startsWith("modality:")){
+			if(desc.startsWith("mod:")){
 				modality = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("subjects:")){
+			if(desc.startsWith("subj:")){
 				subjects = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("objects:")){
+			if(desc.startsWith("obj:")){
 				objects = desc.split(":")[1];
 				continue;
 			}
@@ -329,8 +329,8 @@ public abstract class Parser {
 		addAction(id, synSet);
 		
 		// There are three tenses
-		if(! tense.matches("past|present|future")){
-			tense = "present";
+		if(! tense.matches("pa|pr|fu")){
+			tense = "pr";
 		}
 		
 		// There are three modalities: permissibility, possibility and obligation
@@ -426,13 +426,13 @@ public abstract class Parser {
 			int synSet = 0;
 			HashSet<Integer> advSynSets = new HashSet<Integer>();
 			for (String desc: descs){
-				if(desc.startsWith("synset:")){
+				if(desc.startsWith("syn:")){
 					String synSetStr = desc.split(":")[1];
 					synSet = Integer.parseInt(synSetStr);
 					continue;
 				}
 				
-				if(desc.startsWith("adverbs:")){
+				if(desc.startsWith("adv:")){
 					String synSetStrs = desc.split(":")[1];
 					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
 					
@@ -478,13 +478,13 @@ public abstract class Parser {
 			int synSet = 0;
 			HashSet<Integer> advSynSets = new HashSet<Integer>();
 			for (String desc: descs){
-				if(desc.startsWith("synset:")){
+				if(desc.startsWith("syn:")){
 					String synSetStr = desc.split(":")[1];
 					synSet = Integer.parseInt(synSetStr);
 					continue;
 				}
 				
-				if(desc.startsWith("adverbs:")){
+				if(desc.startsWith("adv:")){
 					String synSetStrs = desc.split(":")[1];
 					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
 					
@@ -554,7 +554,7 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("synset:")){
+			if(desc.startsWith("syn:")){
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
@@ -564,7 +564,7 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("quantity:")){
+			if(desc.startsWith("quant:")){
 				quantity = desc.split(":")[1];
 				continue;
 			}
@@ -700,7 +700,7 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("adjs:")){
+			if(desc.startsWith("adj:")){
 				adjs = desc.split(":")[1];
 				continue;
 			}
