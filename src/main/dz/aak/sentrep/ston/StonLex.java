@@ -12,9 +12,11 @@ public class StonLex {
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
 		
-		result.add("PA");
+		for (SentTense tense: SentTense.values())
+			result.add(tense.name());
+		/*result.add("PA");
 		result.add("PR");
-		result.add("FU");
+		result.add("FU");*/
 		
 		return result;
 	}
@@ -22,9 +24,11 @@ public class StonLex {
 	private static List<String> initModal(){
 		List<String> result = new ArrayList<String>();
 		
-		result.add("CAN");
+		for(SentModal modal : SentModal.values())
+			result.add(modal.name());
+		/*result.add("CAN");
 		result.add("MAY");
-		result.add("MUST");
+		result.add("MUST");*/
 		
 		return result;
 	}

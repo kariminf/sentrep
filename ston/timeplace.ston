@@ -40,16 +40,14 @@ r:]
 	act:{
 		id: eat;
 		syn: 1168468;
-		@times: t:[
-                    t:{
-                        synSet: 00510249;
-                    t:}
-		t:];
-		@places: p:[
-                    p:{
-                        synSet: 00111662;
-                    p:}
-                p:];
+		@rel:[
+			t:{
+            	syn: 00510249;
+            t:}
+        	rel:{
+        		syn: 00111662;
+       		rel:}
+		rel:];
 		subj: [happy_mother, child];
 		obj: [food]
 	act:}

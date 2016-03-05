@@ -1,4 +1,4 @@
-@r: [
+@r:[
 	r:{
 		id: mother;
 		syn: 10332385
@@ -16,7 +16,7 @@
 	r:{
 		id: +goodfood;
 		syn: 21265;
-		@adj: [
+		@adj:[
 			adj:{
 				syn: 1123148;
 				adv: [89408]
@@ -41,7 +41,7 @@ r:]
 	act:}
 act:]
 
-@st: [
+@st:[
 	st:{
 		type: aff;
 		act:[was]

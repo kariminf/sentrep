@@ -257,7 +257,7 @@ public abstract class Parser {
 		
 		for (String desc : description.split(";")){
 			
-			//desc = desc.trim();
+			desc = desc.toLowerCase();
 			
 			if(desc.startsWith("id:")){
 				id = desc.split(":")[1];
@@ -276,7 +276,6 @@ public abstract class Parser {
 			
 			if(desc.startsWith("prog:")){
 				String aspect = desc.split(":")[1];
-				aspect = aspect.trim().toUpperCase();
 				
 				if(aspect.matches("y")){
 					progressive = true;
@@ -286,8 +285,6 @@ public abstract class Parser {
 			
 			if(desc.startsWith("neg:")){
 				String negate = desc.split(":")[1];
-				negate = negate.trim().toUpperCase();
-
 				if(negate.matches("y")){
 					negated = true;
 				}
@@ -670,7 +667,7 @@ public abstract class Parser {
 			return false;
 		}
 		
-		addRelative(type);
+		addRelative(type.toUpperCase());
 		
 		//Process objects
 		if(refs.length() > 2){
@@ -833,6 +830,7 @@ public abstract class Parser {
 	 * @param type the type of the relatives
 	 */
 	protected abstract void addRelative(String type);
+	
 	
 	protected abstract void addComparison(String type, Set<Integer> adjSynSets);
 	

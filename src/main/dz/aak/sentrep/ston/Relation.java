@@ -9,27 +9,27 @@ public enum Relation {
 	OF, //The mother of the boy
 	
 	//Time
-	T_TIME, 
-	T_PERIOD,
-	T_AMOUNT,
+	T_AT, 
+	T_SNC,
+	T_FOR,
 	T_AGO, 
-	T_BEFORE,
-	T_AFTER,
+	T_BEF,
+	T_AFT,
 	T_TILL,
 	T_BY,
 	
 	//Place
-	P_INSIDE,
-	P_OUTSIDE,
-	P_PLACE,
+	P_IN,
+	P_OUT,
+	P_AT,
 	P_ON,
-	P_BELOW,
-	P_ABOVE,
+	P_LOW,
+	P_UP,
 	P_BY,
-	P_BETWEEN,
-	P_BEHIND,
-	P_FRONT,
-	P_THROUGH,
+	P_BET,
+	P_BEH,
+	P_FR,
+	P_THR,
 	
 	//Others
 	ABOUT,

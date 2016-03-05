@@ -44,7 +44,7 @@ public class ReqCreatorTest {
 		//TODO complete this
 		// Adpositional phrases
 		rc.addRolePlayer("noon", 15165490);
-		rc.addRelative("t_time", "ate");
+		rc.addRelative("t_at", "ate");
 		rc.addRelativeConjunctions(new String[]{"noon"});
 		
 		rc.addSentence("AFF");

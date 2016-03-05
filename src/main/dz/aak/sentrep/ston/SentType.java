@@ -4,5 +4,6 @@ public enum SentType {
 	AFF, //Affirmation
 	EXCL, //exclamation
 	QUES, //Question
-	COND //Condition
+	COND, //Condition
+	CAUSE //Cause
 }
