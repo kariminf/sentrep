@@ -7,12 +7,12 @@ public class StonLex {
 	
 	private static final List<String> tenses = initTense();
 	private static final List<String> modals = initModal();
-	
+	private static final List<String> relations = initRelation();
 	
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
 		
-		for (SentTense tense: SentTense.values())
+		for (VerbTense tense: VerbTense.values())
 			result.add(tense.name());
 		/*result.add("PA");
 		result.add("PR");
@@ -24,8 +24,20 @@ public class StonLex {
 	private static List<String> initModal(){
 		List<String> result = new ArrayList<String>();
 		
-		for(SentModal modal : SentModal.values())
+		for(VerbModal modal : VerbModal.values())
 			result.add(modal.name());
+		/*result.add("CAN");
+		result.add("MAY");
+		result.add("MUST");*/
+		
+		return result;
+	}
+	
+	private static List<String> initRelation(){
+		List<String> result = new ArrayList<String>();
+		
+		for(Relation relation : Relation.values())
+			result.add(relation.name());
 		/*result.add("CAN");
 		result.add("MAY");
 		result.add("MUST");*/
@@ -49,12 +61,16 @@ public class StonLex {
 		return modals.contains(modalString);
 	}
 	
+	public static boolean isRelation(String relationString){
+		return relations.contains(relationString);
+	}
+	
 	public static String getDefaultTense(){
 		return tenses.get(0);
 	}
 	
 	public static String getDefaultModal(){
-		return "NONE";
+		return modals.get(0);
 	}
 
 }

@@ -1,6 +1,6 @@
 package dz.aak.sentrep.ston;
 
-public enum SentTense {
+public enum VerbTense {
 	PR, //present
 	PA, //past
 	FU //future

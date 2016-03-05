@@ -1,6 +1,6 @@
 package dz.aak.sentrep.ston;
 
-public enum SentModal {
+public enum VerbModal {
 	NONE,
 	CAN,
 	MAY,

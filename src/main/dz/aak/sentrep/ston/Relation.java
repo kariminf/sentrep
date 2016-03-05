@@ -28,7 +28,7 @@ public enum Relation {
 	P_BY,
 	P_BET,
 	P_BEH,
-	P_FR,
+	P_FRN,
 	P_THR,
 	
 	//Others
