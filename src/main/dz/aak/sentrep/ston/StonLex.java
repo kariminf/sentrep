@@ -8,6 +8,7 @@ public class StonLex {
 	private static final List<String> tenses = initTense();
 	private static final List<String> modals = initModal();
 	private static final List<String> relations = initRelation();
+	private static final List<String> comparisons = initComparison();
 	
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
@@ -38,9 +39,15 @@ public class StonLex {
 		
 		for(Relation relation : Relation.values())
 			result.add(relation.name());
-		/*result.add("CAN");
-		result.add("MAY");
-		result.add("MUST");*/
+		
+		return result;
+	}
+	
+	private static List<String> initComparison(){
+		List<String> result = new ArrayList<String>();
+		
+		for(Comp comparison : Comp.values())
+			result.add(comparison.name());
 		
 		return result;
 	}
@@ -63,6 +70,10 @@ public class StonLex {
 	
 	public static boolean isRelation(String relationString){
 		return relations.contains(relationString);
+	}
+	
+	public static boolean isComparison(String compString){
+		return comparisons.contains(compString);
 	}
 	
 	public static String getDefaultTense(){

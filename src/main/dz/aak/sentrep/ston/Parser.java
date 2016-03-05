@@ -211,7 +211,7 @@ public abstract class Parser {
 		String tense = "";
 		boolean progressive = false;
 		boolean negated = false;
-		String modality = "none";
+		String modality = StonLex.getDefaultModal();
 		String subjects = "";
 		String objects = "";
 		String adverbs = "";
