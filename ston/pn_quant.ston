@@ -1,0 +1,46 @@
+@r:[
+	r:{
+		id: karim;
+		syn: 7846;
+		name: Karim;
+	r:}
+	r:{
+		id: apple;
+		syn: 7739125;
+		quant: 5;
+		def: Y;
+	r:}
+	r:{
+		id: shop;
+		syn: 4202417;
+		def: Y;
+		@adj:[
+			adj:{
+				syn: 445169;
+			adj:}
+		adj:]
+	r:}
+r:]
+
+@act: [
+	act:{
+		id: buy;
+		tense: PA;
+		syn: 2207206;
+		subj: [karim];
+		obj: [apple];
+		@rel:[
+			rel:{
+				type: FROM;
+				ref: [shop];
+			rel:}
+		rel:]
+	act:}
+act:]
+
+@st:[
+	st:{
+		type: AFF;
+		act:[buy]
+	st:}
+st:]

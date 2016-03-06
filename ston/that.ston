@@ -1,11 +1,13 @@
 @r:[
 	r:{
 		id: mother;
-		syn: 10332385
+		syn: 10332385;
+		def: Y
 	r:}
 	r:{
 		id: food;
 		syn: 21265;
+		def: Y;
 		@rel:[
 			rel:{
 				type: OBJ;

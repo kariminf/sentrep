@@ -102,5 +102,9 @@ public class StonLex {
 	public static String getDefaultDeterminer(){
 		return dets.get(0);
 	}
+	
+	public static int getDetIndex(String DetString){
+		return dets.indexOf(DetString);
+	}
 
 }
