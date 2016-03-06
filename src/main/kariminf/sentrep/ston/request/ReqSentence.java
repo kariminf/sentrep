@@ -1,8 +1,9 @@
-package dz.aak.sentrep.ston.request;
+package kariminf.sentrep.ston.request;
 
 import java.util.Set;
 
-import dz.aak.sentrep.ston.SentType;
+import kariminf.sentrep.ston.SentType;
+
 
 public class ReqSentence {
 	

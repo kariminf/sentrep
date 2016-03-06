@@ -1,10 +1,11 @@
-package dz.aak.sentrep.ston.request;
+package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import dz.aak.sentrep.ston.Parser;
+import kariminf.sentrep.ston.Parser;
+
 
 
 //import dz.aak.sentrep.ston.RAction;

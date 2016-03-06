@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,12 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Set;
+
+import kariminf.sentrep.ston.Parser;
 
 public class StonSimpleParser extends Parser {
 

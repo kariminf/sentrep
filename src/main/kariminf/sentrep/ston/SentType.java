@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 public enum SentType {
 	AFF, //Affirmation

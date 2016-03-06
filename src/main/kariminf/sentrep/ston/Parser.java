@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 import java.util.HashSet;
 import java.util.Set;

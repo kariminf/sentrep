@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 public enum Relation {
 	SUBJ, //The man who ate

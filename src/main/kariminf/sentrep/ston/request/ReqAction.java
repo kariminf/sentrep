@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston.request;
+package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;

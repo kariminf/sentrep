@@ -1,11 +1,12 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import dz.aak.sentrep.ston.request.ReqCreator;
-import dz.aak.sentrep.ston.request.ReqParser;
+import kariminf.sentrep.ston.request.ReqCreator;
+import kariminf.sentrep.ston.request.ReqParser;
+
 
 public class StoneParseTest {
 

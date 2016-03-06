@@ -1,4 +1,4 @@
-package dz.aak.sentrep.ston.request;
+package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,7 +6,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import dz.aak.sentrep.ston.SentType;
+import kariminf.sentrep.ston.SentType;
+
 
 public class ReqCreator {
 

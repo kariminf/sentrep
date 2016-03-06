@@ -11,8 +11,8 @@
 		def: Y;
 	r:}
 	r:{
-		id: shop;
-		syn: 4202417;
+		id: market;
+		syn: 1097292;
 		def: Y;
 		@adj:[
 			adj:{
@@ -32,7 +32,7 @@ r:]
 		@rel:[
 			rel:{
 				type: FROM;
-				ref: [shop];
+				ref: [market];
 			rel:}
 		rel:]
 	act:}

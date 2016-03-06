@@ -1,9 +1,10 @@
-package dz.aak.sentrep.ston;
+package kariminf.sentrep.ston;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import dz.aak.sentrep.ston.request.ReqCreator;
+import kariminf.sentrep.ston.request.ReqCreator;
+
 
 public class ReqCreatorTest {
 
