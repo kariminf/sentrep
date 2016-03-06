@@ -9,6 +9,7 @@ public class StonLex {
 	private static final List<String> modals = initModal();
 	private static final List<String> relations = initRelation();
 	private static final List<String> comparisons = initComparison();
+	private static final List<String> dets = initDeterminer();
 	
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
@@ -39,6 +40,16 @@ public class StonLex {
 		
 		for(Relation relation : Relation.values())
 			result.add(relation.name());
+		
+		return result;
+	}
+	
+	private static List<String> initDeterminer(){
+		List<String> result = new ArrayList<String>();
+		
+		result.add("NONE");
+		result.add("Y");
+		result.add("N");
 		
 		return result;
 	}
@@ -76,12 +87,20 @@ public class StonLex {
 		return comparisons.contains(compString);
 	}
 	
+	public static boolean isDeterminer(String detString){
+		return dets.contains(detString);
+	}
+	
 	public static String getDefaultTense(){
 		return tenses.get(0);
 	}
 	
 	public static String getDefaultModal(){
 		return modals.get(0);
+	}
+	
+	public static String getDefaultDeterminer(){
+		return dets.get(0);
 	}
 
 }

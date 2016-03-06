@@ -187,7 +187,7 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addRoleSpecif(String name, boolean def, String quantity) {
+	protected void addRoleSpecif(String name, String def, String quantity) {
 		// TODO Auto-generated method stub
 		
 	}

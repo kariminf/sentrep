@@ -516,7 +516,7 @@ public abstract class Parser {
 		String synSetStr = "";
 		String name = "";
 		String quantity = "";
-		boolean def = false;
+		String def = StonLex.getDefaultDeterminer();
 		String adjectives = "";
 		String relatives = "";
 		
@@ -569,9 +569,9 @@ public abstract class Parser {
 			}
 			
 			if(desc.startsWith("def:")){
-				String defStr = desc.split(":")[1];
-				if (defStr.matches("y")){
-					def = true;
+				String defStr = desc.split(":")[1].toUpperCase();
+				if (StonLex.isDeterminer(defStr)){
+					def = defStr;
 				}
 				continue;
 			}
@@ -797,7 +797,8 @@ public abstract class Parser {
 	 * @param quantity the quantity of the role. Eg. 4 apples, it can take the term pl
 	 * for plural
 	 */
-	protected abstract void addRoleSpecif(String name, boolean def, String quantity);
+	protected abstract void addRoleSpecif(String name, String def, String quantity);
+	
 	/**
 	 * It is called when the role player has an adjective
 	 * @param synSet wordnet synset of the adjective which modify the noun in the role
