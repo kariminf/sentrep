@@ -106,5 +106,9 @@ public class StonLex {
 	public static int getDetIndex(String DetString){
 		return dets.indexOf(DetString);
 	}
+	
+	public static int getCompIndex(String compString){
+		return comparisons.indexOf(compString);
+	}
 
 }
