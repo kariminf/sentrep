@@ -12,7 +12,7 @@ public class ReqRolePlayer {
 	private String id;
 	private int nounSynSet;
 	private String properName = "";
-	private int quantity = 1;
+	private String quantity = "1";
 	private boolean defined = false;
 	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
 	List<ReqClause> relatives = new ArrayList<ReqClause>();
@@ -40,7 +40,7 @@ public class ReqRolePlayer {
 	/**
 	 * @return the quantity
 	 */
-	public int getQuantity() {
+	public String getQuantity() {
 		return quantity;
 	}
 
@@ -69,8 +69,16 @@ public class ReqRolePlayer {
 	}
 	
 	
-	public void setQuantity(int quantity){
+	public void setQuantity(String quantity){
 		this.quantity = quantity;
+	}
+	
+	public void setProperName(String properName){
+		this.properName = properName;
+	}
+	
+	public void setdefined(boolean defined){
+		this.defined = defined;
 	}
 
 	/* (non-Javadoc)
@@ -86,7 +94,7 @@ public class ReqRolePlayer {
 		if (properName.length() > 0)
 			result += ";name:" + properName;
 		
-		if (quantity != 1)
+		if (! quantity.equals("1"))
 			result += ";quant:" + quantity;
 		
 		if (defined)
@@ -129,7 +137,7 @@ public class ReqRolePlayer {
 		if (properName.length() > 0)
 			result += ";\n\t\tname:" + properName;
 		
-		if (quantity != 1)
+		if (! quantity.equals("1"))
 			result += ";\n\t\tquant: " + quantity;
 		
 		if (defined)

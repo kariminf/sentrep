@@ -725,7 +725,7 @@ public abstract class Parser {
 			}
 		}
 		
-		addComparison(type, adjSynSets);
+		addComparison(type.toUpperCase(), adjSynSets);
 		
 		//Process objects
 		if(refs.length() > 2){

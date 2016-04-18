@@ -43,6 +43,30 @@ public class ReqCreator {
 		return true;
 	}
 	
+	
+	public boolean setRoleProperName(String playerId, String name){
+		playerId = playerId.trim();
+		if (! players.containsKey(playerId)) return false;
+		
+		//Defined must be 3 choices
+		//TODO complete defining
+		players.get(playerId).setProperName(name);
+		return true;
+		
+	}
+	
+	
+	public boolean setDefined (String playerId, String def){
+		playerId = playerId.trim();
+		if (! players.containsKey(playerId)) return false;
+		
+		//Defined must be 3 choices
+		//TODO complete defining
+		players.get(playerId).setdefined(false);
+		return true;
+	}
+	
+	
 	public boolean addAction(String id, int verbSynSet){
 		id = id.trim();
 		ReqAction action = ReqAction.create(id, verbSynSet);
@@ -170,7 +194,7 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean setQuantity(String playerId, int quantity){
+	public boolean setQuantity(String playerId, String quantity){
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
 		
