@@ -13,7 +13,7 @@ public class ReqRolePlayer {
 	private int nounSynSet;
 	private String properName = "";
 	private String quantity = "1";
-	private boolean defined = false;
+	private String defined = "";
 	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
 	List<ReqClause> relatives = new ArrayList<ReqClause>();
 	
@@ -77,8 +77,12 @@ public class ReqRolePlayer {
 		this.properName = properName;
 	}
 	
-	public void setdefined(boolean defined){
-		this.defined = defined;
+	public void setdefined(String defined){
+		defined = defined.toUpperCase();
+		if (defined.matches("Y|N"))
+			this.defined = defined;
+		else
+			this.defined = "";
 	}
 
 	/* (non-Javadoc)
@@ -97,8 +101,8 @@ public class ReqRolePlayer {
 		if (! quantity.equals("1"))
 			result += ";quant:" + quantity;
 		
-		if (defined)
-			result += ";def:Y";
+		if (defined.length()>0)
+			result += ";def:" + defined;
 		
 		if(! adjectives.isEmpty()) {
 			result += ";@adj:[";
@@ -140,8 +144,8 @@ public class ReqRolePlayer {
 		if (! quantity.equals("1"))
 			result += ";\n\t\tquant: " + quantity;
 		
-		if (defined)
-			result += ";\n\t\tdef:Y";
+		if (defined.length() > 0)
+			result += ";\n\t\tdef:" + defined;
 		
 		if(! adjectives.isEmpty()) {
 			result += ";\n\t\t@adj:[\n";

@@ -60,9 +60,7 @@ public class ReqCreator {
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
 		
-		//Defined must be 3 choices
-		//TODO complete defining
-		players.get(playerId).setdefined(false);
+		players.get(playerId).setdefined(def);
 		return true;
 	}
 	
