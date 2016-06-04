@@ -21,6 +21,8 @@ public class ReqCreator {
 	private ReqSentence currentSentence;
 	
 	public ReqCreator() {
+		ReqAction.clearIdList();
+		ReqRolePlayer.clearIdList();
 	}
 	
 	public ReqCreator(HashMap<String, ReqRolePlayer> players, 

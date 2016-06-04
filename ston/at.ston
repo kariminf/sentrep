@@ -17,7 +17,7 @@ r:]
 		subj: [mother];
 		@rel:[
 			rel:{
-				type: P_PLACE;
+				type: P_AT;
 				ref: [home];
 			rel:}
 		rel:]

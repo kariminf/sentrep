@@ -21,6 +21,10 @@ public class ReqAction {
 	private boolean progressive = false;
 	private boolean negated = false;
 	
+	public static void clearIdList(){
+		ids.clear();
+	}
+	
 	/*private HashMap<String, List<ReqClause>> relatives = 
 			new HashMap<String, List<ReqClause>>();*/
 	

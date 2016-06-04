@@ -17,6 +17,10 @@ public class ReqRolePlayer {
 	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
 	List<ReqClause> relatives = new ArrayList<ReqClause>();
 	
+	public static void clearIdList(){
+		ids.clear();
+	}
+	
 	public void addRelative(ReqClause relative){
 		relatives.add(relative);
 	}
