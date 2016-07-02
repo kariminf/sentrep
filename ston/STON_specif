@@ -1,67 +1,67 @@
 @r:[
-	r:{
-		id: <role_name>;
-		syn: <synSet>;
-		nam: <named entity>;
-		qnt: <number/PL>;
-		def: <Y/N>;
-		@adj:[
-			adj:{
-				syn: <synSet>;
-				adv: [<synSet>, ...]
-			adj:}
-		adj:];
-		@rel:[
-			rel:{
-				typ: <SUBJ/OBJ/POSS/REAS/...>;
-				ref: [<id>,...|...];
-			rel:}
-		rel:];
-	r:}
-	r:{
-		...
-	r:}
+    r:{
+        id: <role_name>;
+        syn: <synSet>;
+        nam: <named entity>;
+        qnt: <number/PL>;
+        def: <Y/N>;
+        @adj:[
+            adj:{
+                syn: <synSet>;
+                adv: [<synSet>, ...]
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: <SUBJ/OBJ/POSS/REAS/...>;
+                ref: [<id>,...|...];
+            rel:}
+        rel:];
+    r:}
+    r:{
+        ...
+    r:}
 r:]
 
 @act:[
-	act:{
-		id: <action_name>;
-		syn: <synSet_number>;
-		tns: <PA/PR/FU>;
-		prg: <Y/N>;
-		neg: <Y/N>;
-		mod: <CAN/MAY/MUST>;
-		agt: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
-		thm: [<id>,...|...];
-		@adv:[
-			adv:{
-				syn: <synSet>;
-				adv: [<synSet>, ...]
-			adv:}
-		adv:];
-		@rel:[//adpositional phrases (Prepositional), spatial and temporal relations
-			rel:{
-				typ: <adpositional types>
-				ref: [<id>,...|...];
-			rel:}
-		rel:];
-		@cmp:[
-			cmp:{
-				typ: <L/M/LT/MT/EQ>;
-				adj: [<synset>, ...];
-				ref: [<id>,...|...];
-			cmp:}
-		cmp:];
-	act:}
-	act:{
-		...
-	act:}
+    act:{
+        id: <action_name>;
+        syn: <synSet_number>;
+        tns: <PA/PR/FU>;
+        prg: <Y/N>;
+        neg: <Y/N>;
+        mod: <CAN/MAY/MUST>;
+        agt: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
+        thm: [<id>,...|...];
+        @adv:[
+            adv:{
+                syn: <synSet>;
+                adv: [<synSet>, ...]
+            adv:}
+        adv:];
+        @rel:[//adpositional phrases (Prepositional), spatial and temporal relations
+            rel:{
+                typ: <adpositional types>
+                ref: [<id>,...|...];
+            rel:}
+        rel:];
+        @cmp:[
+            cmp:{
+                typ: <L/M/LT/MT/EQ>;
+                adj: [<synset>, ...];
+                ref: [<id>,...|...];
+            cmp:}
+        cmp:];
+    act:}
+    act:{
+        ...
+    act:}
 act:]
 
 @st:[
-	st:{
-		typ: <AFF/EXCL/QUES/COND/CAUSE>;
-		act: [<act_id>,...|...];
-		act2: [<act_id>,...|...];
-	st:}
+    st:{
+        typ: <AFF/EXCL/QUES/COND/CAUSE>;
+        act: [<act_id>,...|...];
+        act2: [<act_id>,...|...];
+    st:}
 st:]

@@ -1,52 +1,63 @@
 @r:[
-	r:{
-		id: happy_mother;
-		synSet: 10332385;
-		adjectives: [
-			adj:{
-				synSet: 1148283;
-			adj:}
-		]
-	r:}
-	r:{
-		id: food;
-		synSet: 21265
-	r:}
-	r:{
-		id: +goodfood;
-		synSet: 21265;
-		adjectives: [
-			adj:{
-				synSet: 1123148;
-				adverbs: [89408]
-			adj:}
-		]
-	r:}
-	r:{
-		id: child;
-		synSet: 9917593;
-		adjectives: [
-			adj:{
-				synSet: 1919931
-			adj:},
-			adj:{
-				synSet: 1391351
-			adj:}
-		]
-	r:}
+    r:{
+        id: happy_mother;
+        syn: 10332385;
+        @adj:[
+            adj:{
+                syn: 1148283;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: food;
+        syn: 21265
+    r:}
+    r:{
+        id: +goodfood;
+        syn: 21265;
+        @adj:[
+            adj:{
+                syn: 1123148;
+                adv: [89408]
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: child;
+        syn: 9917593;
+        @adj:[
+            adj:{
+                syn: 1919931
+            adj:}
+            adj:{
+                syn: 1391351
+            adj:}
+        adj:]
+    r:}
 r:]
 
 @act:[
-	act:{
-		id: eat;
-		synSet: 1168468;
-		subjects: [happy_mother, child];
-		objects: [food]
-	act:}
-	act:{
-		id: was;
-		synSet: 2604760;
-		subjects: [food];
-		objects: [+goodfood]
-	act:}
+    act:{
+        id: eat;
+        syn: 1168468;
+        agt: [happy_mother, child];
+        thm: [food]
+    act:}
+    act:{
+        id: was;
+        syn: 2604760;
+        agt: [food];
+        thm: [+goodfood]
+    act:}
 act:]
+
+@st: [
+    st:{
+        typ: AFF;
+        act: [eat];
+    st:}
+    st:{
+        typ: AFF;
+        act: [was];
+    st:}
+st:]

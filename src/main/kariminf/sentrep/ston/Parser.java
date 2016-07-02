@@ -485,7 +485,7 @@ public abstract class Parser {
 					continue;
 				}
 				
-				key = StonKeys.ADVBL + ":";
+				key = StonKeys.ADVERB + ":";
 				if(desc.startsWith(key)){
 					String synSetStrs = desc.split(":")[1];
 					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
