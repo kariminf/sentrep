@@ -1,6 +1,6 @@
-package kariminf.sentrep.ston;
+package kariminf.sentrep.ston.types;
 
-public enum Relation {
+public enum SRelation {
 	SUBJ, //The man who ate
 	OBJ, //The class which I teach
 	POSS, //The man whose car is so expensive

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import kariminf.sentrep.ston.Parser;
+import kariminf.sentrep.ston.types.SSentType;
 
 
 
@@ -14,12 +15,15 @@ public class ReqParser extends Parser {
 
 	private ReqRolePlayer currentPlayer;
 	private ReqAction currentAction;
+	private ReqSentence currentSentence;
 	
 	private HashMap<String, ReqRolePlayer> players = new HashMap<String, ReqRolePlayer>();
 	private HashMap<String, ReqAction> actions = new HashMap<String, ReqAction>();
 	private ArrayList<ReqSentence> sentences = new ArrayList<ReqSentence>();
 	
 	private ReqDisjunction currentDisjunction;
+	
+	//private boolean mainClause;
 	
 
 	/**
@@ -109,13 +113,13 @@ public class ReqParser extends Parser {
 	}*/
 
 	@Override
-	protected void addSubjects() {
-		currentDisjunction = currentAction.getSubjects();
+	protected void beginAgents() {
+		currentDisjunction = currentAction.getAgents();
 	}
 
 	@Override
-	protected void addObjects() {
-		currentDisjunction = currentAction.getObjects();
+	protected void beginThemes() {
+		currentDisjunction = currentAction.getThemes();
 	}
 
 	@Override
@@ -152,32 +156,33 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void endSubjects() {
+	protected void endAgents() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void endObjects() {
+	protected void endThemes() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void beginSentence(String type) {
-		// TODO Auto-generated method stub
+		currentSentence = new ReqSentence(SSentType.valueOf(type.toUpperCase()));
+		sentences.add(currentSentence);
 		
 	}
 
 	@Override
 	protected void endSentence() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void beginActions(boolean mainClause) {
-		// TODO Auto-generated method stub
+		
+		currentDisjunction = currentSentence.getDisjunction(mainClause);
 		
 	}
 
@@ -189,7 +194,9 @@ public class ReqParser extends Parser {
 
 	@Override
 	protected void addRoleSpecif(String name, String def, String quantity) {
-		// TODO Auto-generated method stub
+		currentPlayer.setdefined(def);
+		currentPlayer.setProperName(name);
+		currentPlayer.setQuantity(quantity);
 		
 	}
 

@@ -2,8 +2,8 @@
 	r:{
 		id: <role_name>;
 		syn: <synSet>;
-		name: <named entity>;
-		quant: <number/PL>;
+		nam: <named entity>;
+		qnt: <number/PL>;
 		def: <Y/N>;
 		@adj:[
 			adj:{
@@ -13,7 +13,7 @@
 		adj:];
 		@rel:[
 			rel:{
-				type: <SUBJ/OBJ/POSS/REAS/...>;
+				typ: <SUBJ/OBJ/POSS/REAS/...>;
 				ref: [<id>,...|...];
 			rel:}
 		rel:];
@@ -27,12 +27,12 @@ r:]
 	act:{
 		id: <action_name>;
 		syn: <synSet_number>;
-		tense: <PA/PR/FU>;
-		prog: <Y/N>;
+		tns: <PA/PR/FU>;
+		prg: <Y/N>;
 		neg: <Y/N>;
 		mod: <CAN/MAY/MUST>;
-		subj: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
-		obj: [<id>,...|...];
+		agt: [<id>,...|...]; //[a,b|a,c] means a and b or a and c
+		thm: [<id>,...|...];
 		@adv:[
 			adv:{
 				syn: <synSet>;
@@ -41,13 +41,13 @@ r:]
 		adv:];
 		@rel:[//adpositional phrases (Prepositional), spatial and temporal relations
 			rel:{
-				type: <adpositional types>
+				typ: <adpositional types>
 				ref: [<id>,...|...];
 			rel:}
 		rel:];
 		@cmp:[
 			cmp:{
-				type: <L/M/LT/MT/EQ>;
+				typ: <L/M/LT/MT/EQ>;
 				adj: [<synset>, ...];
 				ref: [<id>,...|...];
 			cmp:}
@@ -60,7 +60,7 @@ act:]
 
 @st:[
 	st:{
-		type: <AFF/EXCL/QUES/COND/CAUSE>;
+		typ: <AFF/EXCL/QUES/COND/CAUSE>;
 		act: [<act_id>,...|...];
 		act2: [<act_id>,...|...];
 	st:}

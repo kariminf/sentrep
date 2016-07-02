@@ -2,12 +2,12 @@
 	r:{
 		id: karim;
 		syn: 7846;
-		name: Karim;
+		nam: Karim;
 	r:}
 	r:{
 		id: apple;
 		syn: 7739125;
-		quant: 5;
+		qnt: 5;
 		def: Y;
 	r:}
 	r:{
@@ -27,8 +27,8 @@ r:]
 		id: buy;
 		tense: PA;
 		syn: 2207206;
-		subj: [karim];
-		obj: [apple];
+		agt: [karim];
+		thm: [apple];
 		@rel:[
 			rel:{
 				type: FROM;

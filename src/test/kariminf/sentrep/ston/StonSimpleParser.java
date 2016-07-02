@@ -39,14 +39,14 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addSubjects() {
-		System.out.println("\tSubjects: ");
+	protected void beginAgents() {
+		System.out.println("\tAgents: ");
 		firstDisjunction = true;
 	}
 
 	@Override
-	protected void addObjects() {
-		System.out.println("\tObjects: ");
+	protected void beginThemes() {
+		System.out.println("\tThemes: ");
 		firstDisjunction = true;
 	}
 
@@ -135,13 +135,13 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void endSubjects() {
+	protected void endAgents() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void endObjects() {
+	protected void endThemes() {
 		// TODO Auto-generated method stub
 		
 	}

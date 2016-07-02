@@ -17,6 +17,13 @@ public class ReqCreatorTest {
 		//Roles creation
 		rc.addRolePlayer("mother", 10332385);
 		rc.addAdjective("mother", 1148283, null); //happy
+		
+		rc.addRelative("subj", "mother");
+		Set<String> mother_sing = new HashSet<String>();
+		mother_sing.add("sing");
+		rc.addRelativeConjunctions(mother_sing);
+		//rc.addRelativeConjunctions(new String[]{"sing"});
+		
 		rc.addRolePlayer("child", 9917593);
 		rc.addRolePlayer("+goodfood", 21265);
 		Set<Integer> adv = new HashSet<Integer>();
@@ -27,20 +34,24 @@ public class ReqCreatorTest {
 		rc.addAction("ate", 1168468);
 		rc.addVerbSpecif("ate", "PAST", "MAY", true, true);
 		
+		rc.addAction("sing", 937208);
+		rc.addVerbSpecif("sing", "PRESENT", "NONE", false, false);
+		
+		
 		//Disjunctions of conjunctions
 		Set<String> mother_child = new HashSet<String>();
 		mother_child.add("mother");
 		mother_child.add("child");
-		rc.addSubjectConjunctions("ate", mother_child);
+		rc.addAgentConjunctions("ate", mother_child);
 
 		Set<String> child_food = new HashSet<String>();
 		child_food.add("child");
 		child_food.add("+goodfood");
-		rc.addSubjectConjunctions("ate", child_food);
+		rc.addAgentConjunctions("ate", child_food);
 		
 		Set<String> foods = new HashSet<String>();
 		foods.add("+goodfood");
-		rc.addObjectConjunctions("ate", foods);
+		rc.addThemeConjunctions("ate", foods);
 		
 		//TODO complete this
 		// Adpositional phrases

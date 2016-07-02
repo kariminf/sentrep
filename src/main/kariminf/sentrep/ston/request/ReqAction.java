@@ -6,14 +6,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+
 public class ReqAction {
 	
 	private static Set<String> ids = new HashSet<String>();
 	
 	private int verbSynSet;
 	private String id;
-	private ReqDisjunction subjects = new ReqDisjunction();
-	private ReqDisjunction objects = new ReqDisjunction();
+	private ReqDisjunction agents = new ReqDisjunction();
+	private ReqDisjunction themes = new ReqDisjunction();
 	private Set<Integer> advSynSets = new HashSet<Integer>();
 	
 	private String tense = "PR";
@@ -54,17 +57,18 @@ public class ReqAction {
 	}
 
 	/**
-	 * @return the subjects
+	 * @return the agents of the action
 	 */
-	public ReqDisjunction getSubjects() {
-		return subjects;
+	public ReqDisjunction getAgents() {
+		//Not secure
+		return agents;
 	}
 
 	/**
-	 * @return the objects
+	 * @return the themes of the action
 	 */
-	public ReqDisjunction getObjects() {
-		return objects;
+	public ReqDisjunction getThemes() {
+		return themes;
 	}
 
 	/**
@@ -110,12 +114,22 @@ public class ReqAction {
 		this.negated = negated;
 	}
 	
-	public void addSubjects(Set<String> conjunctions){
-		subjects.addConjunctions(conjunctions);
+	/**
+	 * Adds conjunctions of agents; those who do the action (verb)
+	 * @param conjunctions a set of roles IDs which are separated by "and" 
+	 * in the original sentence
+	 */
+	public void addAgents(Set<String> conjunctions){
+		agents.addConjunctions(conjunctions);
 	}
 	
-	public void addObjects(Set<String> conjunctions){
-		objects.addConjunctions(conjunctions);
+	/**
+	 * Add conjunctions of themes; those who undergo the action (verb)
+	 * @param conjunctions a set of roles IDs which are separated by "and" 
+	 * in the original sentence
+	 */
+	public void addThemes(Set<String> conjunctions){
+		themes.addConjunctions(conjunctions);
 	}
 
 	/* (non-Javadoc)
@@ -123,42 +137,50 @@ public class ReqAction {
 	 */
 	@Override
 	public String toString() {
-		String result = "act:{";
 		
+		String result = StonKeys.ACTBL + ":{";
 		
-		result += "id:" + id ;
-		result += ";syn:" + verbSynSet ;
-		result += ";tense:" + tense;
-		if (progressive)
-			result += ";prog:Y";
-		if (negated)
-			result += ";neg:Y";
-		if(modality != "NONE")
-			result += ";mod:" + modality;
+		result += StonKeys.ID +  ":" + id;
+		result += ";" + StonKeys.SYNSET + ":" + verbSynSet;
+		result += ";" + StonKeys.TENSE + ":" + tense;
 		
-		if ( ! advSynSets.isEmpty())
-			result += ";adv: " + advSynSets.toString().replace(" ", "");
-
-		if(! subjects.isEmpty()) {
-			result += ";subj:";
-			result += subjects.toString().replace(" ", "");
+		if (progressive){
+			result += ";" + StonKeys.PROGRESSIVE + ":Y";
+		}
+			
+		if (negated){
+			result += ";" + StonKeys.NEGATED + ":Y";
+		}
+			
+		if(modality != "NONE"){
+			result += ";" + StonKeys.MODAL + ":" + modality;
+		}
+			
+		if ( ! advSynSets.isEmpty()){
+			result += ";" + StonKeys.ADVERB + ":";
+			result += advSynSets.toString().replace(" ", "");
+		}
+			
+		if(! agents.isEmpty()) {
+			result += ";" + StonKeys.AGENT + ":";
+			result += agents.toString().replace(" ", "");
 		}
 		
-		if(! objects.isEmpty()){
-			result += ";obj:";
-			result += objects.toString().replace(" ", "");
+		if(! themes.isEmpty()){
+			result += ";" + StonKeys.THEME + ":";
+			result += themes.toString().replace(" ", "");
 		}
 		
 		if (! relatives.isEmpty()){
-			result += ";@rel:[";
+			result += ";" + StonBlocks.beginREL + ":[";
 			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 0);
+				relative.setSpecifs(StonKeys.RELBL, 0);
 				result += relative;
 			}
-			result += "rel:]";
+			result += StonKeys.RELBL + ":]";
 		}
 		
-		result += "act:}";
+		result += StonKeys.ACTBL + ":}";
 		
 		return result;
 	}
@@ -166,44 +188,66 @@ public class ReqAction {
 	
 	public String structuredString() {
 		
-		String result = "\tact:{\n";
+		String result = StonBlocks.getIndentation(1) + StonKeys.ACTBL + ":{";
 		
+		result += "\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.ID +  ":" + id;
 		
-		result += "\t\tid: " + id ;
-		result += ";\n\t\tsyn: " + verbSynSet ;
-		result += ";\n\t\ttense: " + tense;
-		if (progressive)
-			result += ";\n\t\tprog: Y";
-		if (negated)
-			result += ";\n\t\tneg: Y";
-		if(modality != "NONE")
-			result += ";\n\t\tmod: " + modality;
+		result += ";\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.SYNSET + ":" + verbSynSet;
 		
-		if ( ! advSynSets.isEmpty())
-			result += ";\n\t\tadv: " + advSynSets;
+		result += ";\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.TENSE + ":" + tense;
 		
-		if(! subjects.isEmpty()) {
-			result += ";\n\t\tsubj: ";
-			result += subjects;
+		if (progressive){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.PROGRESSIVE + ":Y";
+		}
+			
+		if (negated){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.NEGATED + ":Y";
+		}
+			
+		if(modality != "NONE"){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.MODAL + ":" + modality;
+		}
+			
+		if ( ! advSynSets.isEmpty()){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.ADVERB + ":";
+			result += advSynSets.toString().replace(" ", "");
+		}
+			
+		if(! agents.isEmpty()) {
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.AGENT + ":";
+			result += agents.toString().replace(" ", "");
 		}
 		
-		if(! objects.isEmpty()){
-			result += ";\n\t\tobj: ";
-			result += objects;
+		if(! themes.isEmpty()){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.THEME + ":";
+			result += themes.toString().replace(" ", "");
 		}
 		
 		if (! relatives.isEmpty()){
-			result += ";\n\t\t@rel:[";
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonBlocks.beginREL + ":[\n";
 			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 3);
-				result += "\n" + relative.structuredString();
+				relative.setSpecifs(StonKeys.RELBL, 3);
+				result += relative.structuredString();
 			}
-			result += "\n\t\trel:]";
+			result += StonBlocks.getIndentation(2);
+			result += StonKeys.RELBL + ":]";
 		}
 		
-		result += "\n\tact:}";
+		result += "\n" + StonBlocks.getIndentation(1);
+		result += StonKeys.ACTBL + ":}";
 		
 		return result;
+		
 	}
 
 	

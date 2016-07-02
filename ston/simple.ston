@@ -1,7 +1,7 @@
 @r: [
 	r:{
 		id: child;
-		synSet: 9917593;
+		syn: 9917593;
 		@adj: [
 			adj:{
 				synSet: 1919931
@@ -20,7 +20,7 @@ r:]
 @act: [
 	act:{
 		id: eat;
-		synSet: 1168468;
+		syn: 1168468;
 		subjects: [child];
 		objects: [food]
 	act:}

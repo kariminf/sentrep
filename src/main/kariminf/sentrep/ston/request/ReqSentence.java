@@ -2,16 +2,18 @@ package kariminf.sentrep.ston.request;
 
 import java.util.Set;
 
-import kariminf.sentrep.ston.SentType;
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+import kariminf.sentrep.ston.types.SSentType;
 
 
 public class ReqSentence {
 	
-	private SentType type = SentType.AFF;
+	private SSentType type = SSentType.AFF;
 	private ReqDisjunction mainActions = new ReqDisjunction();
 	private ReqDisjunction secActions = null;
 
-	public ReqSentence(SentType type) {
+	public ReqSentence(SSentType type) {
 		this.type = type;
 	}
 	
@@ -20,11 +22,17 @@ public class ReqSentence {
 	}
 	
 	public void addSecActions(Set<String> conjunctions){
-		if (type != SentType.COND)
+		if (type != SSentType.COND)
 			return;
 		if (secActions == null)
 			secActions = new ReqDisjunction();
 		secActions.addConjunctions(conjunctions);
+	}
+	
+	public ReqDisjunction getDisjunction(boolean main){
+		if (main)
+			return mainActions;
+		return secActions;
 	}
 	
 	/* (non-Javadoc)
@@ -33,28 +41,43 @@ public class ReqSentence {
 	@Override
 	public String toString() {
 		
-		String result = "st:{";
+		String result = StonKeys.SENTBL + ":{";
 		
-		result += "type:" + type ;
-		result += ";act:" + mainActions.toString().replace(" ", "");
-		if ((type == SentType.AFF) && (secActions != null))
-			result += ";act2:" + secActions.toString().replace(" ", "");
-		result += "st:}";
+		result += StonKeys.TYPE + ":" + type ;
+		result += ";" + StonKeys.ACT1 + ":" ;
+		result += mainActions.toString().replace(" ", "");
+		if ((type == SSentType.AFF) && (secActions != null)){
+			result += ";" + StonKeys.ACT2 + ":" ;
+			result += secActions.toString().replace(" ", "");
+		}
+			
+		result += StonKeys.SENTBL + ":}";
 		
 		return result;
 	}
 	
 	public String structuredString() {
 		
-		String result = "\tst:{\n";
+		String result = StonBlocks.getIndentation(1) + StonKeys.SENTBL + ":{";
 		
-		result += "\t\ttype:" + type ;
-		result += ";\n\t\tact:" + mainActions;
-		if ((type == SentType.AFF) && (secActions != null))
-			result += ";\n\t\tact2:" + secActions;
-		result += "\n\tst:}";
+		result += "\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.TYPE + ":" + type ;
+		
+		result += ";\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.ACT1 + ":" ;
+		result += mainActions.toString().replace(" ", "");
+		
+		if ((type == SSentType.AFF) && (secActions != null)){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.ACT2 + ":" ;
+			result += secActions.toString().replace(" ", "");
+		}
+		
+		result += "\n" + StonBlocks.getIndentation(1);
+		result += StonKeys.SENTBL + ":}";
 		
 		return result;
+		
 	}
 
 }

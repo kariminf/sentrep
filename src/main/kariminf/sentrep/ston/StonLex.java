@@ -3,6 +3,11 @@ package kariminf.sentrep.ston;
 import java.util.ArrayList;
 import java.util.List;
 
+import kariminf.sentrep.ston.types.SComparison;
+import kariminf.sentrep.ston.types.SRelation;
+import kariminf.sentrep.ston.types.SVerbModal;
+import kariminf.sentrep.ston.types.SVerbTense;
+
 public class StonLex {
 	
 	private static final List<String> tenses = initTense();
@@ -14,7 +19,7 @@ public class StonLex {
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
 		
-		for (VerbTense tense: VerbTense.values())
+		for (SVerbTense tense: SVerbTense.values())
 			result.add(tense.name());
 		/*result.add("PA");
 		result.add("PR");
@@ -26,7 +31,7 @@ public class StonLex {
 	private static List<String> initModal(){
 		List<String> result = new ArrayList<String>();
 		
-		for(VerbModal modal : VerbModal.values())
+		for(SVerbModal modal : SVerbModal.values())
 			result.add(modal.name());
 		/*result.add("CAN");
 		result.add("MAY");
@@ -38,7 +43,7 @@ public class StonLex {
 	private static List<String> initRelation(){
 		List<String> result = new ArrayList<String>();
 		
-		for(Relation relation : Relation.values())
+		for(SRelation relation : SRelation.values())
 			result.add(relation.name());
 		
 		return result;
@@ -57,7 +62,7 @@ public class StonLex {
 	private static List<String> initComparison(){
 		List<String> result = new ArrayList<String>();
 		
-		for(Comp comparison : Comp.values())
+		for(SComparison comparison : SComparison.values())
 			result.add(comparison.name());
 		
 		return result;

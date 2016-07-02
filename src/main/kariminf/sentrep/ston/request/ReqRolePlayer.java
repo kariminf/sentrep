@@ -7,6 +7,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+
 public class ReqRolePlayer {
 	private static Set<String> ids = new HashSet<String>();
 	private String id;
@@ -94,22 +97,22 @@ public class ReqRolePlayer {
 	 */
 	@Override
 	public String toString() {
-		String result = "r:{";
+		String result = StonKeys.ROLEBL + ":{";
 		
-		result += "id:" + id;
-		result += ";syn:" + nounSynSet;
+		result += StonKeys.ID +  ":" + id;
+		result += ";" + StonKeys.SYNSET + ":" + nounSynSet;
 		
 		if (properName.length() > 0)
-			result += ";name:" + properName;
+			result += ";" + StonKeys.NAME + ":" + properName;
 		
-		if (! quantity.equals("1"))
-			result += ";quant:" + quantity;
+		if (!quantity.isEmpty() && !quantity.equals("1"))
+			result += ";" + StonKeys.QUANTITY + ":" + quantity;
 		
 		if (defined.length()>0)
-			result += ";def:" + defined;
+			result += ";" + StonKeys.DEFINED + ":" + defined;
 		
 		if(! adjectives.isEmpty()) {
-			result += ";@adj:[";
+			result += ";" + StonBlocks.beginADJ + ":[";
 
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
@@ -118,65 +121,80 @@ public class ReqRolePlayer {
 					result += ",";
 			}
 			
-			result += "adj:]";
+			result += StonKeys.ADJBL + ":]";
 		}
 		
 		if (! relatives.isEmpty()){
-			result += ";@rel:[";
+			result += ";" + StonBlocks.beginREL + ":[";
 			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 0);
+				relative.setSpecifs(StonKeys.RELBL, 0);
 				result += relative;
 			}
-			result += "rel:]";
+			result += StonKeys.RELBL + ":]";
 		}
 		
-		result += "r:}";
+		result += StonKeys.ROLEBL +  ":}";
 		
 		return result;
 	}
 	
 	
 	public String structuredString() {
-		String result = "\tr:{";
 		
-		result += "\n\t\tid: " + id;
-		result += ";\n\t\tsyn: " + nounSynSet;
+		String result = StonBlocks.getIndentation(1) + StonKeys.ROLEBL + ":{";
 		
-		if (properName.length() > 0)
-			result += ";\n\t\tname:" + properName;
+		result += "\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.ID +  ":" + id;
 		
-		if (! quantity.equals("1"))
-			result += ";\n\t\tquant: " + quantity;
+		result += ";\n" + StonBlocks.getIndentation(2);
+		result += StonKeys.SYNSET + ":" + nounSynSet;
 		
-		if (defined.length() > 0)
-			result += ";\n\t\tdef:" + defined;
-		
-		if(! adjectives.isEmpty()) {
-			result += ";\n\t\t@adj:[\n";
+		if (properName.length() > 0){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.NAME + ":" + properName;
+		}
 			
+		if (!quantity.isEmpty() && !quantity.equals("1")){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.QUANTITY + ":" + quantity;
+		}
+		
+		if (defined.length()>0){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.DEFINED + ":" + defined;
+		}
+			
+		if(! adjectives.isEmpty()) {
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonBlocks.beginADJ + ":[\n";
+
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
 				result += it.next().structuredString();
 				if(it.hasNext())
 					result += ",";
-				result += "\n";
 			}
 			
-			result += "\t\tadj:]";
+			result += "\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.ADJBL + ":]";
 		}
 		
 		if (! relatives.isEmpty()){
-			result += ";\n\t\t@rel:[";
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonBlocks.beginREL + ":[\n";
 			for (ReqClause relative: relatives){
-				relative.setSpecifs("rel", 3);
-				result += "\n" + relative.structuredString();
+				relative.setSpecifs(StonKeys.RELBL, 3);
+				result += relative.structuredString();
 			}
-			result += "\n\t\trel:]";
+			result += StonBlocks.getIndentation(2);
+			result += StonKeys.RELBL + ":]";
 		}
 		
-		result += "\n\tr:}";
+		result += "\n" + StonBlocks.getIndentation(1);
+		result += StonKeys.ROLEBL +  ":}";
 		
 		return result;
+		
 	}
 
 

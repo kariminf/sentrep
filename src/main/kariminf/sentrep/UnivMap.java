@@ -1,4 +1,4 @@
-package kariminf.sentrep.univ;
+package kariminf.sentrep;
 
 import kariminf.sentrep.univ.types.*;
 

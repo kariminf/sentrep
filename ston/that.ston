@@ -10,7 +10,7 @@
 		def: Y;
 		@rel:[
 			rel:{
-				type: OBJ;
+				typ: OBJ;
 				ref: [eat];
 			rel:}
 		rel:]
@@ -30,22 +30,22 @@ r:]
 @act: [
 	act:{
 		id: eat;
-		tense: PA;
+		tns: PA;
 		syn: 1168468;
-		subj: [mother];
+		agt: [mother];
 	act:}
 	act:{
 		id: was;
-		tense: PA;
 		syn: 2604760;
-		subj: [food];
-		obj: [+goodfood]
+		tns: PA;
+		agt: [food];
+		thm: [+goodfood]
 	act:}
 act:]
 
 @st:[
 	st:{
-		type: aff;
+		typ: aff;
 		act:[was]
 	st:}
 st:]

@@ -6,7 +6,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import kariminf.sentrep.ston.SentType;
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+import kariminf.sentrep.ston.types.SSentType;
 
 
 public class ReqCreator {
@@ -81,9 +83,9 @@ public class ReqCreator {
 	//Add new Sentence
 	public boolean addSentence(String type){
 		
-		SentType stype;
+		SSentType stype;
 		try{
-			stype = SentType.valueOf(type.toUpperCase());
+			stype = SSentType.valueOf(type.toUpperCase());
 		} catch (IllegalArgumentException e){
 			return false;
 		}
@@ -161,19 +163,19 @@ public class ReqCreator {
 		return addRelativeConjunctions(relConjunctions);
 	}
 	
-	public boolean addSubjectConjunctions(String actionId, Set<String> subjectsIDs){
+	public boolean addAgentConjunctions(String actionId, Set<String> agentsIDs){
 		if (! actions.containsKey(actionId)) return false;
 		
 		//For now, we don't verify the existance of each subject in players list
-		actions.get(actionId).addSubjects(subjectsIDs);
+		actions.get(actionId).addAgents(agentsIDs);
 		return true;
 	}
 	
-	public boolean addObjectConjunctions(String actionId, Set<String> objectsIDs){
+	public boolean addThemeConjunctions(String actionId, Set<String> themesIDs){
 		if (! actions.containsKey(actionId)) return false;
 		
 		//For now, we don't verify the existance of each object in players list
-		actions.get(actionId).addObjects(objectsIDs);
+		actions.get(actionId).addThemes(themesIDs);
 		return true;
 	}
 	
@@ -207,72 +209,77 @@ public class ReqCreator {
 		
 		//////////////////////////
 		
-		String result = "@r:[\n";
+		String result = StonBlocks.beginROLE + ":[\n";
 		{
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
 		}
-		result += "r:]\n";
+		result += StonKeys.ROLEBL + ":]\n";
 		
 		//////////////////////////
 		
-		result += "@act:[\n";
+		result += StonBlocks.beginACTION + ":[\n";
 		{
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next().structuredString() + "\n";
 			}
 		}
-		result += "act:]\n";
+		result += StonKeys.ACTBL + ":]\n";
 		
 		//////////////////////////
 		
-		result += "@st:[\n";
+		result += StonBlocks.beginSENT + ":[\n";
 		{	
 			for (ReqSentence sentence: sentences){
 				result += sentence.structuredString() + "\n";
 			}
 		}
-		result += "st:]";
+		result += StonKeys.SENTBL + ":]";
 		//////////////////////////
 		
 		return result;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getRequest(){
 		
 		//////////////////////////
 		
-		String result = "@r:[";
+		String result = StonBlocks.beginROLE + ":[";
 		{
 			Iterator<ReqRolePlayer> it = players.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
 		}	
-		result += "r:]";
+		result += StonKeys.ROLEBL + ":]";
 		
 		//////////////////////////
 		
-		result += "@act:[";
+		result += StonBlocks.beginACTION  + ":[";
 		{	
 			Iterator<ReqAction> it = actions.values().iterator();
 			while (it.hasNext()){
 				result += it.next();
 			}
 		}
-		result += "act:]";
+		result += StonKeys.ACTBL + "act:]";
 		
 		//////////////////////////
-		result += "@st:[";
+		result += StonBlocks.beginSENT  + ":[";
 		{	
 			for (ReqSentence sentence: sentences){
 				result += sentence;
 			}
 		}
-		result += "st:]";
+		result += StonKeys.SENTBL + ":]";
 		//////////////////////////
 		
 		return result;

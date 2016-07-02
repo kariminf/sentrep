@@ -13,8 +13,8 @@ r:]
 	act:{
 		id: stay;
 		syn: 117985;
-		tense: PA;
-		subj: [mother];
+		tns: PA;
+		agt: [mother];
 		@rel:[
 			rel:{
 				type: P_AT;
@@ -26,7 +26,7 @@ act:]
 
 @st: [
 	st:{
-		type: aff;
+		typ: aff;
 		act: [stay];
 	st:}
 st:]

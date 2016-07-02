@@ -1,6 +1,6 @@
-package kariminf.sentrep.ston;
+package kariminf.sentrep.ston.types;
 
-public enum SentType {
+public enum SSentType {
 	AFF, //Affirmation
 	EXCL, //exclamation
 	QUES, //Question

@@ -12,24 +12,6 @@ import java.util.regex.Pattern;
  */
 public abstract class Parser {
 
-	// These are the characters to be ignored 
-	private static String BL = "[\\t \\n\\r]+";
-	
-	// Adjective
-	//TODO modify to [aA][dD][jJ]
-	private static final String ADJblock = "@adj\\:\\[(.*)adj\\:\\];?";
-	
-	private static final String ADVblock = "@adv\\:\\[(.*)adv\\:\\];?";
-	
-	// Relative clauses
-	private static final String RELblock = "@rel\\:\\[(.*)rel\\:\\];?";
-	
-	// Comparison block
-	private static final String CMPblock = "@cmp\\:\\[(.*)cmp\\:\\];?";
-	
-	// This is the regular expression used to separate main blocks
-	private static final Pattern CONT = 
-			Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@st\\:\\[(.+)st\\:\\]");
 	
 	//This is true when the parsing is a success
 	private boolean success = false;
@@ -48,11 +30,11 @@ public abstract class Parser {
 	 */
 	public void parse(String description){
 		
-		description = description.replaceAll(BL, "");
+		description = description.replaceAll(StonBlocks.BL, "");
 		description = description.toLowerCase();
 		
 		//System.out.println(description);
-		Matcher m = CONT.matcher(description);
+		Matcher m = StonBlocks.CONT.matcher(description);
 		if (! m.find()) {
 			parseFail();
 			return;
@@ -87,7 +69,8 @@ public abstract class Parser {
 	private boolean parseRoles(String description){
 		
 		int idx;
-		while ((idx = description.indexOf("r:}")) >= 0) {
+		String key = StonKeys.ROLEBL + ":}";
+		while ((idx = description.indexOf(key)) >= 0) {
 			String role =  description.substring(3, idx);
 			description = description.substring(idx+3);
 			//System.out.println(role);
@@ -107,8 +90,8 @@ public abstract class Parser {
 	private boolean parseActions (String description){
 		
 		int idx;
-
-		while ((idx = description.indexOf("act:}")) >= 0) {
+		String key = StonKeys.ACTBL + ":}";
+		while ((idx = description.indexOf(key)) >= 0) {
 			String action =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			//System.out.println(role);
@@ -127,8 +110,8 @@ public abstract class Parser {
 	 */
 	private boolean parseSentences(String description){
 		int idx;
-
-		while ((idx = description.indexOf("st:}")) >= 0) {
+		String key = StonKeys.SENTBL + ":}";
+		while ((idx = description.indexOf(key)) >= 0) {
 			String sentence =  description.substring(4, idx);
 			description = description.substring(idx+4);
 			if (! parseSentence(sentence))
@@ -152,17 +135,20 @@ public abstract class Parser {
 			
 			//desc = desc.trim();
 			
-			if(desc.startsWith("type:")){
+			String key = StonKeys.TYPE + ":";
+			if(desc.startsWith(key)){
 				type = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("act:")){
+			key = StonKeys.ACT1 + ":";
+			if(desc.startsWith(key)){
 				actions = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("act2:")){
+			key = StonKeys.ACT2 + ":";
+			if(desc.startsWith(key)){
 				actions2 = desc.split(":")[1];
 			}
 		}
@@ -212,17 +198,17 @@ public abstract class Parser {
 		boolean progressive = false;
 		boolean negated = false;
 		String modality = StonLex.getDefaultModal();
-		String subjects = "";
-		String objects = "";
+		String agents = "";
+		String themes = "";
 		String adverbs = "";
 		
 		String relatives = "";
 		String comparison = "";
 		
-		if (description.contains("@adv")){
+		if (description.contains(StonBlocks.beginADV)){
 			
 			Pattern adpPattern = 
-				Pattern.compile("(.*)" + ADVblock + "(.*)");
+				Pattern.compile("(.*)" + StonBlocks.ADVblock + "(.*)");
 			Matcher m = adpPattern.matcher(description);
 			if (m.find()){
 				adverbs = m.group(2);
@@ -231,10 +217,10 @@ public abstract class Parser {
 			}
 		}
 
-		if (description.contains("@rel")){
+		if (description.contains(StonBlocks.beginREL)){
 			
 			Pattern relPattern = 
-				Pattern.compile("(.*)" + RELblock + "(.*)");
+				Pattern.compile("(.*)" + StonBlocks.RELblock + "(.*)");
 			Matcher m = relPattern.matcher(description);
 			if (m.find()){
 				relatives = m.group(2);
@@ -243,10 +229,10 @@ public abstract class Parser {
 			}
 		}
 		
-		if (description.contains("@cmp")){
+		if (description.contains(StonBlocks.beginCMP)){
 			
 			Pattern cmpPattern = 
-				Pattern.compile("(.*)" + CMPblock + "(.*)");
+				Pattern.compile("(.*)" + StonBlocks.CMPblock + "(.*)");
 			Matcher m = cmpPattern.matcher(description);
 			if (m.find()){
 				comparison = m.group(2);
@@ -259,22 +245,26 @@ public abstract class Parser {
 			
 			desc = desc.toLowerCase();
 			
-			if(desc.startsWith("id:")){
+			String key = StonKeys.ID + ":";
+			if(desc.startsWith(key)){
 				id = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("syn:")){
+			key = StonKeys.SYNSET + ":";
+			if(desc.startsWith(key)){
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("tense:")){
+			key = StonKeys.TENSE + ":";
+			if(desc.startsWith(key)){
 				tense = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("prog:")){
+			key = StonKeys.PROGRESSIVE + ":";
+			if(desc.startsWith(key)){
 				String aspect = desc.split(":")[1];
 				
 				if(aspect.matches("y")){
@@ -283,7 +273,8 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("neg:")){
+			key = StonKeys.NEGATED + ":";
+			if(desc.startsWith(key)){
 				String negate = desc.split(":")[1];
 				if(negate.matches("y")){
 					negated = true;
@@ -291,18 +282,21 @@ public abstract class Parser {
 				continue;
 			}
 			
-			if(desc.startsWith("mod:")){
+			key = StonKeys.MODAL + ":";
+			if(desc.startsWith(key)){
 				modality = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("subj:")){
-				subjects = desc.split(":")[1];
+			key = StonKeys.AGENT + ":";
+			if(desc.startsWith(key)){
+				agents = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("obj:")){
-				objects = desc.split(":")[1];
+			key = StonKeys.THEME + ":";
+			if(desc.startsWith(key)){
+				themes = desc.split(":")[1];
 				continue;
 			}
 		}
@@ -341,26 +335,26 @@ public abstract class Parser {
 		addVerbSpecif(tense, modality, progressive, negated);
 
 		// Process subjects
-		if(subjects.length() > 2){
-			if (!(subjects.startsWith("[") && subjects.endsWith("]"))){
+		if(agents.length() > 2){
+			if (!(agents.startsWith("[") && agents.endsWith("]"))){
 				//System.out.println("subjects=" + subjects);
 				return false;
 			}
 			
-			subjects = subjects.substring(1, subjects.length()-1);
-			addSubjects();
-			parseComponents(subjects);
-			endSubjects();
+			agents = agents.substring(1, agents.length()-1);
+			beginAgents();
+			parseComponents(agents);
+			endAgents();
 		}
 		
 		//Process objects
-		if(objects.length() > 2){
-			if (!(objects.startsWith("[") && objects.endsWith("]")))
+		if(themes.length() > 2){
+			if (!(themes.startsWith("[") && themes.endsWith("]")))
 				return false;
-			objects = objects.substring(1, objects.length()-1);
-			addObjects();
-			parseComponents(objects);
-			endObjects();
+			themes = themes.substring(1, themes.length()-1);
+			beginThemes();
+			parseComponents(themes);
+			endThemes();
 		}
 		
 		//Process adverbs
@@ -414,7 +408,8 @@ public abstract class Parser {
 	private boolean parseAdjectives(String description){
 		
 		int idx;
-		while ((idx = description.indexOf("adj:}")) >= 0) {
+		String key0 = StonKeys.ADJBL + ":}";
+		while ((idx = description.indexOf(key0)) >= 0) {
 			String adjective =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			if (description.startsWith(","))
@@ -425,13 +420,16 @@ public abstract class Parser {
 			int synSet = 0;
 			HashSet<Integer> advSynSets = new HashSet<Integer>();
 			for (String desc: descs){
-				if(desc.startsWith("syn:")){
+				
+				String key = StonKeys.SYNSET + ":";
+				if(desc.startsWith(key)){
 					String synSetStr = desc.split(":")[1];
 					synSet = Integer.parseInt(synSetStr);
 					continue;
 				}
 				
-				if(desc.startsWith("adv:")){
+				key = StonKeys.ADVERB + ":";
+				if(desc.startsWith(key)){
 					String synSetStrs = desc.split(":")[1];
 					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
 					
@@ -466,7 +464,8 @@ public abstract class Parser {
 	private boolean parseAdverbs(String description){
 		
 		int idx;
-		while ((idx = description.indexOf("adv:}")) >= 0) {
+		String key0 = StonKeys.ADVBL + ":}";
+		while ((idx = description.indexOf(key0)) >= 0) {
 			String adverb =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			if (description.startsWith(","))
@@ -476,14 +475,18 @@ public abstract class Parser {
 			
 			int synSet = 0;
 			HashSet<Integer> advSynSets = new HashSet<Integer>();
+			
 			for (String desc: descs){
-				if(desc.startsWith("syn:")){
+				
+				String key = StonKeys.SYNSET + ":";
+				if(desc.startsWith(key)){
 					String synSetStr = desc.split(":")[1];
 					synSet = Integer.parseInt(synSetStr);
 					continue;
 				}
 				
-				if(desc.startsWith("adv:")){
+				key = StonKeys.ADVBL + ":";
+				if(desc.startsWith(key)){
 					String synSetStrs = desc.split(":")[1];
 					synSetStrs = synSetStrs.substring(1, synSetStrs.length()-1);
 					
@@ -520,10 +523,11 @@ public abstract class Parser {
 		String adjectives = "";
 		String relatives = "";
 		
-		if (description.contains("@adj")){
+		String key = StonKeys.BLOCKSIGN + StonKeys.ADJBL;
+		if (description.contains(key)){
 			
 			Pattern adpPattern = 
-				Pattern.compile("(.*)" + ADJblock + "(.*)");
+				Pattern.compile("(.*)" + StonBlocks.ADJblock + "(.*)");
 			Matcher m = adpPattern.matcher(description);
 			if (m.find()){
 				adjectives = m.group(2);
@@ -532,10 +536,11 @@ public abstract class Parser {
 			}
 		}
 		
-		if (description.contains("@rel")){
+		key = StonKeys.BLOCKSIGN + StonKeys.RELBL;
+		if (description.contains(key)){
 			
 			Pattern adpPattern = 
-				Pattern.compile("(.*)" + RELblock + "(.*)");
+				Pattern.compile("(.*)" + StonBlocks.RELblock + "(.*)");
 			Matcher m = adpPattern.matcher(description);
 			if (m.find()){
 				relatives = m.group(2);
@@ -548,27 +553,32 @@ public abstract class Parser {
 			
 			desc = desc.trim();
 			
-			if(desc.startsWith("id:")){
+			key = StonKeys.ID + ":";
+			if(desc.startsWith(key)){
 				id = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("syn:")){
+			key = StonKeys.SYNSET + ":";
+			if(desc.startsWith(key)){
 				synSetStr = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("name:")){
+			key = StonKeys.NAME + ":";
+			if(desc.startsWith(key)){
 				name = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("quant:")){
+			key = StonKeys.QUANTITY + ":";
+			if(desc.startsWith(key)){
 				quantity = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("def:")){
+			key = StonKeys.DEFINED + ":";
+			if(desc.startsWith(key)){
 				String defStr = desc.split(":")[1].toUpperCase();
 				if (StonLex.isDeterminer(defStr)){
 					def = defStr;
@@ -620,7 +630,8 @@ public abstract class Parser {
 	 */
 	private boolean parseRelatives(String description){
 		int idx;
-		while ((idx = description.indexOf("rel:}")) >= 0) {
+		String key = StonKeys.RELBL + ":}";
+		while ((idx = description.indexOf(key)) >= 0) {
 			String rel =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			if (! parseRelative(rel))
@@ -632,7 +643,8 @@ public abstract class Parser {
 	
 	private boolean parseComparisons(String description){
 		int idx;
-		while ((idx = description.indexOf("cmp:}")) >= 0) {
+		String key = StonKeys.COMPBL + ":}";
+		while ((idx = description.indexOf(key)) >= 0) {
 			String cmp =  description.substring(5, idx);
 			description = description.substring(idx+5);
 			if (! parseComparison(cmp))
@@ -648,12 +660,14 @@ public abstract class Parser {
 		String refs = "";
 		for (String desc : description.split(";")){
 			
-			if(desc.startsWith("type:")){
+			String key = StonKeys.TYPE + ":";
+			if(desc.startsWith(key)){
 				type = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("ref:")){
+			key = StonKeys.REFERENCE + ":";
+			if(desc.startsWith(key)){
 				refs = desc.split(":")[1];
 				continue;
 			}
@@ -689,17 +703,20 @@ public abstract class Parser {
 		
 		for (String desc : description.split(";")){
 			
-			if(desc.startsWith("type:")){
+			String key = StonKeys.TYPE + ":";
+			if(desc.startsWith(key)){
 				type = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("ref:")){
+			key = StonKeys.REFERENCE + ":";
+			if(desc.startsWith(key)){
 				refs = desc.split(":")[1];
 				continue;
 			}
 			
-			if(desc.startsWith("adj:")){
+			key = StonKeys.ADJECTIVE + ":";
+			if(desc.startsWith(key)){
 				adjs = desc.split(":")[1];
 				continue;
 			}
@@ -766,9 +783,9 @@ public abstract class Parser {
 	/**
 	 * It is called when the parser finds subjects
 	 */
-	protected abstract void addSubjects();
+	protected abstract void beginAgents();
 	
-	protected abstract void endSubjects();
+	protected abstract void endAgents();
 	
 	protected abstract void addActionAdverb(int advSynSet, Set<Integer> advSynSets);
 	
@@ -776,9 +793,9 @@ public abstract class Parser {
 	/**
 	 * It is called when the parser finds objects
 	 */
-	protected abstract void addObjects();
+	protected abstract void beginThemes();
 	
-	protected abstract void endObjects();
+	protected abstract void endThemes();
 	
 	protected abstract void endAction();
 	

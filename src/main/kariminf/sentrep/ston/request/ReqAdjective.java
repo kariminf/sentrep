@@ -3,6 +3,9 @@ package kariminf.sentrep.ston.request;
 import java.util.HashSet;
 import java.util.Set;
 
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+
 public class ReqAdjective {
 	
 	private int adjSynSet = 0;
@@ -40,26 +43,31 @@ public class ReqAdjective {
 	 */
 	@Override
 	public String toString() {
-		String result = "adj:{";
-		result += "syn:" + adjSynSet;
+		String result = StonKeys.ADJBL + ":{";
+		result += StonKeys.SYNSET + ":" + adjSynSet;
 		
 		if ( ! advSynSets.isEmpty()){
-			result += ";adv: " + advSynSets;
+			result += ";" + StonKeys.ADVERB + ":" + advSynSets;
 		}
-		result += "adj:}";
+		result += StonKeys.ADJBL + ":}";
 		return result;
 	}
 	
 	
 	public String structuredString(){
 		
-		String result = "\t\t\tadj:{\n";
-		result += "\t\t\t\tsyn:" + adjSynSet;
+		String result = StonBlocks.getIndentation(3) + StonKeys.ADJBL + ":{\n";
+		
+		result += StonBlocks.getIndentation(4);
+		result += StonKeys.SYNSET + ":" + adjSynSet;
 		
 		if ( ! advSynSets.isEmpty()){
-			result += ";\n\t\t\t\tadv: " + advSynSets;
+			result += ";\n" + StonBlocks.getIndentation(4);
+			result += StonKeys.ADVERB + ":" + advSynSets;
 		}
-		result += "\n\t\t\tadj:}";
+		
+		result += "\n" + StonBlocks.getIndentation(3);
+		result += StonKeys.ADJBL + ":}";
 		return result;
 		
 	}

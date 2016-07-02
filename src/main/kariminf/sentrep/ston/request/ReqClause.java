@@ -2,6 +2,9 @@ package kariminf.sentrep.ston.request;
 
 import java.util.Set;
 
+import kariminf.sentrep.ston.StonBlocks;
+import kariminf.sentrep.ston.StonKeys;
+
 public class ReqClause {
 	
 	
@@ -19,9 +22,10 @@ public class ReqClause {
 	
 	public void setSpecifs(String label, int indentLevel){
 		this.label = label;
+		indent = StonBlocks.getIndentation(indentLevel);
 		
-		if (indentLevel > 0)
-			indent = new String(new char[indentLevel]).replace("\0", "\t");
+		/*if (indentLevel > 0)
+			indent = new String(new char[indentLevel]).replace("\0", "\t");*/
 	}
 	
 	public void addConjunctedPredicates(Set<String> conjunctions){
@@ -41,10 +45,13 @@ public class ReqClause {
 		
 		String result = indent + label + ":{\n";
 
-		result += indent + "\ttype: " + type ;
+		result += indent + StonBlocks.INDENT;
+		result += StonKeys.TYPE + ":" + type ;
 		
 		if(! predicates.isEmpty()){
-			result += ";\n" + indent + "\tref: " + predicates;
+			result += ";\n" + indent + StonBlocks.INDENT;
+			result += StonKeys.REFERENCE + ":";
+			result += predicates.toString().replace(" ", "");
 		}
 		
 		result += "\n" + indent + label + ":}\n";
@@ -59,10 +66,11 @@ public class ReqClause {
 	public String toString() {
 		String result = label + ":{";
 
-		result += "type:" + type ;
+		result += StonKeys.TYPE + ":" + type ;
 		
 		if(! predicates.isEmpty()){
-			result += ";ref:" + predicates.toString().replace(" ", "");
+			result += ";" + StonKeys.REFERENCE + ":";
+			result += predicates.toString().replace(" ", "");
 		}
 		
 		result += label + ":}";
