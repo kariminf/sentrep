@@ -14,7 +14,7 @@ public class StonKeys {
 	public static final String ACT2 = "act2";
 	public static final String AGENT = "agt";
 	public static final String THEME = "thm";
-	public static final String NAME = "name";
+	public static final String NAME = "nam";
 	public static final String REFERENCE = "ref";
 	public static final String ADJECTIVE = "adj";
 	public static final String ADVERB = "adv";
@@ -27,5 +27,7 @@ public class StonKeys {
 	public static final String ACTBL = "act";
 	public static final String ROLEBL = "r";
 	public static final String SENTBL = "st";
+	
+	
 
 }

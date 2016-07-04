@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import kariminf.sentrep.ston.Parser;
+import kariminf.sentrep.ston.types.SPronoun;
 import kariminf.sentrep.ston.types.SSentType;
 
 
@@ -216,6 +217,13 @@ public class ReqParser extends Parser {
 	protected void adverbFail() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	protected void addRole(String id, SPronoun pronoun) {
+		currentPlayer = ReqRolePlayer.create(id, pronoun);
+		players.put(id, currentPlayer);
+		currentAction = null;
 	}
 
 

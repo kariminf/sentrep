@@ -10,4 +10,5 @@ public interface UnivMap {
 	public abstract Relation mapAdposition(String langAdpos);
 	public abstract Determiner mapDeterminer(String langDet);
 	public abstract Comparison mapComparison(String comp);
+	public abstract Pronoun mapPronoun(String pronoun);
 }

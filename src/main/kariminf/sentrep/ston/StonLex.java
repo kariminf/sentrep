@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kariminf.sentrep.ston.types.SComparison;
+import kariminf.sentrep.ston.types.SPronoun;
+import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SRelation;
 import kariminf.sentrep.ston.types.SVerbModal;
 import kariminf.sentrep.ston.types.SVerbTense;
@@ -15,6 +17,7 @@ public class StonLex {
 	private static final List<String> relations = initRelation();
 	private static final List<String> comparisons = initComparison();
 	private static final List<String> dets = initDeterminer();
+	
 	
 	private static List<String> initTense(){
 		List<String> result = new ArrayList<String>();
@@ -58,6 +61,7 @@ public class StonLex {
 		
 		return result;
 	}
+	
 	
 	private static List<String> initComparison(){
 		List<String> result = new ArrayList<String>();
@@ -115,5 +119,16 @@ public class StonLex {
 	public static int getCompIndex(String compString){
 		return comparisons.indexOf(compString);
 	}
+	
+
+	//Head: Demonstrative (D) {this, etc.}, Personnel (P) {I, me, etc.}
+	//Number: No one (0), singular(1), dual(2), plural(3)
+	//Gender: Feminine (F), Masculine (M), Neuter (N)
+	//Formality: Rude(0), Casual (1), Formal (2), Polite (3)
+	//Proximity: Distal(D), Medial(M), Proximal(P), Not-defined(N)
+	public static void getPronounSpecif(String type){
+
+	}
+	
 
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import kariminf.sentrep.ston.Parser;
+import kariminf.sentrep.ston.types.SPronoun;
 
 public class StonSimpleParser extends Parser {
 
@@ -191,6 +192,12 @@ public class StonSimpleParser extends Parser {
 	@Override
 	protected void addRoleSpecif(String name, String def, String quantity) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void addRole(String id, SPronoun pronoun) {
+		
 		
 	}
 

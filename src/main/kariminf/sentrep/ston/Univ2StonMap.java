@@ -48,5 +48,11 @@ public class Univ2StonMap implements LangMap {
 		return null;
 	}
 
+	@Override
+	public String getPronoun(Pronoun pronoun) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

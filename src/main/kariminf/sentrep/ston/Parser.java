@@ -5,6 +5,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import kariminf.sentrep.ston.types.SPronoun;
+
 /**
  * 
  * @author Abdelkrime Aries
@@ -522,6 +524,8 @@ public abstract class Parser {
 		String def = StonLex.getDefaultDeterminer();
 		String adjectives = "";
 		String relatives = "";
+		String type = "";
+		String ref = "";
 		
 		String key = StonKeys.BLOCKSIGN + StonKeys.ADJBL;
 		if (description.contains(key)){
@@ -585,6 +589,32 @@ public abstract class Parser {
 				}
 				continue;
 			}
+			
+			key = StonKeys.TYPE + ":";
+			if(desc.startsWith(key)){
+				type = desc.split(":")[1];
+				continue;
+			}
+			
+			key = StonKeys.REFERENCE + ":";
+			if(desc.startsWith(key)){
+				ref = desc.split(":")[1];
+				continue;
+			}
+		}
+		
+		// A role can be a pronoun which is encoded in a number of characters
+		//See @SPronoun for description
+		
+		type = type.trim();
+		if (type.length() == SPronoun.PropertiesNumber){
+			addRole(id, SPronoun.create(type));
+			ref = ref.trim();
+			if (ref.length() > 2){
+				parseComponents(ref);
+			}
+				
+			return true;
 		}
 		
 		//A role must have an ID
@@ -808,6 +838,13 @@ public abstract class Parser {
 	protected abstract void addRole(String id, int synSet);
 	
 	/**
+	 * It is called when the parser finds a role player (pronoun)
+	 * @param id each role has a unique ID
+	 * @param type the type of the pronoun See @StonLex
+	 */
+	protected abstract void addRole(String id, SPronoun pronoun);
+	
+	/**
 	 * It is called after {@link addRole}
 	 * @param name proper names if existed, if not the string is empty
 	 * @param def defined or not  
@@ -847,7 +884,7 @@ public abstract class Parser {
 	 * It is called to add an relative: time or location
 	 * @param type the type of the relatives
 	 */
-	protected abstract void addRelative(String type);
+	protected abstract void addRelative(String SP);
 	
 	
 	protected abstract void addComparison(String type, Set<Integer> adjSynSets);
