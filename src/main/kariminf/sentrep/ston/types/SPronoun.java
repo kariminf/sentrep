@@ -98,6 +98,7 @@ public class SPronoun {
 		SPronoun result = new SPronoun();
 		int specifLen = specif.length();
 		int i = 0;
+		specif = specif.toUpperCase();
 		for(SPProperty p: SPProperty.values()){
 			if (i >= specifLen)
 				break;
@@ -207,8 +208,8 @@ public class SPronoun {
 	public static void main(String[] args) {
 		
 		SPronoun p = new SPronoun();
-		SPronoun p2 = SPronoun.create("DXXXM");
-		SPronoun p3 = SPronoun.create("DDFPP");
+		SPronoun p2 = SPronoun.create("DSXXXM");
+		SPronoun p3 = SPronoun.create("DTDFPP");
 		System.out.println(p);
 		System.out.println(p2);
 		System.out.println(p3);

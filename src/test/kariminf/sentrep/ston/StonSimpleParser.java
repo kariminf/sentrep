@@ -196,7 +196,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addRole(String id, SPronoun pronoun) {
+	protected void addPRole(String id, String pronoun) {
 		
 		
 	}

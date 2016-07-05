@@ -608,7 +608,7 @@ public abstract class Parser {
 		
 		type = type.trim();
 		if (type.length() == SPronoun.PropertiesNumber){
-			addRole(id, SPronoun.create(type));
+			addPRole(id, type);
 			ref = ref.trim();
 			if (ref.length() > 2){
 				parseComponents(ref);
@@ -842,7 +842,7 @@ public abstract class Parser {
 	 * @param id each role has a unique ID
 	 * @param type the type of the pronoun See @StonLex
 	 */
-	protected abstract void addRole(String id, SPronoun pronoun);
+	protected abstract void addPRole(String id, String pronoun);
 	
 	/**
 	 * It is called after {@link addRole}

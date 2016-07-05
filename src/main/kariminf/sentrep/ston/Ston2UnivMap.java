@@ -112,4 +112,10 @@ public class Ston2UnivMap implements UnivMap {
 	private Person mapPerson(SPerson person){
 		return Person.values()[person.ordinal()];
 	}
+
+	@Override
+	public SentMood mapMood(String mood) {
+		// TODO Auto-generated method stub
+		return SentMood.AFFIRMATIVE;
+	}
 }

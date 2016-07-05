@@ -6,6 +6,9 @@ public enum Relation {
 	POSS, //The man whose car is so expensive
 	REAS, //The reason why he did this is unclear
 	
+	WHERE, //Use when action refers to action: He return where he ...
+	WHEN, 
+	
 	OF, //The mother of the boy
 	
 	//Time

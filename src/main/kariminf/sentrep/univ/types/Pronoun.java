@@ -2,7 +2,6 @@ package kariminf.sentrep.univ.types;
 
 public class Pronoun {
 	
-	
 
 	public static enum Head {
 		PERSONNAL,
@@ -160,5 +159,16 @@ public class Pronoun {
 	public boolean isUnlocked() {
 		return unlocked;
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Pronoun [head=" + head + ", number=" + number + ", gender="
+				+ gender + ", formality=" + formality + ", proximity="
+				+ proximity + ", person=" + person + "]";
+	}
 
+	
 }
