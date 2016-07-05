@@ -1,0 +1,22 @@
+@r:[
+    r:{
+        id: I;
+        typ: PFSMFN;
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: bitten;
+        syn: 1445932;
+        tns: PA;
+        thm: [17years]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [bitten];
+    st:}
+st:]
