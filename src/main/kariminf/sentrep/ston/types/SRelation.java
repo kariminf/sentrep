@@ -13,6 +13,7 @@ public enum SRelation {
 	
 	//Time
 	T_AT, 
+	T_IN,
 	T_SNC,
 	T_FOR,
 	T_AGO, 
@@ -23,6 +24,7 @@ public enum SRelation {
 	
 	//Place
 	P_IN,
+	P_INS,
 	P_OUT,
 	P_AT,
 	P_ON,

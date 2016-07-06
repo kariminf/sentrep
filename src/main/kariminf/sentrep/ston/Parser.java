@@ -610,8 +610,11 @@ public abstract class Parser {
 		if (type.length() == SPronoun.PropertiesNumber){
 			addPRole(id, type);
 			ref = ref.trim();
+			ref = ref.substring(1, ref.length()-1);
 			if (ref.length() > 2){
+				beginPRelatives();
 				parseComponents(ref);
+				endPRelatives();
 			}
 				
 			return true;
@@ -902,5 +905,8 @@ public abstract class Parser {
 	
 	protected abstract void beginActions(boolean mainClause);
 	protected abstract void endActions();
+	
+	protected abstract void beginPRelatives();
+	protected abstract void endPRelatives();
 
 }
