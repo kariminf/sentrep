@@ -70,6 +70,10 @@ public class StonBlocks {
 			Pattern.compile(ROLEblock + ACTblock + SENTblock);
 			//Pattern.compile("@r\\:\\[(.+)r\\:\\]@act\\:\\[(.+)act\\:\\]@st\\:\\[(.+)st\\:\\]");
 
+	public static final String IGNOREblock = 
+			"\\" + StonKeys.BCOMMENT + "[^\\" + StonKeys.ECOMMENT
+			+"]*\\" + StonKeys.ECOMMENT;
+	
 	/**
 	 * Return the desired indentation
 	 * @param n this is the level of indentation

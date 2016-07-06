@@ -28,6 +28,9 @@ public class StonKeys {
 	public static final String ROLEBL = "r";
 	public static final String SENTBL = "st";
 	
+	public static final String BCOMMENT = "<";
+	public static final String ECOMMENT = ">";
+	
 	
 
 }

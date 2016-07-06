@@ -33,7 +33,8 @@ public abstract class Parser {
 	public void parse(String description){
 		
 		description = description.replaceAll(StonBlocks.BL, "");
-		description = description.toLowerCase();
+		//description = description.toLowerCase();
+		description = description.replaceAll(StonBlocks.IGNOREblock, "");
 		
 		//System.out.println(description);
 		Matcher m = StonBlocks.CONT.matcher(description);
