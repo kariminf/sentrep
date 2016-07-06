@@ -1,21 +1,21 @@
 package kariminf.sentrep.ston.request;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
 public class ReqDisjunction {
 
 
-	private HashSet<Conjunctions> disjunctions = new HashSet<Conjunctions>();
+	private ArrayList<Conjunctions> disjunctions = new ArrayList<Conjunctions>();
 	
 	private static class Conjunctions  {
-		private static final long serialVersionUID = 1L;
+		private List<String> conjunctions;
 		
-		private HashSet<String> conjunctions;
-		
-		public Conjunctions(Set<String> conjunctions){
-			this.conjunctions = new HashSet<String>();
+		public Conjunctions(List<String> conjunctions){
+			this.conjunctions = new ArrayList<String>();
 			this.conjunctions.addAll(conjunctions);
 		}
 		
@@ -45,7 +45,7 @@ public class ReqDisjunction {
 	}
 	
 	
-	public void addConjunctions(Set<String> conjunctions){
+	public void addConjunctions(List<String> conjunctions){
 		if (conjunctions.isEmpty()) return;
 		Conjunctions conj = new Conjunctions(conjunctions);
 		disjunctions.add(conj);

@@ -3,11 +3,9 @@ package kariminf.sentrep.ston;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Set;
+import java.util.List;
 
 import kariminf.sentrep.ston.Parser;
-import kariminf.sentrep.ston.types.SPronoun;
 
 public class StonSimpleParser extends Parser {
 
@@ -57,7 +55,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addAdjective(int synSet, Set<Integer> advSynSets) {
+	protected void addAdjective(int synSet, List<Integer> advSynSets) {
 		System.out.println("\tAdjective: " + synSet + ", adverbs: " + advSynSets);
 	}
 
@@ -72,7 +70,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addConjunctions(Set<String> IDs) {
+	protected void addConjunctions(List<String> IDs) {
 		String res = (firstDisjunction)? "\t\t": "\t\tor ";
 		System.out.println(res + IDs);
 		firstDisjunction = false;
@@ -172,13 +170,13 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addComparison(String type, Set<Integer> adjSynSets) {
+	protected void addComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addActionAdverb(int advSynSet, Set<Integer> advSynSets) {
+	protected void addActionAdverb(int advSynSet, List<Integer> advSynSets) {
 		// TODO Auto-generated method stub
 		
 	}

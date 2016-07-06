@@ -2,9 +2,8 @@ package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.List;
 
 import kariminf.sentrep.ston.StonBlocks;
 import kariminf.sentrep.ston.StonKeys;
@@ -97,7 +96,7 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addSentActionConjunctions(boolean mainAct, Set<String> actConjunctions){
+	public boolean addSentActionConjunctions(boolean mainAct, List<String> actConjunctions){
 		
 		if (currentSentence == null)
 			return false;
@@ -114,7 +113,7 @@ public class ReqCreator {
 	public boolean addSentMainActConjunctions(boolean mainAct, String... actConjunctions){
 		if (currentSentence == null)
 			return false;
-		HashSet<String> actionConjunctions = new HashSet<String>();
+		ArrayList<String> actionConjunctions = new ArrayList<String>();
 		for (String rel: actConjunctions)
 			actionConjunctions.add(rel);
 		return addSentActionConjunctions(mainAct, actionConjunctions);
@@ -151,19 +150,19 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addRelativeConjunctions(Set<String> relativeConjunctions){
+	public boolean addRelativeConjunctions(List<String> relativeConjunctions){
 		currentRelative.addConjunctedPredicates(relativeConjunctions);
 		return true;
 	}
 	
 	public boolean addRelativeConjunctions(String... relativeConjunctions){
-		HashSet<String> relConjunctions = new HashSet<String>();
+		ArrayList<String> relConjunctions = new ArrayList<String>();
 		for (String rel: relativeConjunctions)
 			relConjunctions.add(rel);
 		return addRelativeConjunctions(relConjunctions);
 	}
 	
-	public boolean addAgentConjunctions(String actionId, Set<String> agentsIDs){
+	public boolean addAgentConjunctions(String actionId, List<String> agentsIDs){
 		if (! actions.containsKey(actionId)) return false;
 		
 		//For now, we don't verify the existance of each subject in players list
@@ -171,7 +170,7 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addThemeConjunctions(String actionId, Set<String> themesIDs){
+	public boolean addThemeConjunctions(String actionId, List<String> themesIDs){
 		if (! actions.containsKey(actionId)) return false;
 		
 		//For now, we don't verify the existance of each object in players list
@@ -187,7 +186,7 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addAdjective(String playerId, int adjSynSet, Set<Integer> advSynSets){
+	public boolean addAdjective(String playerId, int adjSynSet, List<Integer> advSynSets){
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
 		

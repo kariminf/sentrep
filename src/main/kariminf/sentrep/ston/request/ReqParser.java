@@ -2,8 +2,7 @@ package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
-
+import java.util.List;
 import kariminf.sentrep.ston.Parser;
 import kariminf.sentrep.ston.types.SPronoun;
 import kariminf.sentrep.ston.types.SSentType;
@@ -60,7 +59,7 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addAdjective(int synSet, Set<Integer> advSynSets) {
+	protected void addAdjective(int synSet, List<Integer> advSynSets) {
 		currentPlayer.addAdjective(synSet, advSynSets);
 	}
 
@@ -86,7 +85,7 @@ public class ReqParser extends Parser {
 
 
 	@Override
-	protected void addConjunctions(Set<String> roleIDs) {
+	protected void addConjunctions(List<String> roleIDs) {
 		currentDisjunction.addConjunctions(roleIDs);
 	}
 
@@ -202,13 +201,13 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addComparison(String type, Set<Integer> adjSynSets) {
+	protected void addComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	protected void addActionAdverb(int advSynSet, Set<Integer> advSynSets) {
+	protected void addActionAdverb(int advSynSet, List<Integer> advSynSets) {
 		// TODO Auto-generated method stub
 		
 	}

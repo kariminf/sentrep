@@ -1,7 +1,5 @@
 package kariminf.sentrep.ston.types;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.TreeMap;
 
 public class SPronoun {

@@ -1,7 +1,7 @@
 package kariminf.sentrep.ston;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -391,7 +391,7 @@ public abstract class Parser {
 		String[] disjunctions = description.split("\\|");
 		
 		for (String disjunction: disjunctions){
-			Set<String> conjunctions = new HashSet<String>();
+			ArrayList<String> conjunctions = new ArrayList<String>();
 			for (String conjunction: disjunction.split(",")){
 				conjunctions.add(conjunction);
 				
@@ -421,7 +421,7 @@ public abstract class Parser {
 			String[] descs = adjective.split(";");
 			
 			int synSet = 0;
-			HashSet<Integer> advSynSets = new HashSet<Integer>();
+			ArrayList<Integer> advSynSets = new ArrayList<Integer>();
 			for (String desc: descs){
 				
 				String key = StonKeys.SYNSET + ":";
@@ -477,7 +477,7 @@ public abstract class Parser {
 			String[] descs = adverb.split(";");
 			
 			int synSet = 0;
-			HashSet<Integer> advSynSets = new HashSet<Integer>();
+			ArrayList<Integer> advSynSets = new ArrayList<Integer>();
 			
 			for (String desc: descs){
 				
@@ -611,8 +611,8 @@ public abstract class Parser {
 		if (type.length() == SPronoun.PropertiesNumber){
 			addPRole(id, type);
 			ref = ref.trim();
-			ref = ref.substring(1, ref.length()-1);
 			if (ref.length() > 2){
+				ref = ref.substring(1, ref.length()-1);
 				beginPRelatives();
 				parseComponents(ref);
 				endPRelatives();
@@ -764,7 +764,7 @@ public abstract class Parser {
 			return false;
 		}
 		
-		HashSet<Integer> adjSynSets = new HashSet<Integer>();
+		ArrayList<Integer> adjSynSets = new ArrayList<Integer>();
 		if(adjs.length() > 2){
 			if (!(adjs.startsWith("[") && adjs.endsWith("]")))
 				return false;
@@ -821,7 +821,7 @@ public abstract class Parser {
 	
 	protected abstract void endAgents();
 	
-	protected abstract void addActionAdverb(int advSynSet, Set<Integer> advSynSets);
+	protected abstract void addActionAdverb(int advSynSet, List<Integer> advSynSets);
 	
 	protected abstract void adverbFail();
 	/**
@@ -862,7 +862,7 @@ public abstract class Parser {
 	 * @param synSet wordnet synset of the adjective which modify the noun in the role
 	 * @param advSynSets wordnet synsets (Set) of adverbs which modify the adjective
 	 */
-	protected abstract void addAdjective(int synSet, Set<Integer> advSynSets);
+	protected abstract void addAdjective(int synSet, List<Integer> advSynSets);
 	
 	/**
 	 * It is called when the parsing of an adjective failed
@@ -891,10 +891,10 @@ public abstract class Parser {
 	protected abstract void addRelative(String SP);
 	
 	
-	protected abstract void addComparison(String type, Set<Integer> adjSynSets);
+	protected abstract void addComparison(String type, List<Integer> adjSynSets);
 	
 	//can be used for subjects, objects, places or times
-	protected abstract void addConjunctions(Set<String> IDs);
+	protected abstract void addConjunctions(List<String> IDs);
 	
 	
 	//Parse

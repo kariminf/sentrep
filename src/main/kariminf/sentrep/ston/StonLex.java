@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kariminf.sentrep.ston.types.SComparison;
-import kariminf.sentrep.ston.types.SPronoun;
-import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SRelation;
 import kariminf.sentrep.ston.types.SVerbModal;
 import kariminf.sentrep.ston.types.SVerbTense;

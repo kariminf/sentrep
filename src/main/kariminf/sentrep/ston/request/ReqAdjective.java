@@ -1,7 +1,7 @@
 package kariminf.sentrep.ston.request;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import kariminf.sentrep.ston.StonBlocks;
 import kariminf.sentrep.ston.StonKeys;
@@ -9,7 +9,7 @@ import kariminf.sentrep.ston.StonKeys;
 public class ReqAdjective {
 	
 	private int adjSynSet = 0;
-	private Set<Integer> advSynSets = new HashSet<Integer>();
+	private List<Integer> advSynSets = new ArrayList<Integer>();
 	
 	
 	public ReqAdjective(int adjSynSet) {
@@ -26,7 +26,7 @@ public class ReqAdjective {
 	/**
 	 * @return the advSynSets
 	 */
-	public Set<Integer> getAdvSynSets() {
+	public List<Integer> getAdvSynSets() {
 		//Alert: Security problem
 		return advSynSets;
 	}
@@ -34,7 +34,7 @@ public class ReqAdjective {
 	/**
 	 * @param advSynSets the advSynSets to set
 	 */
-	public void setAdvSynSets(Set<Integer> advSynSets) {
+	public void setAdvSynSets(List<Integer> advSynSets) {
 		this.advSynSets.addAll(advSynSets);
 	}
 

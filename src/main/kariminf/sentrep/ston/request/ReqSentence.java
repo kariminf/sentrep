@@ -1,7 +1,6 @@
 package kariminf.sentrep.ston.request;
 
-import java.util.Set;
-
+import java.util.List;
 import kariminf.sentrep.ston.StonBlocks;
 import kariminf.sentrep.ston.StonKeys;
 import kariminf.sentrep.ston.types.SSentType;
@@ -17,11 +16,11 @@ public class ReqSentence {
 		this.type = type;
 	}
 	
-	public void addMainActions(Set<String> conjunctions){
+	public void addMainActions(List<String> conjunctions){
 		mainActions.addConjunctions(conjunctions);
 	}
 	
-	public void addSecActions(Set<String> conjunctions){
+	public void addSecActions(List<String> conjunctions){
 		if (type != SSentType.COND)
 			return;
 		if (secActions == null)

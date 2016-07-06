@@ -1,23 +1,20 @@
 package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import kariminf.sentrep.ston.StonBlocks;
 import kariminf.sentrep.ston.StonKeys;
 
 public class ReqAction {
 	
-	private static Set<String> ids = new HashSet<String>();
+	private static List<String> ids = new ArrayList<String>();
 	
 	private int verbSynSet;
 	private String id;
 	private ReqDisjunction agents = new ReqDisjunction();
 	private ReqDisjunction themes = new ReqDisjunction();
-	private Set<Integer> advSynSets = new HashSet<Integer>();
+	private List<Integer> advSynSets = new ArrayList<Integer>();
 	
 	private String tense = "PR";
 	private String modality = "NONE";
@@ -81,7 +78,7 @@ public class ReqAction {
 	/**
 	 * @param advSynSets the advSynSets to set
 	 */
-	public void setAdvSynSets(Set<Integer> advSynSets) {
+	public void setAdvSynSets(List<Integer> advSynSets) {
 		this.advSynSets.addAll(advSynSets);
 	}
 
@@ -119,7 +116,7 @@ public class ReqAction {
 	 * @param conjunctions a set of roles IDs which are separated by "and" 
 	 * in the original sentence
 	 */
-	public void addAgents(Set<String> conjunctions){
+	public void addAgents(List<String> conjunctions){
 		agents.addConjunctions(conjunctions);
 	}
 	
@@ -128,7 +125,7 @@ public class ReqAction {
 	 * @param conjunctions a set of roles IDs which are separated by "and" 
 	 * in the original sentence
 	 */
-	public void addThemes(Set<String> conjunctions){
+	public void addThemes(List<String> conjunctions){
 		themes.addConjunctions(conjunctions);
 	}
 

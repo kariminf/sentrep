@@ -1,7 +1,6 @@
 package kariminf.sentrep.ston.request;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -66,7 +65,7 @@ public class ReqRolePlayer {
 		this.id = id;
 	}
 	
-	public void addPronRef(Set<String> conjunctions){
+	public void addPronRef(List<String> conjunctions){
 		references.addConjunctions(conjunctions);
 	}
 	
@@ -85,7 +84,7 @@ public class ReqRolePlayer {
 		return new ReqRolePlayer(id, pronoun);
 	}
 	
-	public void addAdjective(int adjSynSet, Set<Integer> advSynSets){
+	public void addAdjective(int adjSynSet, List<Integer> advSynSets){
 		
 		ReqAdjective adjective = new ReqAdjective(adjSynSet);
 		if ((advSynSets != null) && ! advSynSets.isEmpty()){

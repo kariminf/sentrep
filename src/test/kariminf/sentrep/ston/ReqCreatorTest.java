@@ -1,7 +1,6 @@
 package kariminf.sentrep.ston;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 import kariminf.sentrep.ston.request.ReqCreator;
 
@@ -19,14 +18,14 @@ public class ReqCreatorTest {
 		rc.addAdjective("mother", 1148283, null); //happy
 		
 		rc.addRelative("subj", "mother");
-		Set<String> mother_sing = new HashSet<String>();
+		ArrayList<String> mother_sing = new ArrayList<String>();
 		mother_sing.add("sing");
 		rc.addRelativeConjunctions(mother_sing);
 		//rc.addRelativeConjunctions(new String[]{"sing"});
 		
 		rc.addRolePlayer("child", 9917593);
 		rc.addRolePlayer("+goodfood", 21265);
-		Set<Integer> adv = new HashSet<Integer>();
+		ArrayList<Integer> adv = new ArrayList<Integer>();
 		adv.add(89408); //highly
 		rc.addAdjective("+goodfood", 1123148, adv);
 		
@@ -39,17 +38,17 @@ public class ReqCreatorTest {
 		
 		
 		//Disjunctions of conjunctions
-		Set<String> mother_child = new HashSet<String>();
+		ArrayList<String> mother_child = new ArrayList<String>();
 		mother_child.add("mother");
 		mother_child.add("child");
 		rc.addAgentConjunctions("ate", mother_child);
 
-		Set<String> child_food = new HashSet<String>();
+		ArrayList<String> child_food = new ArrayList<String>();
 		child_food.add("child");
 		child_food.add("+goodfood");
 		rc.addAgentConjunctions("ate", child_food);
 		
-		Set<String> foods = new HashSet<String>();
+		ArrayList<String> foods = new ArrayList<String>();
 		foods.add("+goodfood");
 		rc.addThemeConjunctions("ate", foods);
 		

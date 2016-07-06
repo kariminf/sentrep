@@ -1,5 +1,6 @@
 package kariminf.sentrep.ston.request;
 
+import java.util.List;
 import java.util.Set;
 
 import kariminf.sentrep.ston.StonBlocks;
@@ -7,9 +8,6 @@ import kariminf.sentrep.ston.StonKeys;
 
 public class ReqClause {
 	
-	
-
-
 	private String label = "";
 	private String indent = "";
 	private String type = "";
@@ -28,7 +26,7 @@ public class ReqClause {
 			indent = new String(new char[indentLevel]).replace("\0", "\t");*/
 	}
 	
-	public void addConjunctedPredicates(Set<String> conjunctions){
+	public void addConjunctedPredicates(List<String> conjunctions){
 		predicates.addConjunctions(conjunctions);
 	}
 	

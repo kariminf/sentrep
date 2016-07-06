@@ -1,7 +1,6 @@
 package kariminf.sentrep.ston;
 
 import kariminf.sentrep.LangMap;
-import kariminf.sentrep.ston.types.*;
 import kariminf.sentrep.univ.types.*;
 
 public class Univ2StonMap implements LangMap {
