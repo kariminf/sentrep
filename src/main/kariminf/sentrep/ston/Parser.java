@@ -46,6 +46,7 @@ public abstract class Parser {
 		String roles =  m.group(1);
 		String actions =  m.group(2);
 		String sentences = m.group(3);
+		//System.out.println(actions);
 		if (! parseRoles(roles)) return;
 		if (! parseActions(actions)) return;
 		if (! parseSentences(sentences)) return;

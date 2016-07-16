@@ -41,5 +41,8 @@ public enum Relation {
 	FROM,
 	WITH,
 	TO,
-	AS //role: What is your opinion as a parent?
+	AS, //role: What is your opinion as a parent?
+	UND, //under pressure
+	FOR, //something for something
+	ON //something on something
 }
