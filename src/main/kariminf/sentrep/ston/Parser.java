@@ -617,6 +617,11 @@ public abstract class Parser {
 				parseComponents(ref);
 				endPRelatives();
 			}
+			
+			//Process adjectives
+			if (adjectives.length() > 0){
+				if (! parseAdjectives(adjectives)) return false;
+			}
 				
 			return true;
 		}

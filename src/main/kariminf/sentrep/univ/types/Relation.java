@@ -40,5 +40,6 @@ public enum Relation {
 	ABOUT,
 	FROM,
 	WITH,
-	TO
+	TO,
+	AS //role: What is your opinion as a parent?
 }
