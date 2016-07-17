@@ -1,0 +1,159 @@
+<One novel was republished in 1953, however, and the appearance of the Cairo Triology, Bayn al Qasrayn, Qasr al Shawq, Sukkariya (Between-the-Palaces, Palace of Longing, Sugarhouse) in 1957 made him famous throughout the Arab world as a depictor of traditional urban life.>
+< ----- FIX THIS ISSUE: ENNUMERATION ----->
+@r:[
+    r:{
+        id: one_novel;
+        syn: 3833065;
+        def: N;
+    r:}
+    r:{
+        id: novel1;
+        syn: 3833065;
+        nam: Bayn_al_Qasrayn;
+    r:}
+    r:{
+        id: novel2;
+        syn: 3833065;
+        nam: Qasr_al_Shawq;
+    r:}
+    r:{
+        id: novel3;
+        syn: 3833065;
+        nam: Sukkariya;
+    r:}
+    r:{
+        id: year1953;
+        syn: 15203791;
+        nam: 1953
+    r:}
+    r:{
+        id: Cairo;
+        syn: 8898633
+    r:}
+    r:{
+        id: tri_cairo;
+        syn: 7985825;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [Cairo];
+            rel:}
+            rel:{
+                typ: OF;
+                ref: [novel1, novel2, novel3];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: year1957;
+        syn: 15203791;
+        nam: 1957
+    r:}
+    r:{
+        id: appearance;
+        syn: 50195;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [tri_cairo];
+            rel:}
+            rel:{
+                typ: T_IN;
+                ref: [year1957];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: life;
+        syn: 13963192;
+        @adj:[
+            adj:{
+                syn: 611047;
+            adj:}
+            adj:{
+                syn: 2821071;
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: depictor;
+        syn: 7846;
+        nam: depictor;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [life];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: he_famous;
+        typ: STSMFN;
+        @adj:[
+            adj:{
+                syn: 1375831;
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: arabs;
+        syn: 9729530;
+        qnt: PL;
+    r:}
+    r:{
+        id: arabworld;
+        syn: 7965937;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [arabs];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: republish;
+        tns: PA;
+        syn: 1746145;
+        thm: [one_novel];
+        @adv:[
+            adv:{
+                syn: 27384;
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: T_IN;
+                ref: [year1953];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: madefamous;
+        tns: PA;
+        syn: 562067;
+        agt: [appearance];
+        thm: [he_famous];
+        @rel:[
+            rel:{
+                typ: P_THR;
+                ref: [arabworld];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [depictor];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [republish, madefamous];
+    st:}
+st:]

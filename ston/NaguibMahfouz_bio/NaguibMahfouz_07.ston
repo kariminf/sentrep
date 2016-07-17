@@ -1,0 +1,92 @@
+<The years since his retirement from the Egyptian bureaucracy have seen an outburst of further creativity, much of it experimental.>
+<-- which is much experimental  -->
+@r:[
+    r:{
+        id: bureaucracy;
+        syn: 8051565;
+        @adj:[
+            adj:{
+                syn: 2971469;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: retirement;
+        syn: 212205;
+        typ: PTSMFN;
+        @rel:[
+            rel:{
+                typ: FROM;
+                ref: [bureaucracy];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: theyears;
+        syn: 15203791;
+        def: Y;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: T_SNC;
+                ref: [retirement];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: creativity;
+        syn: 5624700;
+        @adj:[
+            adj:{
+                syn: 1535481;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: outburst;
+        syn: 7014320;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [creativity];
+            rel:}
+            rel:{
+                typ: SUBJ;
+                ref: [is_exp];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: experimental;
+        syn: 5624700;
+        @adj:[
+            adj:{
+                syn: 2940392;
+                adv: [59086]
+            adj:}
+        adj:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: is_exp;
+        syn: 2604760;
+        thm: [experimental]
+    act:}
+    act:{
+        id: haveseen;
+        tns: PA;
+        syn: 2128873;
+        agt: [theyears];
+        thm: [outburst]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [haveseen];
+    st:}
+st:]

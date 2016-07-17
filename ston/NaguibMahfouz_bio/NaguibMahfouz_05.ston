@@ -1,0 +1,96 @@
+<Works of this second period include the novels, The Thief and the Dogs (1961), Autumn Quail (1962), Small Talk on the Nile (1966), and Miramar (1967), as well as several collections of short stories.>
+<--- AS WELL AS: ommited -->
+@r:[
+    r:{
+        id: this2period;
+        syn: 15113229;
+        typ: DTSNFP;
+        qnt: O2;
+    r:}
+    r:{
+        id: works;
+        syn: 575741;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [this2period];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: novel1a;
+        syn: 3833065;
+        nam: The_Thief_and_the_Dogs;
+    r:}
+    r:{
+        id: novel2a;
+        syn: 3833065;
+        nam: Autumn_Quail;
+    r:}
+    r:{
+        id: novel3a;
+        syn: 3833065;
+        nam: Small_Talk_on_the_Nile;
+    r:}
+    r:{
+        id: novel4a;
+        syn: 3833065;
+        nam: Miramar;
+    r:}
+    r:{
+        id: novels;
+        syn: 3833065;
+        qnt: PL;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [novel1a, novel2a, novel3a, novel4a];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: short_stories;
+        syn: 6369829;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1436003;
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: sev_collections;
+        syn: 6591442;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2268268;
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [short_stories];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: include;
+        tns: PR;
+        syn: 2632940;
+        agt: [works];
+        thm: [novels, sev_collections];
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [include];
+    st:}
+st:]

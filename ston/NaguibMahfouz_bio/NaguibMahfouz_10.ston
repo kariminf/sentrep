@@ -1,0 +1,131 @@
+<In Egypt, each new publication is regarded as a major cultural event and his name is inevitably among the first mentioned in any literary discussion from Gibraltar to the Gulf.>
+<-- the first mentioned = the first name which is mentioned
+@r:[
+    r:{
+        id: egypt;
+        syn: 8897065;
+    r:}
+    r:{
+        id: publication;
+        syn: 1103614;
+        @adj:[
+            adj:{
+                syn: 2269635;
+            adj:}
+            adj:{
+                syn: 1687167;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: maj_cult;
+        syn: 11453860;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 1472628;
+            adj:}
+            adj:{
+                syn: 2898922;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: his_name;
+        syn: 6333653;
+        typ: PTSMFN;
+    r:}
+    r:{
+        id: the1st_mention;
+        syn: 6333653;
+        qnt: O1PL;
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [mentioned];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: gibraltar;
+        syn: 9028841;
+    r:}
+    r:{
+        id: gulf;
+        syn: 9296121;
+    r:}
+    r:{
+        id: lit_disc;
+        syn: 7138085;
+        @adj:[
+            adj:{
+                syn: 2830501;
+                adv: [2267686]
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: FROM;
+                ref: [gibraltar];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [gulf];
+            rel:}
+        rel:]
+    r:}
+    
+    
+r:]
+
+@act:[
+    act:{
+        id: regarded;
+        syn: 690614;
+        thm: [publication];
+        @rel:[
+            rel:{
+                typ: P_IN;
+                ref: [egypt];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [maj_cult];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: mentioned;
+        syn: 1024190;
+        @rel:[
+            rel:{
+                typ: P_BET;
+                ref: [lit_disc];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: is_inevit;
+        syn: 2604760;
+        agt: [his_name];
+        @adv:[
+            adv:{
+                syn: 208557;
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: P_BET;
+                ref: [the1st_mention];
+            rel:}
+        rel:]
+    act:}
+
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [regarded, is_inevit];
+    st:}
+st:]

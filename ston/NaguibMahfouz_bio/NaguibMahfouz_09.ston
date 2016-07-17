@@ -1,0 +1,85 @@
+<Half of his novels have been made into films which have circulated throughout the Arabic-speaking world.>
+@r:[
+    r:{
+        id: hisnovels;
+        syn: 3833065;
+        typ: PTSMFN;
+        qnt: PL
+    r:}
+    r:{
+        id: half;
+        syn: 13736799;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [hisnovels];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: films;
+        syn: 6613686;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [circulated];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: arspeak;
+        syn: 7129867;
+        @adj:[
+            adj:{
+                syn: 3044740;
+            adj:}
+        adj:]
+        
+    r:}
+    r:{
+        id: arabic_speak;
+        syn: 7965937;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [arspeak];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: made;
+        tns: PA;
+        syn: 1621555;
+        thm: [half];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [films];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: circulated;
+        tns: PA;
+        syn: 969873;
+        @rel:[
+            rel:{
+                typ: P_THR;
+                ref: [arabic_speak];
+            rel:}
+        rel:]
+    act:}
+    
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [made];
+    st:}
+st:]

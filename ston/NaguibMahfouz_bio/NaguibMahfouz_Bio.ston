@@ -1,0 +1,1155 @@
+@r:[
+    <----------R01----------->
+    r:{
+        id: cairo;
+        syn: 8898633
+    r:}
+    r:{
+        id: writing;
+        syn: 929718
+    r:}
+    r:{
+        id: d1911;
+        syn: 15160579;<date>
+        nam: 1911
+    r:}
+    r:{
+        id: 17years;
+        syn: 4924103;<year>
+        nam: 17
+    r:}
+    r:{
+        id: naguib;
+        syn: 7846;<person>
+        nam: Naguib_Mahfouz;
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [born_in];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: he_naguib;
+        typ: STSMFN;<he>
+        ref: [naguib];
+    r:}
+    
+    <----------R02----------->
+    r:{
+        id: his_novel;
+        syn: 3833065;<novel>
+        typ: PTSMFN;<his>
+        qnt: O1<first>
+    r:}
+    r:{
+        id: year1939;
+        syn: 15203791;<year>
+        nam: 1939
+    r:}
+    r:{
+        id: more_novels;
+        syn: 3833065;<novel>
+        qnt: 10;
+        @adj:[
+            adj:{
+                syn: 1556355;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: egyptian;
+        syn: 9700492;
+        qnt: PL;
+    r:}
+    r:{
+        id: revol_date;
+        syn: 15160579;<date>
+        nam: July_1952;
+    r:}
+    r:{
+        id: revolution;
+        syn: 962722;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [egyptian];
+            rel:}
+            rel:{
+                typ: OF;
+                ref: [revol_date];
+            rel:}
+            rel:{
+                typ: WHEN;
+                ref: [stopped];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: sev_years;
+        syn: 15203791;<year>
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2268268;
+            adj:}
+        adj:];
+    r:}
+    
+    <----------R03----------->
+    r:{
+        id: one_novel;
+        syn: 3833065;<novel>
+        def: N;
+    r:}
+    r:{
+        id: novel1;
+        syn: 3833065;<novel>
+        nam: Bayn_al_Qasrayn;
+    r:}
+    r:{
+        id: novel2;
+        syn: 3833065;<novel>
+        nam: Qasr_al_Shawq;
+    r:}
+    r:{
+        id: novel3;
+        syn: 3833065;<novel>
+        nam: Sukkariya;
+    r:}
+    r:{
+        id: year1953;
+        syn: 15203791;<year>
+        nam: 1953
+    r:}
+    r:{
+        id: tri_cairo;
+        syn: 7985825;<trilogy>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [cairo];
+            rel:}
+            rel:{
+                typ: OF;
+                ref: [novel1, novel2, novel3];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: year1957;
+        syn: 15203791;<year>
+        nam: 1957
+    r:}
+    r:{
+        id: appearance;
+        syn: 50195;<appearance>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [tri_cairo];
+            rel:}
+            rel:{
+                typ: T_IN;
+                ref: [year1957];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: life;
+        syn: 13963192;<life>
+        @adj:[
+            adj:{
+                syn: 611047;<traditional>
+            adj:}
+            adj:{
+                syn: 2821071;<urban>
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: depictor;
+        syn: 7846;<person>
+        nam: depictor;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [life];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: he_famous;
+        typ: PTSMFN;<he>
+        @adj:[
+            adj:{
+                syn: 1375831;<famous>
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: arabs;
+        syn: 9729530;
+        qnt: PL;
+    r:}
+    r:{
+        id: arabworld;
+        syn: 7965937;<world>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [arabs];
+            rel:}
+        rel:]
+    r:}
+    
+    <----------R04----------->
+    r:{
+        id: gebelawi;
+        syn: 7846;<person>
+        nam: Gebelawi;
+    r:}
+    r:{
+        id: children;
+        syn: 9918248;<child>
+        qnt: PL;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [gebelawi];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: new_vein;
+        syn: 7089622;<vein>
+        def: N;
+        @adj:[
+            adj:{
+                syn: 2070491;<new>
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [concealed];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: pjudgements;
+        syn: 874067;<judgement>
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1814385;<political>
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: allegory;
+        syn: 6372095;
+    r:}
+    r:{
+        id: symbolism;
+        syn: 412271;
+    r:}
+    
+    <----------R05----------->
+    r:{
+        id: this2period;
+        syn: 15113229;<period>
+        typ: DTSNFP;<this>
+        qnt: O2;<second>
+    r:}
+    r:{
+        id: works;
+        syn: 575741;<work>
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [this2period];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: novel1a;
+        syn: 3833065;<novel>
+        nam: The_Thief_and_the_Dogs;
+    r:}
+    r:{
+        id: novel2a;
+        syn: 3833065;<novel>
+        nam: Autumn_Quail;
+    r:}
+    r:{
+        id: novel3a;
+        syn: 3833065;<novel>
+        nam: Small_Talk_on_the_Nile;
+    r:}
+    r:{
+        id: novel4a;
+        syn: 3833065;<novel>
+        nam: Miramar;
+    r:}
+    r:{
+        id: novels;
+        syn: 3833065;<novel>
+        qnt: PL;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [novel1a, novel2a, novel3a, novel4a];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: short_stories;
+        syn: 6369829;<story>
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1436003;<short>
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: sev_collections;
+        syn: 6591442;<collection>
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2268268;<several>
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [short_stories];
+            rel:}
+        rel:]
+    r:}
+    
+    <----------R06----------->
+    r:{
+        id: mahfouz;
+        syn: 7846;<person>
+        nam: Mahfouz;
+    r:}
+    r:{
+        id: year1972;
+        syn: 15203791;<year>
+        nam: 1972
+    r:}
+    r:{
+        id: mortmain;
+        syn: 13250244;
+    r:}
+    r:{
+        id: endowments;
+        syn: 5624042;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [mortmain];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: ministry_me;
+        syn: 8114004;<ministry>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [endowments];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: cservant;
+        syn: 10582154;<servant>
+        @adj:[
+            adj:{
+                syn: 2696920;<civil>
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: P_IN;
+                ref: [ministry_me];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: censorship;
+        syn: 397347;
+    r:}
+    r:{
+        id: art;
+        syn: 2743547;
+    r:}
+    r:{
+        id: bureau_art;
+        syn: 8337324;<bureau>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [art];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: director_c;
+        syn: 10014939;<director>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [censorship];
+            rel:}
+            rel:{
+                typ: P_IN;
+                ref: [bureau_art];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: cinema;
+        syn: 3032252;
+        def: Y;
+    r:}
+    r:{
+        id: supp_cinema;
+        syn: 1215902;<support>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [cinema];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: found_cinema;
+        syn: 8406486;<Foundation>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: FOR;
+                ref: [supp_cinema];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: director_f;
+        syn: 10014939;<director>
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [found_cinema];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: cult_affair;
+        syn: 1107359;<Affair>
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2898922;<Cultural>
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: culture;
+        syn: 8287844;
+    r:}
+    r:{
+        id: ministry_cult;
+        syn: 8114004;<ministry>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [culture];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: consul_affair;
+        syn: 10582154;<consultant>
+        @rel:[
+            rel:{
+                typ: ON;
+                ref: [cult_affair];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [ministry_cult];
+            rel:}
+        rel:]
+    r:}
+    
+    <----------R07----------->
+    r:{
+        id: bureaucracy;
+        syn: 8051565;
+        @adj:[
+            adj:{
+                syn: 2971469;<Egyptian>
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: retirement;
+        syn: 212205;
+        typ: PTSMFN;
+        @rel:[
+            rel:{
+                typ: FROM;
+                ref: [bureaucracy];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: theyears;
+        syn: 15203791;<year>
+        def: Y;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: T_SNC;
+                ref: [retirement];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: creativity;
+        syn: 5624700;
+        @adj:[
+            adj:{
+                syn: 1535481;<further>
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: outburst;
+        syn: 7014320;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [creativity];
+            rel:}
+            rel:{
+                typ: SUBJ;
+                ref: [is_exp];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: experimental;
+        syn: 5624700;<creativity>
+        @adj:[
+            adj:{
+                syn: 2940392;<experimental>
+                adv: [59086]
+            adj:}
+        adj:]
+    r:}
+    
+    <----------R08----------->
+    r:{
+        id: 30novels;
+        syn: 3833065;<novel>
+        qnt: 30;
+    r:}
+    r:{
+        id: nbr_novel;
+        syn: 13582013;<number>
+        def: N;
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [cmp_novels];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: 100stories;
+        syn: 6369829;<story>
+        qnt: 100;
+        @adj:[
+            adj:{
+                syn: 1436003;<short>
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: nbr_story;
+        syn: 13582013;<number>
+        def: N;
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [cmp_stories];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: 200articles;
+        syn: 6268096;<article>
+        qnt: 200;
+    r:}
+    r:{
+        id: nbr_article;
+        syn: 13582013;<number>
+        def: N;
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [cmp_articles];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: the_author;
+        syn: 10794014;<author>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [nbr_novel, nbr_story, nbr_article];
+            rel:}
+        rel:]
+    r:}
+    
+    <----------R09----------->
+    r:{
+        id: hisnovels;
+        syn: 3833065;<novel>
+        typ: PTSMFN;
+        qnt: PL
+    r:}
+    r:{
+        id: half;
+        syn: 13736799;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [hisnovels];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: films;
+        syn: 6613686;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [circulated];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: arspeak;
+        syn: 7129867;<speaking>
+        @adj:[
+            adj:{
+                syn: 3044740;<arabic>
+            adj:}
+        adj:]
+        
+    r:}
+    r:{
+        id: arabic_speak;
+        syn: 7965937;<world>
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [arspeak];
+            rel:}
+        rel:]
+    r:}
+    
+    <----------R10----------->
+    r:{
+        id: egypt;
+        syn: 8897065;
+    r:}
+    r:{
+        id: publication;
+        syn: 1103614;
+        @adj:[
+            adj:{
+                syn: 2269635;<each>
+            adj:}
+            adj:{
+                syn: 1687167;<new>
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: maj_cult;
+        syn: 11453860;<event> 
+        def: N;
+        @adj:[
+            adj:{
+                syn: 1472628;<major>
+            adj:}
+            adj:{
+                syn: 2898922;<cultural>
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: his_name;
+        syn: 6333653;<name>
+        typ: PTSMFN
+    r:}
+    r:{
+        id: the1st_mention;
+        syn: 6333653;<name>
+        qnt: O1PL;<first>
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [mentioned];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: gibraltar;
+        syn: 9028841;
+    r:}
+    r:{
+        id: gulf;
+        syn: 9296121;
+    r:}
+    r:{
+        id: lit_disc;
+        syn: 7138085;<discussion>
+        @adj:[
+            adj:{
+                syn: 2830501;<literary>
+                adv: [2267686]<any>
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: FROM;
+                ref: [gibraltar];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [gulf];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    <----------A01----------->
+    act:{
+        id: born_in;
+        tns: PA;
+        syn: 56930;<born>
+        @rel:[
+            rel:{
+                typ: P_IN;
+                ref: [cairo];
+            rel:}
+            rel:{
+                typ: T_IN;
+                ref: [d1911];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: was_17;
+        tns: PA;
+        syn: 2604760;<be>
+        agt: [he_naguib];
+        thm: [17years]
+    act:}
+    act:{
+        id: began_writing;
+        tns: PA;
+        syn: 348746;<begin>
+        agt: [naguib];
+        thm: [writing];
+        @rel:[
+            rel:{
+                typ: WHEN;
+                ref: [was_17];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A02----------->
+    act:{
+        id: publish;
+        tns: PA;
+        syn: 967625;<publish>
+        thm: [his_novel];
+        @rel:[
+            rel:{
+                typ: T_IN;
+                ref: [year1939];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: write;
+        tns: PA;
+        syn: 1698271;<write>
+        thm: [more_novels];
+        @rel:[
+            rel:{
+                typ: T_BEF;
+                ref: [revolution];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: stopped;
+        tns: PA;
+        syn: 2680814;<stop>
+        agt: [he_naguib];
+        thm: [writing];
+        @rel:[
+            rel:{
+                typ: T_FOR;
+                ref: [sev_years];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A03----------->
+    act:{
+        id: republish;
+        tns: PA;
+        syn: 1746145;
+        thm: [one_novel];
+        @adv:[
+            adv:{
+                syn: 27384;<however>
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: T_IN;
+                ref: [year1953];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: madefamous;
+        tns: PA;
+        syn: 562067;<make>
+        agt: [appearance];
+        thm: [he_famous];
+        @rel:[
+            rel:{
+                typ: P_THR;
+                ref: [arabworld];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [depictor];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A04----------->
+    act:{
+        id: began_writing_again;
+        tns: PA;
+        syn: 348746;<begin>
+        agt: [he_naguib];
+        thm: [writing];
+        @rel:[
+            rel:{
+                typ: WITH;
+                ref: [children];
+            rel:}
+            rel:{
+                typ: P_IN;
+                ref: [new_vein];
+            rel:}
+        rel:];
+        @adv:[
+            adv:{
+                syn: 40365;<again>
+            adv:}
+        adv:];
+    act:}
+    act:{
+        id: concealed;
+        tns: PA;
+        syn: 2144835;
+        thm: [pjudgements];
+        @adv:[
+            adv:{
+                syn: 35058;<frequently>
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: UND;
+                ref: [allegory, symbolism];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A05----------->
+    act:{
+        id: include;
+        tns: PR;
+        syn: 2632940;
+        agt: [works];
+        thm: [novels, sev_collections];
+    act:}
+    
+    <----------A06----------->
+    act:{
+        id: employed;
+        tns: PA;
+        syn: 2409412;
+        thm: [mahfouz];
+        @rel:[
+            rel:{
+                typ: T_TILL;
+                ref: [year1972];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [cservant];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [director_c];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [director_f];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [consul_affair];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A07----------->
+    act:{
+        id: is_exp;
+        syn: 2604760;<be>
+        thm: [experimental]
+    act:}
+    act:{
+        id: haveseen;
+        tns: PA;
+        syn: 2128873;<see>
+        agt: [theyears];
+        thm: [outburst]
+    act:}
+    
+    <----------A08----------->
+    act:{
+        id: isnow;
+        syn: 2604760;<be>
+        agt: [he_naguib];
+        thm: [the_author];
+        @adv:[
+            adv:{
+                syn: 49220;<now>
+            adv:}
+        adv:];
+    act:}
+    act:{
+        id: cmp_novels;
+        syn: 2604760;<be>
+        @cmp:[
+            cmp:{
+                typ: M;
+                adj: [1386883];<great>
+                ref: [30novels];
+            cmp:}
+        cmp:]
+    act:}
+    act:{
+        id: cmp_stories;
+        syn: 2604760;<be>
+        @cmp:[
+            cmp:{
+                typ: M;
+                adj: [1386883];<great>
+                ref: [100stories];
+            cmp:}
+        cmp:]
+    act:}
+    act:{
+        id: cmp_articles;
+        syn: 2604760;<be>
+        @cmp:[
+            cmp:{
+                typ: M;
+                adj: [1386883];<great>
+                ref: [200articles];
+            cmp:}
+        cmp:]
+    act:}
+    
+    <----------A09----------->
+    act:{
+        id: made;
+        tns: PA;
+        syn: 1621555;<make>
+        thm: [half];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [films];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: circulated;
+        tns: PA;
+        syn: 969873;
+        @rel:[
+            rel:{
+                typ: P_THR;
+                ref: [arabic_speak];
+            rel:}
+        rel:]
+    act:}
+    
+    <----------A10----------->
+    act:{
+        id: regarded;
+        syn: 690614;
+        thm: [publication];
+        @rel:[
+            rel:{
+                typ: P_IN;
+                ref: [egypt];
+            rel:}
+            rel:{
+                typ: AS;
+                ref: [maj_cult];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: mentioned;
+        syn: 1024190;
+        @rel:[
+            rel:{
+                typ: P_BET;
+                ref: [lit_disc];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: is_inevit;
+        syn: 2604760;<be>
+        agt: [his_name];
+        @adv:[
+            adv:{
+                syn: 208557;<inevitably>
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: P_BET;
+                ref: [the1st_mention];
+            rel:}
+        rel:]
+    act:}
+    
+act:]
+
+@st:[
+
+    <----------S01----------->
+    <Born in Cairo in 1911, Naguib Mahfouz began writing when he was seventeen.>
+    st:{
+        typ: AFF;
+        act: [began_writing];
+    st:}
+    
+    <----------S02----------->
+    <His first novel was published in 1939 and ten more were written before the Egyptian Revolution of July 1952, when he stopped writing for several years.>
+    st:{
+        typ: AFF;
+        act: [publish, write];
+    st:}
+    
+    <----------S03----------->
+    <One novel was republished in 1953, however, and the appearance of the Cairo Triology, Bayn al Qasrayn, Qasr al Shawq, Sukkariya (Between-the-Palaces, Palace of Longing, Sugarhouse) in 1957 made him famous throughout the Arab world as a depictor of traditional urban life.>
+    st:{
+        typ: AFF;
+        act: [republish, madefamous];
+    st:}
+    
+    <----------S04----------->
+    <With The Children of Gebelawi (1959), he began writing again, in a new vein that frequently concealed political judgements under allegory and symbolism.>
+    st:{
+        typ: AFF;
+        act: [began_writing_again];
+    st:}
+    
+    <----------S05----------->
+    <Works of this second period include the novels, The Thief and the Dogs (1961), Autumn Quail (1962), Small Talk on the Nile (1966), and Miramar (1967), as well as several collections of short stories.>
+    st:{
+        typ: AFF;
+        act: [include];
+    st:}
+    
+    <Paragraph 2>
+    <----------S06----------->
+    <Until 1972, Mahfouz was employed as a civil servant, first in the Ministry of Mortmain Endowments, then as Director of Censorship in the Bureau of Art, as Director of the Foundation for the Support of the Cinema, and, finally, as consultant on Cultural Affairs to the Ministry of Culture.>
+    st:{
+        typ: AFF;
+        act: [employed];
+    st:}
+    
+    <----------S07----------->
+    <The years since his retirement from the Egyptian bureaucracy have seen an outburst of further creativity, much of it experimental.>
+    st:{
+        typ: AFF;
+        act: [haveseen];
+    st:}
+    
+    <----------S08----------->
+    <He is now the author of no fewer than thirty novels, more than a hundred short stories, and more than two hundred articles.>
+    st:{
+        typ: AFF;
+        act: [isnow];
+    st:}
+    
+    <----------S09----------->
+    <Half of his novels have been made into films which have circulated throughout the Arabic-speaking world.>
+    st:{
+        typ: AFF;
+        act: [made];
+    st:}
+    
+    <----------S10----------->
+    <In Egypt, each new publication is regarded as a major cultural event and his name is inevitably among the first mentioned in any literary discussion from Gibraltar to the Gulf.>
+    st:{
+        typ: AFF;
+        act: [regarded, is_inevit];
+    st:}
+    
+st:]

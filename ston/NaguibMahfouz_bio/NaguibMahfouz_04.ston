@@ -1,0 +1,111 @@
+<With The Children of Gebelawi (1959), he began writing again, in a new vein that frequently concealed political judgements under allegory and symbolism.>
+@r:[
+    r:{
+        id: Gebelawi;
+        syn: 7846;
+        nam: Gebelawi;
+    r:}
+    r:{
+        id: children;
+        syn: 9918248;
+        qnt: PL;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [Gebelawi];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: he_naguib;
+        typ: PTSMFN;
+    r:}
+    r:{
+        id: writing;
+        syn: 929718
+    r:}
+    r:{
+        id: new_vein;
+        syn: 7089622;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 2070491;
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: SUBJ;
+                ref: [concealed];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: pjudgements;
+        syn: 874067;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1814385;
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: allegory;
+        syn: 6372095;
+    r:}
+    r:{
+        id: symbolism;
+        syn: 412271;
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: began_writing_again;
+        tns: PA;
+        syn: 348746;
+        agt: [he_naguib];
+        thm: [writing];
+        @rel:[
+            rel:{
+                typ: WITH;
+                ref: [children];
+            rel:}
+            rel:{
+                typ: P_IN;
+                ref: [new_vein];
+            rel:}
+        rel:];
+        @adv:[
+            adv:{
+                syn: 40365;
+            adv:}
+        adv:];
+    act:}
+    act:{
+        id: concealed;
+        tns: PA;
+        syn: 2144835;
+        thm: [pjudgements];
+        @adv:[
+            adv:{
+                syn: 35058;
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: UND;
+                ref: [allegory, symbolism];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [began_writing_again];
+    st:}
+st:]
