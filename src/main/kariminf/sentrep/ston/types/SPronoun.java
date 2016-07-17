@@ -7,7 +7,7 @@ public class SPronoun {
 	public static interface SProProperty {}
 	
 	public static enum SPProperty{
-		Head(SHead.P),
+		Head(SHead.S),
 		Person(SPerson.F),
 		Number(SNumber.S),
 		Gender(SGender.N),
@@ -32,6 +32,8 @@ public class SPronoun {
 	}
 	
 	public static enum SHead implements SProProperty {
+		S,
+		O,
 		P,
 		D
 	}

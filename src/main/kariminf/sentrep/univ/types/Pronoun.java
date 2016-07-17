@@ -4,7 +4,9 @@ public class Pronoun {
 	
 
 	public static enum Head {
-		PERSONNAL,
+		SUBJECTIVE,
+		OBJECTIVE,
+		POSSESSIVE,
 		DEMONSTRATIVE
 	}
 	
@@ -43,7 +45,7 @@ public class Pronoun {
 	}
 	
 	//Default 
-	private Head head = Head.PERSONNAL;
+	private Head head = Head.SUBJECTIVE;
 	private Number number = Number.SINGLE;
 	private Gender gender = Gender.NEUTRAL;
 	private Formality formality = Formality.FORMAL;
