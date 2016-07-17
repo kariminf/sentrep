@@ -607,7 +607,7 @@ public abstract class Parser {
 		
 		// A role can be a pronoun which is encoded in a number of characters
 		//See @SPronoun for description
-		
+		boolean pronounFound = false;
 		type = type.trim();
 		if (type.length() == SPronoun.PropertiesNumber){
 			addPRole(id, type);
@@ -619,32 +619,29 @@ public abstract class Parser {
 				endPRelatives();
 			}
 			
-			//Process adjectives
-			if (adjectives.length() > 0){
-				if (! parseAdjectives(adjectives)) return false;
-			}
-				
-			return true;
+			pronounFound = true;
 		}
 		
 		//A role must have an ID
-		if (id.length() < 1){
+		/*
+		if (id.length() < 1 && ! pronounFound){
 			roleFail();
 			success = false;
 			return false;
-		}
+		}*/
 		
 		// A role must have a synset which is a number
-		if (! synSetStr.matches("\\d+")){
+		if (! synSetStr.matches("\\d+") && ! pronounFound){
 			roleFail();
 			success = false;
 			return false;
 		}
 		
-		int synSet = Integer.parseInt(synSetStr);
+		if (synSetStr.matches("\\d+")){
+			int synSet = Integer.parseInt(synSetStr);
+			addRole(id, synSet);
+		}
 		
-		// Add the role 
-		addRole(id, synSet);
 		addRoleSpecif(name, def, quantity);
 
 		//Process adjectives
