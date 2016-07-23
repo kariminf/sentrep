@@ -1,0 +1,170 @@
+<Prince Louis-Victor de Broglie of the French Academy, Permanent Secretary of the Academy of Sciences, and Professor at the Faculty of Sciences at Paris University, was born at Dieppe (Seine Inferieure) on 15th August, 1892, the son of Victor, Duc de Broglie and Pauline d'Armaille.>
+@r:[
+    r:{
+        id: fr_academy;
+        syn: 8280124;
+        @adj:[
+            adj:{
+                syn: 2958392;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: prince_louis;
+        syn: 10472799;
+        nam: Louis-Victor_de_Broglie;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [fr_academy];
+            rel:}
+            rel:{
+                typ: SUBJ;
+                ref: [was_func];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: sciences;
+        syn: 5999797;
+        qnt: PL
+    r:}
+    r:{
+        id: acad_sci;
+        syn: 8280124;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [sciences];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: perm_sec;
+        syn: 10570019;
+        @adj:[
+            adj:{
+                syn: 1754422;
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [acad_sci];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: paris;
+        syn: 8932568
+    r:}
+    r:{
+        id: univ_paris;
+        syn: 4511002;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [paris];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: fac_sci;
+        syn: 8287586;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [sciences];
+            rel:}
+            rel:{
+                typ: P_AT;
+                ref: [univ_paris];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: prof_univ;
+        syn: 10480730;
+        @rel:[
+            rel:{
+                typ: P_AT;
+                ref: [fac_sci];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: dieppe;
+        syn: 8541609;
+        nam: Dieppe;
+    r:}
+    r:{
+        id: dt1892;
+        syn: 15160579;
+        nam: 15/08/1892;
+    r:}
+    r:{
+        id: he_louis;
+        typ: STSMFN;
+        ref: [prince_louis];
+    r:}
+    r:{
+        id: victor;
+        syn: 7846;
+        nam: Victor,_Duc_de_Broglie;
+    r:}
+    r:{
+        id: pauline;
+        syn: 7846;
+        nam: Pauline_d'Armaille;
+    r:}
+    r:{
+        id: son;
+        syn: 10624074;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [victor, pauline];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: was_func;
+        tns: PA;
+        syn: 2604760;
+        thm: [perm_sec, prof_univ]
+    act:}
+    act:{
+        id: born_in;
+        tns: PA;
+        syn: 56930;
+        thm:[prince_louis];
+        @rel:[
+            rel:{
+                typ: P_AT;
+                ref: [dieppe];
+            rel:}
+            rel:{
+                typ: T_AT;
+                ref: [dt1892];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: is_son;
+        syn: 2604760;
+        agt:[he_louis];
+        thm: [son]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [born_in, is_son];
+    st:}
+st:]

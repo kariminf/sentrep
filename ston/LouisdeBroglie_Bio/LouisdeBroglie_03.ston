@@ -1,0 +1,90 @@
+<He applied himself first to literary studies and took his degree in history in 1910.>
+<---- HIMESELF: His self --->
+@r:[
+
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: himself;
+        syn: 5675601;<self>
+        typ: PTSMFN
+    r:}
+    r:{
+        id: himself;
+        syn: 5675601;<self>
+        typ: PTSMFN
+    r:}
+    r:{
+        id: lit_studies;
+        syn: 5996646;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2830501;
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: history;
+        syn: 15121406
+    r:}
+    r:{
+        id: his_degree;
+        syn: 6697331;
+        typ: PTSMFN;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [history];
+            rel:}
+        rel:]
+    r:}
+   r:{
+        id: year1910;
+        syn: 15203791;
+        nam: 1910
+    r:} 
+r:]
+
+@act:[
+    act:{
+        id: applied;
+        tns: PA;
+        syn: 2595523;
+        agt:[he];
+        thm:[himself];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [lit_studies];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: took;
+        tns: PA;
+        syn: 1100830;
+        agt:[he];
+        thm:[his_degree];
+        @rel:[
+            rel:{
+                typ: T_IN;
+                ref: [year1910];
+            rel:}
+        rel:];
+        @adv:[
+            adv:{
+                syn: 102736 <first>
+            adv:}
+        adv:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [applied, took];
+    st:}
+st:]

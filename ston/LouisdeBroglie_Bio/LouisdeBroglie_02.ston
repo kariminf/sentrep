@@ -1,0 +1,91 @@
+<After studying at the Lycee Janson of Sailly, he passed his school-leaving certificate in 1909.>
+@r:[
+    r:{
+        id: sailly;
+        syn: 8541609;
+        nam: Sailly;
+    r:}
+    r:{
+        id: lycee_janson;
+        syn: 8284481;
+        nam: Janson;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [sailly];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: studying;
+        syn: 6598445;
+        @rel:[
+            rel:{
+                typ: P_AT;
+                ref: [lycee_janson];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: school;
+        syn: 8276720;
+    r:}
+    r:{
+        id: leaving_frm;
+        syn: 42757;
+        @rel:[
+            rel:{
+                typ: FROM;
+                ref: [school];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: his_certificate;
+        syn: 6471345;
+        typ: PTSMFN
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [leaving_frm];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: year1909;
+        syn: 15203791;
+        nam: 1909
+    r:}
+    
+r:]
+
+@act:[
+    act:{
+        id: passed;
+        tns: PA;
+        syn: 2523351;
+        agt:[he];
+        thm:[his_certificate];
+        @rel:[
+            rel:{
+                typ: T_AFT;
+                ref: [studying];
+            rel:}
+            rel:{
+                typ: T_IN;
+                ref: [year1909];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [passed];
+    st:}
+st:]

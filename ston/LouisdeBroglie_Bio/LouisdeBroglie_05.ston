@@ -1,0 +1,113 @@
+<He was then conscripted for military service and posted to the wireless section of the army, where he remained for the whole of the war of 1914-1918.>
+@r:[
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: mil_serv;
+        syn: 8198137
+    r:}
+    r:{
+        id: army;
+        syn: 8191230
+    r:}
+    r:{
+        id: wless_sec;
+        syn: 6392001;
+        @adj:[
+            adj:{
+                syn: 2569030
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [army];
+            rel:}
+            rel:{
+                typ: WHERE;
+                ref: [remained];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: years1914;
+        syn: 15203791;
+        qnt: PL;
+        nam: 1914-1918
+    r:}
+    r:{
+        id: war;
+        syn: 973077;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [years1914];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: whole_war;
+        syn: 5869584;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [war];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: conscripted;
+        tns: PA;
+        syn: 1098706;
+        thm:[he];
+        @rel:[
+            rel:{
+                typ: FOR;
+                ref: [mil_serv];
+            rel:}
+        rel:];
+        @adv:[
+            adv:{
+                syn: 117620 <then>
+            adv:}
+        adv:]
+    act:}
+    act:{
+        id: posted;
+        tns: PA;
+        syn: 2385634;
+        agt:[he];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [wless_sec];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: remained;
+        tns: PA;
+        syn: 117985;
+        agt:[he];
+        @rel:[
+            rel:{
+                typ: FOR;
+                ref: [whole_war];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [conscripted, posted];
+    st:}
+st:]

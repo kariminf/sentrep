@@ -1,0 +1,94 @@
+<During this period he was stationed at the Eiffel Tower, where he devoted his spare time to the study of technical problems.>
+<---- During = T_FOR --->
+@r:[
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: this_period;
+        syn: 15113229;
+        typ: DTSNFP
+    r:}
+    r:{
+        id: eiffel_t;
+        syn: 3266906;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: WHERE;
+                ref: [devoted];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: his_sp_tim;
+        syn: 15270431;
+        typ: PTSMFN;
+        @adj:[
+            adj:{
+                syn: 1624115
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: tech_pblm;
+        syn: 6784003;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2809220
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: study_tech;
+        syn: 5705355;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [tech_pblm];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: stationed;
+        tns: PA;
+        syn: 1088923;
+        thm:[he];
+        @rel:[
+            rel:{
+                typ: T_FOR;
+                ref: [this_period];
+            rel:}
+            rel:{
+                typ: P_AT;
+                ref: [eiffel_t];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: devoted;
+        tns: PA;
+        syn: 887463;
+        agt:[he];
+        thm:[his_sp_tim]
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [study_tech];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [stationed];
+    st:}
+st:]
