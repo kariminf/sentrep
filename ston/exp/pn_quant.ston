@@ -31,7 +31,7 @@ r:]
         thm: [apple];
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [market];
             rel:}
         rel:]

@@ -52,13 +52,14 @@
     r:{
         id: appearance;
         syn: 50195;
+        def: Y;
         @rel:[
             rel:{
                 typ: OF;
                 ref: [tri_cairo];
             rel:}
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1957];
             rel:}
         rel:]
@@ -127,7 +128,7 @@ r:]
         adv:];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1953];
             rel:}
         rel:]
@@ -140,7 +141,7 @@ r:]
         thm: [he_famous];
         @rel:[
             rel:{
-                typ: P_THR;
+                typ: THR;
                 ref: [arabworld];
             rel:}
             rel:{

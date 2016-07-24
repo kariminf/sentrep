@@ -16,7 +16,7 @@
         def: Y;
         @rel:[
             rel:{
-                typ: WHERE;
+                typ: IO_IN;
                 ref: [devoted];
             rel:}
         rel:]
@@ -62,11 +62,11 @@ r:]
         thm:[he];
         @rel:[
             rel:{
-                typ: T_FOR;
+                typ: FOR;
                 ref: [this_period];
             rel:}
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [eiffel_t];
             rel:}
         rel:]

@@ -53,7 +53,7 @@ r:]
         thm:[his_st_ph];
         @rel:[
             rel:{
-                typ: T_AT;
+                typ: IN;
                 ref: [end_war];
             rel:}
         rel:]

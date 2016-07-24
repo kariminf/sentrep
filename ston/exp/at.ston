@@ -17,7 +17,7 @@ r:]
         agt: [mother];
         @rel:[
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [home];
             rel:}
         rel:]

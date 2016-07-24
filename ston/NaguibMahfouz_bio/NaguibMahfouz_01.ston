@@ -15,8 +15,8 @@
     r:}
     r:{
         id: 17years;
-        syn: 4924103;
-        nam: 17
+        syn: 15203791;
+        qnt: 17
     r:}
 
     r:{
@@ -44,11 +44,11 @@ r:]
         syn: 56930;
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [Cairo];
             rel:}
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [d1911];
             rel:}
         rel:]
@@ -68,7 +68,7 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: WHEN;
+                typ: WHN;
                 ref: [was_17];
             rel:}
         rel:]

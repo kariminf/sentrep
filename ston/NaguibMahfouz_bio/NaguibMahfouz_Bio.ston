@@ -15,8 +15,8 @@
     r:}
     r:{
         id: 17years;
-        syn: 4924103;<year>
-        nam: 17
+        syn: 15203791;<year>
+        qnt: 17
     r:}
     r:{
         id: naguib;
@@ -81,7 +81,7 @@
                 ref: [revol_date];
             rel:}
             rel:{
-                typ: WHEN;
+                typ: IO_IN;
                 ref: [stopped];
             rel:}
         rel:]
@@ -145,13 +145,14 @@
     r:{
         id: appearance;
         syn: 50195;<appearance>
+        def: Y;
         @rel:[
             rel:{
                 typ: OF;
                 ref: [tri_cairo];
             rel:}
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1957];
             rel:}
         rel:]
@@ -235,7 +236,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [concealed];
             rel:}
         rel:]
@@ -382,7 +383,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [ministry_me];
             rel:}
         rel:]
@@ -414,7 +415,7 @@
                 ref: [censorship];
             rel:}
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [bureau_art];
             rel:}
         rel:]
@@ -512,7 +513,7 @@
         typ: PTSMFN;
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [bureaucracy];
             rel:}
         rel:]
@@ -524,7 +525,7 @@
         qnt: PL;
         @rel:[
             rel:{
-                typ: T_SNC;
+                typ: SNC;
                 ref: [retirement];
             rel:}
         rel:]
@@ -548,7 +549,7 @@
                 ref: [creativity];
             rel:}
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [is_exp];
             rel:}
         rel:]
@@ -572,11 +573,11 @@
     r:}
     r:{
         id: nbr_novel;
-        syn: 13582013;<number>
+        syn: 5861067;<amount>
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_novels];
             rel:}
         rel:]
@@ -593,11 +594,11 @@
     r:}
     r:{
         id: nbr_story;
-        syn: 13582013;<number>
+        syn: 5861067;<amount>
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_stories];
             rel:}
         rel:]
@@ -609,11 +610,11 @@
     r:}
     r:{
         id: nbr_article;
-        syn: 13582013;<number>
+        syn: 5861067;<amount>
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_articles];
             rel:}
         rel:]
@@ -653,7 +654,7 @@
         qnt: PL;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [circulated];
             rel:}
         rel:]
@@ -745,7 +746,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [gibraltar];
             rel:}
             rel:{
@@ -764,11 +765,11 @@ r:]
         syn: 56930;<born>
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [cairo];
             rel:}
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [d1911];
             rel:}
         rel:]
@@ -788,7 +789,7 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: WHEN;
+                typ: WHN;
                 ref: [was_17];
             rel:}
         rel:]
@@ -802,7 +803,7 @@ r:]
         thm: [his_novel];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1939];
             rel:}
         rel:]
@@ -814,7 +815,7 @@ r:]
         thm: [more_novels];
         @rel:[
             rel:{
-                typ: T_BEF;
+                typ: BEF;
                 ref: [revolution];
             rel:}
         rel:]
@@ -827,7 +828,7 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: T_FOR;
+                typ: FOR;
                 ref: [sev_years];
             rel:}
         rel:]
@@ -846,7 +847,7 @@ r:]
         adv:];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1953];
             rel:}
         rel:]
@@ -859,7 +860,7 @@ r:]
         thm: [he_famous];
         @rel:[
             rel:{
-                typ: P_THR;
+                typ: THR;
                 ref: [arabworld];
             rel:}
             rel:{
@@ -878,11 +879,11 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: WITH;
+                typ: WTH;
                 ref: [children];
             rel:}
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [new_vein];
             rel:}
         rel:];
@@ -927,24 +928,12 @@ r:]
         thm: [mahfouz];
         @rel:[
             rel:{
-                typ: T_TILL;
+                typ: TO;
                 ref: [year1972];
             rel:}
             rel:{
                 typ: AS;
-                ref: [cservant];
-            rel:}
-            rel:{
-                typ: AS;
-                ref: [director_c];
-            rel:}
-            rel:{
-                typ: AS;
-                ref: [director_f];
-            rel:}
-            rel:{
-                typ: AS;
-                ref: [consul_affair];
+                ref: [cservant, director_c, director_f, consul_affair];
             rel:}
         rel:]
     act:}
@@ -978,10 +967,11 @@ r:]
     act:{
         id: cmp_novels;
         syn: 2604760;<be>
+        neg: Y;
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];<great>
+                adj: [1552885];<few>
                 ref: [30novels];
             cmp:}
         cmp:]
@@ -992,7 +982,6 @@ r:]
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];<great>
                 ref: [100stories];
             cmp:}
         cmp:]
@@ -1003,7 +992,6 @@ r:]
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];<great>
                 ref: [200articles];
             cmp:}
         cmp:]
@@ -1028,7 +1016,7 @@ r:]
         syn: 969873;
         @rel:[
             rel:{
-                typ: P_THR;
+                typ: THR;
                 ref: [arabic_speak];
             rel:}
         rel:]
@@ -1041,7 +1029,7 @@ r:]
         thm: [publication];
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [egypt];
             rel:}
             rel:{
@@ -1055,7 +1043,7 @@ r:]
         syn: 1024190;
         @rel:[
             rel:{
-                typ: P_BET;
+                typ: BTW;
                 ref: [lit_disc];
             rel:}
         rel:]
@@ -1071,7 +1059,7 @@ r:]
         adv:];
         @rel:[
             rel:{
-                typ: P_BET;
+                typ: BTW;
                 ref: [the1st_mention];
             rel:}
         rel:]

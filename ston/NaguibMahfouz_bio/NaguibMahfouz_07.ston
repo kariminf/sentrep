@@ -16,7 +16,7 @@
         typ: PTSMFN;
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [bureaucracy];
             rel:}
         rel:]
@@ -28,7 +28,7 @@
         qnt: PL;
         @rel:[
             rel:{
-                typ: T_SNC;
+                typ: SNC;
                 ref: [retirement];
             rel:}
         rel:]
@@ -52,7 +52,7 @@
                 ref: [creativity];
             rel:}
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [is_exp];
             rel:}
         rel:]

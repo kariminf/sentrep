@@ -70,7 +70,7 @@ r:]
         thm:[his_degree];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1910];
             rel:}
         rel:];

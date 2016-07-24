@@ -36,7 +36,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [concealed];
             rel:}
         rel:]
@@ -70,11 +70,11 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: WITH;
+                typ: WTH;
                 ref: [children];
             rel:}
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [new_vein];
             rel:}
         rel:];

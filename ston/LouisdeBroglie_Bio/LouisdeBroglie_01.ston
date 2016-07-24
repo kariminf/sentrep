@@ -19,7 +19,7 @@
                 ref: [fr_academy];
             rel:}
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [was_func];
             rel:}
         rel:]
@@ -78,7 +78,7 @@
                 ref: [sciences];
             rel:}
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [univ_paris];
             rel:}
         rel:]
@@ -88,7 +88,7 @@
         syn: 10480730;
         @rel:[
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [fac_sci];
             rel:}
         rel:]
@@ -145,11 +145,11 @@ r:]
         thm:[prince_louis];
         @rel:[
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [dieppe];
             rel:}
             rel:{
-                typ: T_AT;
+                typ: IN;
                 ref: [dt1892];
             rel:}
         rel:]

@@ -12,11 +12,11 @@
     r:}
     r:{
         id: nbr_novel;
-        syn: 13582013;
+        syn: 5861067;
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_novels];
             rel:}
         rel:]
@@ -33,11 +33,11 @@
     r:}
     r:{
         id: nbr_story;
-        syn: 13582013;
+        syn: 5861067;
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_stories];
             rel:}
         rel:]
@@ -49,11 +49,11 @@
     r:}
     r:{
         id: nbr_article;
-        syn: 13582013;
+        syn: 5861067;
         def: N;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [cmp_articles];
             rel:}
         rel:]
@@ -86,10 +86,11 @@ r:]
     act:{
         id: cmp_novels;
         syn: 2604760;
+        neg: Y;
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];
+                adj: [1552885];<few>
                 ref: [30novels];
             cmp:}
         cmp:]
@@ -100,7 +101,6 @@ r:]
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];
                 ref: [100stories];
             cmp:}
         cmp:]
@@ -111,7 +111,6 @@ r:]
         @cmp:[
             cmp:{
                 typ: M;
-                adj: [1386883];
                 ref: [200articles];
             cmp:}
         cmp:]

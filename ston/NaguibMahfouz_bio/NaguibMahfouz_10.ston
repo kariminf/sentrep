@@ -65,7 +65,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [gibraltar];
             rel:}
             rel:{
@@ -85,7 +85,7 @@ r:]
         thm: [publication];
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [egypt];
             rel:}
             rel:{
@@ -99,7 +99,7 @@ r:]
         syn: 1024190;
         @rel:[
             rel:{
-                typ: P_BET;
+                typ: BTW;
                 ref: [lit_disc];
             rel:}
         rel:]
@@ -115,7 +115,7 @@ r:]
         adv:];
         @rel:[
             rel:{
-                typ: P_BET;
+                typ: BTW;
                 ref: [the1st_mention];
             rel:}
         rel:]

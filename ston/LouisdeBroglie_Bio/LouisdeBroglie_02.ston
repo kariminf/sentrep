@@ -21,7 +21,7 @@
         syn: 6598445;
         @rel:[
             rel:{
-                typ: P_AT;
+                typ: IN;
                 ref: [lycee_janson];
             rel:}
         rel:]
@@ -39,7 +39,7 @@
         syn: 42757;
         @rel:[
             rel:{
-                typ: FROM;
+                typ: FRM;
                 ref: [school];
             rel:}
         rel:]
@@ -72,11 +72,11 @@ r:]
         thm:[his_certificate];
         @rel:[
             rel:{
-                typ: T_AFT;
+                typ: AFT;
                 ref: [studying];
             rel:}
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1909];
             rel:}
         rel:]

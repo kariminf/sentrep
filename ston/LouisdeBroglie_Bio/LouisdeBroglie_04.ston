@@ -54,7 +54,7 @@ r:]
                 ref: [degree_sci];
             rel:}
             rel:{
-                typ: When;
+                typ: WHN;
                 ref: [prevailed];
             rel:}
         rel:];
@@ -77,7 +77,7 @@ r:]
         agt:[he];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1913];
             rel:}
         rel:];

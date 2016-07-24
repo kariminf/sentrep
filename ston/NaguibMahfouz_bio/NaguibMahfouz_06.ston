@@ -47,7 +47,7 @@
         adj:];
         @rel:[
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [ministry_me];
             rel:}
         rel:]
@@ -79,7 +79,7 @@
                 ref: [censorship];
             rel:}
             rel:{
-                typ: P_IN;
+                typ: IN;
                 ref: [bureau_art];
             rel:}
         rel:]
@@ -170,7 +170,7 @@ r:]
         thm: [mahfouz];
         @rel:[
             rel:{
-                typ: T_TILL;
+                typ: TO;
                 ref: [year1972];
             rel:}
             rel:{

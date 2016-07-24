@@ -22,7 +22,7 @@
         qnt: PL;
         @rel:[
             rel:{
-                typ: SUBJ;
+                typ: SBJ;
                 ref: [circulated];
             rel:}
         rel:]
@@ -69,7 +69,7 @@ r:]
         syn: 969873;
         @rel:[
             rel:{
-                typ: P_THR;
+                typ: THR;
                 ref: [arabic_speak];
             rel:}
         rel:]

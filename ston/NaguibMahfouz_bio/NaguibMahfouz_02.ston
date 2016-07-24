@@ -49,7 +49,7 @@
                 ref: [revol_date];
             rel:}
             rel:{
-                typ: WHEN;
+                typ: IO_IN;
                 ref: [stopped];
             rel:}
         rel:]
@@ -78,7 +78,7 @@ r:]
         thm: [his_novel];
         @rel:[
             rel:{
-                typ: T_IN;
+                typ: IN;
                 ref: [year1939];
             rel:}
         rel:]
@@ -90,7 +90,7 @@ r:]
         thm: [more_novels];
         @rel:[
             rel:{
-                typ: T_BEF;
+                typ: BEF;
                 ref: [revolution];
             rel:}
         rel:]
@@ -103,7 +103,7 @@ r:]
         thm: [writing];
         @rel:[
             rel:{
-                typ: T_FOR;
+                typ: FOR;
                 ref: [sev_years];
             rel:}
         rel:]
