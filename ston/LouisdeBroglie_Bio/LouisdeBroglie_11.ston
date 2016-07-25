@@ -1,0 +1,160 @@
+<The ideas set out in that work, which first gave rise to astonishment owing to their novelty, were subsequently fully confirmed by the discovery of electron diffraction by crystals in 1927 by Davisson and Germer;>
+@r:[
+    r:{
+        id: that_work;
+        syn: 575741;
+        typ: DTSNFD
+    r:}
+    r:{
+        id: the_idea;
+        syn: 5833840;
+        def: Y;
+        qnr: PL;
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [set_out];
+            rel:}
+            rel:{
+                typ: SBJ;
+                ref: [gave_rise];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: astonishment;
+        syn: 7509572;
+        @rel:[
+            rel:{
+                typ: SBJ;
+                ref: [owing];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: their_novelty;
+        syn: 5635055;
+        typ: PTPNFN
+    r:}
+    r:{
+        id: electron;
+        syn: 9271904
+    r:}
+    r:{
+        id: crystals;
+        syn: 14883206;
+        qnt: PL
+    r:}
+    r:{
+        id: elec_diff;
+        syn: 11446934;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [electron];
+            rel:}
+            rel:{
+                typ: BY;
+                ref: [crystals];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: year1927;
+        syn: 15203791;
+        nam: 1927
+    r:}
+    r:{
+        id: davisson;
+        syn: 7846;
+        nam: Davisson
+    r:}
+    r:{
+        id: germer;
+        syn: 7846;
+        nam: Germer
+    r:}
+    r:{
+        id: disc_elec;
+        syn: 43195;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [elec_diff];
+            rel:}
+            rel:{
+                typ: IN;
+                ref: [year1927];
+            rel:}
+            rel:{
+                typ: BY;
+                ref: [davisson, germer];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: confirmed;
+        tns: PA;
+        syn: 665886;
+        agt: [disc_elec];
+        thm: [the_idea];
+        @adv:[
+            adv:{
+                syn: 61203
+            adv:}
+            adv:{
+                syn: 178909
+            adv:}
+        adv:]
+    act:} 
+    act:{
+        id: set_out;
+        tns: PA;
+        syn: 345761;
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [that_work];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: gave_rise;
+        tns: PA;
+        syn: 1752884;
+        @adv:[
+            adv:{
+                syn: 102736
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [astonishment];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: owing;
+        tns: PA;
+        prg: Y;
+        syn: 2731814;
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [their_novelty];
+            rel:}
+        rel:]
+    act:} 
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [confirmed];
+    st:}
+st:]
