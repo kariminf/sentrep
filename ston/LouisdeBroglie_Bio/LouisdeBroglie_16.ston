@@ -1,0 +1,165 @@
+<The incumbent of the chair of theoretical physics at the Faculty of Sciences at the University of Paris since 1932, Louis de Broglie runs a course on a different subject each year at the Institut Henri Poincare, and several of these courses have been published.>
+@r:[
+    r:{
+        id: paris;
+        syn: 8932568
+    r:}
+    r:{
+        id: univ_paris;
+        syn: 4511002;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [paris];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: fac_sci;
+        syn: 8287586;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [sciences];
+            rel:}
+            rel:{
+                typ: IN;
+                ref: [univ_paris];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: th_phys;
+        syn: 6090869;
+        @adj:[
+            adj:{
+                syn: 862327
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: year1932;
+        syn: 15203791;
+        typ: 1932
+    r:}
+    r:{
+        id: chair_th;
+        syn: 598056;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [th_phys];
+            rel:}
+            rel:{
+                typ: IN;
+                ref: [fac_sci];
+            rel:}
+            rel:{
+                typ: SNC;
+                ref: [year1932];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: incumbent;
+        syn: 10202624;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [chair_th];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: louis_who;
+        syn: 7846;
+        typ: Louis_de_Broglie;
+        @rel:[
+            rel:{
+                typ: SBJ;
+                ref: [ischair];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: inst;
+        syn: 8407330;
+        def: Y;
+        nam: Henri_Poincare
+    r:}
+    r:{
+        id: diff_sbj;
+        syn: 6599788;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 490413
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: acourse;
+        syn: 884466;
+        def: N;
+        @rel:[
+            rel:{
+                typ: ON;
+                ref: [diff_sbj];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: sev_course;
+        syn: 884466;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 494409
+            adj:}
+        adj:]
+    r:} 
+r:]
+
+@act:[
+    act:{
+        id: runs;
+        tns: PR;
+        syn: 2443849;
+        agt: [louis_who];
+        thm: [acourse];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [inst];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: ischair;
+        syn: 2604760;
+        tns: PR;
+        thm: [chair_th];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [fac_sci];
+            rel:}
+        rel:]
+    act:}
+    
+    act:{
+        id: published;
+        syn: 1745722;
+        tns: PA;
+        thm: [sev_course];
+        
+    act:}
+    
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [runs, published];
+    st:}
+st:]

@@ -1,0 +1,132 @@
+<Back again in this his former field of research, he has obtained a certain number of new and encouraging results which he has published in notes to Comptes Rendus de l'Academie des Sciences and in various expositions.>
+@r:[
+    r:{
+        id: research;
+        syn: 636921
+    r:}
+    r:{
+        id: h_field_res;
+        syn: 5996646;
+        typ: PTSMFN;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [research];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: ne_results;
+        syn: 11410625;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1640850
+            adj:}
+            adj:{
+                syn: 866471
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [h_hadpublished2];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: cert_nbr;
+        syn: 13582013;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 700884
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [ne_results];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: var_expos;
+        syn: 8407619;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2067491
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: notes;
+        syn: 6504462;
+        qnt: PL
+    r:}
+    r:{
+        id: cras;
+        syn: 6597466;
+        nam: Comptes_Rendus_de_l'Academie_des_Sciences
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: obtained2;
+        tns: PA;
+        syn: 522751;
+        agt: [he];
+        thm: [cert_nbr];
+        @rel:[
+            rel:{
+                typ: WHN;
+                ref: [back];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: back;
+        tns: PA;
+        syn: 2604760;
+        agt: [he];
+        @adv:[
+            adv:{
+                syn: 74407
+            adv:}
+            adv:{
+                syn: 40365
+            adv:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [h_field_res];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: h_hadpublished2;
+        tns: PA;
+        syn: 967625;
+        agt: [he];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [notes];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [cras, var_expo];
+            rel:}
+        rel:]
+    act:} 
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [obtained2];
+    st:}
+st:]

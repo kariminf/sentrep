@@ -1,0 +1,100 @@
+<Many French and foreign students have come to work with him and a great deal of doctorate theses have been prepared under his guidance.>
+@r:[
+    r:{
+        id: mff_student;
+        syn: 10665698;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1551633
+            adj:}
+            adj:{
+                syn: 2958392
+            adj:}
+            adj:{
+                syn: 1037540
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: his_guid;
+        typ: PTSMFN;
+        syn: 6650701
+    r:}
+    r:{
+        id: doctorate;
+        syn: 6702458
+    r:}
+    r:{
+        id: theses_doc;
+        syn: 6755454;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [doctorate];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: gr_deal;
+        syn: 7293180;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 1278818
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [theses_doc];
+            rel:}
+        rel:]
+    r:}
+    
+r:]
+
+@act:[
+    act:{
+        id: havecome;
+        tns: PA;
+        syn: 2005948;
+        agt: [mff_student];
+        thm: [towork]
+    act:} 
+    
+    act:{
+        id: towork;
+        syn: 2413480;
+        @rel:[
+            rel:{
+                typ: WTH;
+                ref: [he];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: haveprepared;
+        tns: PA;
+        syn: 2179915;
+        thm: [theses_doc];
+        @rel:[
+            rel:{
+                typ: UND;
+                ref: [his_guid];
+            rel:}
+        rel:]
+    act:} 
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [havecome, haveprepared];
+    st:}
+st:]

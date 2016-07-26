@@ -1,0 +1,33 @@
+<paragraph 5>
+<After crowning Louis de Broglie's work on two occasions, the Academie des Sciences awarded him in 1929 the Henri Poincare medal (awarded for the first time), then in 1932, the Albert I of Monaco prize.>
+@r:[
+    
+r:]
+
+@act:[
+    
+    act:{
+        id: crowning;
+        tns: PA;
+        syn: 2390949;
+        thm: [he];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [notes];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [cras, var_expo];
+            rel:}
+        rel:]
+    act:} 
+    
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [awarded];
+    st:}
+st:]

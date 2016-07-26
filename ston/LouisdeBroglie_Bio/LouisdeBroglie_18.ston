@@ -1,0 +1,120 @@
+<paragraph3>
+<Between 1930 and 1950, Louis de Broglie's work has been chiefly devoted to the study of the various extensions of wave mechanics: Dirac's electron theory, the new theory of light, the general theory of spin particles, applications of wave mechanics to nuclear physics, etc.>
+@r:[
+    r:{
+        id: year1930;
+        syn: 15203791;
+        nam: 1930
+    r:}
+    r:{
+        id: year1950;
+        syn: 15203791;
+        nam: 1950
+    r:}
+    r:{
+        id: louis;
+        syn: 7846;
+        nam: Louis_de_Broglie
+    r:}
+    r:{
+        id: lo_work;
+        syn: 5755883;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [louis];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: wave;
+        syn: 7345593
+    r:}
+    r:{
+        id: wave_mech;
+        syn: 6100236;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [wave];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: work1;
+        syn: 5755883;
+        nam: Dirac's_electron_theory
+    r:}
+    r:{
+        id: work2;
+        syn: 5755883;
+        nam: the_new_theory_of_light
+    r:}
+    r:{
+        id: work3;
+        syn: 5755883;
+        nam: the_general_theory_of_spin particles
+    r:}
+    r:{
+        id: work4;
+        syn: 5755883;
+        nam: applications_of_wave_mechanics_to_nuclear_physics
+    r:}
+    r:{
+        id: var_ext;
+        syn: 367768;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2067491
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [wave_mech];
+            rel:}
+            rel:{
+                typ: OF;
+                ref: [work1, work2, work3, work4];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: stud_of;
+        syn: 5705355;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [var_ext];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: hasdevoted;
+        tns: PA;
+        syn: 887463;
+        thm: [lo_work];
+        @rel:[
+            rel:{
+                typ: BTW;
+                ref: [year1930, year1950];
+            rel:}
+            rel:{
+                typ: TO;
+                ref: [stud_of];
+            rel:}
+        rel:]
+    act:} 
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [hasdevoted];
+    st:}
+st:]

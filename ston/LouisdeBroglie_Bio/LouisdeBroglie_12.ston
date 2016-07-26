@@ -4,102 +4,99 @@
         id: they;
         typ: STPMFN
     r:}
-    
-    
-    
-    
-    
-    ---------------------------------
     r:{
-        id: that_work;
-        syn: 6755454;
-        typ: DTSNFD
+        id: dev;
+        syn: 13464557
     r:}
     r:{
-        id: the_idea;
-        syn: 5833840;
+        id: the_basis;
+        syn: 5793554;
         def: Y;
-        qnr: PL;
+        @rel:[
+            rel:{
+                typ: FOR;
+                ref: [dev];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: gen_th;
+        syn: 5989479;
+        def: Y;
+        @adj:[
+            adj:{
+                syn: 783840
+            adj:}
+        adj:];
         @rel:[
             rel:{
                 typ: OBJ;
-                ref: [set_out];
+                ref: [known];
             rel:}
             rel:{
                 typ: SBJ;
-                ref: [gave_rise];
+                ref: [hastransformed];
             rel:}
         rel:]
     r:}
     r:{
-        id: astonishment;
-        syn: 7509572;
-        @rel:[
-            rel:{
-                typ: SBJ;
-                ref: [owing];
-            rel:}
-        rel:]
+        id: wave;
+        syn: 7345593
     r:}
     r:{
-        id: their_novelty;
-        syn: 5635055;
-        typ: PTPNFN
-    r:}
-    r:{
-        id: electron;
-        syn: 9271904
-    r:}
-    r:{
-        id: crystals;
-        syn: 14883206;
-        qnt: PL
-    r:}
-    r:{
-        id: elec_diff;
-        syn: 11446934;
+        id: wave_mech;
+        syn: 6100236;
         @rel:[
             rel:{
                 typ: OF;
-                ref: [electron];
-            rel:}
-            rel:{
-                typ: BY;
-                ref: [crystals];
+                ref: [wave];
             rel:}
         rel:]
     r:}
     r:{
-        id: year1927;
-        syn: 15203791;
-        nam: 1927
-    r:}
-    r:{
-        id: davisson;
-        syn: 7846;
-        nam: Davisson
-    r:}
-    r:{
-        id: germer;
-        syn: 7846;
-        nam: Germer
-    r:}
-    r:{
-        id: disc_elec;
-        syn: 43195;
+        id: name_wave;
+        syn: 6333653;
         def: Y;
         @rel:[
             rel:{
                 typ: OF;
-                ref: [elec_diff];
+                ref: [wave_mech];
             rel:}
+        rel:]
+    r:}
+    r:{
+        id: atom_sc;
+        syn: 13815342;
+        @adj:[
+            adj:{
+                syn: 2884619
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: phys_phen;
+        syn: 34213;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2779774
+            adj:}
+        adj:];
+        @rel:[
             rel:{
-                typ: IN;
-                ref: [year1927];
+                typ: ON;
+                ref: [atom_sc];
             rel:}
+        rel:]
+    r:}
+    r:{
+        id: our_knwlg;
+        syn: 23271;
+        typ: PFPMFN;
+        @rel:[
             rel:{
-                typ: BY;
-                ref: [davisson, germer];
+                typ: OF;
+                ref: [phys_phen];
             rel:}
         rel:]
     r:}
@@ -107,64 +104,50 @@ r:]
 
 @act:[
     act:{
-        id: confirmed;
+        id: served;
         tns: PA;
-        syn: 665886;
-        agt: [disc_elec];
-        thm: [the_idea];
-        @adv:[
-            adv:{
-                syn: 61203
-            adv:}
-            adv:{
-                syn: 178909
-            adv:}
-        adv:]
-    act:} 
-    act:{
-        id: set_out;
-        tns: PA;
-        syn: 345761;
+        syn: 2670890;
+        agt: [they];
+        thm: [gen_th];
         @rel:[
             rel:{
-                typ: IN;
-                ref: [that_work];
+                typ: AS;
+                ref: [the_basis];
             rel:}
         rel:]
     act:} 
     act:{
-        id: gave_rise;
-        tns: PA;
-        syn: 1752884;
+        id: known;
+        tns: PR;
+        syn: 594621;
         @adv:[
             adv:{
-                syn: 102736
+                syn: 48475
             adv:}
         adv:];
         @rel:[
             rel:{
-                typ: TO;
-                ref: [astonishment];
+                typ: BY;
+                ref: [name_wave];
             rel:}
         rel:]
     act:} 
     act:{
-        id: owing;
+        id: hastransformed;
         tns: PA;
-        prg: Y;
-        syn: 2731814;
-        @rel:[
-            rel:{
-                typ: TO;
-                ref: [their_novelty];
-            rel:}
-        rel:]
+        syn: 382635;
+        thm: [our_knwlg];
+        @adv:[
+            adv:{
+                syn: 8997
+            adv:}
+        adv:];
     act:} 
 act:]
 
 @st:[
     st:{
         typ: AFF;
-        act: [confirmed];
+        act: [served];
     st:}
 st:]
