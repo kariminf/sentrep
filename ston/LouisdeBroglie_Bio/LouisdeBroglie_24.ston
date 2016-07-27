@@ -1,0 +1,64 @@
+<In 1952 the first Kalinga Prize was awarded to him by UNESCO for his efforts to explain aspects of modern physics to the layman.>
+<--------- NOT FINISHED ----------------->
+@r:[
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: year1952;
+        syn: 15203791;
+        nam: 1952
+    r:}
+    r:{
+        id: mod_physics;
+        syn: 6090869;
+        @adj:[
+            adj:{
+                syn: 1535709
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: kalinga_pr;
+        syn: 13268146;
+        nam: Kalinga
+    r:}
+    r:{
+        id: unesco;
+        syn: 8302052
+    r:}
+    his_effrt
+    
+r:]
+
+@act:[
+    act:{
+        id: awarded;
+        syn: 2262278;
+        tns: PA;
+        agt:[unesco];
+        thm: [kalinga_pr];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [he];
+            rel:}
+            rel:{
+                typ: IN;
+                ref: [year1952];
+            rel:}
+            rel:{
+                typ: FOR;
+                ref: [his_effrt];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [awarded];
+    st:}
+st:]
