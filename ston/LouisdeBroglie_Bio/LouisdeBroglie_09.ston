@@ -5,10 +5,6 @@
         typ: STSMFN
     r:}
     r:{
-        id: him;
-        typ: OTSMFN
-    r:}
-    r:{
         id: year1924;
         syn: 15203791;
         nam: 1924
@@ -99,7 +95,7 @@ r:]
         @rel:[
             rel:{
                 typ: TO;
-                ref: [him];
+                ref: [he];
             rel:}
         rel:]
     act:}

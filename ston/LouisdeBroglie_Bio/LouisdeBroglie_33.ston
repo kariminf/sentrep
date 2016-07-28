@@ -1,0 +1,57 @@
+<The information is sometimes updated with an addendum submitted by the Laureate.>
+@r:[
+    r:{
+        id: the_info;
+        syn: 5816287;
+        def: Y
+    r:}
+    r:{
+        id: addendum;
+        syn: 6399631;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [submitted]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: laureate;
+        syn: 10249011;
+        def: Y
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: is_upd;
+        syn: 170695;
+        tns: PR;
+        thm: [the_info];
+        @adv:[
+            adv:{
+                syn: 21878
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: WTH;
+                ref: [addendum]
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: submitted;
+        syn: 2262752;
+        tns: PR;
+        agt: [laureate]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [is_upd]
+    st:}
+st:]

@@ -12,11 +12,6 @@
         typ: PTSMFN
     r:}
     r:{
-        id: himself;
-        syn: 5675601;<self>
-        typ: PTSMFN
-    r:}
-    r:{
         id: lit_studies;
         syn: 5996646;
         qnt: PL;

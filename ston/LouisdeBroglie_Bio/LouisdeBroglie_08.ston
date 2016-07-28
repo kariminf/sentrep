@@ -116,7 +116,12 @@ r:]
         syn: 1640855;
         agt: [his_ebrother, co_wrker]
     act:}
-    
+    act:{
+        id: involving;
+        tns: PR;
+        syn: 2677567;
+        thm: [quanta]
+    act:}
     
 act:]
 

@@ -1,11 +1,6 @@
 <In 1929 the Swedish Academy of Sciences conferred on him the Nobel Prize for Physics "for his discovery of the wave nature of electrons".>
 @r:[
     r:{
-        id: sciences;
-        syn: 5999797;
-        qnt: PL
-    r:}
-    r:{
         id: sz_acad_sci;
         syn: 8280124;
         def: Y;

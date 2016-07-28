@@ -1,5 +1,5 @@
 <In 1952 the first Kalinga Prize was awarded to him by UNESCO for his efforts to explain aspects of modern physics to the layman.>
-<--------- NOT FINISHED ----------------->
+<--------- efforts to explain == effors which are to explain ----------------->
 @r:[
     r:{
         id: he;
@@ -20,16 +20,42 @@
         adj:]
     r:}
     r:{
-        id: kalinga_pr;
+        id: 1st_kalinga_pr;
         syn: 13268146;
-        nam: Kalinga
+        nam: Kalinga;
+        qnt: O1
     r:}
     r:{
         id: unesco;
         syn: 8302052
     r:}
-    his_effrt
-    
+    r:{
+        id: his_effrt;
+        syn: 786195;
+        typ: PTSMFN;
+        @rel:[
+            rel:{
+                typ: SBJ;
+                ref: [he];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: asp_of;
+        syn: 5850624;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [mod_physics];
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: the_layman;
+        syn: 10250527;
+        def: Y;
+    r:}
 r:]
 
 @act:[
@@ -38,7 +64,7 @@ r:]
         syn: 2262278;
         tns: PA;
         agt:[unesco];
-        thm: [kalinga_pr];
+        thm: [1st_kalinga_pr];
         @rel:[
             rel:{
                 typ: TO;
@@ -51,6 +77,23 @@ r:]
             rel:{
                 typ: FOR;
                 ref: [his_effrt];
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: are_expl;
+        syn: 2604760;
+        tns: PR;
+        thm: [toexplain];
+    act:}
+    act:{
+        id: toexplain;
+        syn: 939277;
+        thm: [asp_of];
+        @rel:[
+            rel:{
+                typ: TO;
+                ref: [the_layman];
             rel:}
         rel:]
     act:}

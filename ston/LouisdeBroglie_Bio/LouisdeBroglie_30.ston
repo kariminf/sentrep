@@ -1,0 +1,77 @@
+<Professor de Broglie's most important publications are:>
+@r:[
+    r:{
+        id: pr_debroglie;
+        syn: 10480730;
+        nam: de_Broglie
+    r:}
+    r:{
+        id: imp_pub;
+        syn: 6589574;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 1275562;
+                adv: [112009]
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [pr_debroglie]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: pub1;
+        syn: 6589574;
+        nam: Recherches_sur_la_theorie_des_quanta_(Researches_on_the_quantum_theory),_Thesis_Paris,_1924.
+    r:}
+    r:{
+        id: pub2;
+        syn: 6589574;
+        nam: Ondes_et_mouvements_(Waves_and_motions),_Gauthier-Villars,_Paris,_1926.
+    r:}
+    r:{
+        id: pub3;
+        syn: 6589574;
+        nam: Rapport_au_5e_Conseil_de_Physique_Solvay,_Brussels,_1927.
+    r:}
+    r:{
+        id: pub4;
+        syn: 6589574;
+        nam: La_mecanique_ondulatoire_(Wave_mechanics),_Gauthier-Villars,_Paris,_1928.
+    r:}
+    r:{
+        id: pub5;
+        syn: 6589574;
+        nam: Une_tentative_d'interpretation_causale_et_non_lineaire_de_la_mecanique_ondulatoire:_la_theorie_de_la_double_solution,_Gauthier-Villars,_Paris,_1956.
+    r:}
+    r:{
+        id: pub6;
+        syn: 6589574;
+        nam: Introduction_a_la_nouvelle_theorie_des_particules_de_M._Jean-Pierre_Vigier_et_de_ses_collaborateurs,_Gauthier-Villars,_Paris,_1961.
+    r:}
+    r:{
+        id: pub7;
+        syn: 6589574;
+        nam: Etude_critique_des_bases_de_l'interpretation_actuelle_de_la_mecanique_ondulatoire,_Gauthier-Villars,_Paris,_1963.
+     r:}
+r:]
+
+@act:[
+    act:{
+        id: are_pub;
+        syn: 2604760;
+        tns: PR;
+        agt: [imp_pub];
+        thm: [pub1, pub2, pub3, pub4, pub5, pub6, pub7]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [are_pub]
+    st:}
+st:]

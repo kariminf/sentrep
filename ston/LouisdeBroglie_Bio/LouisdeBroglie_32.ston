@@ -1,0 +1,84 @@
+<This autobiography/biography was written at the time of the award and later published in the book series Les Prix Nobel/Nobel Lectures.>
+@r:[
+    r:{
+        id: this_bio;
+        typ: DTSNFP;
+        syn: 6515827
+    r:}
+    r:{
+        id: it;
+        typ: STSNFP
+    r:}
+    r:{
+        id: the_award;
+        syn: 13268146;
+        def: Y
+    r:}
+    r:{
+        id: tim_award;
+        syn: 15122231;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [the_award]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: book_nam;
+        syn: 6410904;
+        nam: Les_Prix_Nobel/Nobel_Lectures
+    r:}
+    r:{
+        id: series_book;
+        syn: 8457976;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [book_nam]
+            rel:}
+        rel:]
+    r:}
+    
+r:]
+
+@act:[
+    act:{
+        id: written_bio;
+        syn: 1744611;
+        tns: PA;
+        thm: [this_bio];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [tim_award]
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: published_bio;
+        syn: 1744611;
+        tns: PA;
+        thm: [it];
+        @adv:[
+            adv:{
+                syn: 508157
+            adv:}
+        adv:];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [series_book]
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [written_bio, published_bio]
+    st:}
+st:]

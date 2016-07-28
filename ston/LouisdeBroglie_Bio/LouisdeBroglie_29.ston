@@ -1,0 +1,122 @@
+<He is an honorary doctor of the Universities of Warsaw, Bucharest, Athens, Lausanne, Quebec, and Brussels, and a member of eighteen foreign academies in Europe, India, and the U.S.A.>
+@r:[
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
+        id: warsaw;
+        syn: 8983105
+    r:}
+    r:{
+        id: bucharest;
+        syn: 8814474
+    r:}
+    r:{
+        id: athens;
+        syn: 9076982
+    r:}
+    r:{
+        id: lausanne;
+        syn: 9032981
+    r:}
+    r:{
+        id: quebec;
+        syn: 8829317
+    r:}
+    r:{
+        id: brussels;
+        syn: 8850450
+    r:}
+    r:{
+        id: univs_hon;
+        syn: 4511002;
+        def: Y;
+        qnt: PL;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [warsaw, bucharest, athens, lausanne, quebec, brussels]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: honorarydoc;
+        syn: 10021892;
+        def: N;
+        @adj:[
+            adj:{
+                syn: 821959
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [univs_hon]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: europe;
+        syn: 9275473
+    r:}
+    r:{
+        id: india;
+        syn: 8900535
+    r:}
+    r:{
+        id: usa;
+        syn: 9044862
+    r:}
+    r:{
+        id: 18foreign_ac;
+        syn: 8280124;
+        qnt: 18;
+        @adj:[
+            adj:{
+                syn: 1037540
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: In;
+                ref: [europe, india, usa]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: member_18;
+        syn: 10307234;
+        def: N;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [18foreign_ac]
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: ishonorary;
+        syn: 2604760;
+        tns: PR;
+        agt: [he];
+        thm: [honorarydoc]
+    act:}
+    act:{
+        id: ismember;
+        syn: 2604760;
+        tns: PR;
+        agt: [he];
+        thm: [member_18]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [ishonorary, ismember]
+    st:}
+st:]

@@ -1,0 +1,129 @@
+<Paragraph 6>
+<Elected a member of the Academy of Sciences of the French Institute in 1933, Louis de Broglie has been its Permanent Secretary for the mathematical sciences since 1942.>
+@r:[
+    r:{
+        id: louis_elec;
+        syn: 7846;
+        nam: Louis_de_Broglie;
+        @rel:[
+            rel:{
+                typ: OBJ;
+                ref: [elected]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: fr_inst;
+        syn: 8407330;
+        @adj:[
+            adj:{
+                syn: 2958392
+            adj:}
+        adj:]
+    r:}
+    r:{
+        id: sciences;
+        syn: 5999797;
+        qnt: PL
+    r:}
+    r:{
+        id: acc_sci_fr;
+        syn: 8279298;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [sciences]
+            rel:}
+            rel:{
+                typ: OF;
+                ref: [fr_inst]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: mem_acc_sci;
+        syn: 10307234;
+        def: Y;
+        @rel:[
+            rel:{
+                typ: OF;
+                ref: [acc_sci_fr]
+            rel:}
+        rel:]
+    r:}
+    r:{
+        id: year1933;
+        syn: 15203791;
+        nam: 1933
+    r:}
+    r:{
+        id: year1942;
+        syn: 15203791;
+        nam: 1942
+    r:}
+    r:{
+        id: mathsciences;
+        syn: 5999797;
+        qnt: PL;
+        @adj:[
+            adj:{
+                syn: 2937876;
+            adj:}
+        adj:];
+    r:}
+    r:{
+        id: perm_sec2;
+        syn: 10570019;
+        typ: PTSNFN;
+        @adj:[
+            adj:{
+                syn: 1754422;
+            adj:}
+        adj:];
+        @rel:[
+            rel:{
+                typ: FOR;
+                ref: [mathsciences];
+            rel:}
+        rel:]
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: elected;
+        syn: 2400760;
+        tns: PA;
+        @rel:[
+            rel:{
+                typ: AS;
+                ref: [mem_acc_sci]
+            rel:}
+            rel:{
+                typ: IN;
+                ref: [year1933]
+            rel:}
+        rel:]
+    act:}
+    act:{
+        id: hasbeenits;
+        syn: 2604760;
+        tns: PA;
+        agt: [louis_elec];
+        thm: [perm_sec2];
+        @rel:[
+            rel:{
+                typ: SNC;
+                ref: [year1942]
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [hasbeenits];
+    st:}
+st:]

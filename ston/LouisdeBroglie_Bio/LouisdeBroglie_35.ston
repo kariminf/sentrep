@@ -1,0 +1,35 @@
+<Louis de Broglie died on March 19, 1987.>
+@r:[
+    r:{
+        id: louis;
+        syn: 7846;
+        nam: Louis_de_Broglie
+    r:}
+    r:{
+        id: date1987;
+        syn: 15160579;
+        nam: 1987/03/19
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: died;
+        syn: 358431;
+        tns: PA;
+        agt: [louis];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [date1987]
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [died]
+    st:}
+st:]

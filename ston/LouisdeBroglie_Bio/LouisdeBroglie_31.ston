@@ -1,0 +1,34 @@
+<From Nobel Lectures. Physics 1922-1941, Elsevier Publishing Company, Amsterdam, 1965>
+@r:[
+    r:{
+        id: this;
+        typ: DTSNFP
+    r:}
+    r:{
+        id: origin_pub;
+        syn: 6589574;
+        nam: Nobel_Lectures._Physics_1922-1941,_Elsevier_Publishing_Company,_Amsterdam,_1965
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: is_from;
+        syn: 2604760;
+        tns: PR;
+        agt: [this];
+        @rel:[
+            rel:{
+                typ: FRM;
+                ref: [origin_pub]
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [is_from]
+    st:}
+st:]
