@@ -5,6 +5,10 @@
         syn: 636921
     r:}
     r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
         id: h_field_res;
         syn: 5996646;
         typ: PTSMFN;
@@ -74,19 +78,6 @@ r:]
 
 @act:[
     act:{
-        id: obtained2;
-        tns: PA;
-        syn: 522751;
-        agt: [he];
-        thm: [cert_nbr];
-        @rel:[
-            rel:{
-                typ: WHN;
-                ref: [back];
-            rel:}
-        rel:]
-    act:} 
-    act:{
         id: back;
         tns: PA;
         syn: 2604760;
@@ -118,7 +109,20 @@ r:]
             rel:}
             rel:{
                 typ: TO;
-                ref: [cras, var_expo];
+                ref: [cras, var_expos];
+            rel:}
+        rel:]
+    act:} 
+    act:{
+        id: obtained2;
+        tns: PA;
+        syn: 522751;
+        agt: [he];
+        thm: [cert_nbr];
+        @rel:[
+            rel:{
+                typ: WHN;
+                ref: [back];
             rel:}
         rel:]
     act:} 

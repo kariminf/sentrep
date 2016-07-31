@@ -15,6 +15,11 @@
         rel:]
     r:}
     r:{
+        id: sciences;
+        syn: 5999797;
+        qnt: PL
+    r:}
+    r:{
         id: fac_sci;
         syn: 8287586;
         @rel:[
@@ -40,7 +45,7 @@
     r:{
         id: year1932;
         syn: 15203791;
-        typ: 1932
+        nam: 1932
     r:}
     r:{
         id: chair_th;
@@ -73,7 +78,7 @@
     r:{
         id: louis_who;
         syn: 7846;
-        typ: Louis_de_Broglie;
+        nam: Louis_de_Broglie;
         @rel:[
             rel:{
                 typ: SBJ;
@@ -138,13 +143,7 @@ r:]
         id: ischair;
         syn: 2604760;
         tns: PR;
-        thm: [chair_th];
-        @rel:[
-            rel:{
-                typ: IN;
-                ref: [fac_sci];
-            rel:}
-        rel:]
+        thm: [chair_th]
     act:}
     
     act:{

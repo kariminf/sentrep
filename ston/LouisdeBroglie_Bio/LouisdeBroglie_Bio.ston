@@ -781,7 +781,7 @@
     r:{
         id: his_thesis;
         syn: 6755454;
-        typ: PTPMFN
+        typ: PTSMFN
     r:}
     r:{
         id: n_mech;
@@ -816,7 +816,7 @@
     r:{
         id: duties;
         syn: 719494;
-        def: Y;
+        qnt: PL;
         @rel:[
             rel:{
                 typ: OF;
@@ -915,7 +915,7 @@
     r:{
         id: year1932;
         syn: 15203791;
-        typ: 1932
+        nam: 1932
     r:}
     r:{
         id: chair_th;
@@ -948,7 +948,7 @@
     r:{
         id: louis_who;
         syn: 7846;<person>
-        typ: Louis_de_Broglie;
+        nam: Louis_de_Broglie;
         @rel:[
             rel:{
                 typ: SBJ;
@@ -2441,6 +2441,27 @@ r:]
     
     <----------A13----------->
     act:{
+        id: maintain;
+        tns: PA;
+        syn: 2681795;
+        agt: [he];
+        thm: [his_thesis]
+    act:} 
+    act:{
+        id: topublish;
+        syn: 1744611;
+        agt: [he];
+        thm: [orig_wrk]
+    act:}
+    act:{
+        id: continue;
+        tns: PA;
+        prg: Y;
+        syn: 2684924;
+        agt: [he];
+        thm: [topublish]
+    act:}
+    act:{
         id: takeup;
         tns: PA;
         syn: 348422;
@@ -2456,40 +2477,17 @@ r:]
                 ref: [continue];
             rel:}
         rel:]
-    act:} 
-    act:{
-        id: maintain;
-        tns: PA;
-        syn: 2681795;
-        agt: [he];
-        thm: [his_thesis]
-    act:} 
-    act:{
-        id: continue;
-        tns: PA;
-        prg: Y;
-        syn: 2684924;
-        agt: [he];
-        thm: [topublish]
-    act:} 
-    act:{
-        id: topublish;
-        syn: 1744611;
-        agt: [he];
-        thm: [orig_wrk]
     act:}
     
     <----------A14----------->
     act:{
-        id: appointed;
+        id: built;
         tns: PA;
-        syn: 2475922;
-        thm: [he];
-        thm: [toteach];
+        syn: 1655505;
         @rel:[
             rel:{
-                typ: AFT;
-                ref: [completion];
+                typ: IN;
+                ref: [paris];
             rel:}
         rel:]
     act:} 
@@ -2504,18 +2502,23 @@ r:]
                 ref: [the_ins];
             rel:}
         rel:]
-    act:} 
+    act:}
     act:{
-        id: built;
+        id: appointed;
         tns: PA;
-        syn: 1655505;<build>
+        syn: 2475922;
+        thm: [he];
         @rel:[
             rel:{
-                typ: IN;
-                ref: [paris];
+                typ: AFT;
+                ref: [completion];
+            rel:}
+            rel:{
+                typ: SO;
+                ref: [toteach];
             rel:}
         rel:]
-    act:}
+    act:}  
     
     <----------A15----------->
     act:{
@@ -2556,13 +2559,7 @@ r:]
         id: ischair;
         syn: 2604760;<be>
         tns: PR;
-        thm: [chair_th];
-        @rel:[
-            rel:{
-                typ: IN;
-                ref: [fac_sci];
-            rel:}
-        rel:]
+        thm: [chair_th]
     act:}
     
     act:{
@@ -2658,26 +2655,9 @@ r:]
     
     <----------A20----------->
     act:{
-        id: hasresumed;
-        tns: PA;
-        syn: 350104;<resume>
-        agt: [louis];
-        thm: [stu_attempt];
-        @rel:[
-            rel:{
-                typ: SNC;
-                ref: [year1951];
-            rel:}
-            rel:{
-                typ: WTH;
-                ref: [hy_coll];
-            rel:}
-        rel:]
-    act:} 
-    act:{
         id: hemade_att;
         tns: PA;
-        syn: 2560585;<make>
+        syn: 2560585;
         agt: [he];
         @rel:[
             rel:{
@@ -2697,7 +2677,7 @@ r:]
     act:{
         id: hadabandoned;
         tns: PA;
-        syn: 2228031;<abandon>
+        syn: 2228031;
         agt: [he];
         @rel:[
             rel:{
@@ -2727,31 +2707,36 @@ r:]
         rel:]
     act:} 
     
-    <----------A21----------->
     act:{
-        id: obtained2;
+        id: hasresumed;
         tns: PA;
-        syn: 522751;<obtain>
-        agt: [he];
-        thm: [cert_nbr];
+        syn: 350104;
+        agt: [louis];
+        thm: [stu_attempt];
         @rel:[
             rel:{
-                typ: WHN;
-                ref: [back];
+                typ: SNC;
+                ref: [year1951];
+            rel:}
+            rel:{
+                typ: WTH;
+                ref: [hy_coll];
             rel:}
         rel:]
     act:} 
+    
+    <----------A21----------->
     act:{
         id: back;
         tns: PA;
-        syn: 2604760;<be>
+        syn: 2604760;
         agt: [he];
         @adv:[
             adv:{
-                syn: 74407<back>
+                syn: 74407
             adv:}
             adv:{
-                syn: 40365<again>
+                syn: 40365
             adv:}
         adj:];
         @rel:[
@@ -2764,7 +2749,7 @@ r:]
     act:{
         id: h_hadpublished2;
         tns: PA;
-        syn: 967625;<publish>
+        syn: 967625;
         agt: [he];
         @rel:[
             rel:{
@@ -2773,10 +2758,23 @@ r:]
             rel:}
             rel:{
                 typ: TO;
-                ref: [cras, var_expo];
+                ref: [cras, var_expos];
             rel:}
         rel:]
-    act:}
+    act:} 
+    act:{
+        id: obtained2;
+        tns: PA;
+        syn: 522751;
+        agt: [he];
+        thm: [cert_nbr];
+        @rel:[
+            rel:{
+                typ: WHN;
+                ref: [back];
+            rel:}
+        rel:]
+    act:} 
     
     <----------A22----------->
     act:{

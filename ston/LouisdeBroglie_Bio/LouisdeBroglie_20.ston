@@ -7,6 +7,10 @@
         nam: 1951
     r:}
     r:{
+        id: he;
+        typ: STSMFN
+    r:}
+    r:{
         id: hy_coll;
         syn: 9936215;
         typ: PTSMFN;
@@ -182,23 +186,6 @@
 r:]
 @act:[
     act:{
-        id: hasresumed;
-        tns: PA;
-        syn: 350104;
-        agt: [louis];
-        thm: [stu_attempt];
-        @rel:[
-            rel:{
-                typ: SNC;
-                ref: [year1951];
-            rel:}
-            rel:{
-                typ: WTH;
-                ref: [hy_coll];
-            rel:}
-        rel:]
-    act:} 
-    act:{
         id: hemade_att;
         tns: PA;
         syn: 2560585;
@@ -247,6 +234,24 @@ r:]
             rel:{
                 typ: IN;
                 ref: [class_terms];
+            rel:}
+        rel:]
+    act:} 
+    
+    act:{
+        id: hasresumed;
+        tns: PA;
+        syn: 350104;
+        agt: [louis];
+        thm: [stu_attempt];
+        @rel:[
+            rel:{
+                typ: SNC;
+                ref: [year1951];
+            rel:}
+            rel:{
+                typ: WTH;
+                ref: [hy_coll];
             rel:}
         rel:]
     act:} 

@@ -1,11 +1,14 @@
 <paragraphe 2>
 <After the maintaining of his thesis and while continuing to publish original work on the new mechanics, Louis de Broglie took up teaching duties.>
-<---problem generating it: stack overflow (Simple-NLG): verify NaLanGen -->
 @r:[
+    r:{
+        id: he;
+        typ: STSMFN
+    r:}
     r:{
         id: his_thesis;
         syn: 6755454;
-        typ: PTPMFN
+        typ: PTSMFN
     r:}
     r:{
         id: n_mech;
@@ -45,7 +48,7 @@
     r:{
         id: duties;
         syn: 719494;
-        def: Y;
+        qnt: PL;
         @rel:[
             rel:{
                 typ: OF;
@@ -56,6 +59,27 @@
 r:]
 
 @act:[
+    act:{
+        id: maintain;
+        tns: PA;
+        syn: 2681795;
+        agt: [he];
+        thm: [his_thesis]
+    act:} 
+    act:{
+        id: topublish;
+        syn: 1744611;
+        agt: [he];
+        thm: [orig_wrk]
+    act:}
+    act:{
+        id: continue;
+        tns: PA;
+        prg: Y;
+        syn: 2684924;
+        agt: [he];
+        thm: [topublish]
+    act:}
     act:{
         id: takeup;
         tns: PA;
@@ -73,28 +97,6 @@ r:]
             rel:}
         rel:]
     act:} 
-    act:{
-        id: maintain;
-        tns: PA;
-        syn: 2681795;
-        agt: [he];
-        thm: [his_thesis]
-    act:} 
-    act:{
-        id: continue;
-        tns: PA;
-        prg: Y;
-        syn: 2684924;
-        agt: [he];
-        thm: [topublish]
-    act:} 
-    act:{
-        id: topublish;
-        syn: 1744611;
-        agt: [he];
-        thm: [orig_wrk]
-    act:}
-    
 act:]
 
 @st:[

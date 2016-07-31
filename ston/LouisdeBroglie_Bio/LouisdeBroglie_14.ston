@@ -1,9 +1,8 @@
 <On completion of two year's free lectures at the Sorbonne he was appointed to teach theoretical physics at the Institut Henri Poincare which had just been built in Paris.>
-<--PBLM generating--->
 @r:[
     r:{
         id: he;
-        typ: STPMFN
+        typ: STSMFN
     r:}
     r:{
         id: sorbonne;
@@ -76,15 +75,13 @@ r:]
 
 @act:[
     act:{
-        id: appointed;
+        id: built;
         tns: PA;
-        syn: 2475922;
-        thm: [he];
-        thm: [toteach];
+        syn: 1655505;
         @rel:[
             rel:{
-                typ: AFT;
-                ref: [completion];
+                typ: IN;
+                ref: [paris];
             rel:}
         rel:]
     act:} 
@@ -99,18 +96,23 @@ r:]
                 ref: [the_ins];
             rel:}
         rel:]
-    act:} 
+    act:}
     act:{
-        id: built;
+        id: appointed;
         tns: PA;
-        syn: 1655505;
+        syn: 2475922;
+        thm: [he];
         @rel:[
             rel:{
-                typ: IN;
-                ref: [paris];
+                typ: AFT;
+                ref: [completion];
+            rel:}
+            rel:{
+                typ: SO;
+                ref: [toteach];
             rel:}
         rel:]
-    act:} 
+    act:}  
 act:]
 
 @st:[
