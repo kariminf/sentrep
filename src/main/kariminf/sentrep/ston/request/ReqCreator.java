@@ -96,27 +96,22 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean addSentActionConjunctions(boolean mainAct, List<String> actConjunctions){
+	public boolean addSentActionConjunctions(List<String> actConjunctions){
 		
 		if (currentSentence == null)
 			return false;
-			
-		if (mainAct){
-			currentSentence.addMainActions(actConjunctions);
-			return true;
-		}
-		currentSentence.addSecActions(actConjunctions);
+		currentSentence.addMainActions(actConjunctions);
 		
 		return true;
 	}
 	
-	public boolean addSentMainActConjunctions(boolean mainAct, String... actConjunctions){
+	public boolean addSentMainActConjunctions(String... actConjunctions){
 		if (currentSentence == null)
 			return false;
 		ArrayList<String> actionConjunctions = new ArrayList<String>();
 		for (String rel: actConjunctions)
 			actionConjunctions.add(rel);
-		return addSentActionConjunctions(mainAct, actionConjunctions);
+		return addSentActionConjunctions(actionConjunctions);
 	}
 	
 	

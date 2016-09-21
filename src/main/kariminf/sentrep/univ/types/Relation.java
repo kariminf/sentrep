@@ -1,48 +1,72 @@
 package kariminf.sentrep.univ.types;
 
-public enum Relation {
-	SUBJ, //The man who ate
-	OBJ, //The class which I teach
-	POSS, //The man whose car is so expensive
-	REAS, //The reason why he did this is unclear
+public class Relation {
 	
-	WHERE, //Use when action refers to action: He return where he ...
-	WHEN, 
+	public static enum Relative {
+		SUBJECT, //The man who ate
+		OBJECT, //The class which I teach
+		POSSESSIVE, //The man whose car is so expensive
+		REASON, //The reason why he did this is unclear
+		IO_EXIST, // in which, at which
+		IO_PAST, //which ... ago (time)
+		IO_SINCE, //since which
+		IO_SOURCE, //from which
+		IO_DESTINATION, // till, to which
+		IO_INTENTION, // for which
+		IO_BEFORE, //before, in front which
+		IO_AFTER, //after, behind which
+		IO_PROXIMITY, //by which
+		
+		IO_INSIDE, // inside which
+		IO_OUTSIDE, // outside which
+		IO_BELOW, // below which
+		IO_ABOVE, // above which
+		IO_BETWEEN, //between which
+		IO_THROUGH, // thought which
+		
+		IO_SUBJECT, //About, on which
+		IO_ACCOMPANY, //With which
+		IO_POSSESSION, // OF which
+		IO_ROLE, //AS which
+		IO_SITUATION //under which
+	}
 	
-	OF, //The mother of the boy
+	public static enum Adpositional {
+		EXIST, // particular time or location in, at (time, place, situation)
+		PAST, //ago (time)
+		SINCE, //means since (time)
+		SOURCE, //from
+		DESTINATION, // till, to (time, place, intention)
+		INTENTION, // for (time, intention)
+		BEFORE, //before, in front (time, place)
+		AFTER, //after, behind (time, place)
+		PROXIMITY, //by (time, place)
+		
+		INSIDE, // (place)
+		OUTSIDE, // (place)
+		BELOW, // (place)
+		ABOVE, // (place)
+		BETWEEN, 
+		THROUGH,
+		
+		SUBJECT, //About, on "consultant on IT"
+		ACCOMPANY, //With
+		POSSESSION, // OF
+		ROLE, //AS
+		SITUATION //under some situation
+	}
 	
-	//Time
-	T_AT, 
-	T_IN,
-	T_SNC,
-	T_FOR,
-	T_AGO, 
-	T_BEF,
-	T_AFT,
-	T_TILL,
-	T_BY,
+	public static enum Adverbial {
+		TIME, //when
+		CONTINUUM, //while
+		PLACE, //where
+		CONDITION, //if, unless, lest
+		PURPOSE, //in order to, so that, in order that, to
+		REASON, //because, since, as, given
+		CONSESSION, //although, though, while
+		MANNER, //as, like, the way
+		AFTER, // after I ...
+		BEFORE // before I
+	}
 	
-	//Place
-	P_IN,
-	P_INS,
-	P_OUT,
-	P_AT,
-	P_ON,
-	P_LOW,
-	P_UP,
-	P_BY,
-	P_BET,
-	P_BEH,
-	P_FRN,
-	P_THR,
-	
-	//Others
-	ABOUT,
-	FROM,
-	WITH,
-	TO,
-	AS, //role: What is your opinion as a parent?
-	UND, //under pressure
-	FOR, //something for something
-	ON //something on something
 }

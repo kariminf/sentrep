@@ -1,48 +1,103 @@
 package kariminf.sentrep.ston.types;
 
-public enum SRelation {
-	SUBJ, //The man who ate
-	OBJ, //The class which I teach
-	POSS, //The man whose car is so expensive
-	REAS, //The reason why he did this is unclear
+import kariminf.sentrep.univ.types.Relation.*;
+
+public class SRelation {
 	
-	WHERE, //Use when action refers to action: He return where he ...
-	WHEN, //Use when action refers to action: He made it when he ...
+	/**
+	 * it is a relation between a role and an action.
+	 * An adjectival relation which describes the role
+	 * @author Abdelkrime Aries
+	 *
+	 */
+	public static enum SRelative {
+		SBJ (Relative.SUBJECT), //subject
+		OBJ (Relative.OBJECT), //object
+		POS (Relative.POSSESSIVE), //possessive
+		RSN (Relative.REASON), //reason
+		IO_ (Relative.IO_EXIST);//indirect object
+		
+		private Relative relative;
+		
+		private SRelative (Relative r){
+			relative = r;
+		}
+		
+		public Relative getRelation(){
+			return relative;
+		}
+	}
 	
-	OF, //The mother of the boy
+	/**
+	 * It is a relation between a role and a role;
+	 * or between an action and a role
+	 * @author Abdelkrime Aries
+	 *
+	 */
+	public static enum SAdpositional {
+		
+		IN (Adpositional.EXIST), // particular time or location in, at (time, place, situation)
+		AGO (Adpositional.PAST), //ago (time)
+		SNC (Adpositional.SINCE), //means since (time)
+		FRM (Adpositional.SOURCE), //from
+		TO (Adpositional.DESTINATION), // till, to (time, place)
+		FOR (Adpositional.INTENTION), // for (time, reason)
+		BEF (Adpositional.BEFORE), //before, in front (time, place)
+		AFT (Adpositional.AFTER), //after, behind (time, place)
+		BY (Adpositional.PROXIMITY), //by (time, place)
+
+		INS (Adpositional.INSIDE), // (place)
+		OUT (Adpositional.OUTSIDE), // (place)
+		BLW (Adpositional.BELOW), // (place)
+		ABV (Adpositional.ABOVE), // (place)
+		BTW (Adpositional.BETWEEN), 
+		THR (Adpositional.THROUGH),
+
+		ON (Adpositional.SUBJECT), //About, on "consultant on IT"
+		WTH (Adpositional.ACCOMPANY), //With
+		OF (Adpositional.POSSESSION), // OF
+		AS (Adpositional.ROLE), //AS
+		UND (Adpositional.SITUATION); //under some situation
+		
+		private Adpositional adposition;
+		
+		private SAdpositional (Adpositional r){
+			adposition = r;
+		}
+		
+		public Adpositional getRelation(){
+			return adposition;
+		}
+	}
 	
-	//Time
-	T_AT, 
-	T_IN,
-	T_SNC,
-	T_FOR,
-	T_AGO, 
-	T_BEF,
-	T_AFT,
-	T_TILL,
-	T_BY,
+	/**
+	 * Adverbial phrases that modifies the verb
+	 * @author Abdelkrime Aries
+	 *
+	 */
+	public static enum SAdverbial {
+		WHN (Adverbial.TIME), //when
+		WHL (Adverbial.CONTINUUM), //while
+		WHR (Adverbial.PLACE), //where
+		IF (Adverbial.CONDITION), //if, unless, lest
+		SO (Adverbial.PURPOSE), //in order to, so that, in order that
+		BCS (Adverbial.REASON), //because, since, as, given
+		THG (Adverbial.CONSESSION), //although, though, while
+		LIK (Adverbial.MANNER), //as, like, the way
+		FTR (Adverbial.AFTER),
+		BFR (Adverbial.BEFORE)
+		;
+		
+		Adverbial adverbial;
+		
+		private SAdverbial(Adverbial r){
+			adverbial = r;
+		}
+		
+		public Adverbial getRelation(){
+			return adverbial;
+		}
+	}
 	
-	//Place
-	P_IN,
-	P_INS,
-	P_OUT,
-	P_AT,
-	P_ON,
-	P_LOW,
-	P_UP,
-	P_BY,
-	P_BET,
-	P_BEH,
-	P_FRN,
-	P_THR,
 	
-	//Others
-	ABOUT,
-	FROM,
-	WITH,
-	TO,
-	AS, //role: What is your opinion as a parent?
-	UND, //under pressure
-	FOR, //something for something
-	ON //something on something
 }

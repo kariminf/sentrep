@@ -9,7 +9,7 @@ import kariminf.sentrep.ston.Parser;
 
 public class StonSimpleParser extends Parser {
 
-	static String testFile = "ston/that.ston";
+	static String testFile = "ston/LouisdeBroglie_Bio/LouisdeBroglie_07.ston";
 	
 	private boolean firstDisjunction = true;
 	
@@ -210,6 +210,7 @@ public class StonSimpleParser extends Parser {
 		// TODO Auto-generated method stub
 		
 	}
+
 
 
 }

@@ -20,14 +20,6 @@ public class ReqSentence {
 		mainActions.addConjunctions(conjunctions);
 	}
 	
-	public void addSecActions(List<String> conjunctions){
-		if (type != SSentType.COND)
-			return;
-		if (secActions == null)
-			secActions = new ReqDisjunction();
-		secActions.addConjunctions(conjunctions);
-	}
-	
 	public ReqDisjunction getDisjunction(boolean main){
 		if (main)
 			return mainActions;
@@ -43,12 +35,8 @@ public class ReqSentence {
 		String result = StonKeys.SENTBL + ":{";
 		
 		result += StonKeys.TYPE + ":" + type ;
-		result += ";" + StonKeys.ACT1 + ":" ;
+		result += ";" + StonKeys.ACT + ":" ;
 		result += mainActions.toString().replace(" ", "");
-		if ((type == SSentType.AFF) && (secActions != null)){
-			result += ";" + StonKeys.ACT2 + ":" ;
-			result += secActions.toString().replace(" ", "");
-		}
 			
 		result += StonKeys.SENTBL + ":}";
 		
@@ -63,14 +51,8 @@ public class ReqSentence {
 		result += StonKeys.TYPE + ":" + type ;
 		
 		result += ";\n" + StonBlocks.getIndentation(2);
-		result += StonKeys.ACT1 + ":" ;
+		result += StonKeys.ACT + ":" ;
 		result += mainActions.toString().replace(" ", "");
-		
-		if ((type == SSentType.AFF) && (secActions != null)){
-			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.ACT2 + ":" ;
-			result += secActions.toString().replace(" ", "");
-		}
 		
 		result += "\n" + StonBlocks.getIndentation(1);
 		result += StonKeys.SENTBL + ":}";

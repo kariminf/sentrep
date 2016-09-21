@@ -2,6 +2,9 @@ package kariminf.sentrep.ston;
 
 import kariminf.sentrep.LangMap;
 import kariminf.sentrep.univ.types.*;
+import kariminf.sentrep.univ.types.Relation.Adpositional;
+import kariminf.sentrep.univ.types.Relation.Adverbial;
+import kariminf.sentrep.univ.types.Relation.Relative;
 
 public class Univ2StonMap implements LangMap {
 
@@ -18,7 +21,19 @@ public class Univ2StonMap implements LangMap {
 	}
 
 	@Override
-	public String getAdposition(Relation adpos, String name) {
+	public String getAdposition(Adpositional adpos, String param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAdverbial(Adverbial adv, String param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getRelative(Relative rel, String param) {
 		// TODO Auto-generated method stub
 		return null;
 	}

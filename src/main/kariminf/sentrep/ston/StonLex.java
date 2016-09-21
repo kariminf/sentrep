@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kariminf.sentrep.ston.types.SComparison;
-import kariminf.sentrep.ston.types.SRelation;
+import kariminf.sentrep.ston.types.SRelation.*;
 import kariminf.sentrep.ston.types.SVerbModal;
 import kariminf.sentrep.ston.types.SVerbTense;
 
@@ -12,7 +12,9 @@ public class StonLex {
 	
 	private static final List<String> tenses = initTense();
 	private static final List<String> modals = initModal();
-	private static final List<String> relations = initRelation();
+	private static final List<String> adpos = initAdpos();
+	private static final List<String> advs = initAdvs();
+	private static final List<String> rels = initRels();
 	private static final List<String> comparisons = initComparison();
 	private static final List<String> dets = initDeterminer();
 	
@@ -22,29 +24,56 @@ public class StonLex {
 		
 		for (SVerbTense tense: SVerbTense.values())
 			result.add(tense.name());
-		/*result.add("PA");
-		result.add("PR");
-		result.add("FU");*/
 		
 		return result;
 	}
+	
 	
 	private static List<String> initModal(){
 		List<String> result = new ArrayList<String>();
 		
 		for(SVerbModal modal : SVerbModal.values())
 			result.add(modal.name());
-		/*result.add("CAN");
-		result.add("MAY");
-		result.add("MUST");*/
 		
 		return result;
 	}
 	
-	private static List<String> initRelation(){
+
+	private static List<String> initRels(){
+		List<String> result = new ArrayList<String>();
+
+		for(SRelative relation : SRelative.values()){
+			String rname = relation.name();
+			if (! rname.endsWith("_")){
+				result.add(rname);
+				continue;
+			}
+			
+			//this is for indirect object
+			for(SAdpositional adp : SAdpositional.values()){
+				result.add(rname + adp.name());
+			}
+			
+		}
+		
+		return result;
+	}
+	
+	
+	private static List<String> initAdpos(){
 		List<String> result = new ArrayList<String>();
 		
-		for(SRelation relation : SRelation.values())
+		for(SAdpositional relation : SAdpositional.values())
+			result.add(relation.name());
+		
+		return result;
+	}
+	
+	
+	private static List<String> initAdvs(){
+		List<String> result = new ArrayList<String>();
+		
+		for(SAdverbial relation : SAdverbial.values())
 			result.add(relation.name());
 		
 		return result;
@@ -86,8 +115,18 @@ public class StonLex {
 		return modals.contains(modalString);
 	}
 	
-	public static boolean isRelation(String relationString){
-		return relations.contains(relationString);
+	public static boolean isRoleRelation(String relation){
+		boolean result;
+		result = adpos.contains(relation);
+		result = result || rels.contains(relation);
+		return result;
+	}
+	
+	public static boolean isActionRelation(String relation){
+		boolean result;
+		result = adpos.contains(relation);
+		result = result || advs.contains(relation);
+		return result;
 	}
 	
 	public static boolean isComparison(String compString){
@@ -118,15 +157,9 @@ public class StonLex {
 		return comparisons.indexOf(compString);
 	}
 	
-
-	//Head: Demonstrative (D) {this, etc.}, Personnel (P) {I, me, etc.}
-	//Number: No one (0), singular(1), dual(2), plural(3)
-	//Gender: Feminine (F), Masculine (M), Neuter (N)
-	//Formality: Rude(0), Casual (1), Formal (2), Polite (3)
-	//Proximity: Distal(D), Medial(M), Proximal(P), Not-defined(N)
-	public static void getPronounSpecif(String type){
-
+	public static boolean isPredicateRole(String rel){
+		// We can reach a role just by adpositions
+		return adpos.contains(rel);
 	}
 	
-
 }

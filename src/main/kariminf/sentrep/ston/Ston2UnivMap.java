@@ -9,12 +9,11 @@ import kariminf.sentrep.ston.types.SPronoun.SNumber;
 import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SPronoun.SPerson;
 import kariminf.sentrep.ston.types.SPronoun.SProximity;
+import kariminf.sentrep.ston.types.SRelation.*;
 import kariminf.sentrep.univ.types.*;
-import kariminf.sentrep.univ.types.Pronoun.Formality;
-import kariminf.sentrep.univ.types.Pronoun.Gender;
-import kariminf.sentrep.univ.types.Pronoun.Head;
-import kariminf.sentrep.univ.types.Pronoun.Person;
-import kariminf.sentrep.univ.types.Pronoun.Proximity;
+import kariminf.sentrep.univ.types.Relation.*;
+import kariminf.sentrep.univ.types.Pronoun.*;
+
 
 public class Ston2UnivMap implements UnivMap {
 
@@ -46,11 +45,32 @@ public class Ston2UnivMap implements UnivMap {
 	}
 
 	@Override
-	public Relation mapAdposition(String langAdpos) {
+	public Adpositional mapAdposition(String langAdpos) {
+		SAdpositional adp = SAdpositional.valueOf(langAdpos);	
+		return adp.getRelation();
+	}
+	
+	@Override
+	public Relative mapRelative(String langRel) {
 		
-		Relation adpos = Relation.valueOf(langAdpos);
+		if (! langRel.contains("_")){
+			SRelative sr = SRelative.valueOf(langRel);
+			return sr.getRelation();
+		}
 		
-		return adpos;
+		String[] split = langRel.split("_");
+		String result = split[0] + "_";
+		
+		SAdpositional adp = SAdpositional.valueOf(split[1]);
+		result += adp.getRelation().name();
+		
+		return Relative.valueOf(result);
+	}
+
+	@Override
+	public Adverbial mapAdverbial(String langAdv) {
+		SAdverbial sadv = SAdverbial.valueOf(langAdv);
+		return sadv.getRelation();
 	}
 
 	@Override
@@ -118,4 +138,18 @@ public class Ston2UnivMap implements UnivMap {
 		// TODO Auto-generated method stub
 		return SentMood.AFFIRMATIVE;
 	}
+	
+public static void main(String[] args) {
+		
+		SPronoun p = new SPronoun();
+		SPronoun p2 = SPronoun.create("DSXXXM");
+		SPronoun p3 = SPronoun.create("DTDFPP");
+		
+		Ston2UnivMap m = new Ston2UnivMap();
+		System.out.println(m.mapPronoun(p.toString()));
+		System.out.println(m.mapPronoun(p2.toString()));
+		System.out.println(m.mapPronoun(p3.toString()));
+			
+	}
+
 }

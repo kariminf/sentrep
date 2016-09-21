@@ -10,8 +10,8 @@ public class StonKeys {
 	public static final String DEFINED = "def";
 	public static final String MODAL = "mod";
 	public static final String TYPE = "typ";
-	public static final String ACT1 = "act";
-	public static final String ACT2 = "act2";
+	public static final String ACT = "act";
+	//public static final String ACT2 = "act2";
 	public static final String AGENT = "agt";
 	public static final String THEME = "thm";
 	public static final String NAME = "nam";

@@ -17,7 +17,7 @@ public class ReqCreatorTest {
 		rc.addRolePlayer("mother", 10332385);
 		rc.addAdjective("mother", 1148283, null); //happy
 		
-		rc.addRelative("subj", "mother");
+		rc.addRelative("SBJ", "mother");
 		ArrayList<String> mother_sing = new ArrayList<String>();
 		mother_sing.add("sing");
 		rc.addRelativeConjunctions(mother_sing);
@@ -55,11 +55,11 @@ public class ReqCreatorTest {
 		//TODO complete this
 		// Adpositional phrases
 		rc.addRolePlayer("noon", 15165490);
-		rc.addRelative("t_at", "ate");
+		rc.addRelative("IN", "ate");
 		rc.addRelativeConjunctions(new String[]{"noon"});
 		
 		rc.addSentence("AFF");
-		rc.addSentMainActConjunctions(true, new String[]{"ate"});
+		rc.addSentMainActConjunctions(new String[]{"ate"});
 		
 		
 		System.out.println(rc.getStructuredRequest());

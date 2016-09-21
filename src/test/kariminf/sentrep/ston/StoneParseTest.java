@@ -30,7 +30,6 @@ public class StoneParseTest {
 		
 		String specif2 = rq.getStructuredRequest();
 		System.out.println(specif2 + "\n----------\n");
-		//System.out.println(specif2.equals(specif));
 	}
 
 
