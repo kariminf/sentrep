@@ -66,7 +66,7 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void endAction() {
+	protected void endAction(String id, int synSet) {
 		// TODO Auto-generated method stub
 
 	}
@@ -150,7 +150,7 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void endSentence() {
+	protected void endSentence(String type) {
 		// TODO Auto-generated method stub
 
 	}
@@ -162,7 +162,7 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void endActions() {
+	protected void endActions(boolean mainClause) {
 		// TODO Auto-generated method stub
 
 	}
