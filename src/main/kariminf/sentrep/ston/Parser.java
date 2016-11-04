@@ -636,7 +636,8 @@ public abstract class Parser {
 			if (! parseRelatives(relatives, true)) return false;
 		}
 
-		//Process 
+		//End of the role
+		endRole(id);
 
 		return true;
 
@@ -837,6 +838,8 @@ public abstract class Parser {
 	 * @param synSet wordnet synset of the Noun 
 	 */
 	protected abstract void addRole(String id, int synSet);
+	
+	protected abstract void endRole(String id);
 
 	/**
 	 * It is called when the parser finds a role player (pronoun)

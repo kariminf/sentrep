@@ -211,6 +211,12 @@ public class StonSimpleParser extends Parser {
 		
 	}
 
+	@Override
+	protected void endRole(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

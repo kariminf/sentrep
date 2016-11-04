@@ -214,4 +214,10 @@ public class ParserSpeed extends Parser {
 		System.out.println("time: " + (nd-st));
 	}
 
+	@Override
+	protected void endRole(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
