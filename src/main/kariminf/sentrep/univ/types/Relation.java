@@ -35,7 +35,7 @@ public class Relation {
 		EXIST, // particular time or location in, at (time, place, situation)
 		PAST, //ago (time)
 		SINCE, //means since (time)
-		SOURCE, //from
+		SOURCE, //from (time, place, other)
 		DESTINATION, // till, to (time, place, intention)
 		INTENTION, // for (time, intention)
 		BEFORE, //before, in front (time, place)
@@ -46,8 +46,8 @@ public class Relation {
 		OUTSIDE, // (place)
 		BELOW, // (place)
 		ABOVE, // (place)
-		BETWEEN, 
-		THROUGH,
+		BETWEEN, // place, time
+		THROUGH,//place, time
 		
 		SUBJECT, //About, on "consultant on IT"
 		ACCOMPANY, //With

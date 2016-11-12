@@ -719,6 +719,8 @@ public abstract class Parser {
 			parseComponents(refs);
 
 		}
+		
+		endRelative(type);
 
 		return true;
 	}
@@ -889,7 +891,7 @@ public abstract class Parser {
 	 * @param type the type of the relatives
 	 */
 	protected abstract void addRelative(String SP);
-
+	protected abstract void endRelative(String SP);
 
 	protected abstract void addComparison(String type, List<Integer> adjSynSets);
 
