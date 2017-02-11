@@ -78,7 +78,7 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void addPRole(String id, String pronoun) {
+	protected void addPRole(String id, int synSet, String pronoun) {
 		// TODO Auto-generated method stub
 
 	}

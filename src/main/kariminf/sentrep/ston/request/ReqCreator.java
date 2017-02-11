@@ -7,6 +7,7 @@ import java.util.List;
 
 import kariminf.sentrep.ston.StonBlocks;
 import kariminf.sentrep.ston.StonKeys;
+import kariminf.sentrep.ston.types.SPronoun;
 import kariminf.sentrep.ston.types.SSentType;
 
 
@@ -47,13 +48,29 @@ public class ReqCreator {
 	}
 	
 	
+	public boolean addPronounRolePlayer(String id, int nounSynSet, String pronoun){
+		id = id.trim();
+		ReqRolePlayer player = ReqRolePlayer.create(id, nounSynSet, SPronoun.create(pronoun));
+		if (player == null){
+			//System.out.println("id already exists");
+			return false;
+		}
+		players.put(id.trim(), player);
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param playerId
+	 * @param name
+	 * @return
+	 */
 	public boolean setRoleProperName(String playerId, String name){
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
-		
-		//Defined must be 3 choices
-		//TODO complete defining
+
 		players.get(playerId).setProperName(name);
+		
 		return true;
 		
 	}

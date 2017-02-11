@@ -65,7 +65,7 @@ public class ReqDisjunction {
 	}
 	
 	public boolean isEmpty(){
-		return (disjunctions.isEmpty());
+		return disjunctions.isEmpty();
 		
 	}
 	

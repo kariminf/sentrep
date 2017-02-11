@@ -110,7 +110,37 @@ public class SPronoun {
 	}
 
 	
-	public SPronoun setProperty(SPProperty property, String value){
+	public SPronoun setProperty(SFormality formality){
+		properties.put(SPProperty.Formality, formality);
+		return this;
+	}
+	
+	public SPronoun setProperty(SGender gender){
+		properties.put(SPProperty.Gender, gender);
+		return this;
+	}
+	
+	public SPronoun setProperty(SHead head){
+		properties.put(SPProperty.Head, head);
+		return this;
+	}
+	
+	public SPronoun setProperty(SNumber number){
+		properties.put(SPProperty.Number, number);
+		return this;
+	}
+	
+	public SPronoun setProperty(SProximity proximity){
+		properties.put(SPProperty.Proximity, proximity);
+		return this;
+	}
+	
+	public SPronoun setProperty(SPerson person){
+		properties.put(SPProperty.Person, person);
+		return this;
+	}
+	
+	private void setProperty(SPProperty property, String value){
 		
 		switch(property){
 		
@@ -186,8 +216,6 @@ public class SPronoun {
 			break;
 		
 		}
-		
-		return this;
 	}
 	
 	

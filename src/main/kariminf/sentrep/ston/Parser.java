@@ -591,8 +591,11 @@ public abstract class Parser {
 		//See @SPronoun for description
 		boolean pronounFound = false;
 		type = type.trim();
+		int synSet = 0;
+		if (synSetStr.matches("\\d+")) synSet = Integer.parseInt(synSetStr);
+		
 		if (type.length() == SPronoun.PropertiesNumber){
-			addPRole(id, type);
+			addPRole(id, synSet, type);
 			ref = ref.trim();
 			if (ref.length() > 2){
 				ref = ref.substring(1, ref.length()-1);
@@ -602,26 +605,15 @@ public abstract class Parser {
 			}
 
 			pronounFound = true;
+		} else{
+			if (synSet > 0) addRole(id, synSet);
 		}
-
-		//A role must have an ID
-		/*
-		if (id.length() < 1 && ! pronounFound){
-			roleFail();
-			success = false;
-			return false;
-		}*/
 
 		// A role must have a synset which is a number
-		if (! synSetStr.matches("\\d+") && ! pronounFound){
+		if (synSet < 1 && ! pronounFound){
 			roleFail();
 			success = false;
 			return false;
-		}
-
-		if (synSetStr.matches("\\d+")){
-			int synSet = Integer.parseInt(synSetStr);
-			addRole(id, synSet);
 		}
 
 		addRoleSpecif(name, def, quantity);
@@ -846,9 +838,10 @@ public abstract class Parser {
 	/**
 	 * It is called when the parser finds a role player (pronoun)
 	 * @param id each role has a unique ID
+	 * @param synSet wordnet synset of the Noun 
 	 * @param type the type of the pronoun See @StonLex
 	 */
-	protected abstract void addPRole(String id, String pronoun);
+	protected abstract void addPRole(String id, int synSet, String pronoun);
 
 	/**
 	 * It is called after {@link addRole}
@@ -890,8 +883,8 @@ public abstract class Parser {
 	 * It is called to add an relative: time or location
 	 * @param type the type of the relatives
 	 */
-	protected abstract void addRelative(String SP);
-	protected abstract void endRelative(String SP);
+	protected abstract void addRelative(String type);
+	protected abstract void endRelative(String type);
 
 	protected abstract void addComparison(String type, List<Integer> adjSynSets);
 

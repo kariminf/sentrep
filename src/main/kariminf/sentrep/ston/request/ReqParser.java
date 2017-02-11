@@ -219,8 +219,8 @@ public class ReqParser extends Parser {
 	}
 
 	@Override
-	protected void addPRole(String id, String pronoun) {
-		currentPlayer = ReqRolePlayer.create(id, SPronoun.create(pronoun));
+	protected void addPRole(String id, int synSet, String pronoun) {
+		currentPlayer = ReqRolePlayer.create(id, synSet, SPronoun.create(pronoun));
 		players.put(id, currentPlayer);
 		currentAction = null;
 	}
