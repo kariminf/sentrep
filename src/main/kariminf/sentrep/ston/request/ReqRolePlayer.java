@@ -213,7 +213,7 @@ public class ReqRolePlayer {
 			while(it.hasNext()){
 				result += it.next().structuredString();
 				if(it.hasNext())
-					result += ",";
+					result += ",\n";
 			}
 
 			result += "\n" + StonBlocks.getIndentation(2);
@@ -223,9 +223,14 @@ public class ReqRolePlayer {
 		if (! relatives.isEmpty()){
 			result += ";\n" + StonBlocks.getIndentation(2);
 			result += StonBlocks.beginREL + ":[\n";
-			for (ReqClause relative: relatives){
+			
+			Iterator<ReqClause> it = relatives.iterator();
+			while(it.hasNext()){
+				ReqClause relative = it.next();
 				relative.setSpecifs(StonKeys.RELBL, 3);
 				result += relative.structuredString();
+				if(it.hasNext())
+					result += ",\n";
 			}
 			result += StonBlocks.getIndentation(2);
 			result += StonKeys.RELBL + ":]";
