@@ -198,6 +198,13 @@ public class ReqCreator {
 		return true;
 	}
 	
+	public boolean setActionAdverbs(String actionId, List<Integer> advSynSets){
+		actionId = actionId.trim();
+		if (! actions.containsKey(actionId)) return false;
+		actions.get(actionId).setAdvSynSets(advSynSets);
+		return true;
+	}
+	
 	public boolean addAdjective(String playerId, int adjSynSet, List<Integer> advSynSets){
 		playerId = playerId.trim();
 		if (! players.containsKey(playerId)) return false;
