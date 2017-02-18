@@ -215,10 +215,17 @@ public class ReqCreator {
 		return true;
 	}
 	
-	public boolean setActionAdverbs(String actionId, List<Integer> advSynSets){
+	public boolean addActionAdverbs(String actionId, List<Integer> advSynSets){
 		actionId = actionId.trim();
 		if (! actions.containsKey(actionId)) return false;
 		actions.get(actionId).setAdvSynSets(advSynSets);
+		return true;
+	}
+	
+	public boolean addActionAdverb(String actionId, Integer advSynSets){
+		actionId = actionId.trim();
+		if (! actions.containsKey(actionId)) return false;
+		actions.get(actionId).addAdvSynSet(advSynSets);
 		return true;
 	}
 	

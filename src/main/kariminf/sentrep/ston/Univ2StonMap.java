@@ -9,6 +9,7 @@ import kariminf.sentrep.ston.types.SPronoun.SNumber;
 import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SPronoun.SPerson;
 import kariminf.sentrep.ston.types.SPronoun.SProximity;
+import kariminf.sentrep.ston.types.SRelation.SAdpositional;
 import kariminf.sentrep.univ.types.*;
 import kariminf.sentrep.univ.types.Pronoun.Formality;
 import kariminf.sentrep.univ.types.Pronoun.Gender;
@@ -35,8 +36,10 @@ public class Univ2StonMap implements LangMap {
 
 	@Override
 	public String getAdposition(Adpositional adpos, String param) {
-		// TODO Auto-generated method stub
-		return null;
+		for (SAdpositional sadp: SAdpositional.values())
+			if (sadp.getRelation() == adpos) 
+				return sadp.name();
+		return "";
 	}
 
 	@Override

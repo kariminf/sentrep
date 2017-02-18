@@ -81,6 +81,10 @@ public class ReqAction {
 	public void setAdvSynSets(List<Integer> advSynSets) {
 		this.advSynSets.addAll(advSynSets);
 	}
+	
+	public void addAdvSynSet(Integer advSynSet){
+		advSynSets.add(advSynSet);
+	}
 
 	/**
 	 * @return the aspect
