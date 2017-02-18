@@ -75,6 +75,14 @@ public class ReqCreator {
 		
 	}
 	
+	public ReqRolePlayer getReqRolePlayerCopie(String playerId, String newID){
+		playerId = playerId.trim();
+		if (! players.containsKey(playerId)) return null;
+		
+		ReqRolePlayer original = players.get(playerId);
+		return ReqRolePlayer.create(newID, original);
+	}
+	
 	
 	public boolean setDefined (String playerId, String def){
 		playerId = playerId.trim();

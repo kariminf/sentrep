@@ -76,6 +76,24 @@ public class ReqRolePlayer {
 		ids.add(id);
 		return new ReqRolePlayer(id, nounSynSet);
 	}
+	
+	public static ReqRolePlayer create(String id, ReqRolePlayer rrp){
+		//protection for same ids
+		if(ids.contains(id)) return null;
+		ids.add(id);
+		ReqRolePlayer result = new ReqRolePlayer(id, rrp.nounSynSet);
+		result.properName = rrp.properName;
+		result.quantity = rrp.quantity;
+		result.defined = rrp.defined;
+		result.adjectives = new ArrayList<ReqAdjective>();
+		result.adjectives.addAll(rrp.adjectives);
+		
+		//TODO verify this
+		//result.relatives = new ArrayList<ReqClause>();
+		result.pronoun = rrp.pronoun;
+		//result.references = new ReqDisjunction();
+		return result;
+	}
 
 	public static ReqRolePlayer create(String id, int nounSynSet, SPronoun pronoun){
 		//protection for same ids
