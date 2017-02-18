@@ -47,6 +47,15 @@ public class ReqCreator {
 		return true;
 	}
 	
+	public boolean addRolePlayer(ReqRolePlayer player){
+		if (player == null){
+			//System.out.println("id already exists");
+			return false;
+		}
+		players.put(player.getID(), player);
+		return true;
+	}
+	
 	
 	public boolean addPronounRolePlayer(String id, int nounSynSet, String pronoun){
 		id = id.trim();
@@ -227,6 +236,23 @@ public class ReqCreator {
 		if (! players.containsKey(playerId)) return false;
 		
 		players.get(playerId).setQuantity(quantity);
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param actID
+	 * @param subID
+	 * @param id
+	 * @return
+	 */
+	public boolean replaceRoleInAction(String actID, String subID, String id){
+		if(!players.containsKey(subID)) return false;
+		if(!players.containsKey(id)) return false;
+		if(!actions.containsKey(actID)) return false;
+		
+		actions.get(actID).replaceRole(subID, id);
+		
 		return true;
 	}
 	

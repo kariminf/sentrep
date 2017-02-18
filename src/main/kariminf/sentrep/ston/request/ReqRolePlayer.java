@@ -111,6 +111,10 @@ public class ReqRolePlayer {
 
 		adjectives.add(adjective);
 	}
+	
+	public String getID(){
+		return id;
+	}
 
 
 	public void setQuantity(String quantity){

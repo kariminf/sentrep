@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Consumer;
 
 
 public class ReqDisjunction {
 
 
 	private ArrayList<Conjunctions> disjunctions = new ArrayList<Conjunctions>();
+
 	
 	private static class Conjunctions  {
 		private List<String> conjunctions;
@@ -23,6 +25,14 @@ public class ReqDisjunction {
 			Set<String> result = new HashSet<String>();
 			result.addAll(conjunctions);
 			return result;
+		}
+		
+		public void replace(String older, String newer){
+			if (conjunctions.contains(older)){
+				conjunctions.remove(older);
+				conjunctions.add(newer);
+			}
+			
 		}
 		
 		/* (non-Javadoc)
@@ -42,6 +52,11 @@ public class ReqDisjunction {
 	
 	public ReqDisjunction() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public void replace(String older, String newer){
+		for (Conjunctions conj: disjunctions)
+			conj.replace(older, newer);
 	}
 	
 	

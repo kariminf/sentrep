@@ -183,6 +183,14 @@ public class ReqAction {
 	}
 	
 	
+	public boolean replaceRole(String older, String newer){
+		if (older == newer) return false;
+		agents.replace(older, newer);
+		themes.replace(older, newer);
+		return true;
+	}
+	
+	
 	public String structuredString() {
 		
 		String result = StonBlocks.getIndentation(1) + StonKeys.ACTBL + ":{";
