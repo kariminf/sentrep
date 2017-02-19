@@ -15,7 +15,7 @@ public class ReqRolePlayer {
 	private String id;
 	private int nounSynSet;
 	private String properName = "";
-	private String quantity = "1";
+	private String quantity = "";
 	private String defined = "";
 	private List<ReqAdjective> adjectives = new ArrayList<ReqAdjective>();
 	private List<ReqClause> relatives = new ArrayList<ReqClause>();
@@ -119,6 +119,10 @@ public class ReqRolePlayer {
 
 	public void setQuantity(String quantity){
 		this.quantity = quantity;
+	}
+	
+	public void setPlural(){
+		this.quantity += "PL";
 	}
 
 	public void setProperName(String properName){

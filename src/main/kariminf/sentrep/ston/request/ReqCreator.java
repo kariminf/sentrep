@@ -246,6 +246,14 @@ public class ReqCreator {
 		return true;
 	}
 	
+	public boolean setQuantity(String playerId){
+		playerId = playerId.trim();
+		if (! players.containsKey(playerId)) return false;
+		
+		players.get(playerId).setPlural();
+		return true;
+	}
+	
 	/**
 	 * 
 	 * @param actID
