@@ -31,10 +31,10 @@ public class ReqCreatorTest {
 		
 		//Actions creation
 		rc.addAction("ate", 1168468);
-		rc.addVerbSpecif("ate", "PAST", "MAY", true, true);
+		rc.addVerbSpecif("ate", "PAST", "MAY", true, false, true);
 		
 		rc.addAction("sing", 937208);
-		rc.addVerbSpecif("sing", "PRESENT", "NONE", false, false);
+		rc.addVerbSpecif("sing", "PRESENT", "NONE", false, false, false);
 		
 		
 		//Disjunctions of conjunctions

@@ -182,6 +182,7 @@ public abstract class Parser {
 		String synSetStr = "";
 		String tense = "";
 		boolean progressive = false;
+		boolean perfect = false;
 		boolean negated = false;
 		String modality = StonLex.getDefaultModal();
 		String agents = "";
@@ -258,6 +259,16 @@ public abstract class Parser {
 				}
 				continue;
 			}
+			
+			key = StonKeys.PERFECT + ":";
+			if(desc.startsWith(key)){
+				String aspect = desc.split(":")[1];
+
+				if(aspect.matches("y")){
+					perfect = true;
+				}
+				continue;
+			}
 
 			key = StonKeys.NEGATED + ":";
 			if(desc.startsWith(key)){
@@ -318,7 +329,7 @@ public abstract class Parser {
 		}
 
 		//Defines verb specifications
-		addVerbSpecif(tense, modality, progressive, negated);
+		addVerbSpecif(tense, modality, progressive, perfect, negated);
 
 		// Process subjects
 		if(agents.length() > 2){
@@ -799,9 +810,10 @@ public abstract class Parser {
 	 * @param tense It is the tense of the verb: past, present or future
 	 * @param modality It is the modal verb: can, must, may, none
 	 * @param progressive the action is progressive or not
+	 * @param perfect the action has perfect aspect or not
 	 * @param negated the action is negated or not
 	 */
-	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated);
+	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean perfect, boolean negated);
 
 	
 

@@ -5,6 +5,7 @@ public class StonKeys {
 	public static final String SYNSET = "syn";
 	public static final String TENSE = "tns";
 	public static final String PROGRESSIVE = "prg";
+	public static final String PERFECT = "prf";
 	public static final String NEGATED = "neg";
 	public static final String QUANTITY = "qnt";
 	public static final String DEFINED = "def";

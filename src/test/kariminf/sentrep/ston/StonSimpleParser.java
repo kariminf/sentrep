@@ -24,7 +24,7 @@ public class StonSimpleParser extends Parser {
 
 	@Override
 	protected void addVerbSpecif(String tense, String modality,
-			boolean progressive, boolean negated) {
+			boolean progressive, boolean perfect, boolean negated) {
 		String verbDesc = "\tTense=" + tense;
 		verbDesc += (modality.matches("none"))? "" : ", Modality= " + modality;
 		verbDesc += (progressive)? ", Progressive": "";

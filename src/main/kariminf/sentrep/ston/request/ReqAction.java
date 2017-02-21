@@ -19,6 +19,7 @@ public class ReqAction {
 	private String tense = "PR";
 	private String modality = "NONE";
 	private boolean progressive = false;
+	private boolean perfect = false;
 	private boolean negated = false;
 	
 	public static void clearIdList(){
@@ -108,10 +109,11 @@ public class ReqAction {
 		return new ReqAction(id, verbSynSet);
 	}
 	
-	public void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated){
+	public void addVerbSpecif(String tense, String modality, boolean progressive, boolean perfect, boolean negated){
 		if (tense.matches("PA|PR|FU")) this.tense = tense;
 		if (modality.matches("CAN|MAY|NONE")) this.modality = modality;
 		this.progressive = progressive;
+		this.perfect = perfect;
 		this.negated = negated;
 	}
 	
@@ -147,6 +149,10 @@ public class ReqAction {
 		
 		if (progressive){
 			result += ";" + StonKeys.PROGRESSIVE + ":Y";
+		}
+		
+		if (perfect){
+			result += ";" + StonKeys.PERFECT + ":Y";
 		}
 			
 		if (negated){
@@ -210,34 +216,39 @@ public class ReqAction {
 		
 		if (progressive){
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.PROGRESSIVE + ":Y";
+			result += StonKeys.PROGRESSIVE + ": Y";
+		}
+		
+		if (perfect){
+			result += ";\n" + StonBlocks.getIndentation(2);
+			result += StonKeys.PERFECT + ": Y";
 		}
 			
 		if (negated){
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.NEGATED + ":Y";
+			result += StonKeys.NEGATED + ": Y";
 		}
 			
 		if(modality != "NONE"){
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.MODAL + ":" + modality;
+			result += StonKeys.MODAL + ": " + modality;
 		}
 			
 		if ( ! advSynSets.isEmpty()){
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.ADVERB + ":";
+			result += StonKeys.ADVERB + ": ";
 			result += advSynSets.toString().replace(" ", "");
 		}
 			
 		if(! agents.isEmpty()) {
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.AGENT + ":";
+			result += StonKeys.AGENT + ": ";
 			result += agents.toString().replace(" ", "");
 		}
 		
 		if(! themes.isEmpty()){
 			result += ";\n" + StonBlocks.getIndentation(2);
-			result += StonKeys.THEME + ":";
+			result += StonKeys.THEME + ": ";
 			result += themes.toString().replace(" ", "");
 		}
 		

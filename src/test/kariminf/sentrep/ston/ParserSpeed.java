@@ -18,7 +18,7 @@ public class ParserSpeed extends Parser {
 
 	@Override
 	protected void addVerbSpecif(String tense, String modality,
-			boolean progressive, boolean negated) {
+			boolean progressive, boolean perfect, boolean negated) {
 		// TODO Auto-generated method stub
 
 	}

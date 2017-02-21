@@ -50,8 +50,8 @@ public class ReqParser extends Parser {
 
 
 	@Override
-	protected void addVerbSpecif(String tense, String modality, boolean progressive, boolean negated) {
-		currentAction.addVerbSpecif(tense, modality, progressive, negated);
+	protected void addVerbSpecif(String tense, String modality, boolean progressive, boolean perfect, boolean negated) {
+		currentAction.addVerbSpecif(tense, modality, progressive, perfect, negated);
 	}
 
 	@Override

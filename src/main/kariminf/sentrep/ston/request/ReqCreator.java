@@ -208,10 +208,10 @@ public class ReqCreator {
 	}
 	
 	
-	public boolean addVerbSpecif(String actionId, String tense, String modality, boolean progressive, boolean negated){
+	public boolean addVerbSpecif(String actionId, String tense, String modality, boolean progressive, boolean perfect, boolean negated){
 		actionId = actionId.trim();
 		if (! actions.containsKey(actionId)) return false;
-		actions.get(actionId).addVerbSpecif(tense, modality, progressive, negated);
+		actions.get(actionId).addVerbSpecif(tense, modality, progressive, perfect, negated);
 		return true;
 	}
 	
