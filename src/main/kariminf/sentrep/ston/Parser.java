@@ -40,7 +40,7 @@ public abstract class Parser {
 		//System.out.println(description);
 		Matcher m = StonBlocks.CONT.matcher(description);
 		if (! m.find()) {
-			parseFail();
+			parseFailure();
 			return;
 		}
 
@@ -301,16 +301,14 @@ public abstract class Parser {
 
 		//The action must have an ID
 		if(id.length() < 1){
-			actionFail();
 			success = false;
-			return false;
+			if (actionFailure()) return false;
 		}
 
 		// An action must have a synset which is a number
 		if (! synSetStr.matches("\\d+")){
-			roleFail();
 			success = false;
-			return false;
+			if (roleFailure()) return false;
 		}
 
 		int synSet = Integer.parseInt(synSetStr);
@@ -441,9 +439,8 @@ public abstract class Parser {
 			}
 
 			if (synSet < 1){
-				adjectiveFail();
 				success = false;
-				return false;
+				if (adjectiveFailure()) return false;
 			}
 
 			addAdjective(synSet, advSynSets);
@@ -498,9 +495,8 @@ public abstract class Parser {
 			}
 
 			if (synSet < 1){
-				adverbFail();
 				success = false;
-				return false;
+				if (adverbFailure()) return false;
 			}
 
 			addActionAdverb(synSet, advSynSets);
@@ -623,9 +619,8 @@ public abstract class Parser {
 
 		// A role must have a synset which is a number
 		if (synSet < 1 && ! pronounFound){
-			roleFail();
 			success = false;
-			return false;
+			if (roleFailure()) return false;
 		}
 
 		addRoleSpecif(name, def, quantity);
@@ -708,9 +703,8 @@ public abstract class Parser {
 		refuse = refuse || (!role && !StonLex.isActionRelation(type));
 
 		if (refuse){
-			relativeFail();
 			success = false;
-			return false;
+			if (relativeFailure()) return false;
 		}
 
 		beginRelative(type);
@@ -759,9 +753,8 @@ public abstract class Parser {
 
 		//If there is no type
 		if (type.length() < 1){
-			relativeFail();
 			success = false;
-			return false;
+			if (relativeFailure()) return false;
 		}
 
 		ArrayList<Integer> adjSynSets = new ArrayList<Integer>();
@@ -825,7 +818,7 @@ public abstract class Parser {
 	 * wrong in the action block
 	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract boolean actionFail();
+	protected abstract boolean actionFailure();
 
 	/**
 	 * It is called inside the Action block to define the specifications of a verb
@@ -873,7 +866,7 @@ public abstract class Parser {
 	 * This is called when the processing of the adverb fails
 	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract boolean adverbFail();
+	protected abstract boolean adverbFailure();
 	
 
 	/**
@@ -925,7 +918,7 @@ public abstract class Parser {
 	 * it is called when the parsing of a role failed
 	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract boolean roleFail();
+	protected abstract boolean roleFailure();
 	
 	/**
 	 * It is called after {@link beginRole} when some further specifications are afforded
@@ -947,13 +940,13 @@ public abstract class Parser {
 	 * It is called when the parsing of an adjective failed
 	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract boolean adjectiveFail();
+	protected abstract boolean adjectiveFailure();
 	
 	/**
 	 * It is called when the parsing of current relative failed
 	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract boolean relativeFail();
+	protected abstract boolean relativeFailure();
 
 	/**
 	 * Called to mark the beginning of pronoun relatives
@@ -1051,7 +1044,7 @@ public abstract class Parser {
 	/**
 	 * it is called when the parsing failed (general structure)
 	 */
-	protected abstract void parseFail();
+	protected abstract void parseFailure();
 
 
 }

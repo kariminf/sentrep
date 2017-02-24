@@ -11,7 +11,7 @@ public class ParserSpeed extends Parser {
 	//static String testFile = "ston/NaguibMahfouz_bio/NaguibMahfouz_Bio.ston";
 	
 	@Override
-	protected void addAction(String id, int synSet) {
+	protected void beginAction(String id, int synSet) {
 		// TODO Auto-generated method stub
 
 	}
@@ -24,8 +24,8 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void actionFail() {
-		// TODO Auto-generated method stub
+	protected boolean actionFailure() {
+		return true;
 
 	}
 
@@ -48,8 +48,8 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void adverbFail() {
-		// TODO Auto-generated method stub
+	protected boolean adverbFailure() {
+		return true;
 
 	}
 
@@ -72,13 +72,13 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void addRole(String id, int synSet) {
+	protected void beginRole(String id, int synSet) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void addPRole(String id, int synSet, String pronoun) {
+	protected void beginRole(String id, int synSet, String pronoun) {
 		// TODO Auto-generated method stub
 
 	}
@@ -96,37 +96,37 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void adjectiveFail() {
+	protected boolean adjectiveFailure() {
+		return true;
+
+	}
+
+	@Override
+	protected boolean roleFailure() {
+		return true;
+
+	}
+
+	@Override
+	protected void parseFailure() {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void roleFail() {
+	protected boolean relativeFailure() {
+		return true;
+
+	}
+
+	@Override
+	protected void beginRelative(String SP) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	protected void parseFail() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void relativeFail() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void addRelative(String SP) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected void addComparison(String type, List<Integer> adjSynSets) {
+	protected void beginComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 
 	}
@@ -215,13 +215,19 @@ public class ParserSpeed extends Parser {
 	}
 
 	@Override
-	protected void endRole(String id) {
+	protected void endRole(String id, int synSet) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void endRelative(String SP) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 		
 	}

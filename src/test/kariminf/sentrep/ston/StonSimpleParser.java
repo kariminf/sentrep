@@ -18,7 +18,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addAction(String id, int synSet) {
+	protected void beginAction(String id, int synSet) {
 		System.out.println("Adding action: " + id + ", verb: " + synSet);
 	}
 
@@ -33,8 +33,9 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void actionFail() {
+	protected boolean actionFailure() {
 		System.out.println("ACTION FAILED");
+		return false; //continue parsing
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addRole(String id, int synSet) {
+	protected void beginRole(String id, int synSet) {
 		System.out.println("Adding role: " + id + ", noun: " + synSet);
 	}
 
@@ -60,13 +61,15 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void adjectiveFail() {
+	protected boolean adjectiveFailure() {
 		System.out.println("ADJECTIVE FAILED");
+		return false; //continue parsing
 	}
 
 	@Override
-	protected void roleFail() {
+	protected boolean roleFailure() {
 		System.out.println("ROLE FAILED");
+		return false; //continue parsing
 	}
 
 	@Override
@@ -82,18 +85,19 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void parseFail() {
+	protected void parseFailure() {
 		System.out.println("General structure not respected");
 	}
 	
 	@Override
-	protected void relativeFail() {
+	protected boolean relativeFailure() {
 		System.out.println("RELATIVE FAILED");
+		return false; //continue parsing
 		
 	}
 
 	@Override
-	protected void addRelative(String type) {
+	protected void beginRelative(String type) {
 		System.out.println("Add relative clause type: " + type);
 		
 	}
@@ -170,7 +174,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addComparison(String type, List<Integer> adjSynSets) {
+	protected void beginComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -182,8 +186,8 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void adverbFail() {
-		// TODO Auto-generated method stub
+	protected boolean adverbFailure() {
+		return false; //continue parsing
 		
 	}
 
@@ -194,7 +198,7 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void addPRole(String id, int synSet, String pronoun) {
+	protected void beginRole(String id, int synSet, String pronoun) {
 		
 		
 	}
@@ -212,13 +216,19 @@ public class StonSimpleParser extends Parser {
 	}
 
 	@Override
-	protected void endRole(String id) {
+	protected void endRole(String id, int synSet) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	protected void endRelative(String SP) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void endComparison(String type, List<Integer> adjSynSets) {
 		// TODO Auto-generated method stub
 		
 	}
