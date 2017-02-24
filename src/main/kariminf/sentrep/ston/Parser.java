@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kariminf.sentrep.ston.types.SPronoun;
+import kariminf.sentrep.ston.types.SRelation.SAdpositional;
 
 /**
  * 
@@ -314,7 +315,7 @@ public abstract class Parser {
 
 		int synSet = Integer.parseInt(synSetStr);
 
-		addAction(id, synSet);
+		beginAction(id, synSet);
 
 		// There are three tenses
 		tense = tense.toUpperCase();
@@ -606,7 +607,7 @@ public abstract class Parser {
 		if (synSetStr.matches("\\d+")) synSet = Integer.parseInt(synSetStr);
 		
 		if (type.length() == SPronoun.PropertiesNumber){
-			addPRole(id, synSet, type);
+			beginRole(id, synSet, type);
 			ref = ref.trim();
 			if (ref.length() > 2){
 				ref = ref.substring(1, ref.length()-1);
@@ -617,7 +618,7 @@ public abstract class Parser {
 
 			pronounFound = true;
 		} else{
-			if (synSet > 0) addRole(id, synSet);
+			if (synSet > 0) beginRole(id, synSet);
 		}
 
 		// A role must have a synset which is a number
@@ -640,7 +641,7 @@ public abstract class Parser {
 		}
 
 		//End of the role
-		endRole(id);
+		endRole(id, synSet);
 
 		return true;
 
@@ -712,7 +713,7 @@ public abstract class Parser {
 			return false;
 		}
 
-		addRelative(type);
+		beginRelative(type);
 
 		//Process objects
 		if(refs.length() > 2){
@@ -775,7 +776,7 @@ public abstract class Parser {
 			}
 		}
 
-		addComparison(type.toUpperCase(), adjSynSets);
+		beginComparison(type.toUpperCase(), adjSynSets);
 
 		//Process objects
 		if(refs.length() > 2){
@@ -785,28 +786,49 @@ public abstract class Parser {
 			parseComponents(refs);
 
 		}
+		
+		endComparison(type.toUpperCase(), adjSynSets);
 
 		return true;
 	}
 
-	//Action
-	/**
-	 * It is called when the parser finds an action
-	 * @param id each action has a unique ID
-	 * @param synSet this is the synset
-	 */
-	protected abstract void addAction(String id, int synSet);
 	
+	//=====================================================================
+	//==== Protected methods to be implemented to process how every element 
+	//==== can be handled when it has been found ==========================
+	//=====================================================================
+	
+	
+	
+	//=====================================================================
+	//======================== ACTION METHODS =============================
+	//=====================================================================
+	
+	/**
+	 * When the parser finds an Action, this method marks the beginning of 
+	 * its process
+	 * @param id Each action has a unique ID in STON
+	 * @param synSet the verb's ID in the lexicon (Wordnet, or else)
+	 */
+	protected abstract void beginAction(String id, int synSet);
+	
+	/**
+	 * When the parser finds an Action, this method marks the ending of 
+	 * its process
+	 * @param id Each action has a unique ID in STON
+	 * @param synSet the verb's ID in the lexicon (Wordnet, or else)
+	 */
 	protected abstract void endAction(String id, int synSet);
 	
 	/**
 	 * It is called when the action is failed; It means when the parser find something
 	 * wrong in the action block
+	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract void actionFail();
+	protected abstract boolean actionFail();
 
 	/**
-	 * It is called to define the specifications of a verb
+	 * It is called inside the Action block to define the specifications of a verb
 	 * @param tense It is the tense of the verb: past, present or future
 	 * @param modality It is the modal verb: can, must, may, none
 	 * @param progressive the action is progressive or not
@@ -816,105 +838,220 @@ public abstract class Parser {
 	protected abstract void addVerbSpecif(String tense, String modality, boolean progressive, boolean perfect, boolean negated);
 
 	
-
-	//Subjects and Objects in the Action
 	/**
-	 * It is called when the parser finds subjects
+	 * When the parser starts processing the agents of an action, this
+	 * method marks the beginning of it.
 	 */
 	protected abstract void beginAgents();
 
-	protected abstract void endAgents();
-
-	protected abstract void addActionAdverb(int advSynSet, List<Integer> advSynSets);
-
-	protected abstract void adverbFail();
 	/**
-	 * It is called when the parser finds objects
+	 * When the parser starts processing the agents of an action, this
+	 * method marks the ending of it.
+	 */
+	protected abstract void endAgents();
+	
+	/**
+	 * When the parser starts processing the themes of an action, this
+	 * method marks the beginning of it.
 	 */
 	protected abstract void beginThemes();
 
+	/**
+	 * When the parser starts processing the themes of an action, this
+	 * method marks the beginning of it.
+	 */
 	protected abstract void endThemes();
 
-	
-
-	//Role
 	/**
-	 * It is called when the parser finds a role player
-	 * @param id each role has a unique ID
-	 * @param synSet wordnet synset of the Noun 
+	 * When the action has adverbs, this method is called.
+	 * @param advSynSet The Adverb's ID in the lexicon (Wordnet, or else)
+	 * @param advSynSets A list of adverbs that modify the first adverb (can be null)
 	 */
-	protected abstract void addRole(String id, int synSet);
-	
-	protected abstract void endRole(String id);
+	protected abstract void addActionAdverb(int advSynSet, List<Integer> advSynSets);
 
 	/**
-	 * It is called when the parser finds a role player (pronoun)
+	 * This is called when the processing of the adverb fails
+	 * @return false if we want the parser to continue nevertheless
+	 */
+	protected abstract boolean adverbFail();
+	
+
+	/**
+	 * When the parser finds comparison inside Action block, this methods marks the beginning 
+	 * of comparison processing
+	 * @param type The type of comparison (See {@link kariminf.sentrep.ston.types.SComparison}): 
+	 * @param adjSynSets The IDs of the comparison adjectives in the lexicon (Wordnet, or other)
+	 */
+	protected abstract void beginComparison(String type, List<Integer> adjSynSets);
+	
+	/**
+	 * When the parser finds comparison inside Action block, this methods marks the beginning 
+	 * of comparison processing
+	 * @param type The type of comparison (See {@link kariminf.sentrep.ston.types.SComparison}): 
+	 * @param adjSynSets The IDs of the comparison adjectives in the lexicon (Wordnet, or other)
+	 */
+	protected abstract void endComparison(String type, List<Integer> adjSynSets);
+
+	
+	//=====================================================================
+	//========================= ROLE METHODS ==============================
+	//=====================================================================
+	
+	/**
+	 * It is called when the parser finds a role player to indicate the beginning of its process
+	 * @param id each role has a unique ID
+	 * @param synSet The ID the Noun in a lexicon (Wordnet, or else)
+	 */
+	protected abstract void beginRole(String id, int synSet);
+	
+	/**
+	 * It is called when the parser finds a role player (pronoun), 
+	 * to indicate the beginning of its process
 	 * @param id each role has a unique ID
 	 * @param synSet wordnet synset of the Noun 
 	 * @param type the type of the pronoun See @StonLex
 	 */
-	protected abstract void addPRole(String id, int synSet, String pronoun);
+	protected abstract void beginRole(String id, int synSet, String pronoun);
+	
+	/**
+	 * It is called when the parser finds a role player to indicate the ending of its process
+	 * @param id each role has a unique ID
+	 * @param synSet The ID the Noun in a lexicon (Wordnet, or else)
+	 */
+	protected abstract void endRole(String id, int synSet);
+
 
 	/**
-	 * It is called after {@link addRole}
+	 * it is called when the parsing of a role failed
+	 * @return false if we want the parser to continue nevertheless
+	 */
+	protected abstract boolean roleFail();
+	
+	/**
+	 * It is called after {@link beginRole} when some further specifications are afforded
 	 * @param name proper names if existed, if not the string is empty
 	 * @param def defined or not  
 	 * @param quantity the quantity of the role. Eg. 4 apples, it can take the term pl
-	 * for plural
+	 * for plural, the ordinal quantity is preceded by the letter "o"
 	 */
 	protected abstract void addRoleSpecif(String name, String def, String quantity);
 
 	/**
 	 * It is called when the role player has an adjective
-	 * @param synSet wordnet synset of the adjective which modify the noun in the role
-	 * @param advSynSets wordnet synsets (Set) of adverbs which modify the adjective
+	 * @param synSet Wordnet synset of the adjective which modify the noun in the role
+	 * @param advSynSets Wordnet synsets (Set) of adverbs which modify the adjective
 	 */
 	protected abstract void addAdjective(int synSet, List<Integer> advSynSets);
 
 	/**
 	 * It is called when the parsing of an adjective failed
+	 * @return false if we want the parser to continue nevertheless
 	 */
-	protected abstract void adjectiveFail();
+	protected abstract boolean adjectiveFail();
+	
+	/**
+	 * It is called when the parsing of current relative failed
+	 * @return false if we want the parser to continue nevertheless
+	 */
+	protected abstract boolean relativeFail();
 
 	/**
-	 * it is called when the parsing of a role failed
+	 * Called to mark the beginning of pronoun relatives
 	 */
-	protected abstract void roleFail();
+	protected abstract void beginPRelatives();
+	
+	/**
+	 * Called to mark the ending of pronoun relatives
+	 */
+	protected abstract void endPRelatives();
 
+	
+	
+	//=====================================================================
+	//======================= SENTENCE METHODS ============================
+	//=====================================================================
+	
+	/**
+	 * It is called when a sentence is detected; It marks the beginning
+	 * of sentence processing
+	 * @param type the type of sentence, See {@link kariminf.sentrep.ston.types.SSentType}
+	 */
+	protected abstract void beginSentence(String type);
+	
+	/**
+	 * It is called when a sentence is detected; It marks the ending
+	 * of sentence processing
+	 * @param type the type of sentence, See {@link kariminf.sentrep.ston.types.SSentType}
+	 */
+	protected abstract void endSentence(String type);
+
+	/**
+	 * It is called to mark the beginning of actions in a sentence.
+	 * @param mainClause is it a main clause or secondary
+	 */
+	protected abstract void beginActions(boolean mainClause);
+	
+	/**
+	 * It is called to mark the ending of actions in a sentence.
+	 * @param mainClause is it a main clause or secondary
+	 */
+	protected abstract void endActions(boolean mainClause);
+	
+	
+	//=====================================================================
+	//======================== SHARED METHODS =============================
+	//=====================================================================
+	
+	//can be used for subjects, objects, places or times
+	/**
+	 * This is called to add conjunctions. 
+	 * It can be called in blocks such as: agents, themes, relatives, pronoun relatives, 
+	 * actions of sentences, comparison, etc.
+	 * @param IDs The IDs of either Actions or Roles, depending on the type of block
+	 */
+	protected abstract void addConjunctions(List<String> IDs);
+	
+	
+	/**
+	 * It is called to add a relative: time or location or else; It marks the beginning 
+	 * of relative block
+	 * @param type the type of the relatives See 
+	 * {@link kariminf.sentrep.ston.types.SRelation.SRelative}
+	 */
+	protected abstract void beginRelative(String type);
+	
+	/**
+	 * It is called to add a relative: time or location or else; It marks the ending 
+	 * of relative block. <br>
+	 * It depends on which block it is called: <br>
+	 * If the block is a Role, there are two types of relatives: 
+	 * {@link SRelative}
+	 * which is is a relation between a role and an action; Or
+	 * {@link SAdpositional} 
+	 * which is a relation between a role and a role.
+	 * <br>
+	 * If the block is an Action, there are two types of relatives: 
+	 * {@link SAdpositional}
+	 * which is a relation between an action and a role; Or
+	 * {@link SAdverbial}
+	 * Which is a relation between an action and another.
+	 * @param type the type of the relatives
+	 */
+	protected abstract void endRelative(String type);
+	
+	//=====================================================================
+	//========================= PARSE METHODS =============================
+	//=====================================================================
+	
+	/**
+	 * Called when the parse ends with a success
+	 */
+	protected abstract void parseSuccess();
+	
 	/**
 	 * it is called when the parsing failed (general structure)
 	 */
 	protected abstract void parseFail();
 
-	/**
-	 * It is called when the parsing of relatives failed
-	 */
-	protected abstract void relativeFail();
-
-	/**
-	 * It is called to add an relative: time or location
-	 * @param type the type of the relatives
-	 */
-	protected abstract void addRelative(String type);
-	protected abstract void endRelative(String type);
-
-	protected abstract void addComparison(String type, List<Integer> adjSynSets);
-
-	//can be used for subjects, objects, places or times
-	protected abstract void addConjunctions(List<String> IDs);
-
-
-	//Parse
-	protected abstract void parseSuccess();
-
-
-	protected abstract void beginSentence(String type);
-	protected abstract void endSentence(String type);
-
-	protected abstract void beginActions(boolean mainClause);
-	protected abstract void endActions(boolean mainClause);
-
-	protected abstract void beginPRelatives();
-	protected abstract void endPRelatives();
 
 }
