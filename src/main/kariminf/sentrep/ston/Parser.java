@@ -330,7 +330,7 @@ public abstract class Parser {
 		//Defines verb specifications
 		addVerbSpecif(tense, modality, progressive, perfect, negated);
 
-		// Process subjects
+		// Process agents
 		if(agents.length() > 2){
 			if (!(agents.startsWith("[") && agents.endsWith("]"))){
 				//System.out.println("subjects=" + subjects);
@@ -343,7 +343,7 @@ public abstract class Parser {
 			endAgents();
 		}
 
-		//Process objects
+		//Process themes
 		if(themes.length() > 2){
 			if (!(themes.startsWith("[") && themes.endsWith("]")))
 				return false;
@@ -358,7 +358,7 @@ public abstract class Parser {
 			if (! parseAdverbs(adverbs)) return false;
 		}
 
-		// Process the relative clause
+		// Process the comparison clause
 		if (comparison.length()>0){
 			if (! parseComparisons(comparison)) return false;
 		}

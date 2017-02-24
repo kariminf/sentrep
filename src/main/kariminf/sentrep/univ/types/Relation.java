@@ -29,6 +29,12 @@ public class Relation {
 		IO_POSSESSION, // OF which
 		IO_ROLE, //AS which
 		IO_SITUATION //under which
+		
+		;
+		
+		public static Relative fromAdpositional(Adpositional adp){
+			return Relative.valueOf("IO_" + adp.name());
+		}
 	}
 	
 	public static enum Adpositional {
