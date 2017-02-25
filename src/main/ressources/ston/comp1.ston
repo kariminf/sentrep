@@ -1,0 +1,35 @@
+@r:[
+    r:{
+        id: karim;
+        syn: 7846;
+        nam: Karim;
+    r:}
+    r:{
+        id: brother;
+        syn: 9876454;
+        def: Y;
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: be_tall;
+        syn: 2604760;
+        tns: PR;
+        @cmp:[
+            cmp:{
+                typ: M;
+                adj: [2385102];
+                ref: [brother];
+            cmp:}
+        cmp:];
+        agt: [karim];
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act:[be_tall]
+    st:}
+st:]

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ParserSpeed extends Parser {
 
-	static String testFile = "ston/LouisdeBroglie_Bio/LouisdeBroglie_Bio.ston";
+	static String testFile = "/home/kariminf/Github/Nolporas/STON/bio/LouisdeBroglie_Bio/LouisdeBroglie_Bio.ston";
 	//static String testFile = "ston/NaguibMahfouz_bio/NaguibMahfouz_Bio.ston";
 	
 	@Override

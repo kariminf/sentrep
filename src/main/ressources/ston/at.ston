@@ -1,0 +1,32 @@
+@r: [
+    r:{
+        id: mother;
+        syn: 10332385;
+    r:}
+    r:{
+        id: home;
+        syn: 3259505;
+    r:}
+r:]
+
+@act:[
+    act:{
+        id: stay;
+        syn: 117985;
+        tns: PA;
+        agt: [mother];
+        @rel:[
+            rel:{
+                typ: IN;
+                ref: [home];
+            rel:}
+        rel:]
+    act:}
+act:]
+
+@st:[
+    st:{
+        typ: AFF;
+        act: [stay];
+    st:}
+st:]
