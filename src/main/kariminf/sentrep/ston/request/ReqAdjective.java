@@ -67,7 +67,7 @@ public class ReqAdjective {
 		}
 		
 		result += "\n" + StonBlocks.getIndentation(3);
-		result += StonKeys.ADJBL + ":}";
+		result += StonKeys.ADJBL + ":}\n";
 		return result;
 		
 	}
