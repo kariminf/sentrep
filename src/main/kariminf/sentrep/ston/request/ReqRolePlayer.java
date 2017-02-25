@@ -170,8 +170,8 @@ public class ReqRolePlayer {
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
 				result += it.next();
-				if(it.hasNext())
-					result += ",";
+				/*if(it.hasNext())
+					result += ",";*/
 			}
 
 			result += StonKeys.ADJBL + ":]";
@@ -238,8 +238,8 @@ public class ReqRolePlayer {
 			Iterator<ReqAdjective> it = adjectives.iterator();
 			while(it.hasNext()){
 				result += it.next().structuredString();
-				if(it.hasNext())
-					result += ",\n";
+				/*if(it.hasNext())
+					result += ",\n";*/
 			}
 
 			result += "\n" + StonBlocks.getIndentation(2);
@@ -255,8 +255,8 @@ public class ReqRolePlayer {
 				ReqClause relative = it.next();
 				relative.setSpecifs(StonKeys.RELBL, 3);
 				result += relative.structuredString();
-				if(it.hasNext())
-					result += ",\n";
+				/*if(it.hasNext())
+					result += ",\n";*/
 			}
 			result += StonBlocks.getIndentation(2);
 			result += StonKeys.RELBL + ":]";
