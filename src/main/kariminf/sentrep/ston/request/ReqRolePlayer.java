@@ -242,7 +242,7 @@ public class ReqRolePlayer {
 					result += ",\n";*/
 			}
 
-			result += "\n" + StonBlocks.getIndentation(2);
+			result += StonBlocks.getIndentation(2);
 			result += StonKeys.ADJBL + ":]";
 		}
 

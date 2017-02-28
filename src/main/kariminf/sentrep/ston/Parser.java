@@ -622,8 +622,8 @@ public abstract class Parser {
 			success = false;
 			if (roleFailure()) return false;
 		}
-
-		addRoleSpecif(name, def, quantity);
+		
+		if (synSet > 0 || name.length() > 0) addRoleSpecif(name, def, quantity);
 
 		//Process adjectives
 		if (adjectives.length() > 0){
