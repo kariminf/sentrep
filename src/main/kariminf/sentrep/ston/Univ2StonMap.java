@@ -10,6 +10,10 @@ import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SPronoun.SPerson;
 import kariminf.sentrep.ston.types.SPronoun.SProximity;
 import kariminf.sentrep.ston.types.SRelation.SAdpositional;
+import kariminf.sentrep.ston.types.SRelation.SAdverbial;
+import kariminf.sentrep.ston.types.SRelation.SRelative;
+import kariminf.sentrep.ston.types.SVerbModal;
+import kariminf.sentrep.ston.types.SVerbTense;
 import kariminf.sentrep.univ.types.*;
 import kariminf.sentrep.univ.types.Pronoun.Formality;
 import kariminf.sentrep.univ.types.Pronoun.Gender;
@@ -24,14 +28,35 @@ public class Univ2StonMap implements LangMap {
 
 	@Override
 	public String getTense(VerbTense tense) {
-		// TODO Auto-generated method stub
-		return null;
+		switch (tense) {
+		case FUTURE:
+			return SVerbTense.FU.name();
+		case PAST:
+			return SVerbTense.PA.name();
+		case PRESENT:
+			return SVerbTense.PR.name();
+		default:
+			break;
+		}
+		
+		return "";
 	}
 
 	@Override
 	public String getModal(Modality modal) {
-		// TODO Auto-generated method stub
-		return null;
+		switch (modal) {
+		case CAN:
+			return SVerbModal.CAN.name();
+		case MAY:
+			return SVerbModal.MAY.name();
+		case MUST:
+			return SVerbModal.MUST.name();
+		case NONE:
+			return SVerbModal.NONE.name();
+		default:
+			break;
+		}
+		return "";
 	}
 
 	@Override
@@ -44,20 +69,38 @@ public class Univ2StonMap implements LangMap {
 
 	@Override
 	public String getAdverbial(Adverbial adv, String param) {
-		// TODO Auto-generated method stub
-		return null;
+		SAdverbial sadv = SAdverbial.fromRelation(adv);
+		return sadv.name();
 	}
 
 	@Override
 	public String getRelative(Relative rel, String param) {
-		// TODO Auto-generated method stub
-		return null;
+		if (! rel.name().contains("_")){
+			return SRelative.fromRelation(rel).name();
+		}
+		
+		String[] split = rel.name().split("_");
+		String result = split[0] + "_";
+		
+		Adpositional adp = Adpositional.valueOf(split[1]);
+		result += SAdpositional.fromAdpositional(adp).name();
+		
+		return result;
 	}
 
 	@Override
 	public String getDeterminer(Determiner det) {
-		// TODO Auto-generated method stub
-		return null;
+		switch (det) {
+		case NO:
+			return "N";
+		case NONE:
+			return "NONE";
+		case YES:
+			return "Y";
+		default:
+			break;
+		}
+		return "";
 	}
 
 	@Override

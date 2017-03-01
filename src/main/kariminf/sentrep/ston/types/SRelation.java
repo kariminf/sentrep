@@ -1,5 +1,7 @@
 package kariminf.sentrep.ston.types;
 
+import java.util.HashMap;
+
 import kariminf.sentrep.univ.types.Relation.*;
 
 public class SRelation {
@@ -25,6 +27,13 @@ public class SRelation {
 		
 		public Relative getRelation(){
 			return relative;
+		}
+		
+		public static SRelative fromRelation(Relative rel){
+			for (SRelative srel: SRelative.values())
+				if (srel.relative == rel)
+					return srel;
+			return null;
 		}
 	}
 	
@@ -68,6 +77,13 @@ public class SRelation {
 		public Adpositional getRelation(){
 			return adposition;
 		}
+		
+		
+		public static SAdpositional fromAdpositional(Adpositional adp){
+			for (SAdpositional sadp: SAdpositional.values())
+				if(sadp.adposition == adp) return sadp;
+			return null;
+		}
 	}
 	
 	/**
@@ -96,6 +112,12 @@ public class SRelation {
 		
 		public Adverbial getRelation(){
 			return adverbial;
+		}
+		
+		public static SAdverbial fromRelation(Adverbial adv){
+			for (SAdverbial sadv: SAdverbial.values())
+				if (sadv.adverbial == adv) return sadv;
+			return null;
 		}
 	}
 	
