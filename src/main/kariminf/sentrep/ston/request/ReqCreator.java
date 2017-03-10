@@ -92,6 +92,18 @@ public class ReqCreator {
 		return ReqRolePlayer.create(newID, original);
 	}
 	
+	/**
+	 * <b>Unsafe: </b>
+	 * @param playerId
+	 * @return
+	 */
+	public ReqRolePlayer getReqRolePlayer(String playerId){
+		playerId = playerId.trim();
+		if (! players.containsKey(playerId)) return null;
+		
+		return players.get(playerId);
+	}
+	
 	
 	public boolean setDefined (String playerId, String def){
 		playerId = playerId.trim();
