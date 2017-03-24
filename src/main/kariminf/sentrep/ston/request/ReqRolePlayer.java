@@ -89,7 +89,7 @@ public class ReqRolePlayer {
 		result.adjectives.addAll(rrp.adjectives);
 		
 		//TODO verify this
-		//result.relatives = new ArrayList<ReqClause>();
+		result.relatives = new ArrayList<ReqClause>();
 		result.pronoun = rrp.pronoun;
 		//result.references = new ReqDisjunction();
 		return result;
