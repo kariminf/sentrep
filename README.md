@@ -1,9 +1,9 @@
 # SentRep
 
-[![Project](https://img.shields.io/badge/Project-SentRep-4B0082.svg?style=plastic)](https://github.com/kariminf/SentRep)
-[![License](https://img.shields.io/badge/License-Apache_2-4B0082.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Travis](https://img.shields.io/travis/kariminf/SentRep.svg?style=plastic)](https://travis-ci.org/kariminf/SentRep)
-[![codecov](https://img.shields.io/codecov/c/github/kariminf/SentRep.svg?style=plastic)](https://codecov.io/gh/kariminf/SentRep)
+[![Project](https://img.shields.io/badge/Project-SentRep-4B0082.svg)](https://github.com/kariminf/SentRep)
+[![License](https://img.shields.io/badge/License-Apache_2-4B0082.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Travis](https://img.shields.io/travis/kariminf/SentRep.svg)](https://travis-ci.org/kariminf/SentRep)
+[![codecov](https://img.shields.io/codecov/c/github/kariminf/SentRep.svg)](https://codecov.io/gh/kariminf/SentRep)
 [![jitpack](https://jitpack.io/v/kariminf/SentRep.svg)](https://jitpack.io/#kariminf/SentRep)
 
 A simple description of this project is: sentences (text) morphological and lexical annotation.
@@ -34,19 +34,40 @@ As for now the only focus of this project is to improve STON parser.
 
 ## Using the project
 
-### Gradle
-To use the library, you can add this code to your "build.gradle" (replace 1.0.0 with any version you like from the release section)
+You can download the jar from "release" section and link it to your project;
+Or you can use https://jitpack.io to manage dependency.
+Replace "tag" with the release tag; for example "1.0.0".
 
+### Gradle
+
+Add this to your "build.gradle":
 ```
 repositories {
-     jcenter()
-     maven { url "https://jitpack.io" }
+    ...
+    maven { url 'https://jitpack.io' }
 }
+
 dependencies {
-      compile 'com.github.kariminf:SentRep:1.0.0'
+    compile 'com.github.kariminf:SentRep:tag'
 }
 ```
 
+### Maven
+
+```xml
+<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+</repositories>
+
+<dependency>
+	    <groupId>com.github.kariminf</groupId>
+	    <artifactId>SentRep</artifactId>
+	    <version>tag</version>
+</dependency>
+```
 ## License
 
 Copyright (C) 2016-2017 Abdelkrime Aries
