@@ -10,9 +10,9 @@ import kariminf.sentrep.ston.types.SPronoun.SPProperty;
 import kariminf.sentrep.ston.types.SPronoun.SPerson;
 import kariminf.sentrep.ston.types.SPronoun.SProximity;
 import kariminf.sentrep.ston.types.SRelation.*;
-import kariminf.sentrep.univ.types.*;
-import kariminf.sentrep.univ.types.Relation.*;
-import kariminf.sentrep.univ.types.Pronoun.*;
+import kariminf.sentrep.types.*;
+import kariminf.sentrep.types.Pronoun.*;
+import kariminf.sentrep.types.Relation.*;
 
 
 public class Ston2UnivMap implements UnivMap {

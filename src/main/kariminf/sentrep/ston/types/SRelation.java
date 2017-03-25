@@ -2,7 +2,7 @@ package kariminf.sentrep.ston.types;
 
 import java.util.HashMap;
 
-import kariminf.sentrep.univ.types.Relation.*;
+import kariminf.sentrep.types.Relation.*;
 
 public class SRelation {
 	

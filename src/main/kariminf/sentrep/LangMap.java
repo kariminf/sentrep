@@ -1,9 +1,9 @@
 package kariminf.sentrep;
 
-import kariminf.sentrep.univ.types.*;
-import kariminf.sentrep.univ.types.Relation.Adpositional;
-import kariminf.sentrep.univ.types.Relation.Adverbial;
-import kariminf.sentrep.univ.types.Relation.Relative;
+import kariminf.sentrep.types.*;
+import kariminf.sentrep.types.Relation.Adpositional;
+import kariminf.sentrep.types.Relation.Adverbial;
+import kariminf.sentrep.types.Relation.Relative;
 
 
 public interface LangMap {

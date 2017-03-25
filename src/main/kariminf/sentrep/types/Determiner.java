@@ -1,4 +1,4 @@
-package kariminf.sentrep.univ.types;
+package kariminf.sentrep.types;
 
 public enum Determiner {
 	NONE,

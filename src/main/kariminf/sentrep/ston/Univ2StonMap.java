@@ -12,17 +12,17 @@ import kariminf.sentrep.ston.types.SPronoun.SProximity;
 import kariminf.sentrep.ston.types.SRelation.SAdpositional;
 import kariminf.sentrep.ston.types.SRelation.SAdverbial;
 import kariminf.sentrep.ston.types.SRelation.SRelative;
+import kariminf.sentrep.types.*;
+import kariminf.sentrep.types.Pronoun.Formality;
+import kariminf.sentrep.types.Pronoun.Gender;
+import kariminf.sentrep.types.Pronoun.Head;
+import kariminf.sentrep.types.Pronoun.Person;
+import kariminf.sentrep.types.Pronoun.Proximity;
+import kariminf.sentrep.types.Relation.Adpositional;
+import kariminf.sentrep.types.Relation.Adverbial;
+import kariminf.sentrep.types.Relation.Relative;
 import kariminf.sentrep.ston.types.SVerbModal;
 import kariminf.sentrep.ston.types.SVerbTense;
-import kariminf.sentrep.univ.types.*;
-import kariminf.sentrep.univ.types.Pronoun.Formality;
-import kariminf.sentrep.univ.types.Pronoun.Gender;
-import kariminf.sentrep.univ.types.Pronoun.Head;
-import kariminf.sentrep.univ.types.Pronoun.Person;
-import kariminf.sentrep.univ.types.Pronoun.Proximity;
-import kariminf.sentrep.univ.types.Relation.Adpositional;
-import kariminf.sentrep.univ.types.Relation.Adverbial;
-import kariminf.sentrep.univ.types.Relation.Relative;
 
 public class Univ2StonMap implements LangMap {
 

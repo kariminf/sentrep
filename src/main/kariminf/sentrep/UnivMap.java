@@ -1,7 +1,7 @@
 package kariminf.sentrep;
 
-import kariminf.sentrep.univ.types.*;
-import kariminf.sentrep.univ.types.Relation.*;
+import kariminf.sentrep.types.*;
+import kariminf.sentrep.types.Relation.*;
 
 public interface UnivMap {
 	
