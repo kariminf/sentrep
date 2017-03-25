@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-4B0082.svg?style=plastic)](https://github.com/kariminf/SentRep/releases)
 [![License](https://img.shields.io/badge/License-Apache_2-4B0082.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Travis](https://img.shields.io/travis/kariminf/SentRep.svg?style=plastic)](https://travis-ci.org/kariminf/SentRep)
+[![codecov](https://img.shields.io/codecov/c/github/kariminf/SentRep.svg?style=plastic)](https://codecov.io/gh/kariminf/SentRep)
 
 A simple description of this project is: sentences (text) morphological and lexical annotation.
 A more focus is on morphology such as verbs tense, modality, etc.
