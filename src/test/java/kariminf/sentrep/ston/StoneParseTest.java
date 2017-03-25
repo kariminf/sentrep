@@ -10,7 +10,7 @@ import kariminf.sentrep.ston.request.ReqParser;
 
 public class StoneParseTest {
 
-	static String testFile = "ressources/exp/that.ston";
+	static String testFile = "./ston/that.ston";
 	/**
 	 * @param args
 	 */
