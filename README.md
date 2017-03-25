@@ -1,7 +1,6 @@
 # SentRep
 
 [![Project](https://img.shields.io/badge/Project-SentRep-4B0082.svg?style=plastic)](https://github.com/kariminf/SentRep)
-[![Version](https://img.shields.io/badge/Version-1.0.0-4B0082.svg?style=plastic)](https://github.com/kariminf/SentRep/releases)
 [![License](https://img.shields.io/badge/License-Apache_2-4B0082.svg?style=plastic)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Travis](https://img.shields.io/travis/kariminf/SentRep.svg?style=plastic)](https://travis-ci.org/kariminf/SentRep)
 [![codecov](https://img.shields.io/codecov/c/github/kariminf/SentRep.svg?style=plastic)](https://codecov.io/gh/kariminf/SentRep)
@@ -36,7 +35,7 @@ As for now the only focus of this project is to improve STON parser.
 ## Using the project
 
 ### Gradle
-To use the library, you can add this code to your "build.gradle"
+To use the library, you can add this code to your "build.gradle" (replace 1.0.0 with any version you like from the release section)
 
 ```
 repositories {
