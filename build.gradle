@@ -20,6 +20,8 @@
 // Java plugin to add support for Java
 apply plugin: 'java'
 apply plugin: 'jacoco'
+//For jitPack to build
+apply plugin: 'maven'
 
 // Gradle java plugin
 sourceCompatibility = 1.8
