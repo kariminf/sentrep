@@ -1,10 +1,10 @@
 # SentRep
 
-[![Project](https://img.shields.io/badge/Project-SentRep-4B0082.svg)](https://github.com/kariminf/SentRep)
+[![Project](https://img.shields.io/badge/Project-SentRep-4B0082.svg)](https://github.com/kariminf/sentrep)
 [![License](https://img.shields.io/badge/License-Apache_2-4B0082.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Travis](https://img.shields.io/travis/kariminf/SentRep.svg)](https://travis-ci.org/kariminf/SentRep)
-[![codecov](https://img.shields.io/codecov/c/github/kariminf/SentRep.svg)](https://codecov.io/gh/kariminf/SentRep)
-[![jitpack](https://jitpack.io/v/kariminf/SentRep.svg)](https://jitpack.io/#kariminf/SentRep)
+[![Travis](https://img.shields.io/travis/kariminf/sentrep.svg)](https://travis-ci.org/kariminf/sentrep)
+[![codecov](https://img.shields.io/codecov/c/github/kariminf/sentrep.svg)](https://codecov.io/gh/kariminf/sentrep)
+[![jitpack](https://jitpack.io/v/kariminf/sentrep.svg)](https://jitpack.io/#kariminf/sentrep)
 
 A simple description of this project is: sentences (text) morphological and lexical annotation.
 A more focus is on morphology such as verbs tense, modality, etc.
@@ -36,7 +36,7 @@ As for now the only focus of this project is to improve STON parser.
 
 You can download the jar from "release" section and link it to your project;
 Or you can use https://jitpack.io to manage dependency.
-Replace "tag" with the release tag; for example "1.0.0".
+Replace "tag" with the release tag; for example "1.0.1".
 
 ### Gradle
 
@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.kariminf:SentRep:tag'
+    compile 'com.github.kariminf:sentrep:tag'
 }
 ```
 
@@ -64,7 +64,7 @@ dependencies {
 
 <dependency>
 	    <groupId>com.github.kariminf</groupId>
-	    <artifactId>SentRep</artifactId>
+	    <artifactId>sentrep</artifactId>
 	    <version>tag</version>
 </dependency>
 ```
